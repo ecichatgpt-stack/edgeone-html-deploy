@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO分析报告生成</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .required {
+            color: #e74c3c;
+            margin-left: 3px;
+        }
+        .field-description {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+            line-height: 1.5;
+            font-weight: normal;
+        }
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        input::placeholder {
+            color: #aaa;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        button:disabled {
+            background: linear-gradient(135deg, #ccc 0%, #999 100%);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            margin-top: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        .info-section {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 2px solid #f0f0f0;
+        }
+        .info-title {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .info-title::before {
+            content: "ℹ️";
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        .info-content {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .info-content p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        .info-content p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #856404;
+        }
+        .contact {
+            color: #667eea;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 SEO分析报告生成</h1>
+        <p class="subtitle">提交您的公司网址，自动生成专业的SEO分析报告</p>
+        
+        <form id="seoForm">
+            <div class="form-group">
+                <label for="website">
+                    公司网址<span class="required">*</span>
+                </label>
+                <input 
+                    type="url" 
+                    id="website" 
+                    name="website" 
+                    placeholder="例如: https://www.example.com" 
+                    required
+                >
+                <p class="field-description">要分析SEO数据的公司的网址</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="companyName">公司名称</label>
+                <input 
+                    type="text" 
+                    id="companyName" 
+                    name="companyName" 
+                    placeholder="例如: XX科技有限公司"
+                >
+                <p class="field-description">要分析SEO数据的公司的名称</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="industry">所属行业</label>
+                <input 
+                    type="text" 
+                    id="industry" 
+                    name="industry" 
+                    placeholder="例如: 互联网/科技、电子商务、制造业等"
+                >
+                <p class="field-description">要分析SEO数据的公司的所属行业</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="submitterName">提交人姓名</label>
+                <input 
+                    type="text" 
+                    id="submitterName" 
+                    name="submitterName" 
+                    placeholder="例如: 张三"
+                >
+                <p class="field-description">您的姓名，方便我们与您联系</p>
+            </div>
+            
+            <button type="submit" id="submitBtn">🚀 开始生成报告</button>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p class="loading-text">正在生成SEO分析报告，请稍候...</p>
+            </div>
+        </form>
+
+        <div class="info-section">
+            <div class="info-title">说明</div>
+            <div class="info-content">
+                <p>本程序在提交公司网址后，将自动识别公司中文和英文名称以及所属行业，然后分析该公司的竞争对手，再通过站长工具获取公司和竞争对手的SEO数据，并基于这些数据生成SEO分析报告。报告为<strong>网页</strong>和<strong>PDF</strong>两种形式。生成完成后将返回网页网址和PDF的下载网址。</p>
+                
+                <p>每次分析耗时大概 <span class="highlight">8分钟</span>。</p>
+                
+                <p>如果遇到报告生成有误，例如报告不完整、未生成、耗时过长等问题，请联系 <span class="contact">Scott</span> 解决。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('seoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const form = e.target;
+            
+            // 禁用按钮，显示加载动画
+            submitBtn.disabled = true;
+            loading.style.display = 'block';
+            
+            // 收集表单数据
+            const formData = {
+                website: form.website.value,
+                companyName: form.companyName.value || '',
+                industry: form.industry.value || '',
+                submitterName: form.submitterName.value || ''
+            };
+            
+            try {
+                // 替换成你的n8n webhook URL
+                const webhookUrl = 'https://ecichatgpt.app.n8n.cloud/webhook/seo-report';
+                
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    // 获取返回的HTML并替换整个页面
+                    const html = await response.text();
+                    document.open();
+                    document.write(html);
+                    document.close();
+                } else {
+                    alert('提交失败，请稍后重试或联系管理员');
+                    submitBtn.disabled = false;
+                    loading.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('网络错误，请检查网络连接后重试');
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
