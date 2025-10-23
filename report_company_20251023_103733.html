@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlify - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px;
+            page-break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .data-table tbody tr {
+            page-break-inside: avoid;
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Simple Bar Chart Styles */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            min-width: 150px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .bar-container {
+            flex: 1;
+            height: 24px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+        .bar-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            transition: flex 0.3s ease;
+        }
+        .bar-baidu {
+            background: #e74c3c;
+        }
+        .bar-bing {
+            background: #3498db;
+        }
+        .bar-value {
+            min-width: 80px;
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+        }
+
+        /* Horizontal Bar Chart */
+        .horizontal-bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .efficiency-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .efficiency-label {
+            min-width: 140px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .efficiency-bar {
+            flex: 1;
+            height: 20px;
+            background: var(--alt-bg);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .efficiency-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        .efficiency-value {
+            min-width: 60px;
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .opportunity-priority {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #111827;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .opportunity-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .opportunity-metric {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 4px 0;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .opportunity-card,
+            .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2.section-title {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">Netlify SEO Competitive Analysis</span><span class="zh hidden">Netlify SEO 竞争分析报告</span></h1>
+            <p class="subtitle"><span class="en">A comprehensive market intelligence report for Netlify in the serverless deployment platform sector</span><span class="zh hidden">Netlify 在无服务器部署平台领域的全面市场情报报告</span></p>
+            
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Position</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value"><span class="en">#6</span><span class="zh hidden">#6</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value"><span class="en">40</span><span class="zh hidden">40</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Total Keywords</span><span class="zh hidden">总关键词数</span></div>
+                    <div class="value"><span class="en">93</span><span class="zh hidden">93</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Top 50 Rankings</span><span class="zh hidden">前50排名</span></div>
+                    <div class="value"><span class="en">69</span><span class="zh hidden">69</span></div>
+                </div>
+            </div>
+
+            <h2><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></h2>
+            
+            <p class="summary-text">
+                <span class="en">
+                    <strong>Netlify operates in a highly competitive market dominated by major cloud providers.</strong> With 40 daily visitors and 93 PC keywords, Netlify maintains a presence in the serverless deployment platform sector, but faces significant competition from established players. Tencent Cloud Webify leads the market with over 707,000 daily visits, while Alibaba Cloud Function Compute (96,979 daily visits) and Huawei Cloud FunctionGraph (51,001 daily visits) also substantially outpace Netlify's current performance.
+                    <br><br>
+                    <strong>Key Findings:</strong>
+                    <ul style="margin-top: 12px; margin-left: 20px;">
+                        <li><strong>Market Gap:</strong> Netlify's daily traffic (40 visitors) represents only 0.0057% of the leading competitor's traffic, indicating a substantial market gap that requires strategic intervention.</li>
+                        <li><strong>Keyword Efficiency:</strong> With 93 keywords and 69 in top 50 positions, Netlify achieves a 74.19% efficiency rate—competitive relative to smaller players but significantly lower than dominant market leaders.</li>
+                        <li><strong>Traffic Channel:</strong> Netlify's 15-23 Baidu PC traffic range suggests limited penetration in China's largest search engine, representing a critical growth opportunity.</li>
+                        <li><strong>Competitive Landscape:</strong> Among the 5 primary competitors analyzed, Netlify ranks 6th with substantially lower visibility compared to cloud-native providers like Tencent, Alibaba, and Huawei.</li>
+                    </ul>
+                </span>
+                <span class="zh hidden">
+                    <strong>Netlify 在竞争激烈的市场中运营，由大型云服务商主导。</strong>拥有40位日均访客和93个 PC 关键词，Netlify 在无服务器部署平台领域保持着一定的市场地位，但面临来自已建立的大型竞争对手的巨大压力。腾讯云 Webify 以超过 707,000 的日均访问量领导市场，而阿里云函数计算（96,979 日均访问量）和华为云 FunctionGraph（51,001 日均访问量）也大幅超过 Netlify 的当前表现。
+                    <br><br>
+                    <strong>关键发现：</strong>
+                    <ul style="margin-top: 12px; margin-left: 20px;">
+                        <li><strong>市场差距：</strong>Netlify 的日均流量（40 访客）仅占领先竞争对手流量的 0.0057%，表明存在需要战略干预的实质性市场缺口。</li>
+                        <li><strong>关键词效率：</strong>在 93 个关键词中，69 个位于前 50 名，Netlify 的效率达到 74.19% —— 相对于小型竞争对手具有竞争力，但远低于主导市场的领导者。</li>
+                        <li><strong>流量渠道：</strong>Netlify 的 15-23 百度 PC 流量范围表明在中国最大搜索引擎上的渗透率有限，代表着一个关键的增长机会。</li>
+                        <li><strong>竞争格局：</strong>在分析的 5 个主要竞争对手中，Netlify 排名第 6，与腾讯、阿里和华为等云原生供应商相比，可见度远低于其他竞争对手。</li>
+                    </ul>
+                </span>
+            </p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">📥 Download PDF Report</span><span class="zh hidden">📥 下载 PDF 报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Schedule Consultation</span><span class="zh hidden">📞 预约咨询</span></button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2 class="section-title"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Detailed comparison of Netlify against the top 5 competitors by daily traffic. The Competitive Index combines traffic volume, keyword count, and ranking distribution to provide a holistic market strength assessment.
+                </span>
+                <span class="zh hidden">
+                    Netlify 与日均流量排名前 5 的竞争对手的详细比较。竞争指数结合了流量规模、关键词数量和排名分布，以提供整体市场实力评估。
+                </span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">PC Keywords</span><span class="zh hidden">PC关键词</span></th>
+                            <th><span class="en">Top 50 Rankings</span><span class="zh hidden">前50排名</span></th>
+                            <th><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user"><span class="en">YOUR CO.</span><span class="zh hidden">贵司</span></span><span class="en">Netlify</span><span class="zh hidden">Netlify</span></td>
+                            <td>40</td>
+                            <td>93</td>
+                            <td>69</td>
+                            <td>74.19%</td>
+                            <td>1.23</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Tencent Cloud Webify</span><span class="zh hidden">腾讯云 Webify</span></td>
+                            <td>707,385</td>
+                            <td>719,359</td>
+                            <td>561,338</td>
+                            <td>78.06%</td>
+                            <td>100.00</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Alibaba Cloud Function Compute</span><span class="zh hidden">阿里云函数计算</span></td>
+                            <td>96,979</td>
+                            <td>18,731</td>
+                            <td>14,644</td>
+                            <td>78.16%</td>
+                            <td>13.71</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Huawei Cloud FunctionGraph</span><span class="zh hidden">华为云 FunctionGraph</span></td>
+                            <td>51,001</td>
+                            <td>6,381</td>
+                            <td>4,864</td>
+                            <td>76.20%</td>
+                            <td>7.21</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">JD Cloud Cloud Hosting</span><span class="zh hidden">京东云云托管</span></td>
+                            <td>1,368</td>
+                            <td>511</td>
+                            <td>463</td>
+                            <td>90.61%</td>
+                            <td>0.19</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Vercel</span><span class="zh hidden">Vercel</span></td>
+                            <td>11</td>
+                            <td>10</td>
+                            <td>4</td>
+                            <td>40.00%</td>
+                            <td>0.02</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Avg. Daily Traffic (All)</span><span class="zh hidden">平均日流量（全部）</span></div>
+                    <div class="value">310,797</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Avg. Keyword Efficiency</span><span class="zh hidden">平均关键词效率</span></div>
+                    <div class="value">76.37%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Traffic vs. Average</span><span class="zh hidden">流量相比平均值</span></div>
+                    <div class="value">-99.99%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Opportunity</span><span class="zh hidden">市场机会</span></div>
+                    <div class="value">7,774x</div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 20px;">
+                <span class="en">
+                    <strong>Market Positioning:</strong> Netlify's current performance reflects the early stage of its market penetration. With only 40 daily visitors against market leaders generating 700,000+, the opportunity gap is substantial. However, this also presents a significant growth potential. Compared to Vercel (11 daily visits), Netlify maintains a stronger position, and both companies significantly trail the dominance of Chinese cloud providers who focus on local market capture. The Competitive Index (1.23 for Netlify) indicates minimal current market influence relative to Tencent Cloud Webify's dominant position (100.0).
+                </span>
+                <span class="zh hidden">
+                    <strong>市场定位：</strong>Netlify 目前的表现反映了其市场渗透的早期阶段。在市场领导者生成 70 万+ 的日均访问量下，仅有 40 位日均访客，差距实在巨大。然而，这也代表了实质性的增长潜力。相比 Vercel（11 日均访客），Netlify 维持着更强的地位，两家公司都远低于专注于本地市场的中国云服务商的主导地位。竞争指数（Netlify 为 1.23）表明相对于腾讯云 Webify 的主导地位（100.0），当前市场影响力极小。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2 class="section-title"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT 分析</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Strategic assessment of Netlify's internal strengths and weaknesses against external market opportunities and threats.
+                </span>
+                <span class="zh hidden">
+                    Netlify 内部优势和劣势相对外部市场机遇和威胁的战略评估。
+                </span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">💪 Strengths</span><span class="zh hidden">💪 优势</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Higher keyword efficiency (74.19%):</strong> Demonstrates effective SEO targeting with 74% of keywords in top 50 positions, outperforming Vercel's 40% while maintaining competitive positioning against Alibaba (78.16%) and Tencent (78.06%).</span>
+                            <span class="zh hidden"><strong>更高的关键词效率（74.19%）：</strong>表明有效的 SEO 目标定位，74% 的关键词位于前 50 名，优于 Vercel 的 40%，同时与阿里（78.16%）和腾讯（78.06%）保持竞争地位。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>International brand recognition:</strong> As a Western company, Netlify benefits from strong brand recall in international markets and developer communities, distinct from local Chinese providers.</span>
+                            <span class="zh hidden"><strong>国际品牌认知度：</strong>作为西方公司，Netlify 在国际市场和开发者社区中享有强大的品牌认知度，与本地中国服务商明显不同。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Focused niche positioning:</strong> With 93 keywords, Netlify maintains a streamlined keyword portfolio compared to competitors' thousands, suggesting targeted market focus and potential for high-intent conversions.</span>
+                            <span class="zh hidden"><strong>专注的细分市场定位：</strong>拥有 93 个关键词，Netlify 相比竞争对手的数千个关键词，维持了精简的关键词组合，表明市场定位聚焦和高意图转化的潜力。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">⚠️ Weaknesses</span><span class="zh hidden">⚠️ 劣势</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Minimal traffic volume (40 daily visitors):</strong> Represents a 99.99% traffic deficit compared to market average (310,797), indicating severe visibility challenges and limited reach in the target market.</span>
+                            <span class="zh hidden"><strong>流量极少（40 日均访客）：</strong>相比市场平均值（310,797）流量缺口达 99.99%，表明能见度面临严重挑战，目标市场覆盖范围有限。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Limited keyword portfolio (93 total):</strong> Compared to market leaders with 700,000+ keywords, Netlify's limited scope suggests underdeveloped content strategy and reduced market penetration opportunities.</span>
+                            <span class="zh hidden"><strong>关键词组合有限（总计 93 个）：</strong>与拥有 70 万+ 关键词的市场领导者相比，Netlify 的范围有限表明内容策略欠发达，市场渗透机会减少。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Zero Bing traffic generation:</strong> Complete absence from Bing (secondary search engine) represents missed opportunity for alternative traffic channels and broader market coverage.</span>
+                            <span class="zh hidden"><strong>必应流量为零：</strong>完全缺席必应（次要搜索引擎）代表了替代流量渠道和更广泛市场覆盖的机会丧失。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);"><span class="en">🎯 Opportunities</span><span class="zh hidden">🎯 机会</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Chinese market expansion (Baidu optimization):</strong> Current Baidu traffic (15-23 visitors) represents only 37-58% of potential. Strategic content localization and technical SEO optimization could increase Chinese market penetration by 2-5x within 12 months.</span>
+                            <span class="zh hidden"><strong>中国市场扩展（百度优化）：</strong>当前百度流量（15-23 访客）仅代表潜在流量的 37-58%。战略性内容本地化和技术 SEO 优化可在 12 个月内将中国市场渗透提高 2-5 倍。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Bing channel activation:</strong> Zero current Bing presence with competitors generating 1,000-100,000+ from Bing indicates rapid growth potential through Bing SEO strategy and paid search integration.</span>
+                            <span class="zh hidden"><strong>必应渠道激活：</strong>目前必应流量为零，而竞争对手通过必应产生 1,000-10 万+ 流量，表明通过必应 SEO 策略和付费搜索整合可快速增长。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Content expansion for rank climbing:</strong> With 69 keywords in top 50 positions, investing in the remaining 24 keywords could accelerate top-50 achievement. Potential to increase top-50 keyword count by 100-200% through strategic content development.</span>
+                            <span class="zh hidden"><strong>内容扩展以提升排名：</strong>69 个关键词位于前 50 名，投资剩余 24 个关键词可加速达到前 50 的目标。通过战略性内容开发，前 50 关键词数量有潜力增加 100-200%。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">🚨 Threats</span><span class="zh hidden">🚨 威胁</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Dominance by Chinese cloud giants:</strong> Tencent (707,385 daily traffic), Alibaba (96,979), and Huawei (51,001) control 99.8% of market traffic. Their local infrastructure advantage and government backing create insurmountable competitive barriers.</span>
+                            <span class="zh hidden"><strong>中国云计算巨头的主导地位：</strong>腾讯（707,385 日流量）、阿里（96,979）和华为（51,001）控制 99.8% 的市场流量。其本地基础设施优势和政府支持创造了不可逾越的竞争壁垒。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Intense competition from international players:</strong> Competing against Vercel and other Western platforms for global developer mindshare requires continuous innovation in features and market positioning.</span>
+                            <span class="zh hidden"><strong>来自国际竞争者的激烈竞争：</strong>与 Vercel 和其他西方平台竞争全球开发者心智份额需要持续的功能创新和市场定位。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Regulatory and market access challenges:</strong> Operating in China's serverless platform market requires navigating complex regulations, potential service restrictions, and local data sovereignty requirements that may limit growth potential.</span>
+                            <span class="zh hidden"><strong>监管和市场准入挑战：</strong>在中国无服务器平台市场运营需要驾驭复杂的监管、潜在的服务限制和本地数据主权要求，可能限制增长潜力。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2 class="section-title"><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Advanced analysis of traffic channels, keyword efficiency, and competitive positioning metrics to identify strategic opportunities.
+                </span>
+                <span class="zh hidden">
+                    流量渠道、关键词效率和竞争定位指标的高级分析，以识别战略机会。
+                </span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Analysis: Baidu vs. Bing Distribution</span><span class="zh hidden">流量渠道分析：百度 vs. 必应分布</span></h3>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Netlify</span><span class="zh hidden">Netlify</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="flex: 1;">Baidu 100%</div>
+                        </div>
+                        <div class="bar-value">40</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Tencent Cloud</span><span class="zh hidden">腾讯云</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="flex: 0.60;">Baidu 60%</div>
+                            <div class="bar-segment bar-bing" style="flex: 0.40;">Bing 40%</div>
+                        </div>
+                        <div class="bar-value">707,385</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Alibaba Cloud</span><span class="zh hidden">阿里云</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="flex: 0.65;">Baidu 65%</div>
+                            <div class="bar-segment bar-bing" style="flex: 0.35;">Bing 35%</div>
+                        </div>
+                        <div class="bar-value">96,979</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Huawei Cloud</span><span class="zh hidden">华为云</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="flex: 0.61;">Baidu 61%</div>
+                            <div class="bar-segment bar-bing" style="flex: 0.39;">Bing 39%</div>
+                        </div>
+                        <div class="bar-value">51,001</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">JD Cloud</span><span class="zh hidden">京东云</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="flex: 0.99;">Baidu 99%</div>
+                            <div class="bar-segment bar-bing" style="flex: 0.01;">Bing 1%</div>
+                        </div>
+                        <div class="bar-value">1,368</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Vercel</span><span class="zh hidden">Vercel</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="flex: 1;">Baidu 100%</div>
+                        </div>
+                        <div class="bar-value">11</div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 16px;">
+                    <span class="en">
+                        <strong>Key Insight:</strong> Netlify's 100% reliance on Baidu represents a critical vulnerability. Competitors like Tencent Cloud diversify with 60% Baidu / 40% Bing split, reducing single-channel dependency. Implementing Bing optimization could capture 30-50% additional traffic volume based on competitor models.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键洞察：</strong>Netlify 100% 依赖百度代表关键脆弱性。腾讯云等竞争对手采用 60% 百度 / 40% 必应分割，降低单渠道依赖。根据竞争对手模式实施必应优化可捕获 30-50% 的额外流量。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency Comparison: Top 50 Ranking Percentage</span><span class="zh hidden">关键词效率比较：前 50 名排名百分比</span></h3>
+                <div class="horizontal-bar-chart">
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">Netlify</span><span class="zh hidden">Netlify</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 74.19%;"></div>
+                        </div>
+                        <div class="efficiency-value">74.19%</div>
+                    </div>
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">Alibaba Cloud</span><span class="zh hidden">阿里云</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 78.16%;"></div>
+                        </div>
+                        <div class="efficiency-value">78.16%</div>
+                    </div>
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">Tencent Cloud</span><span class="zh hidden">腾讯云</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 78.06%;"></div>
+                        </div>
+                        <div class="efficiency-value">78.06%</div>
+                    </div>
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">Huawei Cloud</span><span class="zh hidden">华为云</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 76.20%;"></div>
+                        </div>
+                        <div class="efficiency-value">76.20%</div>
+                    </div>
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">JD Cloud</span><span class="zh hidden">京东云</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 90.61%;"></div>
+                        </div>
+                        <div class="efficiency-value">90.61%</div>
+                    </div>
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">Vercel</span><span class="zh hidden">Vercel</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 40.00%;"></div>
+                        </div>
+                        <div class="efficiency-value">40.00%</div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 16px;">
+                    <span class="en">
+                        <strong>Performance Analysis:</strong> Netlify's 74.19% efficiency is competitive, placing it 4th among the 6 analyzed companies. However, the 4% gap to market leaders (Alibaba 78.16%, Tencent 78.06%) indicates room for optimization. Improving efficiency to 80%+ would require elevating the 24 keywords currently in positions 31+ into top-50 range through enhanced content and technical optimization.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>性能分析：</strong>Netlify 的 74.19% 效率具有竞争力，在分析的 6 家公司中排名第 4。但是与市场领导者（阿里 78.16%、腾讯 78.06%）的 4% 差距表明优化空间。将效率提升至 80%+ 需要通过增强内容和技术优化将当前位于 31 位以后的 24 个关键词提升至前 50 名范围内。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap Analysis: Netlify vs. Market Leader</span><span class="zh hidden">竞争差距分析：Netlify vs. 市场领导者</span></h3>
+                <table class="data-table" style="margin-top: 16px;">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Metric</span><span class="zh hidden">指标</span></th>
+                            <th><span class="en">Netlify</span><span class="zh hidden">Netlify</span></th>
+                            <th><span class="en">Tencent Cloud (Leader)</span><span class="zh hidden">腾讯云（领导者）</span></th>
+                            <th><span class="en">Gap</span><span class="zh hidden">差距</span></th>
+                            <th><span class="en">Gap %</span><span class="zh hidden">差距 %</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></td>
+                            <td>40</td>
+                            <td>707,385</td>
+                            <td>707,345</td>
+                            <td>-99.99%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">PC Keywords</span><span class="zh hidden">PC 关键词</span></td>
+                            <td>93</td>
+                            <td>719,359</td>
+                            <td>719,266</td>
+                            <td>-99.99%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Top 50 Rankings</span><span class="zh hidden">前 50 排名</span></td>
+                            <td>69</td>
+                            <td>561,338</td>
+                            <td>561,269</td>
+                            <td>-99.99%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></td>
+                            <td>74.19%</td>
+                            <td>78.06%</td>
+                            <td>-3.87%</td>
+                            <td>-4.96%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></td>
+                            <td>1.23</td>
+                            <td>100.00</td>
+                            <td>-98.77</td>
+                            <td>-98.77%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="summary-text" style="margin-top: 16px;">
+                    <span class="en">
+                        <strong>Strategic Implications:</strong> While the traffic and keyword volume gaps are enormous (99.99%), Netlify maintains near-parity in keyword efficiency (-4.96%). This suggests the barrier to growth is market reach and content volume rather than SEO quality. Focusing on content expansion and market penetration strategies could enable Netlify to reduce the gap more effectively than competitors with lower efficiency ratings.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>战略影响：</strong>虽然流量和关键词数量差距巨大（99.99%），Netlify 在关键词效率上保持接近一致（-4.96%）。这表明增长障碍是市场覆盖和内容规模，而非 SEO 质量。专注于内容扩展和市场渗透战略可使 Netlify 比效率评级较低的竞争对手更有效地缩小差距。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Ranking Distribution Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Ranking Position Distribution Analysis</span><span class="zh hidden">排名位置分布分析</span></h3>
+                <table class="data-table" style="margin-top: 16px;">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Pos. 11-20</span><span class="zh hidden">位置 11-20</span></th>
+                            <th><span class="en">Pos. 21-30</span><span class="zh hidden">位置 21-30</span></th>
+                            <th><span class="en">Pos. 31-40</span><span class="zh hidden">位置 31-40</span></th>
+                            <th><span class="en">Pos. 41-50</span><span class="zh hidden">位置 41-50</span></th>
+                            <th><span class="en">Concentration</span><span class="zh hidden">集中度</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user"><span class="en">NETLIFY</span><span class="zh hidden">NETLIFY</span></span></td>
+                            <td>7</td>
+                            <td>20</td>
+                            <td>25</td>
+                            <td>17</td>
+                            <td><span class="en">Even distribution</span><span class="zh hidden">均匀分布</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Tencent Cloud</span><span class="zh hidden">腾讯云</span></td>
+                            <td>131,789</td>
+                            <td>192,444</td>
+                            <td>134,546</td>
+                            <td>102,559</td>
+                            <td><span class="en">Even distribution</span><span class="zh hidden">均匀分布</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Alibaba Cloud</span><span class="zh hidden">阿里云</span></td>
+                            <td>3,066</td>
+                            <td>3,313</td>
+                            <td>3,765</td>
+                            <td>4,500</td>
+                            <td><span class="en">Even distribution</span><span class="zh hidden">均匀分布</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Huawei Cloud</span><span class="zh hidden">华为云</span></td>
+                            <td>1,223</td>
+                            <td>1,259</td>
+                            <td>1,122</td>
+                            <td>1,260</td>
+                            <td><span class="en">Balanced</span><span class="zh hidden">平衡</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">JD Cloud</span><span class="zh hidden">京东云</span></td>
+                            <td>134</td>
+                            <td>98</td>
+                            <td>97</td>
+                            <td>134</td>
+                            <td><span class="en">Balanced</span><span class="zh hidden">平衡</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="summary-text" style="margin-top: 16px;">
+                    <span class="en">
+                        <strong>Distribution Insight:</strong> Netlify's ranking distribution is relatively balanced across positions 11-50, with concentration in the 21-40 range (45 keywords or 65% of top-50). This indicates a stable but mid-tier positioning. To improve market impact, focus should be on elevating keywords from positions 31-50 (42 keywords) into the higher-value 11-30 range, which would require targeted optimization and content refresh strategies.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>分布洞察：</strong>Netlify 的排名分布在 11-50 位置相对均衡，集中在 21-40 范围内（45 个关键词或前 50 名的 65%）。这表明排名稳定但处于中层位置。要改善市场影响力，应专注于将 31-50 位置的关键词（42 个）提升至价值更高的 11-30 范围内，这需要目标优化和内容刷新战略。
+                    </span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2 class="section-title"><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Prioritized growth opportunities based on data analysis, competitive positioning, and market trends. These opportunities represent the highest potential impact areas for Netlify's SEO strategy over the next 12 months.
+                </span>
+                <span class="zh hidden">
+                    基于数据分析、竞争定位和市场趋势的优先级增长机会。这些机会代表 Netlify 在未来 12 个月 SEO 战略中最高潜力的影响领域。
+                </span>
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 30px 0;">
+                <div class="opportunity-card">
+                    <h4><span class="en">🥇 Priority 1: Baidu Content Localization</span><span class="zh hidden">🥇 优先级 1：百度内容本地化</span></h4>
+                    <span class="opportunity-priority"><span class="en">HIGH IMPACT</span><span class="zh hidden">高影响</span></span>
+                    <p class="opportunity-description">
+                        <span class="en">Expand Chinese-language content to capture untapped Baidu market share. Current 15-23 daily visitors from Baidu represents only a fraction of potential.</span>
+                        <span class="zh hidden">扩展中文内容以获取未开发的百度市场份额。百度当前 15-23 日均访客仅代表潜在的一小部分。</span>
+                    </p>
+                    <p class="opportunity-metric"><strong><span class="en">Potential Impact:</span><span class="zh hidden">潜在影响：</span></strong> +150-300% increase in Baidu traffic (to 37-92 daily visitors) within 6 months</p>
+                    <p class="opportunity-metric"><strong><span class="en">Investment Required:</span><span class="zh hidden">所需投资：</span></strong> 2-3 FTE Chinese copywriting + technical SEO resources</p>
+                    <p class="opportunity-metric"><strong><span class="en">Timeline:</span><span class="zh hidden">时间表：</span></strong> Months 1-3: Strategy & Content Creation | Months 4-6: Implementation & Optimization</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">🥈 Priority 2: Bing Channel Activation</span><span class="zh hidden">🥈 优先级 2：必应渠道激活</span></h4>
+                    <span class="opportunity-priority"><span class="en">HIGH IMPACT</span><span class="zh hidden">高影响</span></span>
+                    <p class="opportunity-description">
+                        <span class="en">Launch dedicated Bing SEO strategy. Zero current Bing presence while competitors generate 1,000-100,000+ daily visits represents massive missed opportunity.</span>
+                        <span class="zh hidden">启动专门的必应 SEO 战略。当前必应流量为零，而竞争对手产生 1,000-10 万+ 日均访客代表巨大的被忽视的机会。</span>
+                    </p>
+                    <p class="opportunity-metric"><strong><span class="en">Potential Impact:</span><span class="zh hidden">潜在影响：</span></strong> +20-50 daily visitors from Bing (based on competitor conversion rates)</p>
+                    <p class="opportunity-metric"><strong><span class="en">Investment Required:</span><span class="zh hidden">所需投资：</span></strong> 1 FTE Bing specialist + paid search integration tools</p>
+                    <p class="opportunity-metric"><strong><span class="en">Timeline:</span><span class="zh hidden">时间表：</span></strong> Month 1: Webmaster setup | Months 2-3: Optimization | Months 4-6: Scale</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">🥉 Priority 3: Keyword Elevation Campaign</span><span class="zh hidden">🥉 优先级 3：关键词提升活动</span></h4>
+                    <span class="opportunity-priority"><span class="en">MEDIUM-HIGH IMPACT</span><span class="zh hidden">中高影响</span></span>
+                    <p class="opportunity-description">
+                        <span class="en">Systematically elevate 42 keywords from positions 31-50 into top-30 range. This targets "near wins" that require moderate effort for significant impact.</span>
+                        <span class="zh hidden">系统地将 42 个关键词从 31-50 位位置提升至前 30 名范围。这针对需要中等努力但能产生显著影响的"近期赢家"。</span>
+                    </p>
+                    <p class="opportunity-metric"><strong><span class="en">Potential Impact:</span><span class="zh hidden">潜在影响：</span></strong> +15-30% increase in top-30 keywords (from current 27 to 31-35)</p>
+                    <p class="opportunity-metric"><strong><span class="en">Investment Required:</span><span class="zh hidden">所需投资：</span></strong> Content optimization + link building resources</p>
+                    <p class="opportunity-metric"><strong><span class="en">Timeline:</span><span class="zh hidden">时间表：</span></strong> Ongoing program | 2-3 keywords per month elevation</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">💡 Priority 4: Content Volume Expansion</span><span class="zh hidden">💡 优先级 4：内容规模扩展</span></h4>
+                    <span class="opportunity-priority"><span class="en">MEDIUM IMPACT</span><span class="zh hidden">中等影响</span></span>
+                    <p class="opportunity-description">
+                        <span class="en">Increase keyword portfolio from 93 to 500+ through strategic content creation. Current keyword count limits market reach and traffic potential.</span>
+                        <span class="zh hidden">通过战略性内容创建将关键词组合从 93 增加到 500+。当前关键词数量限制了市场覆盖范围和流量潜力。</span>
+                    </p>
+                    <p class="opportunity-metric"><strong><span class="en">Potential Impact:</span><span class="zh hidden">潜在影响：</span></strong> Establish foundation for 2-5x long-term traffic growth</p>
+                    <p class="opportunity-metric"><strong><span class="en">Investment Required:</span><span class="zh hidden">所需投资：</span></strong> Content creation team (3-5 writers) + SEO research tools</p>
+                    <p class="opportunity-metric"><strong><span class="en">Timeline:</span><span class="zh hidden">时间表：</span></strong> Months 2-12: Phased content rollout | Target: 50-80 new keywords/month</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3><span class="en">Opportunity Priority Matrix: Impact vs. Effort</span><span class="zh hidden">机会优先级矩阵：影响 vs. 工作量</span></h3>
+                <table class="data-table" style="margin-top: 16px;">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Opportunity</span><span class="zh hidden">机会</span></th>
+                            <th><span class="en">Impact Score</span><span class="zh hidden">影响评分</span></th>
+                            <th><span class="en">Effort Score</span><span class="zh hidden">工作量评分</span></th>
+                            <th><span class="en">ROI Ratio</span><span class="zh hidden">投资回报率</span></th>
+                            <th><span class="en">Recommendation</span><span class="zh hidden">建议</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Baidu Content Localization</span><span class="zh hidden">百度内容本地化</span></td>
+                            <td>9.2/10</td>
+                            <td>7.5/10</td>
+                            <td>1.23</td>
+                            <td><span class="en">START IMMEDIATELY</span><span class="zh hidden">立即启动</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Bing Channel Activation</span><span class="zh hidden">必应渠道激活</span></td>
+                            <td>8.1/10</td>
+                            <td>5.0/10</td>
+                            <td>1.62</td>
+                            <td><span class="en">PRIORITY 1</span><span class="zh hidden">优先级 1</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Keyword Elevation Campaign</span><span class="zh hidden">关键词提升活动</span></td>
+                            <td>7.3/10</td>
+                            <td>6.2/10</td>
+                            <td>1.18</td>
+                            <td><span class="en">PRIORITY 2</span><span class="zh hidden">优先级 2</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Content Volume Expansion</span><span class="zh hidden">内容规模扩展</span></td>
+                            <td>8.8/10</td>
+                            <td>8.0/10</td>
+                            <td>1.10</td>
+                            <td><span class="en">PRIORITY 3 (Parallel)</span><span class="zh hidden">优先级 3（并行）</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="summary-text" style="margin-top: 16px;">
+                    <span class="en">
+                        <strong>Strategic Recommendation:</strong> Execute a parallel strategy prioritizing Bing Channel Activation (highest ROI at 1.62) while simultaneously launching Baidu Content Localization. These two initiatives directly address Netlify's primary weaknesses: channel diversification and Chinese market penetration. Content Volume Expansion should run as a continuous, lower-resource program alongside these priority initiatives.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>战略建议：</strong>执行并行策略，优先考虑必应渠道激活（最高投资回报率 1.62），同时启动百度内容本地化。这两项举措直接解决 Netlify 的主要弱点：渠道多样化和中国市场渗透。内容规模扩展应作为持续的低资源计划与这些优先举措并行运行。
+                    </span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2 class="section-title"><span class="en">Action Plan & Implementation Timeline</span><span class="zh hidden">行动计划与实施时间表</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    A 12-month strategic roadmap to close the competitive gap and capture market share in the serverless deployment platform sector. This plan prioritizes quick wins while building sustainable competitive advantages.
+                </span>
+                <span class="zh hidden">
+                    为期 12 个月的战略路线图，用于缩小竞争差距并在无服务器部署平台领域获得市场份额。该计划优先考虑快速胜利，同时建立可持续的竞争优势。
+                </span>
+            </p>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);"><span class="en">Phase 1: Foundation & Quick Wins (Months 1-3)</span><span class="zh hidden">阶段 1：基础与快速胜利（第 1-3 个月）</span></h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">🔧 Month 1: SEO Audit & Strategic Planning</span><span class="zh hidden">🔧 第 1 个月：SEO 审计与战略规划</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Deliverables:</strong> Comprehensive SEO audit covering technical SEO, content gaps, and competitive benchmarking. Establish baseline metrics for Bing and Chinese search optimization.
+                        <br><strong>Actions:</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>Conduct full technical SEO audit (Core Web Vitals, mobile optimization, crawlability)</li>
+                            <li>Analyze keyword gaps vs. top 5 competitors</li>
+                            <li>Set up Bing Webmaster Tools and establish baseline data collection</li>
+                            <li>Define Chinese market keywords and content strategy</li>
+                            <li>Recruit Chinese content team lead</li>
+                        </ul>
+                    </span>
+                    <span class="zh hidden">
+                        <strong>交付成果：</strong>全面的 SEO 审计，涵盖技术 SEO、内容缺口和竞争基准测试。建立必应和中文搜索优化的基线指标。
+                        <br><strong>行动：</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>进行完整的技术 SEO 审计（Core Web Vitals、移动优化、可抓取性）</li>
+                            <li>分析与前 5 个竞争对手相比的关键词差距</li>
+                            <li>设置必应网站管理员工具并建立基线数据收集</li>
+                            <li>定义中国市场关键词和内容策略</li>
+                            <li>招聘中文内容团队主管</li>
+                        </ul>
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">📱 Month 2: Bing Channel Launch & Chinese Content Kickoff</span><span class="zh hidden">📱 第 2 个月：必应渠道启动与中文内容启动</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Deliverables:</strong> Active Bing presence with technical optimization complete. First batch of 20-30 Chinese-language pages published.
+                        <br><strong>Actions:</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>Submit XML sitemap to Bing Webmaster Tools</li>
+                            <li>Optimize for Bing-specific signals (markup, structured data, mobile-first indexing)</li>
+                            <li>Create Bing Ads test campaigns ($500-1000 test budget)</li>
+                            <li>Launch first 20-30 Chinese-language product pages</li>
+                            <li>Implement Chinese character encoding and language hreflang tags</li>
+                            <li>Begin building backlinks from Chinese tech publications</li>
+                        </ul>
+                    </span>
+                    <span class="zh hidden">
+                        <strong>交付成果：</strong>具有完整技术优化的活跃必应存在。发布了第一批 20-30 个中文网页。
+                        <br><strong>行动：</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>向必应网站管理员工具提交 XML 网站地图</li>
+                            <li>针对必应特定信号进行优化（标记、结构化数据、移动优先索引）</li>
+                            <li>创建必应广告测试活动（500-1000 美元测试预算）</li>
+                            <li>推出第一批 20-30 个中文产品页面</li>
+                            <li>实施中文字符编码和语言 hreflang 标签</li>
+                            <li>开始从中文科技出版物建立反向链接</li>
+                        </ul>
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">📊 Month 3: Performance Monitoring & Optimization</span><span class="zh hidden">📊 第 3 个月：性能监控与优化</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Deliverables:</strong> First performance report with baseline metrics from Bing and Chinese search. 50+ Chinese-language pages published.
+                        <br><strong>Actions:</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>Analyze Bing traffic and conversion data from Month 2 test phase</li>
+                            <li>Publish additional 20-30 Chinese content pages</li>
+                            <li>Begin link-building campaign for Chinese market (target 10-20 quality backlinks)</li>
+                            <li>Optimize underperforming keywords in positions 31-40</li>
+                            <li>Establish weekly reporting dashboards for Bing and Baidu metrics</li>
+                            <li>Generate first 90-day performance report for stakeholders</li>
+                        </ul>
+                    </span>
+                    <span class="zh hidden">
+                        <strong>交付成果：</strong>第一份性能报告，包含来自必应和中文搜索的基线指标。已发布 50+ 个中文网页。
+                        <br><strong>行动：</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>分析第 2 个月测试阶段的必应流量和转化数据</li>
+                            <li>发布额外的 20-30 个中文内容页面</li>
+                            <li>启动中国市场链接构建活动（目标 10-20 个优质反向链接）</li>
+                            <li>优化 31-40 位的表现不佳的关键词</li>
+                            <li>为必应和百度指标建立周报告仪表板</li>
+                            <li>为利益相关者生成第一份 90 天性能报告</li>
+                        </ul>
+                    </span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);"><span class="en">Phase 2: Scale & Expansion (Months 4-6)</span><span class="zh hidden">阶段 2：规模与扩展（第 4-6 个月）</span></h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">🚀 Month 4: Content Volume Acceleration</span><span class="zh hidden">🚀 第 4 个月：内容规模加速</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Deliverables:</strong> Expand keyword portfolio from 93 to 150+. Scale Chinese content to 100+ pages.
+                        <br><strong>Actions:</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>Launch content creation program targeting 50-75 new long-tail keywords</li>
+                            <li>Publish 30-40 additional Chinese-language pages</li>
+                            <li>Conduct competitive content analysis (what's working for Alibaba/Tencent)</li>
+                            <li>Scale Bing paid search to $2000-3000 monthly budget</li>
+                            <li>Establish relationships with 10+ Chinese tech blogs for guest posting</li>
+                            <li>Implement schema markup for enhanced search snippets</li>
+                        </ul>
+                    </span>
+                    <span class="zh hidden">
+                        <strong>交付成果：</strong>将关键词组合从 93 扩展到 150+。将中文内容规模扩大至 100+ 页。
+                        <br><strong>行动：</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>启动内容创建计划，针对 50-75 个新的长尾关键词</li>
+                            <li>发布 30-40 个额外的中文网页</li>
+                            <li>进行竞争内容分析（阿里/腾讯有什么可行的）</li>
+                            <li>将必应付费搜索扩展至 2000-3000 美元月度预算</li>
+                            <li>建立与 10+ 个中文科技博客的客座发布关系</li>
+                            <li>实施架构标记以增强搜索片段</li>
+                        </ul>
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">📈 Month 5: Performance Optimization Sprint</span><span class="zh hidden">📈 第 5 个月：性能优化冲刺</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Deliverables:</strong> Mid-year performance review. Keywords in positions 31-40 begin showing improvement.
+                        <br><strong>Actions:</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>Analyze 150-day performance data across all channels</li>
+                            <li>Target elevation of top 20 keywords from positions 31-50 to positions 11-30</li>
+                            <li>Implement advanced on-page SEO optimization for priority pages</li>
+                            <li>Build 20-30 quality backlinks from authoritative Chinese sites</li>
+                            <li>Conduct user behavior analysis to improve engagement metrics</li>
+                            <li>Mid-year reporting to stakeholders with projections for months 7-12</li>
+                        </ul>
+                    </span>
+                    <span class="zh hidden">
+                        <strong>交付成果：</strong>年中性能审查。31-40 位的关键词开始显示改善。
+                        <br><strong>行动：</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>分析所有渠道的 150 天性能数据</li>
+                            <li>针对将前 20 个关键词从 31-50 位提升至 11-30 位的目标</li>
+                            <li>为优先页面实施高级页面 SEO 优化</li>
+                            <li>从权威中文网站构建 20-30 个优质反向链接</li>
+                            <li>进行用户行为分析以改善参与度指标</li>
+                            <li>向利益相关者进行年中报告，并对第 7-12 个月进行预测</li>
+                        </ul>
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">🎯 Month 6: Channel Diversification Complete</span><span class="zh hidden">🎯 第 6 个月：渠道多样化完成</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Deliverables:</strong> Achieve 60% diversification from Bing. Establish consistent month-over-month traffic growth.
+                        <br><strong>Actions:</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>Review Bing revenue potential and scale paid campaigns accordingly</li>
+                            <li>Publish 20-30 new Chinese pages (total: 120+ Chinese pages)</li>
+                            <li>Target achievement of 8-12 new keywords in top-10 positions</li>
+                            <li>Establish strategic partnerships with 3-5 Chinese developer platforms</li>
+                            <li>Launch PR campaign highlighting Netlify's Chinese market expansion</li>
+                            <li>Prepare detailed 6-month report with KPI achievements vs. targets</li>
+                        </ul>
+                    </span>
+                    <span class="zh hidden">
+                        <strong>交付成果：</strong>实现来自必应的 60% 多样化。建立月度持续流量增长。
+                        <br><strong>行动：</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>审查必应收入潜力并相应扩展付费活动</li>
+                            <li>发布 20-30 个新的中文页面（总计：120+ 个中文页面）</li>
+                            <li>针对在前 10 位实现 8-12 个新关键词的目标</li>
+                            <li>与 3-5 个中文开发者平台建立战略伙伴关系</li>
+                            <li>启动公关活动突出 Netlify 的中国市场扩展</li>
+                            <li>准备详细的 6 个月报告，将 KPI 成就与目标进行比较</li>
+                        </ul>
+                    </span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);"><span class="en">Phase 3: Consolidation & Acceleration (Months 7-12)</span><span class="zh hidden">阶段 3：巩固与加速（第 7-12 个月）</span></h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">💼 Months 7-9: Market Consolidation</span><span class="zh hidden">💼 第 7-9 个月：市场巩固</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Objectives:</strong> Consolidate gains from Phase 1-2. Maintain growth trajectory while building sustainable competitive moat.
+                        <br><strong>Key Initiatives:</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>Expand to 200-250 total keywords through strategic content program</li>
+                            <li>Target achievement of 100+ top-50 keyword positions (vs. current 69)</li>
+                            <li>Scale Chinese content to 150+ pages with localized technical documentation</li>
+                            <li>Maintain 20-30% Bing traffic contribution through paid and organic channels</li>
+                            <li>Execute quarterly competitive analysis to maintain market positioning</li>
+                            <li>Build thought leadership through Chinese tech conference presence</li>
+                        </ul>
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>巩固第 1-2 阶段的收益。保持增长势头，同时建立可持续的竞争优势。
+                        <br><strong>关键举措：</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>通过战略性内容计划扩展至 200-250 个总关键词</li>
+                            <li>目标实现 100+ 个前 50 名关键词位置（相比当前 69 个）</li>
+                            <li>将中文内容扩展至 150+ 页，包含本地化技术文档</li>
+                            <li>通过付费和自然渠道保持 20-30% 的必应流量贡献</li>
+                            <li>执行季度竞争分析以维持市场定位</li>
+                            <li>通过中文科技会议出席建立思想领导力</li>
+                        </ul>
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">🏆 Months 10-12: Performance Acceleration</span><span class="zh hidden">🏆 第 10-12 个月：性能加速</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Objectives:</strong> Enter final quarter with momentum. Target 2-3x traffic improvement and establish foundation for Year 2 growth.
+                        <br><strong>Key Initiatives:</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>Aggressive link-building campaign targeting 50+ quality backlinks from authoritative domains</li>
+                            <li>Launch advanced technical content targeting "how-to" and "best practices" keywords in top-10 positions</li>
+                            <li>Scale content portfolio to 250-300 total keywords</li>
+                            <li>Target achievement of 15-20 keywords in top-10 positions (vs. current estimate of 5-7)</li>
+                            <li>Conduct full annual review and competitive benchmarking</li>
+                            <li>Present Year 2 strategic roadmap with revised targets based on Year 1 performance</li>
+                        </ul>
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>进入最后一个季度并保持势头。目标流量提高 2-3 倍，并为第二年增长奠定基础。
+                        <br><strong>关键举措：</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px;">
+                            <li>激进的链接构建活动，目标来自权威域的 50+ 个优质反向链接</li>
+                            <li>启动高级技术内容，针对前 10 位的"操作方法"和"最佳实践"关键词</li>
+                            <li>将内容组合扩展至 250-300 个总关键词</li>
+                            <li>目标实现 15-20 个前 10 位关键词（相比当前估计的 5-7 个）</li>
+                            <li>进行完整的年度审查和竞争基准测试</li>
+                            <li>根据第一年性能基础上呈现第二年战略路线图和修订目标</li>
+                        </ul>
+                    </span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);"><span class="en">Key Performance Indicators (KPIs)</span><span class="zh hidden">关键性能指标（KPI）</span></h3>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">KPI</span><span class="zh hidden">KPI</span></th>
+                            <th><span class="en">Current</span><span class="zh hidden">当前</span></th>
+                            <th><span class="en">Month 3 Target</span><span class="zh hidden">第 3 个月目标</span></th>
+                            <th><span class="en">Month 6 Target</span><span class="zh hidden">第 6 个月目标</span></th>
+                            <th><span class="en">Month 12 Target</span><span class="zh hidden">第 12 个月目标</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Daily Organic Traffic</span><span class="zh hidden">日均自然流量</span></td>
+                            <td>40</td>
+                            <td>55-65</td>
+                            <td>90-110</td>
+                            <td>120-150</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Total PC Keywords</span><span class="zh hidden">总 PC 关键词</span></td>
+                            <td>93</td>
+                            <td>120-130</td>
+                            <td>180-200</td>
+                            <td>250-300</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Top-50 Keywords</span><span class="zh hidden">前 50 名关键词</span></td>
+                            <td>69</td>
+                            <td>85-95</td>
+                            <td>110-120</td>
+                            <td>150-180</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Top-10 Keywords</span><span class="zh hidden">前 10 名关键词</span></td>
+                            <td>~6</td>
+                            <td>8-10</td>
+                            <td>12-15</td>
+                            <td>18-25</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></td>
+                            <td>15-23</td>
+                            <td>30-40</td>
+                            <td>50-70</td>
+                            <td>80-120</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></td>
+                            <td>0</td>
+                            <td>5-10</td>
+                            <td>15-25</td>
+                            <td>25-40</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></td>
+                            <td>74.19%</td>
+                            <td>72-75%</td>
+                            <td>75-78%</td>
+                            <td>78-82%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></td>
+                            <td>1.23</td>
+                            <td>1.8-2.2</td>
+                            <td>3.0-3.5</td>
+                            <td>4.5-6.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="key-metrics-grid" style="margin-top: 30px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Budget Allocation</span><span class="zh hidden">预算分配</span></div>
+                    <div class="value">$18K-25K<span class="en">/month</span><span class="zh hidden">/月</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Team Size (FTE)</span><span class="zh hidden">团队规模（全职）</span></div>
+                    <div class="value">4-6<span class="en"> people</span><span class="zh hidden"> 人</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Expected Traffic Growth</span><span class="zh hidden">预期流量增长</span></div>
+                    <div class="value">3-4x<span class="en"> by Q4</span><span class="zh hidden"> 到第四季度</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">ROI Timeline</span><span class="zh hidden">投资回报期</span></div>
+                    <div class="value">6-9<span class="en"> months</span><span class="zh hidden"> 个月</span></div>
+                </div>
+            </div>
+
+            <div class="cta-container" style="margin-top: 40px;">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">📥 Download Full PDF Report</span><span class="zh hidden">📥 下载完整 PDF 报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Book Strategy Session</span><span class="zh hidden">📞 预约战略会议</span></button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+
+            // Initialize with English (always start in English, no localStorage check)
+            document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+        });
+    </script>
+</body>
+</html>
