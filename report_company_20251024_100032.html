@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GNC (General Nutrition Centers) - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 40px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px;
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+        }
+        .data-table thead {
+            display: table-header-group;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3{
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul{
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li{
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before{
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3{
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            margin: 20px 0;
+        }
+        .bar-item {
+            margin-bottom: 20px;
+        }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .bar-label .name {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .bar-label .value {
+            color: var(--text-muted);
+            font-family: var(--font-data);
+        }
+        .bar-wrapper {
+            height: 24px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+        .bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        .bar.secondary {
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+        }
+
+        /* Timeline */
+        .timeline-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4{
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p{
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .opportunity-card .priority {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .priority.high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+        .priority.medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fcd34d;
+        }
+        .priority.low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover{
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            .section-nav, .floating-toolbar, 
+            .progress-bar { 
+                display: none !important; 
+            }
+            
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 15mm 12mm;
+                margin-bottom: 5mm;
+                page-break-inside: avoid !important;
+            }
+            
+            .report-section:not(:first-of-type) {
+                page-break-before: always;
+            }
+            
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .table-container {
+                page-break-inside: avoid !important;
+                overflow: visible;
+                margin: 5mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 6px;
+                font-size: 11px;
+            }
+            
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8mm;
+                page-break-inside: avoid !important;
+            }
+            
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .chart-container {
+                page-break-inside: avoid !important;
+                max-height: 150mm;
+            }
+            
+            .swot-grid {
+                page-break-inside: avoid !important;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6mm;
+            }
+            
+            .cta-container {
+                display: none !important;
+            }
+
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">GNC (General Nutrition Centers)</span><span class="zh hidden">健安喜</span></h1>
+            <p class="subtitle"><span class="en">SEO Competitive Analysis Report 2024</span><span class="zh hidden">SEO竞争分析报告 2024</span></p>
+            
+            <div class="key-metrics-grid" style="margin-top: 40px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">5th <span style="font-size: 16px;">/6</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">每日流量</span></div>
+                    <div class="value">626</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">vs Avg Competitors</span><span class="zh hidden">vs 竞争对手平均</span></div>
+                    <div class="value">-31.5%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">69.6%</div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 40px;">
+                <span class="en">
+                    GNC (General Nutrition Centers) currently ranks 5th among the analyzed supplement brands in terms of daily organic traffic, with 626 daily visitors. The brand demonstrates a focused keyword strategy with only 9 tracked keywords, of which 6 rank in positions 11-40. While GNC trails significantly behind market leaders Amway Nutrilite (7,530 traffic) and Infinitus (5,735 traffic), there is considerable opportunity to enhance market visibility. The company shows strong keyword efficiency at 69.6%, indicating effective optimization of its limited keyword portfolio. Primary traffic originates from Baidu PC (98-156 daily), with zero Bing traffic currently, suggesting an untapped international opportunity.
+                </span>
+                <span class="zh hidden">
+                    在分析的补充品牌中，健安喜（GNC）目前排名第5，日均有机流量为626访客。该品牌采取了专注的关键词策略，仅追踪9个关键词，其中6个排名在第11-40位。虽然健安喜远低于市场领导者安利纽崔莱（7,530流量）和无限极（5,735流量），但在提升市场知名度方面仍有相当的机会。该公司展现出69.6%的强大关键词效率，表明对其有限关键词组合的有效优化。主要流量来自百度PC（日均98-156），必应流量目前为零，这表明存在一个未开发的国际机会。
+                </span>
+            </p>
+
+            <p class="summary-text" style="margin-top: 20px;">
+                <span class="en">
+                    <strong>Key Findings:</strong> GNC's current SEO performance is constrained by a limited keyword portfolio and lack of Bing/international search presence. The brand has stronger Baidu presence than smaller competitors but lacks the scale of top performers. Growth potential exists through keyword expansion, particularly in high-volume search terms related to vitamins, supplements, and nutritional products. Strategic positioning against Amway Nutrilite's 427 keywords and Infinitus's 361 keywords reveals a significant gap that represents a primary opportunity area.
+                </span>
+                <span class="zh hidden">
+                    <strong>主要发现：</strong>健安喜的SEO表现受限于有限的关键词组合和缺乏必应/国际搜索的存在。该品牌在百度上的存在强于较小的竞争对手，但缺乏顶级表现者的规模。增长潜力存在于关键词扩展，特别是在与维生素、补充剂和营养产品相关的高流量搜索词中。针对安利纽崔莱427个关键词和无限极361个关键词的战略定位显示了一个重大差距，这代表了主要机会所在。
+                </span>
+            </p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn">
+                    <span class="en">📥 Download PDF Report</span><span class="zh hidden">📥 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule Consultation</span><span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro">
+                <span class="en">Comparative analysis of GNC against the top 5 competitors in the supplement industry, ranked by daily organic traffic.</span>
+                <span class="zh hidden">GNC与补充品行业前5名竞争对手的比较分析，按日均有机流量排名。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Brand</span><span class="zh hidden">品牌</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">每日流量</span></th>
+                            <th><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Amway Nutrilite</span><span class="zh hidden">安利纽崔莱</span></td>
+                            <td>7,530</td>
+                            <td>500 ~ 798</td>
+                            <td>1,197 ~ 1,913</td>
+                            <td>427</td>
+                            <td><strong>100.0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Infinitus</span><span class="zh hidden">无限极</span></td>
+                            <td>5,735</td>
+                            <td>321 ~ 513</td>
+                            <td>1,571 ~ 2,509</td>
+                            <td>361</td>
+                            <td><strong>76.3</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">BY-HEALTH</span><span class="zh hidden">汤臣倍健</span></td>
+                            <td>3,457</td>
+                            <td>0 ~ 0</td>
+                            <td>1,508 ~ 2,408</td>
+                            <td>0</td>
+                            <td><strong>46.0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">xiuzheng (修正)</span><span class="zh hidden">修正药业</span></td>
+                            <td>863</td>
+                            <td>83 ~ 133</td>
+                            <td>129 ~ 205</td>
+                            <td>19</td>
+                            <td><strong>11.5</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Centrum (Centrum)</span><span class="zh hidden">善存</span></td>
+                            <td>738</td>
+                            <td>93 ~ 149</td>
+                            <td>15 ~ 25</td>
+                            <td>12</td>
+                            <td><strong>9.8</strong></td>
+                        </tr>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span><span class="en">GNC</span><span class="zh hidden">健安喜</span></td>
+                            <td>626</td>
+                            <td>98 ~ 156</td>
+                            <td>0 ~ 0</td>
+                            <td>9</td>
+                            <td><strong>8.3</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--text-heading);">
+                <span class="en">Market Position Analysis</span><span class="zh hidden">市场地位分析</span>
+            </h3>
+            <p class="summary-text">
+                <span class="en">
+                    GNC stands at the lower end of the competitive spectrum with a Competitive Index of 8.3, primarily due to its minimal keyword portfolio (9 keywords) and absence of Bing traffic. Compared to the market leader Amway Nutrilite (CI: 100.0), GNC has approximately 92% less daily traffic. However, GNC maintains a stronger presence than Centrum (CI: 9.8) with similar keyword counts. The critical differentiation factor is traffic source diversity: Amway and Infinitus benefit from significant Bing traffic (1,197-2,509), while GNC relies entirely on Baidu, indicating geographic or platform concentration risk. BY-HEALTH's 3,457 daily traffic on zero Baidu keywords but strong Bing presence (1,508-2,408) demonstrates the viability of alternative market strategies, though this may be due to a different SEO tracking methodology.
+                </span>
+                <span class="zh hidden">
+                    健安喜在竞争谱系的下端，竞争指数为8.3，主要原因是其关键词组合极少（9个关键词）且缺乏必应流量。与市场领导者安利纽崔莱（CI：100.0）相比，健安喜的日均流量约减少92%。然而，健安喜以相似的关键词数量维持着比善存（CI：9.8）更强的存在。关键差异因素是流量来源多样性：安利和无限极受益于重要的必应流量（1,197-2,509），而健安喜完全依赖百度，表明存在地理或平台集中风险。汤臣倍健在零百度关键词但强必应存在（1,508-2,408）下的3,457日均流量表明了替代市场策略的可行性，尽管这可能是由于不同的SEO跟踪方法。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic assessment of GNC's strengths, weaknesses, opportunities, and threats in the current competitive landscape.</span>
+                <span class="zh hidden">GNC在当前竞争格局中的优势、劣势、机会和威胁的战略评估。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: #22c55e;">
+                        <span class="en">💪 Strengths</span><span class="zh hidden">💪 优势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Strong Baidu presence with consistent traffic (98-156 daily), demonstrating solid optimization in the dominant Chinese search engine</span>
+                            <span class="zh hidden">百度存在强劲，流量稳定（日均98-156），表明在主导的中文搜索引擎中优化良好</span>
+                        </li>
+                        <li>
+                            <span class="en">High keyword efficiency (69.6%) indicates effective targeting and optimization of available keyword resources</span>
+                            <span class="zh hidden">高关键词效率（69.6%）表明对现有关键词资源的有效定位和优化</span>
+                        </li>
+                        <li>
+                            <span class="en">Keywords achieving positions 21-40 (3 keywords) show potential for quick ranking improvements through optimization efforts</span>
+                            <span class="zh hidden">3个排名在21-40位的关键词显示通过优化工作可快速改进排名的潜力</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: #ef4444;">
+                        <span class="en">⚠️ Weaknesses</span><span class="zh hidden">⚠️ 劣势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Severely limited keyword portfolio (9 keywords) compared to leaders: Amway Nutrilite (427), Infinitus (361). This 98% keyword gap directly impacts traffic potential</span>
+                            <span class="zh hidden">关键词组合严重受限（9个关键词），与领导者相比：安利纽崔莱（427个）、无限极（361个）。98%的关键词差距直接影响流量潜力</span>
+                        </li>
+                        <li>
+                            <span class="en">Complete absence of international market presence (zero Bing traffic) while competitors like Infinitus generate 1,571-2,509 daily from Bing, missing 30-50% of potential revenue</span>
+                            <span class="zh hidden">完全缺乏国际市场存在（零必应流量），而无限极等竞争对手从必应产生1,571-2,509日均流量，错失30-50%的潜在收入</span>
+                        </li>
+                        <li>
+                            <span class="en">No high-ranking keywords (positions 1-10) - all 9 keywords rank in positions 11-40, indicating weak domain authority and brand recognition in search results</span>
+                            <span class="zh hidden">没有高排名关键词（第1-10位）- 所有9个关键词排名在第11-40位，表明搜索结果中域名权威性和品牌认可度弱</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: #f59e0b;">
+                        <span class="en">🎯 Opportunities</span><span class="zh hidden">🎯 机会</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Keyword expansion strategy: Market analysis shows high-volume supplement categories (vitamins, minerals, health supplements) with growth potential. Adding 50-100 new keywords could increase traffic by 150-200%</span>
+                            <span class="zh hidden">关键词扩展策略：市场分析显示高容量补充品类（维生素、矿物质、健康补充剂）具有增长潜力。增加50-100个新关键词可将流量增加150-200%</span>
+                        </li>
+                        <li>
+                            <span class="en">International market penetration via Bing and international search engines. Competitors generating 1,500+ daily from Bing indicates significant opportunity in English-language markets</span>
+                            <span class="zh hidden">通过必应和国际搜索引擎进行国际市场渗透。竞争对手从必应产生1,500+日均表明英语市场存在重大机会</span>
+                        </li>
+                        <li>
+                            <span class="en">Content dominance in underserved niches: GNC brand has strong offline presence; investing in targeted content for brand + health condition searches could capture market share from smaller competitors</span>
+                            <span class="zh hidden">在服务不足的细分市场中占据内容主导地位：GNC品牌有强大的离线存在；投资于品牌+健康状况搜索的目标内容可从较小竞争对手中获取市场份额</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: #3b82f6;">
+                        <span class="en">🚨 Threats</span><span class="zh hidden">🚨 威胁</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Amway Nutrilite dominance: With 12x the daily traffic and 47x the keywords, Amway's scale and resources create a significant barrier. Continuous investment in their SEO may maintain the gap</span>
+                            <span class="zh hidden">安利纽崔莱的主导地位：日均流量增加12倍，关键词增加47倍，安利的规模和资源产生重大屏障。持续投资他们的SEO可能维持差距</span>
+                        </li>
+                        <li>
+                            <span class="en">Infinitus's dual-market strategy advantage: Successfully capturing both Baidu and Bing traffic (5,735 total) with 361 keywords gives them strategic flexibility that GNC lacks</span>
+                            <span class="zh hidden">无限极的双市场战略优势：成功同时获取百度和必应流量（5,735总计），361个关键词使他们具有GNC缺乏的战略灵活性</span>
+                        </li>
+                        <li>
+                            <span class="en">Algorithm updates and ranking volatility: With only 9 keywords and concentrated Baidu dependency, any algorithm change could significantly reduce GNC's traffic. Lack of diversification creates high risk</span>
+                            <span class="zh hidden">算法更新和排名波动性：仅9个关键词和集中的百度依赖性，任何算法变化都可能大幅降低GNC的流量。缺乏多样化创造高风险</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Detailed analysis of traffic channels, keyword efficiency, and competitive gaps to identify optimization priorities.</span>
+                <span class="zh hidden">流量渠道、关键词效率和竞争差距的详细分析，以识别优化优先级。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Distribution</span><span class="zh hidden">流量渠道分布</span></h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name"><span class="en">Amway Nutrilite</span><span class="zh hidden">安利纽崔莱</span></span>
+                            <span class="value">7,530</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name"><span class="en">Infinitus</span><span class="zh hidden">无限极</span></span>
+                            <span class="value">5,735</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 76%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name"><span class="en">BY-HEALTH</span><span class="zh hidden">汤臣倍健</span></span>
+                            <span class="value">3,457</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 46%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name"><span class="en">xiuzheng</span><span class="zh hidden">修正药业</span></span>
+                            <span class="value">863</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 11%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name"><span class="en">Centrum</span><span class="zh hidden">善存</span></span>
+                            <span class="value">738</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 10%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name" style="color: var(--primary-color); font-weight: 600;"><span class="en">GNC</span><span class="zh hidden">健安喜</span></span>
+                            <span class="value">626</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar secondary" style="width: 8%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 20px; font-size: 14px;">
+                    <span class="en">
+                        The traffic distribution chart reveals that GNC's 626 daily visits are primarily sourced from Baidu PC (98-156), representing approximately 16-25% of daily traffic. In contrast, market leaders generate significantly more traffic through diversified channels, particularly Bing. Infinitus demonstrates the most balanced approach with substantial contributions from both channels. GNC's dependence on a single traffic source creates vulnerability to algorithm changes and geographic/platform limitations.
+                    </span>
+                    <span class="zh hidden">
+                        流量分布图显示，健安喜626日均访问量主要来自百度PC（98-156），代表日均流量的约16-25%。相比之下，市场领导者通过多样化渠道产生明显更多流量，特别是必应。无限极展示了最平衡的方法，两个渠道都有显著贡献。健安喜对单一流量来源的依赖对算法变化和地理/平台限制产生脆弱性。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency (Traffic per Keyword)</span><span class="zh hidden">关键词效率（每个关键词流量）</span></h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name"><span class="en">Amway Nutrilite</span><span class="zh hidden">安利纽崔莱</span></span>
+                            <span class="value">17.6</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 50%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name"><span class="en">Infinitus</span><span class="zh hidden">无限极</span></span>
+                            <span class="value">15.9</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 45%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name"><span class="en">xiuzheng</span><span class="zh hidden">修正药业</span></span>
+                            <span class="value">45.4</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name"><span class="en">Centrum</span><span class="zh hidden">善存</span></span>
+                            <span class="value">61.5</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 135%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="name" style="color: var(--primary-color); font-weight: 600;"><span class="en">GNC</span><span class="zh hidden">健安喜</span></span>
+                            <span class="value">69.6</span>
+                        </div>
+                        <div class="bar-wrapper">
+                            <div class="bar secondary" style="width: 153%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 20px; font-size: 14px;">
+                    <span class="en">
+                        GNC demonstrates exceptional keyword efficiency at 69.6 traffic per keyword, highest among all competitors. This indicates that GNC's limited 9-keyword portfolio is highly optimized and targeted. Amway Nutrilite (17.6) and Infinitus (15.9) have lower efficiency because they maintain larger keyword portfolios with more varied ranking positions. This suggests that GNC's focused strategy is effective, but the fundamental constraint is portfolio size. By expanding the keyword portfolio while maintaining current efficiency levels, GNC could achieve a 500%+ traffic increase by adding just 40-50 well-targeted keywords.
+                    </span>
+                    <span class="zh hidden">
+                        健安喜展示出69.6每关键词流量的异常高关键词效率，在所有竞争对手中最高。这表明健安喜有限的9个关键词组合高度优化和针对性强。安利纽崔莱（17.6）和无限极（15.9）效率较低，因为他们维持更大的关键词组合，排名位置更多样化。这表明健安喜的专注战略有效，但根本制约是组合规模。通过扩展关键词组合同时保持当前效率水平，健安喜可以仅通过添加40-50个针对性良好的关键词来实现500%以上的流量增长。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap Analysis: GNC vs Top Competitor</span><span class="zh hidden">竞争差距分析：健安喜 vs 顶级竞争对手</span></h3>
+                <table class="data-table" style="margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Metric</span><span class="zh hidden">指标</span></th>
+                            <th><span class="en">GNC</span><span class="zh hidden">健安喜</span></th>
+                            <th><span class="en">Amway Nutrilite</span><span class="zh hidden">安利纽崔莱</span></th>
+                            <th><span class="en">Gap</span><span class="zh hidden">差距</span></th>
+                            <th><span class="en">Gap %</span><span class="zh hidden">差距 %</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Daily Traffic</span><span class="zh hidden">每日流量</span></td>
+                            <td>626</td>
+                            <td>7,530</td>
+                            <td>-6,904</td>
+                            <td>-91.7%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></td>
+                            <td>9</td>
+                            <td>427</td>
+                            <td>-418</td>
+                            <td>-97.9%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></td>
+                            <td>127</td>
+                            <td>649</td>
+                            <td>-522</td>
+                            <td>-80.4%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></td>
+                            <td>0</td>
+                            <td>1,555</td>
+                            <td>-1,555</td>
+                            <td>-100%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Top 50 Rankings</span><span class="zh hidden">前50排名</span></td>
+                            <td>3</td>
+                            <td>331</td>
+                            <td>-328</td>
+                            <td>-99.1%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="summary-text" style="margin-top: 20px; font-size: 14px;">
+                    <span class="en">
+                        The competitive gap analysis reveals that GNC trails significantly across all critical dimensions. The most alarming gap is the complete absence of Bing traffic (100% deficit), representing approximately 1,555 missing daily visits. The keyword portfolio gap (97.9%) directly correlates with traffic deficit (91.7%). Closing the gap would require: (1) Expansion to 100+ keywords (achievable through content strategy), (2) Development of international SEO presence on Bing and other search engines, and (3) Improved ranking positions for existing keywords to move from positions 21-40 to top 20 rankings. These gaps represent significant but achievable opportunities through strategic SEO investment.
+                    </span>
+                    <span class="zh hidden">
+                        竞争差距分析表明健安喜在所有关键维度上都明显落后。最令人担忧的差距是完全缺乏必应流量（100%赤字），代表约1,555个丧失的日访问量。关键词组合差距（97.9%）直接关联到流量赤字（91.7%）。缩小差距需要：(1)扩展到100+个关键词（通过内容策略可实现），(2)在必应和其他搜索引擎上开发国际SEO存在，(3)改进现有关键词的排名位置，从第21-40位移至前20名。这些差距代表通过战略SEO投资可显著但可实现的机会。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Ranking Distribution -->
+            <div class="chart-container">
+                <h3><span class="en">Ranking Position Distribution</span><span class="zh hidden">排名位置分布</span></h3>
+                <table class="data-table" style="margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Brand</span><span class="zh hidden">品牌</span></th>
+                            <th><span class="en">Positions 1-10</span><span class="zh hidden">位置 1-10</span></th>
+                            <th><span class="en">Positions 11-20</span><span class="zh hidden">位置 11-20</span></th>
+                            <th><span class="en">Positions 21-30</span><span class="zh hidden">位置 21-30</span></th>
+                            <th><span class="en">Positions 31-50</span><span class="zh hidden">位置 31-50</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Amway Nutrilite</span><span class="zh hidden">安利纽崔莱</span></td>
+                            <td colspan="4" style="text-align: center; color: var(--text-muted);">
+                                <span class="en">72</span><span class="zh hidden">72</span> | 110 | 83 | 66
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Infinitus</span><span class="zh hidden">无限极</span></td>
+                            <td colspan="4" style="text-align: center; color: var(--text-muted);">
+                                <span class="en">15</span><span class="zh hidden">15</span> | 98 | 104 | 108
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">xiuzheng</span><span class="zh hidden">修正药业</span></td>
+                            <td colspan="4" style="text-align: center; color: var(--text-muted);">
+                                <span class="en">5</span><span class="zh hidden">5</span> | 0 | 3 | 3
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Centrum</span><span class="zh hidden">善存</span></td>
+                            <td colspan="4" style="text-align: center; color: var(--text-muted);">
+                                <span class="en">2</span><span class="zh hidden">2</span> | 1 | 0 | 1
+                            </td>
+                        </tr>
+                        <tr class="user-company-row">
+                            <td><span class="en">GNC</span><span class="zh hidden">健安喜</span></td>
+                            <td colspan="4" style="text-align: center; color: var(--primary-color);">
+                                <span class="en">0</span><span class="zh hidden">0</span> | 0 | 2 | 1 (3 total)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="summary-text" style="margin-top: 20px; font-size: 14px;">
+                    <span class="en">
+                        GNC has zero keywords ranking in positions 1-20, with all 3 tracked rankings concentrated in positions 21-40. This represents the lowest-ranked portfolio among competitors and indicates significant opportunity for quick wins through on-page optimization and link building. Moving just 2-3 keywords into the top 20 could increase visible traffic by 15-25%.
+                    </span>
+                    <span class="zh hidden">
+                        健安喜在第1-20位没有关键词排名，所有3个追踪排名集中在第21-40位。这代表在竞争对手中排名最低的组合，表明通过页面优化和链接建设进行快速赢取有显著机会。仅将2-3个关键词移入前20位可将可见流量增加15-25%。
+                    </span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">Priority analysis of actionable opportunities to improve GNC's SEO performance and market position.</span>
+                <span class="zh hidden">可行机会的优先级分析，以改进健安喜的SEO表现和市场地位。</span>
+            </p>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">Top Priority Opportunities</span><span class="zh hidden">首要优先机会</span>
+            </h3>
+
+            <div class="opportunity-card">
+                <div class="priority high"><span class="en">🔴 HIGH PRIORITY</span><span class="zh hidden">🔴 高优先级</span></div>
+                <h4><span class="en">International Market Entry via Bing</span><span class="zh hidden">通过必应进入国际市场</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Potential Impact:</strong> +1,500-2,000 daily traffic | <strong>Effort:</strong> Medium | <strong>Timeline:</strong> 90-180 days
+                    </span>
+                    <span class="zh hidden">
+                        <strong>潜在影响：</strong> +1,500-2,000日均流量 | <strong>工作量：</strong> 中等 | <strong>时间线：</strong> 90-180天
+                    </span>
+                </p>
+                <p>
+                    <span class="en">
+                        Currently generating 0% of traffic from Bing while competitors like Infinitus generate 1,571-2,509 daily from this channel. Implementation requires: (1) English content optimization for global GNC brand searches, (2) Targeted international keyword research focused on Bing's user demographics, (3) Backlink building from English-language supplement and health authority sites, (4) Local market adaptation for key international markets (US, EU, Canada). This represents the single largest opportunity to increase traffic without keyword portfolio expansion.
+                    </span>
+                    <span class="zh hidden">
+                        当前从必应产生0%的流量，而无限极等竞争对手从此渠道产生1,571-2,509日均流量。实施需要：(1)针对全球GNC品牌搜索的英文内容优化，(2)专注必应用户人口统计的国际关键词研究，(3)来自英文补充品和健康权威网站的反向链接建设，(4)针对主要国际市场（美国、欧盟、加拿大）的本地市场调整。这代表增加流量的单一最大机会，无需关键词组合扩展。
+                    </span>
+                </p>
+            </div>
+
+            <div class="opportunity-card">
+                <div class="priority high"><span class="en">🔴 HIGH PRIORITY</span><span class="zh hidden">🔴 高优先级</span></div>
+                <h4><span class="en">Keyword Portfolio Expansion (50-100 Keywords)</span><span class="zh hidden">关键词组合扩展（50-100个关键词）</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Potential Impact:</strong> +400-600 daily traffic | <strong>Effort:</strong> High | <strong>Timeline:</strong> 180-270 days
+                    </span>
+                    <span class="zh hidden">
+                        <strong>潜在影响：</strong> +400-600日均流量 | <strong>工作量：</strong> 高 | <strong>时间线：</strong> 180-270天
+                    </span>
+                </p>
+                <p>
+                    <span class="en">
+                        GNC's 69.6 traffic efficiency per keyword indicates excellent optimization quality. Targeting: (1) Long-tail supplement keywords (e.g., "GNC vitamins for energy", "GNC weight management supplements"), (2) Health condition-specific searches (e.g., "supplements for joint health", "immune support vitamins"), (3) Product category pages (e.g., "multivitamins", "omega-3 supplements", "protein powders"). Strategy includes pillar content creation, internal linking structure optimization, and targeted link building. Adding 50-100 keywords at current efficiency (69.6 traffic/keyword) would generate +3,480-6,960 potential additional daily traffic, though initial ramp period would be 90-180 days to achieve top-50 rankings.
+                    </span>
+                    <span class="zh hidden">
+                        健安喜每关键词69.6的流量效率表明优化质量优异。目标包括：(1)长尾补充品关键词（例如"GNC补充能量维生素"、"GNC体重管理补充剂"），(2)健康状况特定搜索（例如"关节健康补充剂"、"免疫支持维生素"），(3)产品类别页面（例如"多种维生素"、"欧米伽-3补充剂"、"蛋白粉"）。战略包括支柱内容创建、内部链接结构优化和有针对性的链接建设。以当前效率（每关键词69.6流量）增加50-100个关键词将产生+3,480-6,960潜在额外日均流量，尽管初始斜坡期达到前50名排名需要90-180天。
+                    </span>
+                </p>
+            </div>
+
+            <div class="opportunity-card">
+                <div class="priority medium"><span class="en">🟡 MEDIUM PRIORITY</span><span class="zh hidden">🟡 中优先级</span></div>
+                <h4><span class="en">Ranking Position Optimization (Current Keywords 21-40 → Top 20)</span><span class="zh hidden">排名位置优化（当前关键词21-40 → 前20位）</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Potential Impact:</strong> +50-100 daily traffic | <strong>Effort:</strong> Low | <strong>Timeline:</strong> 30-90 days
+                    </span>
+                    <span class="zh hidden">
+                        <strong>潜在影响：</strong> +50-100日均流量 | <strong>工作量：</strong> 低 | <strong>时间线：</strong> 30-90天
+                    </span>
+                </p>
+                <p>
+                    <span class="en">
+                        GNC has 3 keywords ranking in positions 21-40 with no top-20 rankings. Quick wins available through: (1) On-page optimization (title tags, meta descriptions, header optimization), (2) Internal linking to these pages from high-authority GNC domain pages, (3) Content expansion to improve page depth and topical relevance, (4) Technical SEO fixes (page speed optimization, schema markup). Moving 2-3 of these keywords into positions 11-20 would improve click-through rates from ~2% to ~5-8%, translating to +40-80 daily traffic. This is the fastest and lowest-effort optimization opportunity.
+                    </span>
+                    <span class="zh hidden">
+                        健安喜有3个排名在第21-40位的关键词，没有前20排名。通过以下方式获得快速赢取：(1)页面优化（标题标签、元描述、标题优化），(2)从高权威健安喜域页面内部链接到这些页面，(3)内容扩展以改进页面深度和主题相关性，(4)技术SEO修复（页面速度优化、模式标记）。将这些关键词中的2-3个移入第11-20位会将点击率从约2%提高到5-8%，相当于+40-80日均流量。这是最快和最低努力的优化机会。
+                    </span>
+                </p>
+            </div>
+
+            <div class="opportunity-card">
+                <div class="priority medium"><span class="en">🟡 MEDIUM PRIORITY</span><span class="zh hidden">🟡 中优先级</span></div>
+                <h4><span class="en">Backlink Authority Building</span><span class="zh hidden">反向链接权威建设</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Potential Impact:</strong> +20-30% ranking improvement | <strong>Effort:</strong> Medium | <strong>Timeline:</strong> Ongoing
+                    </span>
+                    <span class="zh hidden">
+                        <strong>潜在影响：</strong> +20-30%排名改进 | <strong>工作量：</strong> 中等 | <strong>时间线：</strong> 持续
+                    </span>
+                </p>
+                <p>
+                    <span class="en">
+                        All current keywords rank 21-40, suggesting limited domain authority. Strategic backlink building from: (1) Health and wellness authority sites, (2) Supplement industry directories and aggregators, (3) Brand partnership opportunities with complementary health brands, (4) Content marketing through guest posts on high-authority supplement blogs. Target 10-20 high-quality backlinks per quarter from authority sources (DA 40+). This will strengthen domain authority and help move existing keywords into top 20 rankings naturally.
+                    </span>
+                    <span class="zh hidden">
+                        所有当前关键词排名21-40，表明域名权威性有限。来自以下来源的战略反向链接建设：(1)健康和健康权威网站，(2)补充品行业目录和聚合器，(3)与互补健康品牌的品牌合作机会，(4)通过在高权威补充品博客上的客座文章进行内容营销。每季度从权威来源（DA 40+）目标10-20条高质量反向链接。这将加强域名权威并有助于将现有关键词自然移入前20排名。
+                    </span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">Impact Prioritization Matrix</span><span class="zh hidden">影响优先级矩阵</span>
+            </h3>
+            <p class="summary-text" style="margin-bottom: 20px;">
+                <span class="en">
+                    Based on the analysis above, we recommend a phased approach: (1) Month 1-3: Launch Bing/international SEO initiative (highest impact, medium effort), (2) Month 2-6: Begin keyword expansion with focus on long-tail supplement terms (sustained impact), (3) Month 1 ongoing: Implement ranking position optimization quick wins (immediate results), (4) Quarter 2+: Execute backlink authority strategy to support all initiatives. This portfolio approach balances quick wins with long-term growth, addressing both immediate traffic needs and sustainable competitive positioning.
+                </span>
+                <span class="zh hidden">
+                    基于上述分析，我们建议分阶段方法：(1)第1-3月：启动必应/国际SEO计划（最高影响、中等工作量），(2)第2-6月：开始关键词扩展，重点关注长尾补充品术语（持续影响），(3)第1月后续：实施排名位置优化快速赢取（立即结果），(4)第2季度+：执行反向链接权威策略以支持所有举措。这种投资组合方法平衡快速赢取与长期增长，同时解决即时流量需求和可持续竞争定位。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan & Implementation Timeline</span><span class="zh hidden">行动计划与实施时间线</span></h2>
+            <p class="section-intro">
+                <span class="en">12-month strategic roadmap for GNC SEO optimization and competitive market positioning.</span>
+                <span class="zh hidden">健安喜SEO优化和竞争市场定位的12个月战略路线图。</span>
+            </p>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">Phase 1: Foundation (Months 1-3)</span><span class="zh hidden">阶段1：基础（第1-3月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 1: Competitive Audit & Quick Wins</span><span class="zh hidden">第1个月：竞争分析和快速赢取</span></h4>
+                <p>
+                    <span class="en">
+                        • Conduct comprehensive on-page SEO audit for current 9 keywords<br>
+                        • Implement title tag, meta description, and H1/H2 optimization for top 5 keywords<br>
+                        • Build internal linking structure to strengthen ranking pages<br>
+                        • Expected result: +25-50 daily traffic (quick wins from positions 21-30)
+                    </span>
+                    <span class="zh hidden">
+                        • 对当前9个关键词进行全面页面SEO审计<br>
+                        • 为前5个关键词实施标题标签、元描述和H1/H2优化<br>
+                        • 构建内部链接结构以加强排名页面<br>
+                        • 预期结果：+25-50日均流量（从第21-30位的快速赢取）
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 2: Bing/International SEO Launch</span><span class="zh hidden">第2个月：必应/国际SEO启动</span></h4>
+                <p>
+                    <span class="en">
+                        • Develop English-language content strategy for global GNC brand<br>
+                        • Create 5-10 high-value English content pieces targeting international supplement searches<br>
+                        • Submit GNC domain to Bing Webmaster Tools and Google Search Console<br>
+                        • Build initial backlink profile from 5-10 English-language authority sites<br>
+                        • Expected result: Foundation for 500-800 daily Bing traffic within 3-6 months
+                    </span>
+                    <span class="zh hidden">
+                        • 为全球GNC品牌开发英文内容策略<br>
+                        • 创建5-10个针对国际补充品搜索的高价值英文内容<br>
+                        • 将GNC域提交到必应站长工具和Google搜索控制台<br>
+                        • 从5-10个英文权威网站建立初始反向链接档案<br>
+                        • 预期结果：3-6个月内必应日均800日流量的基础
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 3: Keyword Portfolio Assessment</span><span class="zh hidden">第3个月：关键词组合评估</span></h4>
+                <p>
+                    <span class="en">
+                        • Conduct comprehensive keyword research for supplement industry (target: 200-300 keywords)<br>
+                        • Analyze competitor keyword gaps (focus on Amway's 427 vs GNC's 9)<br>
+                        • Develop content roadmap for first 50 keywords<br>
+                        • Prioritize long-tail variations and health condition searches<br>
+                        • Expected result: Strategic keyword priority list ready for Phase 2 execution
+                    </span>
+                    <span class="zh hidden">
+                        • 进行补充品行业综合关键词研究（目标：200-300个关键词）<br>
+                        • 分析竞争对手关键词差距（关注安利427个vs健安喜9个）<br>
+                        • 为前50个关键词开发内容路线图<br>
+                        • 优先考虑长尾变化和健康状况搜索<br>
+                        • 预期结果：为第2阶段执行做好战略关键词优先级列表
+                    </span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">Phase 2: Expansion (Months 4-6)</span><span class="zh hidden">阶段2：扩展（第4-6月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 4-5: Content Creation & Keyword Targeting</span><span class="zh hidden">第4-5月：内容创建和关键词定位</span></h4>
+                <p>
+                    <span class="en">
+                        • Create pillar content pages for top 10 keyword categories<br>
+                        • Develop 30-40 cluster blog posts targeting long-tail keywords<br>
+                        • Implement topic cluster linking structure (pillar → clusters)<br>
+                        • Optimize all new content for Baidu (simplified Chinese, cultural context)<br>
+                        • Expected result: 30-40 new keywords entering search rankings (mostly positions 31-50)
+                    </span>
+                    <span class="zh hidden">
+                        • 为前10个关键词类别创建支柱内容页面<br>
+                        • 开发30-40个针对长尾关键词的集群博客文章<br>
+                        • 实施主题集群链接结构（支柱→集群）<br>
+                        • 针对百度优化所有新内容（简体中文、文化背景）<br>
+                        • 预期结果：30-40个新关键词进入搜索排名（大多数在第31-50位）
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 6: Link Building Campaign</span><span class="zh hidden">第6月：链接建设活动</span></h4>
+                <p>
+                    <span class="en">
+                        • Execute outreach for 15-20 high-authority Chinese health/supplement sites (DA 35+)<br>
+                        • Secure guest post placements on 5-10 supplement industry blogs<br>
+                        • Build relationships with complementary brand partners<br>
+                        • Expected result: 15-20 quality backlinks; +100-150 boost to existing keyword rankings
+                    </span>
+                    <span class="zh hidden">
+                        • 对15-20个高权威中文健康/补充品网站执行外联（DA 35+）<br>
+                        • 在5-10个补充品行业博客上获得客座文章位置<br>
+                        • 建立与互补品牌合作伙伴的关系<br>
+                        • 预期结果：15-20条优质反向链接；对现有关键词排名+100-150增强
+                    </span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">Phase 3: Optimization (Months 7-9)</span><span class="zh hidden">阶段3：优化（第7-9月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 7: Ranking Consolidation</span><span class="zh hidden">第7月：排名巩固</span></h4>
+                <p>
+                    <span class="en">
+                        • Monitor and analyze ranking movements for all 50 new keywords<br>
+                        • Identify keywords stalled at positions 41-50 and implement optimization improvements<br>
+                        • Expand content for underperforming keywords (add 500-1000 words, improve structure)<br>
+                        • Expected result: 20-30 keywords move to positions 21-40 (+150-250 daily traffic)
+                    </span>
+                    <span class="zh hidden">
+                        • 监控和分析所有50个新关键词的排名变动<br>
+                        • 确定在第41-50位停滞的关键词并实施优化改进<br>
+                        • 为表现不佳的关键词扩展内容（添加500-1000字，改进结构）<br>
+                        • 预期结果：20-30个关键词移至第21-40位（+150-250日均流量）
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 8-9: International Expansion Continues</span><span class="zh hidden">第8-9月：国际扩展继续</span></h4>
+                <p>
+                    <span class="en">
+                        • Publish 5-10 additional English-language pieces targeting high-volume Bing keywords<br>
+                        • Build 10-15 additional backlinks from US/EU health authorities<br>
+                        • Implement hreflang tags for Chinese/English content separation<br>
+                        • Monitor Bing ranking progress and adjust strategy accordingly<br>
+                        • Expected result: Bing traffic reaching 300-500 daily (on track for 800+ by month 12)
+                    </span>
+                    <span class="zh hidden">
+                        • 发布5-10个额外针对高容量必应关键词的英文文章<br>
+                        • 从美国/欧盟卫生权威建立10-15条额外反向链接<br>
+                        • 实施hreflang标签用于中文/英文内容分离<br>
+                        • 监控必应排名进展并相应调整策略<br>
+                        • 预期结果：必应流量达到300-500日均（按第12个月800+目标轨道）
+                    </span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">Phase 4: Scaling & Refinement (Months 10-12)</span><span class="zh hidden">阶段4：扩大规模和完善（第10-12月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 10: Performance Analysis & Strategy Refinement</span><span class="zh hidden">第10月：性能分析和战略完善</span></h4>
+                <p>
+                    <span class="en">
+                        • Comprehensive review of all keywords and their ranking performance<br>
+                        • Identify highest-efficiency keywords for aggressive promotion (link building, content amplification)<br>
+                        • Refine content strategy based on 9-month performance data<br>
+                        • Plan next 50 keywords based on insights from current performance<br>
+                        • Expected result: Clear understanding of which keyword categories drive highest ROI
+                    </span>
+                    <span class="zh hidden">
+                        • 全面审查所有关键词及其排名表现<br>
+                        • 确定最高效率关键词用于积极推广（链接建设、内容放大）<br>
+                        • 根据9个月性能数据完善内容策略<br>
+                        • 基于当前性能的见解规划下50个关键词<br>
+                        • 预期结果：清楚了解哪些关键词类别产生最高ROI
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 11: Top Keyword Promotion</span><span class="zh hidden">第11月：顶级关键词推广</span></h4>
+                <p>
+                    <span class="en">
+                        • Identify 5-10 keywords in positions 11-20 with high commercial intent<br>
+                        • Execute concentrated link building campaign (5-10 links per keyword)<br>
+                        • Expand content for these "money keywords" significantly<br>
+                        • Amplify content through paid social and influencer partnerships<br>
+                        • Expected result: 3-5 keywords move to positions 1-10 (+200-300 daily high-value traffic)
+                    </span>
+                    <span class="zh hidden">
+                        • 确定第11-20位具有高商业意图的5-10个关键词<br>
+                        • 执行集中链接建设活动（每个关键词5-10条链接）<br>
+                        • 大幅扩展这些"赚钱关键词"的内容<br>
+                        • 通过付费社交和影响者合作放大内容<br>
+                        • 预期结果：3-5个关键词移至第1-10位（+200-300日均高价值流量）
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 12: Year-End Review & 2025 Planning</span><span class="zh hidden">第12月：年终回顾和2025计划</span></h4>
+                <p>
+                    <span class="en">
+                        • Comprehensive performance review: Compare Month 12 metrics vs. baseline (626 daily)<br>
+                        • Expected results: 1,200-1,500 daily traffic (+92-140% growth)<br>
+                        • Analyze ROI by traffic source: Baidu growth + new Bing contribution<br>
+                        • Develop 2025 roadmap targeting 2,000+ daily traffic through continued optimization<br>
+                        • Plan expansion to competitor keyword targets and market segments<br>
+                        • Expected result: Clear data-driven strategy for next 12 months
+                    </span>
+                    <span class="zh hidden">
+                        • 全面性能审查：将第12个月指标与基线（626日均）比较<br>
+                        • 预期结果：1,200-1,500日均流量（+92-140%增长）<br>
+                        • 按流量来源分析ROI：百度增长+新必应贡献<br>
+                        • 制定2025年路线图，通过持续优化目标2,000+日均流量<br>
+                        • 计划扩展至竞争对手关键词目标和市场细分<br>
+                        • 预期结果：未来12个月明确的数据驱动策略
+                    </span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">Success Metrics & KPIs</span><span class="zh hidden">成功指标和KPI</span>
+            </h3>
+
+            <div class="key-metrics-grid" style="margin-top: 20px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Organic Traffic Target</span><span class="zh hidden">有机流量目标</span></div>
+                    <div class="value" style="font-size: 24px;">1,200-1,500</div>
+                    <p style="font-size: 12px; margin-top: 10px; color: var(--text-muted);">
+                        <span class="en">+92-140% growth from 626 baseline</span>
+                        <span class="zh hidden">相比626基线增长92-140%</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Portfolio Size</span><span class="zh hidden">关键词组合大小</span></div>
+                    <div class="value" style="font-size: 24px;">59-109</div>
+                    <p style="font-size: 12px; margin-top: 10px; color: var(--text-muted);">
+                        <span class="en">From 9 to 59-109 tracked keywords</span>
+                        <span class="zh hidden">从9个增至59-109个追踪关键词</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></div>
+                    <div class="value" style="font-size: 24px;">300-400</div>
+                    <p style="font-size: 12px; margin-top: 10px; color: var(--text-muted);">
+                        <span class="en">From 127 baseline through optimization</span>
+                        <span class="zh hidden">通过优化从127基线增长</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></div>
+                    <div class="value" style="font-size: 24px;">500-800</div>
+                    <p style="font-size: 12px; margin-top: 10px; color: var(--text-muted);">
+                        <span class="en">From 0 to 500-800 new traffic</span>
+                        <span class="zh hidden">从0增至500-800新流量</span>
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">Investment & Resource Requirements</span><span class="zh hidden">投资和资源需求</span>
+            </h3>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Resource Category</span><span class="zh hidden">资源类别</span></th>
+                            <th><span class="en">Estimated Hours/Month</span><span class="zh hidden">估计小时/月</span></th>
+                            <th><span class="en">Key Activities</span><span class="zh hidden">主要活动</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Content Creation</span><span class="zh hidden">内容创建</span></td>
+                            <td>40-60</td>
+                            <td><span class="en">Blog posts, pillar pages, technical optimization</span><span class="zh hidden">博客文章、支柱页面、技术优化</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Link Building</span><span class="zh hidden">链接建设</span></td>
+                            <td>20-30</td>
+                            <td><span class="en">Outreach, relationship management, placement securing</span><span class="zh hidden">外联、关系管理、位置确保</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">On-Page Optimization</span><span class="zh hidden">页面优化</span></td>
+                            <td>15-20</td>
+                            <td><span class="en">Title tags, meta, internal linking, schema markup</span><span class="zh hidden">标题标签、元描述、内部链接、模式标记</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Analytics & Reporting</span><span class="zh hidden">分析和报告</span></td>
+                            <td>10-15</td>
+                            <td><span class="en">Tracking, performance analysis, optimization recommendations</span><span class="zh hidden">跟踪、性能分析、优化建议</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    <strong>Estimated Total Effort: 85-125 hours per month for 12 months</strong> This can be managed through a combination of in-house resources, agency partnerships, and freelance specialists. The ROI is compelling: investing approximately $40,000-60,000 USD equivalent in SEO over 12 months could generate an additional 600-900 daily visitors, which at typical supplement e-commerce conversion rates ($50-100 AOV, 2-3% conversion) translates to $600,000-2.7M in additional annual revenue.
+                </span>
+                <span class="zh hidden">
+                    <strong>估计总工作量：每月85-125小时，为期12个月</strong>这可以通过内部资源、机构合作和自由职业专家的组合来管理。ROI很吸引人：在12个月内投资约40,000-60,000美元等值到SEO上，可能产生600-900日均访问者，按补充品电子商务转换率（50-100美元AOV，2-3%转换），相当于600,000-2.7M年度额外收入。
+                </span>
+            </p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn-2">
+                    <span class="en">📥 Download Complete Report</span><span class="zh hidden">📥 下载完整报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Start Your SEO Journey Today</span><span class="zh hidden">📞 立即开始您的SEO之旅</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtns = document.querySelectorAll('[id^="download-pdf-btn"]');
+            downloadBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
