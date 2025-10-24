@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Made - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 40px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+            page-break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 100%;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .data-table tr { 
+            page-break-inside: avoid;
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3{
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul{
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li{
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before{
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3{
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Bar Chart Styles */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            min-width: 120px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .bar-track {
+            flex: 1;
+            height: 24px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+        .bar-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+        .bar-baidu {
+            background: linear-gradient(90deg, #d4514f 0%, #ef4444 100%);
+        }
+        .bar-bing {
+            background: linear-gradient(90deg, #0078d4 0%, #3b82f6 100%);
+        }
+        .bar-combined {
+            background: linear-gradient(90deg, #8b5cf6 0%, #3b82f6 100%);
+        }
+
+        /* Metric Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .metric-small {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--alt-bg);
+            text-align: center;
+        }
+        .metric-small .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: var(--font-data);
+        }
+        .metric-small .label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Gap Analysis */
+        .gap-analysis {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .gap-row {
+            display: grid;
+            grid-template-columns: 150px 1fr 1fr 1fr;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--alt-bg);
+            align-items: center;
+        }
+        .gap-row:last-child {
+            border-bottom: none;
+        }
+        .gap-header {
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+        .gap-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .gap-value {
+            color: var(--text-primary);
+            font-family: var(--font-data);
+            font-weight: 500;
+        }
+        .gap-percentage {
+            color: var(--danger-color);
+            font-weight: 600;
+        }
+
+        /* Timeline */
+        .timeline-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4{
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p{
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fcd34d;
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover{
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles */
+        @media print {
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            .section-nav, .floating-toolbar, .lang-switch, 
+            .progress-bar { 
+                display: none !important; 
+            }
+            
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 15mm 12mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            .report-section h2 {
+                page-break-before: always;
+                page-break-after: avoid;
+            }
+            
+            .report-section:first-child h2 {
+                page-break-before: avoid;
+            }
+            
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            .gap-analysis, .bar-chart, .metrics-grid {
+                page-break-inside: avoid;
+            }
+            
+            .opportunity-card, .timeline-item {
+                page-break-inside: avoid;
+            }
+            
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+            .gap-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- SECTION 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">Nature Made</span><span class="zh hidden">天维美</span></h1>
+            <p class="subtitle"><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></p>
+            
+            <div class="key-metrics-grid" style="margin-top: 40px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">#5 / 6</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">119</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Total Keywords</span><span class="zh hidden">总关键词数</span></div>
+                    <div class="value">4</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></div>
+                    <div class="value">1.67</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 20px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></h3>
+                <p class="summary-text" style="margin-bottom: 12px;">
+                    <span class="en">Nature Made faces significant competitive pressure in the nutritional supplement market, particularly from established players like Nutrilite (安利纽崔莱) and BY-HEALTH (汤臣倍健). With a daily traffic of 119 visits and only 4 PC keywords ranking, the company holds a modest market position. The SEO strategy requires substantial optimization to improve visibility and compete effectively against larger competitors.</span>
+                    <span class="zh hidden">天维美在营养补充品市场中面临来自安利纽崔莱和汤臣倍健等知名品牌的显著竞争压力。日均流量为119次，仅有4个PC关键词排名，公司市场地位相对较弱。SEO策略需要进行大幅优化，以提高知名度并与更大的竞争对手有效竞争。</span>
+                </p>
+                <p class="summary-text">
+                    <span class="en">Growth potential exists through keyword expansion and Bing channel optimization, where Nature Made currently derives 61-97 daily traffic. Focusing on long-tail keywords and content marketing will be critical to capturing market share from competitors.</span>
+                    <span class="zh hidden">通过关键词扩展和必应（Bing）渠道优化存在增长潜力，天维美目前从必应获得61-97的日均流量。关注长尾关键词和内容营销将是从竞争对手那里获取市场份额的关键。</span>
+                </p>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <div class="cta-container">
+                    <button class="primary-cta" id="download-pdf-btn"><span class="en">📥 Download PDF Report</span><span class="zh hidden">📥 下载PDF报告</span></button>
+                    <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Schedule Consultation</span><span class="zh hidden">📞 预约咨询</span></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro" style="margin-bottom: 24px;">
+                <span class="en">Comprehensive analysis of Nature Made's competitive position against the top 5 competitors in the nutritional supplement industry.</span>
+                <span class="zh hidden">天维美与营养补充品行业前5强竞争对手的全面竞争地位分析。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Keywords</span><span class="zh hidden">关键词数</span></th>
+                            <th><span class="en">Positions 11-50</span><span class="zh hidden">排位11-50</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge-user">OUR</span><span class="en">Nature Made</span><span class="zh hidden">天维美</span></td>
+                            <td>119</td>
+                            <td>8 ~ 14</td>
+                            <td>61 ~ 97</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>1.67</td>
+                        </tr>
+                        <tr class="user-company-row">
+                            <td colspan="7" style="background: transparent; border: none; height: 2px; padding: 0;"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Nutrilite</span><span class="zh hidden">安利纽崔莱</span></td>
+                            <td>7,583</td>
+                            <td>541 ~ 863</td>
+                            <td>1,197 ~ 1,913</td>
+                            <td>426</td>
+                            <td>330</td>
+                            <td>17.81</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">BY-HEALTH</span><span class="zh hidden">汤臣倍健</span></td>
+                            <td>3,457</td>
+                            <td>0 ~ 0</td>
+                            <td>1,508 ~ 2,408</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3.45</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Xiuzheng</span><span class="zh hidden">修正药业</span></td>
+                            <td>863</td>
+                            <td>83 ~ 133</td>
+                            <td>129 ~ 205</td>
+                            <td>15</td>
+                            <td>7</td>
+                            <td>5.75</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">GNC</span><span class="zh hidden">健安喜</span></td>
+                            <td>626</td>
+                            <td>98 ~ 156</td>
+                            <td>0 ~ 0</td>
+                            <td>9</td>
+                            <td>3</td>
+                            <td>2.83</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Blackmores</span><span class="zh hidden">澳佳宝</span></td>
+                            <td>17</td>
+                            <td>2 ~ 4</td>
+                            <td>0 ~ 0</td>
+                            <td>10</td>
+                            <td>9</td>
+                            <td>5.29</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 24px; padding: 20px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">Key Insights</span><span class="zh hidden">关键洞察</span></h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Traffic Gap:</strong> Nature Made's 119 daily traffic is significantly lower than market leaders, with Nutrilite commanding 7,583 daily visits—63.7x higher.</span>
+                        <span class="zh hidden"><strong>流量差距：</strong>天维美的119日均流量远低于市场领先者，安利纽崔莱的日均访问量为7,583——高出63.7倍。</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Keyword Scarcity:</strong> With only 4 keywords ranking, Nature Made has minimal SEO coverage compared to Nutrilite's 426 keywords.</span>
+                        <span class="zh hidden"><strong>关键词稀缺：</strong>天维美仅有4个排名关键词，与安利纽崔莱的426个关键词相比，SEO覆盖面微乎其微。</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Channel Strength:</strong> Bing traffic (61-97) is Nature Made's primary source, representing 51-81% of total traffic, indicating opportunity for Baidu optimization.</span>
+                        <span class="zh hidden"><strong>渠道优势：</strong>必应流量（61-97）是天维美的主要来源，占总流量的51-81%，表明百度优化存在机会。</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Market Position:</strong> Nature Made ranks #5 with a competitive index of 1.67, placing it in a moderate competitive tier but with significant room for growth.</span>
+                        <span class="zh hidden"><strong>市场地位：</strong>天维美排名第5，竞争指数为1.67，处于适度竞争级别，但增长空间巨大。</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro" style="margin-bottom: 24px;">
+                <span class="en">Comprehensive strategic analysis of Nature Made's competitive position, internal capabilities, and market opportunities.</span>
+                <span class="zh hidden">天维美竞争地位、内部能力和市场机遇的全面战略分析。</span>
+            </p>
+
+            <div class="swot-grid">
+                <!-- Strengths -->
+                <div class="swot-item">
+                    <h3 style="color: #22c55e;"><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Bing Market Presence:</strong> 61-97 daily Bing traffic indicates established visibility in international markets and non-Baidu channels, providing a foundation for expansion.</span>
+                            <span class="zh hidden"><strong>必应市场存在：</strong>61-97日均必应流量表明在国际市场和非百度渠道中的知名度已建立，为扩展提供了基础。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Lower Ranking Keywords:</strong> Presence in positions 11-20 (1 keyword) and 21-30 (1 keyword) indicates potential for quick wins through optimization of near-ranking pages.</span>
+                            <span class="zh hidden"><strong>低排位关键词：</strong>11-20位（1个关键词）和21-30位（1个关键词）的存在表明通过优化接近排名的页面可以快速获胜。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Niche Focus:</strong> Low keyword count suggests targeted, quality-focused content strategy that can be leveraged for brand positioning.</span>
+                            <span class="zh hidden"><strong>小众焦点：</strong>关键词数量少表明采取了有针对性、质量为重的内容策略，可用于品牌定位。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Weaknesses -->
+                <div class="swot-item">
+                    <h3 style="color: #ef4444;"><span class="en">Weaknesses</span><span class="zh hidden">弱点</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Minimal Baidu Presence:</strong> Only 8-14 daily Baidu traffic (7-12% of total) indicates severe underperformance in China's dominant search engine—critical for market penetration.</span>
+                            <span class="zh hidden"><strong>百度存在最少：</strong>仅有8-14日均百度流量（占总流量的7-12%），表明在中国主要搜索引擎中性能严重不足——对市场渗透至关重要。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Severely Limited Keyword Portfolio:</strong> 4 keywords versus competitors' 9-426 keywords leaves Nature Made almost invisible in search results for most relevant queries.</span>
+                            <span class="zh hidden"><strong>关键词组合严重有限：</strong>4个关键词与竞争对手的9-426个关键词相比，天维美在大多数相关查询的搜索结果中几乎不可见。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Traffic Deficit:</strong> 119 daily traffic is 63.7x lower than Nutrilite, indicating insufficient market awareness and online authority.</span>
+                            <span class="zh hidden"><strong>流量赤字：</strong>119日均流量比安利纽崔莱低63.7倍，表明市场认知度和在线权威性不足。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Opportunities -->
+                <div class="swot-item">
+                    <h3 style="color: #f59e0b;"><span class="en">Opportunities</span><span class="zh hidden">机会</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Massive Keyword Expansion:</strong> Current 4 keywords can be expanded to 50-100+ through comprehensive SEO research and content creation, capturing untapped demand.</span>
+                            <span class="zh hidden"><strong>大规模关键词扩展：</strong>当前4个关键词可通过全面的SEO研究和内容创建扩展到50-100+个，捕捉未开发的需求。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Baidu Market Gap:</strong> Minimal competition in Baidu from Nature Made suggests opportunity to develop Chinese-optimized content and capture market share in China's largest search engine.</span>
+                            <span class="zh hidden"><strong>百度市场缺口：</strong>天维美在百度的竞争最少表明有机会开发中文优化内容并在中国最大搜索引擎中获取市场份额。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Long-tail Strategy:</strong> Competitors focus on high-volume keywords; Nature Made can differentiate through long-tail keyword targeting and niche content positioning.</span>
+                            <span class="zh hidden"><strong>长尾策略：</strong>竞争对手关注高流量关键词；天维美可通过长尾关键词定位和小众内容定位实现差异化。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Threats -->
+                <div class="swot-item">
+                    <h3 style="color: #3b82f6;"><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Dominant Competitors:</strong> Nutrilite's 7,583 daily traffic (with 426 keywords) and BY-HEALTH's 3,457 traffic demonstrate entrenched market leaders with superior resources for content and SEO investment.</span>
+                            <span class="zh hidden"><strong>主导竞争者：</strong>安利纽崔莱的7,583日均流量（有426个关键词）和汤臣倍健的3,457流量表明根深蒂固的市场领导者拥有更优越的内容和SEO投资资源。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Brand Authority Gap:</strong> Established competitors have significantly higher domain authority and backlink profiles, making ranking for competitive keywords increasingly difficult.</span>
+                            <span class="zh hidden"><strong>品牌权威差距：</strong>成熟竞争对手拥有明显更高的域名权威性和反向链接档案，使得在竞争激烈的关键词中排名变得更加困难。</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Market Consolidation:</strong> If competitors increase their SEO investment, Nature Made's limited resources may struggle to maintain even current positions.</span>
+                            <span class="zh hidden"><strong>市场整合：</strong>如果竞争对手增加SEO投资，天维美有限的资源可能难以维持当前地位。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="section-intro" style="margin-bottom: 24px;">
+                <span class="en">Detailed analysis of traffic channels, keyword efficiency, and competitive performance metrics.</span>
+                <span class="zh hidden">流量渠道、关键词效率和竞争性能指标的详细分析。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Distribution</span><span class="zh hidden">流量渠道分布</span></h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Nature Made</span><span class="zh hidden">天维美</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-baidu" style="width: 15%;"><span class="en">11%</span><span class="zh hidden">11%</span></div>
+                            <div class="bar-fill bar-bing" style="width: 85%; background: linear-gradient(90deg, #0078d4 0%, #3b82f6 100%);"><span class="en">79%</span><span class="zh hidden">79%</span></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Nutrilite</span><span class="zh hidden">安利纽崔莱</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-baidu" style="width: 33%;"><span class="en">33%</span><span class="zh hidden">33%</span></div>
+                            <div class="bar-fill bar-bing" style="width: 67%; background: linear-gradient(90deg, #0078d4 0%, #3b82f6 100%);"><span class="en">67%</span><span class="zh hidden">67%</span></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">BY-HEALTH</span><span class="zh hidden">汤臣倍健</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-baidu" style="width: 0%;"></div>
+                            <div class="bar-fill bar-bing" style="width: 100%; background: linear-gradient(90deg, #0078d4 0%, #3b82f6 100%);"><span class="en">100%</span><span class="zh hidden">100%</span></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Xiuzheng</span><span class="zh hidden">修正药业</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-baidu" style="width: 40%;"><span class="en">40%</span><span class="zh hidden">40%</span></div>
+                            <div class="bar-fill bar-bing" style="width: 60%; background: linear-gradient(90deg, #0078d4 0%, #3b82f6 100%);"><span class="en">60%</span><span class="zh hidden">60%</span></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">GNC</span><span class="zh hidden">健安喜</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-baidu" style="width: 100%;"><span class="en">100%</span><span class="zh hidden">100%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency Analysis</span><span class="zh hidden">关键词效率分析</span></h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Nutrilite</span><span class="zh hidden">安利纽崔莱</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-combined" style="width: 100%;"><span class="en">17.8 per KW</span><span class="zh hidden">每个KW 17.8</span></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Xiuzheng</span><span class="zh hidden">修正药业</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-combined" style="width: 65%;"><span class="en">57.5 per KW</span><span class="zh hidden">每个KW 57.5</span></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Blackmores</span><span class="zh hidden">澳佳宝</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-combined" style="width: 70%;"><span class="en">1.7 per KW</span><span class="zh hidden">每个KW 1.7</span></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">GNC</span><span class="zh hidden">健安喜</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-combined" style="width: 45%;"><span class="en">69.6 per KW</span><span class="zh hidden">每个KW 69.6</span></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Nature Made</span><span class="zh hidden">天维美</span></div>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-combined" style="width: 98%; background: linear-gradient(90deg, #10b981 0%, #22c55e 100%);"><span class="en">29.8 per KW</span><span class="zh hidden">每个KW 29.8</span></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">
+                    <span class="en">Traffic per keyword metric shows Nature Made's efficiency in converting limited keywords to traffic. Higher values indicate better keyword targeting.</span>
+                    <span class="zh hidden">每个关键词流量指标显示天维美将有限关键词转换为流量的效率。更高的值表示更好的关键词定位。</span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="gap-analysis">
+                <h3 style="color: var(--text-heading); margin-bottom: 20px;"><span class="en">Competitive Gap Analysis: Nature Made vs. Nutrilite</span><span class="zh hidden">竞争差距分析：天维美 vs. 安利纽崔莱</span></h3>
+                
+                <div class="gap-row">
+                    <div class="gap-label"><span class="en">Metric</span><span class="zh hidden">指标</span></div>
+                    <div class="gap-header"><span class="en">Nature Made</span><span class="zh hidden">天维美</span></div>
+                    <div class="gap-header"><span class="en">Nutrilite</span><span class="zh hidden">安利纽崔莱</span></div>
+                    <div class="gap-header"><span class="en">Gap</span><span class="zh hidden">差距</span></div>
+                </div>
+
+                <div class="gap-row">
+                    <div class="gap-label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="gap-value">119</div>
+                    <div class="gap-value">7,583</div>
+                    <div class="gap-percentage">-98.4%</div>
+                </div>
+
+                <div class="gap-row">
+                    <div class="gap-label"><span class="en">Total Keywords</span><span class="zh hidden">总关键词数</span></div>
+                    <div class="gap-value">4</div>
+                    <div class="gap-value">426</div>
+                    <div class="gap-percentage">-99.1%</div>
+                </div>
+
+                <div class="gap-row">
+                    <div class="gap-label"><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></div>
+                    <div class="gap-value">8 ~ 14</div>
+                    <div class="gap-value">541 ~ 863</div>
+                    <div class="gap-percentage">-98.4%</div>
+                </div>
+
+                <div class="gap-row">
+                    <div class="gap-label"><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></div>
+                    <div class="gap-value">61 ~ 97</div>
+                    <div class="gap-value">1,197 ~ 1,913</div>
+                    <div class="gap-percentage">-94.9%</div>
+                </div>
+
+                <div class="gap-row">
+                    <div class="gap-label"><span class="en">Keywords in Top 50</span><span class="zh hidden">前50位关键词</span></div>
+                    <div class="gap-value">2</div>
+                    <div class="gap-value">330</div>
+                    <div class="gap-percentage">-99.4%</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; padding: 20px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">Analysis Insights</span><span class="zh hidden">分析洞察</span></h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Keyword Efficiency Champion:</strong> Despite low traffic, Nature Made's 29.8 traffic per keyword is competitive with GNC (69.6) and exceeds Blackmores (1.7), indicating effective keyword targeting for its current portfolio.</span>
+                        <span class="zh hidden"><strong>关键词效率冠军：</strong>尽管流量较低，天维美的每个关键词29.8流量与健安喜（69.6）具有竞争力，并超过澳佳宝（1.7），表明对当前组合的有效关键词定位。</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Bing Dominance:</strong> 79% of Nature Made's traffic from Bing vs. Nutrilite's 67% suggests potential for stronger Baidu optimization to replicate market success.</span>
+                        <span class="zh hidden"><strong>必应主导地位：</strong>天维美来自必应的流量占79%，而安利纽崔莱为67%，表明更强的百度优化潜力以复制市场成功。</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Scale Opportunity:</strong> Expanding from 4 to 50-100 keywords while maintaining 29.8 traffic/keyword efficiency would generate 1,490-2,980 daily traffic—a 12.5-25x improvement.</span>
+                        <span class="zh hidden"><strong>规模机会：</strong>从4个关键词扩展到50-100个，同时保持29.8每个关键词流量效率，将生成1,490-2,980日均流量——提高12.5-25倍。</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro" style="margin-bottom: 24px;">
+                <span class="en">Strategic opportunities ranked by priority and potential impact on Nature Made's SEO performance.</span>
+                <span class="zh hidden">按优先级和对天维美SEO性能的潜在影响排序的战略机会。</span>
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                <!-- Opportunity 1 -->
+                <div class="opportunity-card">
+                    <h4><span class="en">1. Baidu Market Penetration</span><span class="zh hidden">1. 百度市场渗透</span></h4>
+                    <p><span class="en">Current 8-14 daily Baidu traffic vs. Nutrilite's 541-863 represents a 99.4% gap. Developing Chinese-optimized content and Baidu-specific SEO strategy can capture significant market share.</span>
+                    <span class="zh hidden">当前8-14日均百度流量与安利纽崔莱的541-863形成99.4%的差距。开发中文优化内容和百度特定的SEO策略可以获取重要的市场份额。</span></p>
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <span class="priority-badge priority-high"><span class="en">HIGH</span><span class="zh hidden">高</span></span>
+                        <span style="color: var(--text-muted); font-size: 13px;"><span class="en">Potential: +200-300 daily traffic</span><span class="zh hidden">潜力：+200-300日均流量</span></span>
+                    </div>
+                </div>
+
+                <!-- Opportunity 2 -->
+                <div class="opportunity-card">
+                    <h4><span class="en">2. Keyword Portfolio Expansion</span><span class="zh hidden">2. 关键词组合扩展</span></h4>
+                    <p><span class="en">Expand from 4 to 50-100 keywords through comprehensive keyword research and content gap analysis. Maintain 29.8 traffic/keyword efficiency for 1,490-2,980 daily traffic potential.</span>
+                    <span class="zh hidden">通过全面的关键词研究和内容缺口分析，从4个扩展到50-100个关键词。保持29.8每个关键词流量效率，以获得1,490-2,980日均流量潜力。</span></p>
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <span class="priority-badge priority-high"><span class="en">HIGH</span><span class="zh hidden">高</span></span>
+                        <span style="color: var(--text-muted); font-size: 13px;"><span class="en">Potential: +1,490-2,980 daily traffic</span><span class="zh hidden">潜力：+1,490-2,980日均流量</span></span>
+                    </div>
+                </div>
+
+                <!-- Opportunity 3 -->
+                <div class="opportunity-card">
+                    <h4><span class="en">3. Long-tail Keyword Domination</span><span class="zh hidden">3. 长尾关键词主导</span></h4>
+                    <p><span class="en">Target long-tail keywords (50+ searches/month) where competition is lower. Less competitive than head keywords, allowing faster ranking and sustainable traffic growth.</span>
+                    <span class="zh hidden">针对搜索量较少（每月50+搜索）的长尾关键词，其中竞争较低。竞争不如头部关键词激烈，允许更快排名和可持续流量增长。</span></p>
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <span class="priority-badge priority-medium"><span class="en">MEDIUM</span><span class="zh hidden">中等</span></span>
+                        <span style="color: var(--text-muted); font-size: 13px;"><span class="en">Potential: +300-500 daily traffic</span><span class="zh hidden">潜力：+300-500日均流量</span></span>
+                    </div>
+                </div>
+
+                <!-- Opportunity 4 -->
+                <div class="opportunity-card">
+                    <h4><span class="en">4. Quick Win Optimization (Positions 11-30)</span><span class="zh hidden">4. 快速赢（排位11-30）</span></h4>
+                    <p><span class="en">2 keywords currently in positions 11-30. Optimize existing pages with better content, internal linking, and technical SEO to push these into top 10—potentially doubling traffic from these keywords.</span>
+                    <span class="zh hidden">2个关键词目前在11-30位。通过更好的内容、内部链接和技术SEO优化现有页面，将其推至前10名——可能使这些关键词的流量翻倍。</span></p>
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <span class="priority-badge priority-high"><span class="en">HIGH</span><span class="zh hidden">高</span></span>
+                        <span style="color: var(--text-muted); font-size: 13px;"><span class="en">Potential: +40-60 daily traffic</span><span class="zh hidden">潜力：+40-60日均流量</span></span>
+                    </div>
+                </div>
+
+                <!-- Opportunity 5 -->
+                <div class="opportunity-card">
+                    <h4><span class="en">5. Competitor Content Gap Analysis</span><span class="zh hidden">5. 竞争对手内容缺口分析</span></h4>
+                    <p><span class="en">Analyze the 426 keywords ranking for Nutrilite and identify high-traffic, lower-difficulty keywords that Nature Made can target. Reverse-engineer competitor content strategy.</span>
+                    <span class="zh hidden">分析安利纽崔莱排名的426个关键词，并识别天维美可以定位的高流量、较低难度的关键词。反向工程化竞争对手内容策略。</span></p>
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <span class="priority-badge priority-medium"><span class="en">MEDIUM</span><span class="zh hidden">中等</span></span>
+                        <span style="color: var(--text-muted); font-size: 13px;"><span class="en">Potential: +250-400 daily traffic</span><span class="zh hidden">潜力：+250-400日均流量</span></span>
+                    </div>
+                </div>
+
+                <!-- Opportunity 6 -->
+                <div class="opportunity-card">
+                    <h4><span class="en">6. International Market Expansion (Bing + Global)</span><span class="zh hidden">6. 国际市场扩展（必应+全球）</span></h4>
+                    <p><span class="en">Leverage existing 61-97 Bing traffic strength. Develop international English-language content and optimize for global supplement search trends on Bing and other search engines.</span>
+                    <span class="zh hidden">利用现有61-97必应流量优势。开发国际英文内容，并针对必应和其他搜索引擎上的全球补充品搜索趋势进行优化。</span></p>
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <span class="priority-badge priority-low"><span class="en">LOW</span><span class="zh hidden">低</span></span>
+                        <span style="color: var(--text-muted); font-size: 13px;"><span class="en">Potential: +100-200 daily traffic</span><span class="zh hidden">潜力：+100-200日均流量</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px; padding: 20px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">Total Opportunity Potential</span><span class="zh hidden">总机会潜力</span></h3>
+                <div class="metrics-grid">
+                    <div class="metric-small">
+                        <div class="value">+2,330</div>
+                        <div class="label"><span class="en">Potential Daily Traffic</span><span class="zh hidden">潜在日均流量</span></div>
+                    </div>
+                    <div class="metric-small">
+                        <div class="value">1,960%</div>
+                        <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    </div>
+                    <div class="metric-small">
+                        <div class="value">6-18</div>
+                        <div class="label"><span class="en">Months to Achieve</span><span class="zh hidden">达成所需月数</span></div>
+                    </div>
+                    <div class="metric-small">
+                        <div class="value">HIGH</div>
+                        <div class="label"><span class="en">Implementation Priority</span><span class="zh hidden">实施优先级</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></h2>
+            <p class="section-intro" style="margin-bottom: 24px;">
+                <span class="en">30-month strategic roadmap with phased implementation timeline to improve Nature Made's SEO performance and market position.</span>
+                <span class="zh hidden">30个月战略路线图，分阶段实施时间表，以改进天维美的SEO性能和市场地位。</span>
+            </p>
+
+            <!-- Phase 1: Foundation -->
+            <div style="margin-bottom: 32px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 16px;"><span class="en">Phase 1: Foundation & Audit (Month 1-2)</span><span class="zh hidden">阶段1：基础与审计（第1-2月）</span></h3>
+                
+                <div class="timeline-item">
+                    <h4><span class="en">Week 1-2: SEO Audit & Baseline Establishment</span><span class="zh hidden">第1-2周：SEO审计和基线建立</span></h4>
+                    <p><span class="en">Conduct comprehensive SEO audit covering on-page optimization, technical SEO, backlink profile, and content quality. Establish baseline metrics for progress tracking.</span>
+                    <span class="zh hidden">进行全面SEO审计，涵盖页面优化、技术SEO、反向链接档案和内容质量。建立基线指标以跟踪进度。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 3-4: Keyword Research (Phase 1)</span><span class="zh hidden">第3-4周：关键词研究（阶段1）</span></h4>
+                    <p><span class="en">Execute comprehensive keyword research for nutritional supplements market. Target: Identify 50+ new keywords with 20-100 monthly searches, low-medium difficulty, high relevance to products.</span>
+                    <span class="zh hidden">执行营养补充品市场的全面关键词研究。目标：识别50+个新关键词，每月20-100搜索，低中难度，与产品高度相关。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 5-8: Competitor Analysis Deep Dive</span><span class="zh hidden">第5-8周：竞争对手分析深度</span></h4>
+                    <p><span class="en">Analyze competitor content strategies (Nutrilite's 426 keywords, Xiuzheng's positioning). Identify content gaps, high-performing topics, and unique angles Nature Made can exploit.</span>
+                    <span class="zh hidden">分析竞争对手内容策略（安利纽崔莱的426个关键词、修正药业的定位）。识别内容缺口、高性能主题和天维美可以利用的独特角度。</span></p>
+                </div>
+            </div>
+
+            <!-- Phase 2: Quick Wins -->
+            <div style="margin-bottom: 32px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 16px;"><span class="en">Phase 2: Quick Wins & Optimization (Month 3-6)</span><span class="zh hidden">阶段2：快速赢与优化（第3-6月）</span></h3>
+                
+                <div class="timeline-item">
+                    <h4><span class="en">Month 3: Optimize Current Keywords (11-30 Positions)</span><span class="zh hidden">第3月：优化当前关键词（11-30排位）</span></h4>
+                    <p><span class="en">Enhance 2 keywords currently in positions 11-30 through: (1) Content expansion & refresh, (2) Internal linking optimization, (3) Improved meta tags & schema markup. Target: Move to top 10.</span>
+                    <span class="zh hidden">通过以下方式加强当前11-30位的2个关键词：(1)内容扩展和刷新，(2)内部链接优化，(3)改进的元标记和模式标记。目标：进入前10名。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 4: Create 10 New Long-tail Content Pieces</span><span class="zh hidden">第4月：创建10个新的长尾内容</span></h4>
+                    <p><span class="en">Produce 10 high-quality, long-form blog posts (1,500-2,000 words) targeting long-tail keywords identified in Phase 1. Focus on: product benefits, buyer guides, comparison content.</span>
+                    <span class="zh hidden">生成10篇高质量、长篇博文（1,500-2,000字），针对第1阶段确定的长尾关键词。重点关注：产品优势、购买指南、比较内容。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 5: Technical SEO Improvements</span><span class="zh hidden">第5月：技术SEO改进</span></h4>
+                    <p><span class="en">Implement technical SEO fixes: (1) Site speed optimization, (2) Mobile responsiveness audit, (3) XML sitemap optimization, (4) Structured data implementation (schema.org).</span>
+                    <span class="zh hidden">实施技术SEO修复：(1)网站速度优化，(2)移动响应性审计，(3)XML网站地图优化，(4)结构化数据实施（schema.org）。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 6: Baidu Optimization Kickstart</span><span class="zh hidden">第6月：百度优化启动</span></h4>
+                    <p><span class="en">Begin Baidu-specific optimization: (1) Register with Baidu Webmaster Tools, (2) Create Chinese-language content variations, (3) Optimize for Baidu ranking factors (title, description, keyword density).</span>
+                    <span class="zh hidden">开始百度特定优化：(1)向百度网站管理员工具注册，(2)创建中文内容变体，(3)优化百度排名因素（标题、描述、关键词密度）。</span></p>
+                </div>
+            </div>
+
+            <!-- Phase 3: Scale & Expansion -->
+            <div style="margin-bottom: 32px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 16px;"><span class="en">Phase 3: Scale & Expansion (Month 7-18)</span><span class="zh hidden">阶段3：扩展与扩大（第7-18月）</span></h3>
+                
+                <div class="timeline-item">
+                    <h4><span class="en">Month 7-9: Content Production Ramp</span><span class="zh hidden">第7-9月：内容生产加速</span></h4>
+                    <p><span class="en">Scale content production to 30-40 articles per month, targeting: (1) Remaining identified keywords, (2) Seasonal supplement trends, (3) Product-specific landing pages with keyword clusters.</span>
+                    <span class="zh hidden">将内容生产扩展到每月30-40篇文章，针对：(1)剩余识别的关键词，(2)季节性补充品趋势，(3)使用关键词群集的产品特定登录页面。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 10-12: Link Building & Authority</span><span class="zh hidden">第10-12月：链接建设和权威性</span></h4>
+                    <p><span class="en">Launch strategic link-building campaign: (1) Guest posting on health/wellness blogs, (2) Digital PR outreach to supplement industry publications, (3) Internal linking optimization, (4) Resource page submissions.</span>
+                    <span class="zh hidden">启动战略性链接建设活动：(1)在健康/健身博客上发布访客文章，(2)对补充品行业出版物进行数字公关外展，(3)内部链接优化，(4)资源页面提交。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 13-15: Baidu Content Localization</span><span class="zh hidden">第13-15月：百度内容本地化</span></h4>
+                    <p><span class="en">Develop 50+ localized Chinese-language content pieces optimized for Baidu ranking. Focus on high-volume Chinese keywords, regional supplement preferences, and Chinese search intent.</span>
+                    <span class="zh hidden">开发50+个本地化中文内容，针对百度排名进行优化。重点关注高流量中文关键词、地区补充品偏好和中文搜索意图。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 16-18: Performance Review & Optimization</span><span class="zh hidden">第16-18月：性能审查和优化</span></h4>
+                    <p><span class="en">Quarterly performance review: (1) Analyze keyword ranking progress, (2) Identify underperforming content, (3) Update/refresh top-performing articles, (4) Adjust strategy based on market response.</span>
+                    <span class="zh hidden">季度性能审查：(1)分析关键词排名进度，(2)识别性能不足的内容，(3)更新/刷新表现最好的文章，(4)根据市场反应调整策略。</span></p>
+                </div>
+            </div>
+
+            <!-- Phase 4: Maturity & Optimization -->
+            <div style="margin-bottom: 32px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 16px;"><span class="en">Phase 4: Maturity & Continuous Improvement (Month 19-30)</span><span class="zh hidden">阶段4：成熟与持续改进（第19-30月）</span></h3>
+                
+                <div class="timeline-item">
+                    <h4><span class="en">Month 19-21: Advanced Content Strategy</span><span class="zh hidden">第19-21月：高级内容策略</span></h4>
+                    <p><span class="en">Develop pillar content & topic clusters: (1) Create 5-10 pillar pages for core supplement categories, (2) Build 10-15 supporting blog articles per pillar, (3) Implement internal linking clusters.</span>
+                    <span class="zh hidden">开发支柱内容和主题群集：(1)为核心补充品类别创建5-10个支柱页面，(2)为每个支柱构建10-15篇支持博客文章，(3)实施内部链接群集。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 22-24: International SEO Expansion</span><span class="zh hidden">第22-24月：国际SEO扩展</span></h4>
+                    <p><span class="en">Expand international reach: (1) Optimize for multi-language targeting (English, Chinese), (2) Develop hreflang implementation, (3) Create region-specific content (China, US, Global), (4) Optimize for international Bing.</span>
+                    <span class="zh hidden">扩展国际覆盖范围：(1)针对多语言定位（英文、中文）进行优化，(2)开发hreflang实施，(3)创建地区特定内容（中国、美国、全球），(4)针对国际必应进行优化。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 25-27: Authority & E-E-A-T Building</span><span class="zh hidden">第25-27月：权威性和E-E-A-T构建</span></h4>
+                    <p><span class="en">Strengthen domain authority and expertise signals: (1) Publish expert opinion pieces on supplements, (2) Develop author/expert profiles with credentials, (3) Secure more high-quality backlinks, (4) Build brand mentions.</span>
+                    <span class="zh hidden">加强域名权威性和专业信号：(1)发布关于补充品的专家意见文章，(2)开发具有资格的作者/专家档案，(3)获得更多高质量反向链接，(4)建立品牌提及。</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 28-30: Performance Consolidation & Future Planning</span><span class="zh hidden">第28-30月：性能巩固和未来规划</span></h4>
+                    <p><span class="en">Final performance review and long-term strategy: (1) Consolidate gains achieved, (2) Identify 2nd-wave opportunities, (3) Plan year-2 expansion targets, (4) Establish ongoing SEO maintenance program.</span>
+                    <span class="zh hidden">最终性能审查和长期战略：(1)巩固已实现的收益，(2)识别第二波机会，(3)规划第2年扩展目标，(4)建立持续的SEO维护计划。</span></p>
+                </div>
+            </div>
+
+            <!-- Expected Results -->
+            <div style="margin-top: 32px; padding: 24px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h3 style="color: var(--text-heading); margin-bottom: 20px;"><span class="en">Expected 30-Month Results</span><span class="zh hidden">预期30个月结果</span></h3>
+                <div class="metrics-grid">
+                    <div class="metric-small">
+                        <div class="value">+2,330</div>
+                        <div class="label"><span class="en">New Daily Traffic</span><span class="zh hidden">新日均流量</span></div>
+                    </div>
+                    <div class="metric-small">
+                        <div class="value">+96</div>
+                        <div class="label"><span class="en">New Keywords</span><span class="zh hidden">新关键词</span></div>
+                    </div>
+                    <div class="metric-small">
+                        <div class="value">+150%</div>
+                        <div class="label"><span class="en">Baidu Traffic Growth</span><span class="zh hidden">百度流量增长</span></div>
+                    </div>
+                    <div class="metric-small">
+                        <div class="value">+45%</div>
+                        <div class="label"><span class="en">Domain Authority</span><span class="zh hidden">域名权威性</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="cta-container" style="margin-top: 40px;">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">📥 Download Full Report (PDF)</span><span class="zh hidden">📥 下载完整报告（PDF）</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Get Expert Consultation</span><span class="zh hidden">📞 获取专家咨询</span></button>
+            </div>
+
+            <div style="margin-top: 32px; padding: 20px; background: rgba(59, 130, 246, 0.1); border-radius: 12px; border: 1px solid var(--primary-color); color: var(--text-secondary);">
+                <p style="margin: 0; font-size: 14px;">
+                    <span class="en"><strong>Next Steps:</strong> This action plan requires dedicated SEO resources and content team commitment. We recommend partnering with an experienced SEO agency to accelerate implementation and maximize results. Schedule a consultation with our team to discuss customized strategies aligned with your budget and timeline.</span>
+                    <span class="zh hidden"><strong>后续步骤：</strong>此行动计划需要专门的SEO资源和内容团队投入。我们建议与经验丰富的SEO代理机构合作，以加快实施并最大化结果。与我们的团队预约咨询，讨论与您的预算和时间表相符的定制策略。</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--alt-bg); text-align: center; color: var(--text-muted);">
+            <p style="margin-bottom: 16px;">
+                <span class="en">Nature Made SEO Competitive Analysis Report</span>
+                <span class="zh hidden">天维美SEO竞争分析报告</span>
+            </p>
+            <p style="font-size: 12px;">
+                <span class="en">Generated using advanced SEO analytics and competitive intelligence data. For questions or customized strategies, contact EC Innovations.</span>
+                <span class="zh hidden">使用先进的SEO分析和竞争情报数据生成。如有疑问或需要定制策略，请联系EC Innovations。</span>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Language Toggle
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.en');
+            const zhElements = document.querySelectorAll('.zh');
+            const isEnglishVisible = !enElements[0].classList.contains('hidden');
+            
+            if (isEnglishVisible) {
+                enElements.forEach(el => el.classList.add('hidden'));
+                zhElements.forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                zhElements.forEach(el => el.classList.add('hidden'));
+                enElements.forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
