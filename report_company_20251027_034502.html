@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiFotonics Technologies - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 40px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading);
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table tbody tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+            font-weight: 600;
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            width: 180px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .bar-container {
+            flex: 1;
+            height: 24px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+        .bar-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+        }
+        .bar-baidu {
+            background: linear-gradient(90deg, #ef4444, #f87171);
+        }
+        .bar-bing {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        /* Stacked Bar */
+        .stacked-bar-container {
+            flex: 1;
+            height: 28px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+        .stacked-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+        }
+        .segment-baidu {
+            background: linear-gradient(90deg, #ef4444, #f87171);
+        }
+        .segment-bing {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        /* Gap Analysis */
+        .gap-analysis {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gap-item {
+            background: var(--alt-bg);
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        .gap-item-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .gap-item-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--danger-color);
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .timeline-phase {
+            font-size: 12px;
+            background: var(--alt-bg);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .opportunity-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+        .priority-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fecaca;
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fcd34d;
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+        .opportunity-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .opportunity-potential {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid, .table-container {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 15mm 12mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:nth-child(n+3) {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+
+            /* Bar chart optimization */
+            .bar-chart {
+                page-break-inside: avoid;
+            }
+
+            .bar-item {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></h1>
+            <p class="subtitle"><span class="en">SiFotonics Technologies (苏州硅谷数模半导体有限公司)</span><span class="zh hidden">苏州硅谷数模半导体有限公司</span></p>
+            <p class="section-intro" style="margin-top: 16px;"><span class="en">This comprehensive SEO competitive analysis examines SiFotonics Technologies' digital presence against key industry competitors. The analysis covers keyword performance, traffic channels, and strategic positioning in the semiconductor and optoelectronics sector.</span><span class="zh hidden">本份全面的SEO竞争分析调查了硅谷数模半导体有限公司在关键行业竞争对手中的数字形象。分析涵盖关键词表现、流量渠道和半导体与光电子部门的战略定位。</span></p>
+            
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Position</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">#6</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Competitors Analyzed</span><span class="zh hidden">分析竞争对手</span></div>
+                    <div class="value">5</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Current Keywords</span><span class="zh hidden">当前关键词</span></div>
+                    <div class="value">27</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">0.00%</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: var(--card-bg); border-radius: 12px; border-left: 4px solid var(--warning-color);">
+                <h3 style="color: var(--text-heading); margin-bottom: 12px;"><span class="en">Key Findings</span><span class="zh hidden">关键发现</span></h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; color: var(--text-secondary);"><span class="en">🔴 <strong>Zero Traffic Status:</strong> SiFotonics currently generates 0 daily organic traffic despite having 27 indexed keywords, indicating severe visibility issues across both Baidu and Bing platforms.</span><span class="zh hidden">🔴 <strong>零流量状态：</strong>尽管硅谷数模半导体已有27个被索引的关键词，但目前日常有机流量为0，表明在百度和必应平台上都存在严重的可见性问题。</span></li>
+                    <li style="padding: 8px 0; color: var(--text-secondary);"><span class="en">📊 <strong>Significant Market Gap:</strong> Top competitor Huawei generates 130,333 daily visits, while ZTE reaches 20,412. This represents a 130,333x performance gap requiring comprehensive SEO overhaul.</span><span class="zh hidden">📊 <strong>显著市场差距：</strong>顶级竞争对手华为每天产生130,333次访问，中兴通讯达到20,412次。这代表需要全面SEO改革的130,333倍性能差距。</span></li>
+                    <li style="padding: 8px 0; color: var(--text-secondary);"><span class="en">🎯 <strong>Ranking Opportunity:</strong> 16 of 27 keywords (59%) rank in positions 21-50, suggesting potential for rapid improvement with targeted optimization efforts on high-value search terms.</span><span class="zh hidden">🎯 <strong>排名机会：</strong>27个关键词中有16个（59%）排名在第21-50位，表明通过对高价值搜索词的有针对性的优化工作可能迅速改进。</span></li>
+                    <li style="padding: 8px 0; color: var(--text-secondary);"><span class="en">💼 <strong>Competitive Weakness:</strong> SiFotonics lacks presence on major traffic channels (Bing 0 visitors, Baidu 0 visitors), while competitors leverage multi-channel strategies generating thousands of daily impressions.</span><span class="zh hidden">💼 <strong>竞争弱点：</strong>硅谷数模半导体在主要流量渠道上缺乏存在感（必应0访客，百度0访客），而竞争对手采用多渠道策略产生数千日常印象。</span></li>
+                </ul>
+            </div>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">📥 Download PDF Report</span><span class="zh hidden">📥 下载PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Schedule Consultation</span><span class="zh hidden">📞 安排咨询</span></button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro"><span class="en">Comparative analysis of SiFotonics Technologies against the top 5 competitors in the industry based on SEO performance metrics and traffic data.</span><span class="zh hidden">基于SEO性能指标和流量数据，硅谷数模半导体与行业前5名竞争对手的比较分析。</span></p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日流量</span></th>
+                            <th><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Keywords</span><span class="zh hidden">关键词</span></th>
+                            <th><span class="en">Positions 11-50</span><span class="zh hidden">排名11-50</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user"><span class="en">YOUR COMPANY</span><span class="zh hidden">贵公司</span></span><span class="en">SiFotonics Technologies</span><span class="zh hidden">苏州硅谷数模半导体有限公司</span></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>27</td>
+                            <td>25</td>
+                            <td><strong>1.9</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Huawei Technologies</span><span class="zh hidden">华为技术有限公司</span></td>
+                            <td>130,333</td>
+                            <td>11,042</td>
+                            <td>3,243</td>
+                            <td>3,648</td>
+                            <td>2,547</td>
+                            <td><strong>99.8</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">ZTE Corporation</span><span class="zh hidden">中兴通讯股份有限公司</span></td>
+                            <td>20,412</td>
+                            <td>1,661</td>
+                            <td>10,368</td>
+                            <td>1,403</td>
+                            <td>1,108</td>
+                            <td><strong>15.6</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Hisense Broadband</span><span class="zh hidden">海信宽带多媒体技术有限公司</span></td>
+                            <td>5,774</td>
+                            <td>1,004</td>
+                            <td>131</td>
+                            <td>122</td>
+                            <td>30</td>
+                            <td><strong>4.4</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Hisense TransTech</span><span class="zh hidden">青岛海泰光电技术有限公司</span></td>
+                            <td>2,962</td>
+                            <td>193</td>
+                            <td>1,848</td>
+                            <td>100</td>
+                            <td>71</td>
+                            <td><strong>2.3</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Accelink Technologies</span><span class="zh hidden">光迅科技股份有限公司</span></td>
+                            <td>2,707</td>
+                            <td>166</td>
+                            <td>1,906</td>
+                            <td>122</td>
+                            <td>90</td>
+                            <td><strong>2.1</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 32px; padding: 24px; background: var(--card-bg); border-radius: 12px;">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">Competitive Index Explanation</span><span class="zh hidden">竞争指数说明</span></h3>
+                <p style="color: var(--text-secondary); margin-bottom: 12px;"><span class="en">The Competitive Index is calculated as: (Daily Traffic ÷ Total Keywords) × (Ranked Keywords ÷ Total Keywords). It measures SEO efficiency and market competitiveness.</span><span class="zh hidden">竞争指数计算为：（日流量÷总关键词）×（排名关键词÷总关键词）。它衡量SEO效率和市场竞争力。</span></p>
+                <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
+                    <li style="padding: 6px 0; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0;">→</span><span class="en">Huawei: <strong>99.8</strong> - Market leader with exceptional SEO performance across all channels</span><span class="zh hidden">华为：<strong>99.8</strong> - 市场领先者，在所有渠道都具有卓越的SEO表现</span></li>
+                    <li style="padding: 6px 0; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0;">→</span><span class="en">ZTE: <strong>15.6</strong> - Strong performer leveraging primarily Bing channel</span><span class="zh hidden">中兴通讯：<strong>15.6</strong> - 强劲表现者，主要利用必应渠道</span></li>
+                    <li style="padding: 6px 0; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0;">→</span><span class="en">Hisense Broadband: <strong>4.4</strong> - Moderate performance with Baidu focus</span><span class="zh hidden">海信宽带：<strong>4.4</strong> - 适度表现，重点关注百度</span></li>
+                    <li style="padding: 6px 0; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0;">→</span><span class="en">SiFotonics: <strong>1.9</strong> - Critical need for SEO optimization and channel activation</span><span class="zh hidden">硅谷数模：<strong>1.9</strong> - 急需SEO优化和渠道激活</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro"><span class="en">Strategic assessment of SiFotonics Technologies' strengths, weaknesses, opportunities, and threats in the competitive SEO landscape.</span><span class="zh hidden">硅谷数模半导体在竞争激烈的SEO环境中的优势、劣势、机会和威胁的战略评估。</span></p>
+
+            <div class="swot-grid">
+                <!-- Strengths -->
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">💪 Strengths</span><span class="zh hidden">💪 优势</span></h3>
+                    <ul>
+                        <li><span class="en"><strong>Established Keywords:</strong> 27 PC keywords already indexed, providing foundation for SEO recovery and optimization efforts</span><span class="zh hidden"><strong>已建立的关键词：</strong>27个PC关键词已被索引，为SEO恢复和优化工作提供基础</span></li>
+                        <li><span class="en"><strong>Ranking Position Potential:</strong> 5 keywords in positions 11-20, indicating content relevance for core terms with quick wins possible</span><span class="zh hidden"><strong>排名位置潜力：</strong>5个关键词排名第11-20位，表明核心词的内容相关性可能实现快速胜利</span></li>
+                        <li><span class="en"><strong>Emerging Keywords:</strong> 11 keywords in positions 21-30 represent immediate optimization opportunities with relatively small effort</span><span class="zh hidden"><strong>新兴关键词：</strong>排名第21-30位的11个关键词代表立即优化机会，需投入相对较小努力</span></li>
+                    </ul>
+                </div>
+
+                <!-- Weaknesses -->
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">⚠️ Weaknesses</span><span class="zh hidden">⚠️ 劣势</span></h3>
+                    <ul>
+                        <li><span class="en"><strong>Complete Traffic Absence:</strong> Zero daily organic traffic from both Baidu and Bing platforms indicates critical indexing, ranking, or visibility issues</span><span class="zh hidden"><strong>完全缺乏流量：</strong>来自百度和必应平台的有机流量为零，表明存在严重的索引、排名或可见性问题</span></li>
+                        <li><span class="en"><strong>Low Keyword Volume:</strong> 27 keywords is 96% fewer than competitor Huawei (3,648), severely limiting market reach and discovery potential</span><span class="zh hidden"><strong>关键词量低：</strong>27个关键词比竞争对手华为(3,648)少96%，严重限制了市场覆盖和发现潜力</span></li>
+                        <li><span class="en"><strong>Shallow Ranking Distribution:</strong> Majority keywords (16 of 27) rank below position 20, with significant portion below position 30, indicating weak domain authority</span><span class="zh hidden"><strong>排名分布浅：</strong>大多数关键词（27中的16个）排名在第20位以下，大部分排名在第30位以下，表明域名权威性弱</span></li>
+                    </ul>
+                </div>
+
+                <!-- Opportunities -->
+                <div class="swot-item">
+                    <h3 style="color: var(--accent-color);"><span class="en">🎯 Opportunities</span><span class="zh hidden">🎯 机会</span></h3>
+                    <ul>
+                        <li><span class="en"><strong>Position 11-20 Acceleration:</strong> 5 existing keywords can be pushed to top 10 through targeted content improvements, generating 100-500+ daily visits based on competitor benchmarks</span><span class="zh hidden"><strong>第11-20位加速：</strong>5个现有关键词可通过有针对性的内容改进推送到前10位，根据竞争对手基准每天产生100-500+访问</span></li>
+                        <li><span class="en"><strong>Baidu Channel Activation:</strong> Competitors averaging 1,000+ daily Baidu traffic represents massive untapped opportunity; targeted Baidu optimization could generate 500-2,000+ daily visits</span><span class="zh hidden"><strong>百度渠道激活：</strong>竞争对手平均每天1,000+百度流量代表巨大的未开发机会；有针对性的百度优化可产生500-2,000+日访问</span></li>
+                        <li><span class="en"><strong>Content Gap Analysis:</strong> Analyzing competitor content for positions 1-10 could reveal 50+ high-intent keywords to target with new content creation</span><span class="zh hidden"><strong>内容差距分析：</strong>分析竞争对手第1-10位的内容可能揭示50+个高意图关键词，以新内容创建为目标</span></li>
+                        <li><span class="en"><strong>Long-tail Expansion:</strong> Current keyword portfolio lacks long-tail variants; adding 100+ long-tail keywords could generate 200-500 daily visits with lower competition</span><span class="zh hidden"><strong>长尾扩展：</strong>当前关键词组合缺乏长尾变体；添加100+个长尾关键词可产生200-500日访问，竞争较少</span></li>
+                    </ul>
+                </div>
+
+                <!-- Threats -->
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">🚨 Threats</span><span class="zh hidden">🚨 威胁</span></h3>
+                    <ul>
+                        <li><span class="en"><strong>Huawei Market Domination:</strong> Competitor generates 130,333x more daily traffic; massive brand investment and 3,648 keywords create formidable barrier to entry in competitive terms</span><span class="zh hidden"><strong>华为市场主导：</strong>竞争对手日流量多130,333倍；大规模品牌投资和3,648个关键词在竞争词中创造了难以逾越的壁垒</span></li>
+                        <li><span class="en"><strong>Rapid Competitor Scaling:</strong> ZTE, Hisense, and Accelink actively expand keyword portfolios; inaction allows competitors to claim high-value search terms permanently</span><span class="zh hidden"><strong>竞争对手快速扩展：</strong>中兴通讯、海信和光迅科技积极扩展关键词组合；不采取行动会让竞争对手永久占领高价值搜索词</span></li>
+                        <li><span class="en"><strong>Bing Dominance by Competitors:</strong> ZTE, Hisense TransTech generate 1,400-10,400 daily Bing visitors; failure to activate Bing channel concedes lucrative market segment</span><span class="zh hidden"><strong>竞争对手在必应上的主导地位：</strong>中兴通讯、海信海泰每天产生1,400-10,400个必应访客；未能激活必应渠道会失去利润丰厚的市场细分</span></li>
+                        <li><span class="en"><strong>Algorithm Updates & Ranking Loss:</strong> Current zero-traffic position vulnerable to negative algorithm impacts; any existing ranking could be lost without proactive monitoring</span><span class="zh hidden"><strong>算法更新与排名丧失：</strong>当前零流量位置容易受到负面算法影响；未来任何现有排名都可能因缺乏主动监控而丧失</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="section-intro"><span class="en">In-depth examination of traffic channels, keyword efficiency, competitive gaps, and performance indicators across all competitors.</span><span class="zh hidden">对所有竞争对手的流量渠道、关键词效率、竞争差距和性能指标的深入检查。</span></p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">📊 Traffic Channel Distribution (Baidu vs Bing)</span><span class="zh hidden">📊 流量渠道分布（百度vs必应）</span></h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">SiFotonics</span><span class="zh hidden">硅谷数模</span></div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 0%; min-width: 2px;">0%</div>
+                            <div class="stacked-segment segment-bing" style="width: 0%; min-width: 2px;">0%</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Huawei Tech</span><span class="zh hidden">华为技术</span></div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 77.2%;">77.2%</div>
+                            <div class="stacked-segment segment-bing" style="width: 22.8%;">22.8%</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">ZTE Corp</span><span class="zh hidden">中兴通讯</span></div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 13.8%;">13.8%</div>
+                            <div class="stacked-segment segment-bing" style="width: 86.2%;">86.2%</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Hisense Broadband</span><span class="zh hidden">海信宽带</span></div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 88.5%;">88.5%</div>
+                            <div class="stacked-segment segment-bing" style="width: 11.5%;">11.5%</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Hisense TransTech</span><span class="zh hidden">海泰光电</span></div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 6.1%;">6.1%</div>
+                            <div class="stacked-segment segment-bing" style="width: 93.9%;">93.9%</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Accelink Tech</span><span class="zh hidden">光迅科技</span></div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 5.8%;">5.8%</div>
+                            <div class="stacked-segment segment-bing" style="width: 94.2%;">94.2%</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; padding: 16px; background: var(--alt-bg); border-radius: 8px;">
+                    <p style="font-size: 13px; color: var(--text-secondary);"><span class="en"><strong>Key Insight:</strong> While Huawei dominates Baidu (77.2%), most competitors derive majority traffic from Bing (86-94%). SiFotonics has no presence on either channel, representing critical dual-market failure requiring immediate action on both platforms.</span><span class="zh hidden"><strong>关键洞察：</strong>虽然华为在百度占主导地位（77.2%），但大多数竞争对手的流量主要来自必应（86-94%）。硅谷数模在两个渠道上都没有存在感，代表需要在两个平台上立即采取行动的严重双市场失败。</span></p>
+                </div>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">🎯 Keyword Efficiency Comparison</span><span class="zh hidden">🎯 关键词效率对比</span></h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;"><span class="en">Metric: Traffic per Keyword (Daily Traffic ÷ Total Keywords)</span><span class="zh hidden">指标：每个关键词的流量（日流量÷总关键词）</span></p>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Huawei</span><span class="zh hidden">华为</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-baidu" style="width: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa);">35.74</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">ZTE</span><span class="zh hidden">中兴</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-baidu" style="width: 57.4%; background: linear-gradient(90deg, #3b82f6, #60a5fa);">14.54</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Hisense Broadband</span><span class="zh hidden">海信宽带</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-baidu" style="width: 15.7%; background: linear-gradient(90deg, #3b82f6, #60a5fa);">47.33</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Hisense TransTech</span><span class="zh hidden">海泰光电</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-baidu" style="width: 8.2%; background: linear-gradient(90deg, #3b82f6, #60a5fa);">29.62</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Accelink</span><span class="zh hidden">光迅</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-baidu" style="width: 7.4%; background: linear-gradient(90deg, #3b82f6, #60a5fa);">22.19</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">SiFotonics</span><span class="zh hidden">硅谷数模</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill bar-baidu" style="width: 0%; background: linear-gradient(90deg, #ef4444, #f87171); min-width: 30px;">0.00</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; padding: 16px; background: var(--alt-bg); border-radius: 8px;">
+                    <p style="font-size: 13px; color: var(--text-secondary);"><span class="en"><strong>Analysis:</strong> Hisense Broadband achieves highest efficiency (47.33 visits/keyword), followed by Huawei (35.74). SiFotonics at 0.00 indicates optimization potential—targeting just 10 keywords to top-20 positions could generate 200-500 daily visits using competitor benchmarks.</span><span class="zh hidden"><strong>分析：</strong>海信宽带实现最高效率（47.33访问/关键词），其次是华为（35.74）。硅谷数模为0.00表明优化潜力——仅针对10个关键词进入前20位就可使用竞争对手基准产生200-500日访问。</span></p>
+                </div>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">📈 Competitive Gap Analysis</span><span class="zh hidden">📈 竞争差距分析</span></h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;"><span class="en">SiFotonics vs. Industry Leaders - Performance Deficit</span><span class="zh hidden">硅谷数模与行业领导者 - 性能差距</span></p>
+                <div class="gap-analysis">
+                    <div class="gap-item">
+                        <div class="gap-item-label"><span class="en">Daily Traffic Gap vs Huawei</span><span class="zh hidden">与华为的日流量差距</span></div>
+                        <div class="gap-item-value">-130,333</div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;"><span class="en">(48,142x gap)</span><span class="zh hidden">（48,142倍差距）</span></div>
+                    </div>
+                    <div class="gap-item">
+                        <div class="gap-item-label"><span class="en">Keyword Gap vs Huawei</span><span class="zh hidden">与华为的关键词差距</span></div>
+                        <div class="gap-item-value">-3,621</div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;"><span class="en">(99.3% fewer)</span><span class="zh hidden">（少99.3%）</span></div>
+                    </div>
+                    <div class="gap-item">
+                        <div class="gap-item-label"><span class="en">Daily Traffic Gap vs ZTE</span><span class="zh hidden">与中兴的日流量差距</span></div>
+                        <div class="gap-item-value">-20,412</div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;"><span class="en">(100% below)</span><span class="zh hidden">（低100%）</span></div>
+                    </div>
+                    <div class="gap-item">
+                        <div class="gap-item-label"><span class="en">Average Competitor Traffic</span><span class="zh hidden">平均竞争对手流量</span></div>
+                        <div class="gap-item-value">-32,434</div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;"><span class="en">(gap vs SiFotonics)</span><span class="zh hidden">（与硅谷数模相比）</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Indicators -->
+            <div class="chart-container">
+                <h3><span class="en">📊 Ranking Distribution Analysis</span><span class="zh hidden">📊 排名分布分析</span></h3>
+                <div style="margin-top: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                        <div style="background: var(--alt-bg); padding: 16px; border-radius: 8px;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Positions 11-20</span><span class="zh hidden">排名第11-20位</span></div>
+                            <div style="font-size: 28px; font-weight: 700; color: var(--primary-color);">5</div>
+                            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;"><span class="en">18.5% of keywords</span><span class="zh hidden">关键词的18.5%</span></div>
+                        </div>
+                        <div style="background: var(--alt-bg); padding: 16px; border-radius: 8px;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Positions 21-30</span><span class="zh hidden">排名第21-30位</span></div>
+                            <div style="font-size: 28px; font-weight: 700; color: var(--warning-color);">11</div>
+                            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;"><span class="en">40.7% of keywords</span><span class="zh hidden">关键词的40.7%</span></div>
+                        </div>
+                        <div style="background: var(--alt-bg); padding: 16px; border-radius: 8px;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Positions 31-40</span><span class="zh hidden">排名第31-40位</span></div>
+                            <div style="font-size: 28px; font-weight: 700; color: var(--danger-color);">8</div>
+                            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;"><span class="en">29.6% of keywords</span><span class="zh hidden">关键词的29.6%</span></div>
+                        </div>
+                        <div style="background: var(--alt-bg); padding: 16px; border-radius: 8px;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Positions 41-50</span><span class="zh hidden">排名第41-50位</span></div>
+                            <div style="font-size: 28px; font-weight: 700; color: var(--danger-color);">1</div>
+                            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;"><span class="en">3.7% of keywords</span><span class="zh hidden">关键词的3.7%</span></div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 16px; padding: 16px; background: var(--alt-bg); border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                        <p style="font-size: 13px; color: var(--text-secondary);"><span class="en"><strong>Opportunity:</strong> 59.3% of keywords (16 of 27) rank in positions 21-50. These represent high-probability quick wins—targeting these for 5-10 position improvements would immediately generate 50-200 daily traffic visits.</span><span class="zh hidden"><strong>机会：</strong>59.3%的关键词（27中的16个）排名在第21-50位。这些代表高概率的快速赢利——针对这些进行5-10位置的改进将立即产生50-200日流量访问。</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro"><span class="en">Strategic opportunities for SiFotonics to rapidly increase market visibility, traffic, and competitive positioning through targeted SEO initiatives.</span><span class="zh hidden">硅谷数模通过有针对性的SEO举措快速提高市场可见性、流量和竞争定位的战略机会。</span></p>
+
+            <!-- Opportunity 1 -->
+            <div class="opportunity-card">
+                <div class="opportunity-header">
+                    <div class="opportunity-title"><span class="en">1. Baidu Channel Activation & Optimization</span><span class="zh hidden">1. 百度渠道激活与优化</span></div>
+                    <span class="priority-badge priority-high"><span class="en">CRITICAL</span><span class="zh hidden">紧急</span></span>
+                </div>
+                <div class="opportunity-desc">
+                    <span class="en">Establish and optimize Baidu presence across 50+ high-value keywords. Huawei, Hisense Broadband, and ZTE derive 1,000-11,000+ daily Baidu visits. SiFotonics currently has 0 Baidu visitors.</span><span class="zh hidden">在50+个高价值关键词中建立并优化百度存在。华为、海信宽带和中兴每天从百度获得1,000-11,000+次访问。硅谷数模目前有0个百度访客。</span>
+                </div>
+                <div class="opportunity-potential">
+                    <span class="en">💰 <strong>Potential Impact:</strong> 1,000-2,500 daily Baidu visits within 6 months | <strong>Effort Level:</strong> High | <strong>Timeline:</strong> 3-6 months</span><span class="zh hidden">💰 <strong>潜在影响：</strong>6个月内每天1,000-2,500次百度访问 | <strong>工作量级：</strong>高 | <strong>时间表：</strong>3-6个月</span>
+                </div>
+            </div>
+
+            <!-- Opportunity 2 -->
+            <div class="opportunity-card">
+                <div class="opportunity-header">
+                    <div class="opportunity-title"><span class="en">2. Position 11-20 Keywords Push to Top 10</span><span class="zh hidden">2. 第11-20位关键词推向前10</span></div>
+                    <span class="priority-badge priority-high"><span class="en">HIGH</span><span class="zh hidden">高</span></span>
+                </div>
+                <div class="opportunity-desc">
+                    <span class="en">Target 5 keywords currently in positions 11-20 with content enhancement, technical SEO fixes, and backlink building. Moving each to top 5 positions generates 20-100 daily visits per keyword.</span><span class="zh hidden">通过内容增强、技术SEO修复和反向链接构建，针对目前排名第11-20位的5个关键词。将每个关键词移至前5位置，每个关键词每天产生20-100次访问。</span>
+                </div>
+                <div class="opportunity-potential">
+                    <span class="en">💰 <strong>Potential Impact:</strong> 100-500 daily visits from 5 keywords | <strong>Effort Level:</strong> Medium | <strong>Timeline:</strong> 1-3 months</span><span class="zh hidden">💰 <strong>潜在影响：</strong>来自5个关键词的每日100-500次访问 | <strong>工作量级：</strong>中等 | <strong>时间表：</strong>1-3个月</span>
+                </div>
+            </div>
+
+            <!-- Opportunity 3 -->
+            <div class="opportunity-card">
+                <div class="opportunity-header">
+                    <div class="opportunity-title"><span class="en">3. Long-tail Keywords Discovery & Targeting</span><span class="zh hidden">3. 长尾关键词发现与定位</span></div>
+                    <span class="priority-badge priority-high"><span class="en">HIGH</span><span class="zh hidden">高</span></span>
+                </div>
+                <div class="opportunity-desc">
+                    <span class="en">Analyze competitor content for 100+ long-tail keyword variations. Create 50 new pages targeting long-tail semiconductor/optoelectronics keywords with lower competition. Each page averages 3-10 daily visits.</span><span class="zh hidden">分析竞争对手内容，获取100+个长尾关键词变体。创建50个新页面，定位低竞争的长尾半导体/光电子关键词。每个页面平均每天3-10次访问。</span>
+                </div>
+                <div class="opportunity-potential">
+                    <span class="en">💰 <strong>Potential Impact:</strong> 150-500 daily visits from new long-tail content | <strong>Effort Level:</strong> Medium | <strong>Timeline:</strong> 2-4 months</span><span class="zh hidden">💰 <strong>潜在影响：</strong>来自新长尾内容每日150-500次访问 | <strong>工作量级：</strong>中等 | <strong>时间表：</strong>2-4个月</span>
+                </div>
+            </div>
+
+            <!-- Opportunity 4 -->
+            <div class="opportunity-card">
+                <div class="opportunity-header">
+                    <div class="opportunity-title"><span class="en">4. Bing Channel Development</span><span class="zh hidden">4. 必应渠道开发</span></div>
+                    <span class="priority-badge priority-medium"><span class="en">MEDIUM</span><span class="zh hidden">中等</span></span>
+                </div>
+                <div class="opportunity-desc">
+                    <span class="en">Target 50+ keywords for Bing optimization. ZTE, Hisense, Accelink generate 1,400-10,400 daily Bing visitors. Requires Bing Webmaster Tools setup, content optimization, and Bing-specific backlinks.</span><span class="zh hidden">针对50+个关键词进行必应优化。中兴、海信、光迅每天产生1,400-10,400个必应访客。需要必应网站管理员工具设置、内容优化和必应特定的反向链接。</span>
+                </div>
+                <div class="opportunity-potential">
+                    <span class="en">💰 <strong>Potential Impact:</strong> 500-1,500 daily Bing visits within 4-6 months | <strong>Effort Level:</strong> Medium | <strong>Timeline:</strong> 2-4 months</span><span class="zh hidden">💰 <strong>潜在影响：</strong>4-6个月内每天500-1,500个必应访客 | <strong>工作量级：</strong>中等 | <strong>时间表：</strong>2-4个月</span>
+                </div>
+            </div>
+
+            <!-- Opportunity 5 -->
+            <div class="opportunity-card">
+                <div class="opportunity-header">
+                    <div class="opportunity-title"><span class="en">5. Domain Authority Building & Link Strategy</span><span class="zh hidden">5. 域名权威构建与链接策略</span></div>
+                    <span class="priority-badge priority-medium"><span class="en">MEDIUM</span><span class="zh hidden">中等</span></span>
+                </div>
+                <div class="opportunity-desc">
+                    <span class="en">Develop comprehensive backlink strategy targeting industry authority sites. Current lack of traffic suggests low domain authority. Acquiring 50+ high-quality backlinks from DA30+ sites could improve all keyword rankings by 5-15 positions.</span><span class="zh hidden">开发针对行业权威网站的全面反向链接策略。目前缺乏流量表明域名权威性低。从DA30+网站获取50+个高质量反向链接可将所有关键词排名提高5-15位。</span>
+                </div>
+                <div class="opportunity-potential">
+                    <span class="en">💰 <strong>Potential Impact:</strong> 300-1,000 daily visits across existing 27 keywords | <strong>Effort Level:</strong> High | <strong>Timeline:</strong> 3-6 months</span><span class="zh hidden">💰 <strong>潜在影响：</strong>在现有27个关键词中每天300-1,000次访问 | <strong>工作量级：</strong>高 | <strong>时间表：</strong>3-6个月</span>
+                </div>
+            </div>
+
+            <!-- Summary Box -->
+            <div style="margin-top: 32px; padding: 24px; background: var(--alt-bg); border-radius: 12px; border-left: 4px solid var(--primary-color);">
+                <h3 style="color: var(--text-heading); margin-bottom: 12px;"><span class="en">Opportunity Priority Matrix</span><span class="zh hidden">机会优先级矩阵</span></h3>
+                <table style="width: 100%; color: var(--text-secondary); font-size: 13px;">
+                    <tr>
+                        <td style="padding: 8px;"><span class="en"><strong>Quick Wins (1-3 months):</strong> Position 11-20 push to top 10 = 100-500 daily visits</span><span class="zh hidden"><strong>快速赢利（1-3个月）：</strong>第11-20位推至前10 = 每天100-500次访问</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px;"><span class="en"><strong>Medium Term (2-4 months):</strong> Long-tail keywords + Bing channel = 650-2,000 daily visits</span><span class="zh hidden"><strong>中期（2-4个月）：</strong>长尾关键词+必应渠道 = 每天650-2,000次访问</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px;"><span class="en"><strong>Strategic (3-6 months):</strong> Baidu activation + domain authority = 1,300-3,500 daily visits</span><span class="zh hidden"><strong>战略性（3-6个月）：</strong>百度激活+域名权威 = 每天1,300-3,500次访问</span></td>
+                    </tr>
+                </table>
+                <p style="margin-top: 12px; color: var(--text-secondary); font-size: 13px;"><span class="en"><strong>Combined Potential:</strong> Full implementation could generate 2,050-6,000 daily organic visits within 6 months, representing 2,050x growth from current baseline.</span><span class="zh hidden"><strong>综合潜力：</strong>完整实施可在6个月内产生2,050-6,000日有机访问，代表从当前基线增长2,050倍。</span></p>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan & Implementation Timeline</span><span class="zh hidden">行动计划与实施时间表</span></h2>
+            <p class="section-intro"><span class="en">Detailed roadmap for SEO recovery and growth, organized by priority, timeline, and expected outcomes. Implementation over 6 months could generate 2,000-6,000 daily organic visits.</span><span class="zh hidden">详细的SEO恢复和增长路线图，按优先级、时间表和预期成果组织。6个月的实施可产生2,000-6,000日有机访问。</span></p>
+
+            <!-- Phase 1: Months 1-2 -->
+            <div style="margin-bottom: 32px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 16px; font-size: 18px;"><span class="en">⚡ Phase 1: Foundation & Quick Wins (Months 1-2)</span><span class="zh hidden">⚡ 第1阶段：基础与快速赢利（第1-2个月）</span></h3>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 1-2: Technical Audit & Channel Setup</span><span class="zh hidden">第1-2周：技术审计与渠道设置</span></h4>
+                    <p><span class="en">Conduct comprehensive technical SEO audit. Set up Baidu Zhanzhang account, verify website indexing status, check for crawl errors or penalties. Set up Bing Webmaster Tools and verify indexing. Analyze robots.txt, sitemap, and mobile responsiveness.</span><span class="zh hidden">进行全面的技术SEO审计。设置百度站长平台账户，验证网站索引状态，检查抓取错误或处罚。设置必应网站管理员工具并验证索引。分析robots.txt、地图和移动响应。</span></p>
+                    <span class="timeline-phase"><span class="en">SETUP</span><span class="zh hidden">设置</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Deliverables:</strong> Technical audit report, webmaster tool verification, crawl error fixes</span><span class="zh hidden"><strong>交付物：</strong>技术审计报告、网站管理员工具验证、抓取错误修复</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 3-4: Content Optimization for Top 5 Keywords</span><span class="zh hidden">第3-4周：前5个关键词的内容优化</span></h4>
+                    <p><span class="en">Focus on 5 keywords currently in positions 11-20. Analyze top-3 ranking competitors for each keyword. Update meta titles, descriptions, H1 tags for relevance and CTR optimization. Enhance body content with 500-1,000 additional words, internal linking, and multimedia (images, videos).</span><span class="zh hidden">专注于目前排名第11-20位的5个关键词。分析每个关键词的排名前3竞争对手。更新元标题、描述、H1标签以优化相关性和点击率。通过500-1,000个额外单词、内部链接和多媒体（图像、视频）增强正文内容。</span></p>
+                    <span class="timeline-phase"><span class="en">CONTENT</span><span class="zh hidden">内容</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Expected Results:</strong> 5 keywords moving to positions 5-15 within 2-3 months = 50-250 daily visits</span><span class="zh hidden"><strong>预期结果：</strong>5个关键词在2-3个月内移至第5-15位 = 每天50-250次访问</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 4: Backlink Acquisition Campaign Launch</span><span class="zh hidden">第4周：反向链接获取活动启动</span></h4>
+                    <p><span class="en">Identify 30 high-authority industry websites (DA 30+, industry relevance). Create outreach list with contact information. Develop value propositions for link acquisition: broken link building, guest post opportunities, resource page submissions. Start outreach in month 2.</span><span class="zh hidden">确定30个高权威行业网站（DA 30+，行业相关性）。创建联系信息的外展列表。开发链接获取的价值主张：损坏链接构建、访客帖子机会、资源页面提交。在第2个月启动外展。</span></p>
+                    <span class="timeline-phase"><span class="en">LINKS</span><span class="zh hidden">链接</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Target:</strong> 10 high-quality backlinks acquired by end of month 2</span><span class="zh hidden"><strong>目标：</strong>第2个月底前获得10条高质量反向链接</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 2: Baidu Content Optimization</span><span class="zh hidden">第2个月：百度内容优化</span></h4>
+                    <p><span class="en">Create 10 Baidu-optimized landing pages targeting high-volume, low-competition keywords. Research Baidu keyword variations, search intent, and user behavior. Optimize for Baidu algorithm preferences: Chinese language natural flow, localized content, entity-based optimization.</span><span class="zh hidden">创建10个针对高流量、低竞争关键词的百度优化登陆页面。研究百度关键词变体、搜索意图和用户行为。针对百度算法偏好进行优化：中文自然流、本地化内容、基于实体的优化。</span></p>
+                    <span class="timeline-phase"><span class="en">BAIDU</span><span class="zh hidden">百度</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Expected Results:</strong> 50-200 daily Baidu visits from these 10 pages by month 4</span><span class="zh hidden"><strong>预期结果：</strong>到第4个月，这10个页面每天产生50-200个百度访问</span></p>
+                </div>
+            </div>
+
+            <!-- Phase 2: Months 3-4 -->
+            <div style="margin-bottom: 32px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 16px; font-size: 18px;"><span class="en">📈 Phase 2: Scaling & Channel Expansion (Months 3-4)</span><span class="zh hidden">📈 第2阶段：扩展与渠道扩张（第3-4个月）</span></h3>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 1-2: Long-tail Keyword Research & Strategy</span><span class="zh hidden">第1-2周：长尾关键词研究与策略</span></h4>
+                    <p><span class="en">Analyze competitor keyword portfolios. Identify 100+ long-tail keywords with: 100-500 monthly searches, <5 competing domains, product/service intent. Group into 20 topic clusters. Create content roadmap for 40 new pages targeting these keywords.</span><span class="zh hidden">分析竞争对手关键词组合。确定100+个长尾关键词，具有：每月100-500次搜索、<5个竞争域、产品/服务意图。分组为20个主题集群。为针对这些关键词的40个新页面创建内容路线图。</span></p>
+                    <span class="timeline-phase"><span class="en">RESEARCH</span><span class="zh hidden">研究</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Output:</strong> 40-page content calendar with keyword targets, search intent, and content structure</span><span class="zh hidden"><strong>输出：</strong>40页内容日历，包含关键词目标、搜索意图和内容结构</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 3-8: Long-tail Content Creation</span><span class="zh hidden">第3-8周：长尾内容创建</span></h4>
+                    <p><span class="en">Create 40 optimized landing pages (1,500-2,000 words each) targeting long-tail keywords. Implement SEO best practices: keyword in title/H1/first 100 words, natural language, internal linking to existing 27 keywords and new pages, multimedia assets (3-5 images per page).</span><span class="zh hidden">创建40个优化的登陆页面（每个1,500-2,000字）针对长尾关键词。实施SEO最佳实践：标题/H1/前100字中的关键词、自然语言、现有27个关键词和新页面的内部链接、多媒体资产（每个页面3-5个图像）。</span></p>
+                    <span class="timeline-phase"><span class="en">CREATION</span><span class="zh hidden">创建</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Expected Results:</strong> 40 pages ranking in positions 15-35 within 6-8 weeks, generating 120-400 daily visits</span><span class="zh hidden"><strong>预期结果：</strong>40个页面在6-8周内排名第15-35位，产生每天120-400次访问</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 3-4: Bing Optimization Launch</span><span class="zh hidden">第3-4周：必应优化启动</span></h4>
+                    <p><span class="en">Optimize 30 existing pages for Bing algorithm preferences. Bing weights: title tag, meta description, content quality/length, structured data, mobile-friendliness. Submit all pages via Bing Webmaster Tools. Create Bing-specific ad content and optimize for Bing's preference for official company information.</span><span class="zh hidden">为30个现有页面优化必应算法偏好。必应权重：标题标签、元描述、内容质量/长度、结构化数据、移动友好性。通过必应网站管理员工具提交所有页面。创建必应特定的广告内容并优化必应对官方公司信息的偏好。</span></p>
+                    <span class="timeline-phase"><span class="en">BING</span><span class="zh hidden">必应</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Expected Results:</strong> 100-300 daily Bing visits by end of month 4</span><span class="zh hidden"><strong>预期结果：</strong>第4个月底每天100-300个必应访问</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 4: Backlink Campaign Continuation</span><span class="zh hidden">第4个月：反向链接活动继续</span></h4>
+                    <p><span class="en">Continue backlink outreach. Target 25 additional industry sites, competitor backlink analysis, broken link building. Aim for 15-20 new backlinks by end of month 4 (total 25-30 links). Focus on DA 35+ sites and niche industry directories.</span><span class="zh hidden">继续反向链接外展。针对25个额外的行业网站、竞争对手反向链接分析、损坏链接构建。到第4个月底争取15-20个新反向链接（总共25-30个链接）。专注于DA 35+网站和利基行业目录。</span></p>
+                    <span class="timeline-phase"><span class="en">LINKS</span><span class="zh hidden">链接</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Impact:</strong> 20-30 domain authority links improve all rankings by estimated 3-8 positions</span><span class="zh hidden"><strong>影响：</strong>20-30个域名权威链接将所有排名改进估计3-8个位置</span></p>
+                </div>
+            </div>
+
+            <!-- Phase 3: Months 5-6 -->
+            <div style="margin-bottom: 32px;">
+                <h3 style="color: var(--success-color); margin-bottom: 16px; font-size: 18px;"><span class="en">🚀 Phase 3: Optimization & Growth Acceleration (Months 5-6)</span><span class="zh hidden">🚀 第3阶段：优化与增长加速（第5-6个月）</span></h3>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 1-2: Performance Analysis & Pivoting</span><span class="zh hidden">第1-2周：性能分析与调整</span></h4>
+                    <p><span class="en">Analyze all keywords and pages for ranking progress, traffic generation, and ROI. Identify top 30 keywords generating traffic (if any). Pivot underperforming content: update, expand, or republish. Document lessons learned for scaling to new keywords.</span><span class="zh hidden">分析所有关键词和页面的排名进度、流量生成和投资回报率。确定产生流量的前30个关键词（如果有）。调整表现不佳的内容：更新、扩展或重新发布。记录经验教训以扩展到新关键词。</span></p>
+                    <span class="timeline-phase"><span class="en">ANALYSIS</span><span class="zh hidden">分析</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Milestone:</strong> First traffic generation from organic search channels</span><span class="zh hidden"><strong>里程碑：</strong>有机搜索渠道的首次流量生成</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 3-4: Advanced Baidu Optimization</span><span class="zh hidden">第3-4周：高级百度优化</span></h4>
+                    <p><span class="en">Expand Baidu presence to 50+ keywords. Implement Baidu-specific tactics: optimize for Baidu's index freshness score, add Chinese language processing optimizations, implement Baidu Aladdin service if relevant, create Baidu Maps/Business profile, integrate with Baidu Drive and other Baidu ecosystem tools.</span><span class="zh hidden">将百度存在扩展到50+个关键词。实施百度特定策略：针对百度索引新鲜度分数优化、添加中文语言处理优化、实施百度阿拉丁服务（如相关）、创建百度地图/商业资料、与百度云盘和其他百度生态工具集成。</span></p>
+                    <span class="timeline-phase"><span class="en">BAIDU SCALE</span><span class="zh hidden">百度扩展</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Target:</strong> 500-1,500 daily Baidu visits from expanded 50-keyword portfolio</span><span class="zh hidden"><strong>目标：</strong>来自扩展50关键词组合的每天500-1,500个百度访问</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Week 1-4: Competitive Intelligence & Gap Analysis</span><span class="zh hidden">第1-4周：竞争情报与差距分析</span></h4>
+                    <p><span class="en">Monitor competitors' new content, ranking changes, and traffic trends. Identify keywords where competitors rank #1-3 but SiFotonics doesn't appear. Target these "opportunity gaps" for new content creation or existing content improvement. Track changes monthly.</span><span class="zh hidden">监控竞争对手的新内容、排名变化和流量趋势。识别竞争对手排名前1-3但硅谷数模不出现的关键词。针对这些"机会差距"进行新内容创建或现有内容改进。每月跟踪变化。</span></p>
+                    <span class="timeline-phase"><span class="en">COMPETITIVE</span><span class="zh hidden">竞争</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Output:</strong> 20+ new high-priority keywords for targeting in phase 2+ implementation</span><span class="zh hidden"><strong>输出：</strong>20+个新的高优先级关键词，用于在第2+阶段实施中定位</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Month 6: Comprehensive Review & Future Planning</span><span class="zh hidden">第6个月：全面审查与未来规划</span></h4>
+                    <p><span class="en">Conduct comprehensive 6-month review: total daily traffic generated, keyword ranking improvements, traffic channel breakdown (Baidu vs Bing), ROI analysis, cost per visit. Document all changes, improvements, and learnings. Present findings to stakeholders. Establish Phase 2 goals: target 5,000-10,000 daily visits by month 12.</span><span class="zh hidden">进行全面的6个月审查：产生的总日流量、关键词排名改进、流量渠道分解（百度vs必应）、投资回报率分析、每次访问成本。记录所有变化、改进和学习。向利益相关者呈现发现。建立第2阶段目标：到第12个月争取每天5,000-10,000访问。</span></p>
+                    <span class="timeline-phase"><span class="en">REVIEW</span><span class="zh hidden">审查</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>Expected Outcome:</strong> 2,000-6,000 daily organic visits | 70+ ranking keywords | 25-40 position improvements average</span><span class="zh hidden"><strong>预期结果：</strong>每天2,000-6,000有机访问 | 70+排名关键词 | 平均25-40个排名改进</span></p>
+                </div>
+            </div>
+
+            <!-- Summary Timeline -->
+            <div style="margin-top: 40px; padding: 24px; background: var(--alt-bg); border-radius: 12px;">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">6-Month Implementation Summary</span><span class="zh hidden">6个月实施总结</span></h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                    <div style="background: var(--card-bg); padding: 16px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                        <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Phase 1 Results</span><span class="zh hidden">第1阶段结果</span></div>
+                        <div style="font-size: 18px; font-weight: 700; color: var(--success-color);">50-250</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;"><span class="en">daily visits (Month 2)</span><span class="zh hidden">每日访问（第2个月）</span></div>
+                    </div>
+                    <div style="background: var(--card-bg); padding: 16px; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                        <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Phase 2 Results</span><span class="zh hidden">第2阶段结果</span></div>
+                        <div style="font-size: 18px; font-weight: 700; color: var(--accent-color);">800-1,500</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;"><span class="en">daily visits (Month 4)</span><span class="zh hidden">每日访问（第4个月）</span></div>
+                    </div>
+                    <div style="background: var(--card-bg); padding: 16px; border-radius: 8px; border-left: 4px solid #22c55e;">
+                        <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Phase 3 Results</span><span class="zh hidden">第3阶段结果</span></div>
+                        <div style="font-size: 18px; font-weight: 700; color: #22c55e;">2,000-6,000</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;"><span class="en">daily visits (Month 6)</span><span class="zh hidden">每日访问（第6个月）</span></div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; color: var(--text-secondary); font-size: 13px;"><span class="en"><strong>Key Metrics by Month 6:</strong> 70-100 ranking keywords | 25+ Page 1 rankings (positions 1-10) | 2,000-3,000 Baidu daily visits | 500-1,500 Bing daily visits | 25-30 high-authority backlinks | Domain Authority improvement from estimated 15→25-30</span><span class="zh hidden"><strong>第6个月关键指标：</strong>70-100个排名关键词 | 25+第1页排名（前10位） | 每天2,000-3,000个百度访问 | 每天500-1,500个必应访问 | 25-30条高权威反向链接 | 域名权威从估计的15→25-30改进</span></p>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-container" style="margin-top: 40px;">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">📥 Download Complete Report</span><span class="zh hidden">📥 下载完整报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Schedule Strategy Session</span><span class="zh hidden">📞 安排策略会议</span></button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div style="text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--alt-bg); margin-top: 60px;">
+            <p><span class="en">This SEO Competitive Analysis Report was generated using advanced market intelligence tools and competitive benchmarking. Results are estimates based on historical data trends and competitor performance metrics. Actual results may vary based on implementation quality, market conditions, and algorithm changes.</span><span class="zh hidden">本SEO竞争分析报告使用高级市场情报工具和竞争基准生成。结果是基于历史数据趋势和竞争对手性能指标的估计。实际结果可能因实施质量、市场条件和算法变化而有所不同。</span></p>
+            <p style="margin-top: 12px;"><span class="en">© 2024 EC Innovations - China SEO Services. For consultation, visit:</span><span class="zh hidden">© 2024 EC Innovations - 中国SEO服务。如需咨询，请访问：</span> <a href="https://www.ecinnovations.com/services/china-seo-services/" style="color: var(--primary-color); text-decoration: none;">www.ecinnovations.com</a></p>
+        </div>
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
