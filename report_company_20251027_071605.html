@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jabil - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px;
+            page-break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+            page-break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3{
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul{
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li{
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before{
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3{
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Bar Chart Styles */
+        .chart-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .chart-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chart-bar-label {
+            min-width: 150px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .chart-bar-wrapper {
+            flex: 1;
+            background: var(--alt-bg);
+            border-radius: 6px;
+            height: 30px;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+        .chart-bar-fill {
+            display: flex;
+            height: 100%;
+            border-radius: 6px;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            font-weight: 600;
+            white-space: nowrap;
+            padding-right: 8px;
+        }
+        .chart-bar-value {
+            font-size: 13px;
+            font-family: var(--font-data);
+            color: var(--text-primary);
+            min-width: 60px;
+            text-align: right;
+        }
+
+        /* Stacked Bar Chart */
+        .stacked-bar-wrapper {
+            display: flex;
+            height: 30px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--alt-bg);
+        }
+        .stacked-bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+        }
+        .baidu-segment {
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+        }
+        .bing-segment {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+        }
+
+        /* Timeline */
+        .timeline-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4{
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p{
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .timeline-phase {
+            font-size: 12px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fcd34d;
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover{
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .opportunity-card,
+            .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- SECTION 1: EXECUTIVE SUMMARY -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">Jabil Global</span><span class="zh hidden">捷普电子</span></h1>
+            <p class="subtitle"><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></p>
+            
+            <p class="section-intro" style="margin-top: 32px; margin-bottom: 32px;">
+                <span class="en">This comprehensive report analyzes Jabil's SEO performance against industry leaders in the electronics manufacturing and contract manufacturing sector. The analysis covers six companies including Jabil, with detailed competitive benchmarking across traffic channels, keyword positioning, and market opportunity assessment.</span>
+                <span class="zh hidden">本报告全面分析了捷普在电子制造和合同制造行业中与业界领导者的SEO性能。分析涵盖六家公司，包括捷普公司，以及跨流量渠道、关键词定位和市场机会评估的详细竞争基准。</span>
+            </p>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Current Market Position</span><span class="zh hidden">当前市场位置</span></div>
+                    <div class="value">#5 / 6</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic Volume</span><span class="zh hidden">日流量</span></div>
+                    <div class="value">304</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Indexed Keywords</span><span class="zh hidden">收录关键词</span></div>
+                    <div class="value">75</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">4.07%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Avg Competitor Traffic</span><span class="zh hidden">竞争对手平均流量</span></div>
+                    <div class="value">10,262</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value">3,273%</div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 32px;">
+                <span class="en"><strong>Key Findings:</strong> Jabil currently ranks 5th in daily traffic volume among analyzed companies, generating 304 daily visits. The company significantly lags behind industry leaders, particularly SCC (Shenzhen Sunways Electronics) with 38,428 daily visitors. With only 75 indexed keywords and a modest keyword efficiency rate of 4.07%, Jabil has substantial room for SEO optimization. The competitive gap analysis reveals that Jabil trails the top competitor by 12,541% in daily traffic volume. However, this represents a significant growth opportunity, as the company's modest current performance baseline provides opportunity for rapid improvement through strategic keyword optimization and content expansion.</span>
+                <span class="zh hidden"><strong>主要发现：</strong>捷普在分析的公司中日流量排名第5位，每日产生304次访问。该公司明显落后于行业领导者，特别是深南电路（SCC），其日流量为38,428次。捷普仅有75个已收录关键词，关键词效率率仅为4.07%，有很大的SEO优化空间。竞争差距分析显示，捷普在日流量方面落后于顶级竞争对手12,541%。然而，这也代表着巨大的增长机会，因为公司较低的当前业绩基数通过战略性关键词优化和内容扩展可实现快速改进。</span>
+            </p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">Download PDF Report</span><span class="zh hidden">下载PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Schedule Consultation</span><span class="zh hidden">安排咨询</span></button>
+            </div>
+        </section>
+
+        <!-- SECTION 2: COMPETITION OVERVIEW -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 24px;">
+                <span class="en">Competitive benchmarking across the six leading companies in the electronics manufacturing sector reveals significant variations in SEO performance and market positioning. The following table provides detailed metrics for each competitor.</span>
+                <span class="zh hidden">在电子制造部门的六家领先公司中的竞争基准测试显示了SEO性能和市场定位的显著差异。下表提供了每个竞争对手的详细指标。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日流量</span></th>
+                            <th><span class="en">Baidu PC Traffic</span><span class="zh hidden">百度PC流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">Bing流量</span></th>
+                            <th><span class="en">Keywords</span><span class="zh hidden">关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user"><span class="en">YOU</span><span class="zh hidden">您</span></span><span class="en">Jabil</span><span class="zh hidden">捷普电子</span></td>
+                            <td>304</td>
+                            <td>83 ~ 133</td>
+                            <td>0 ~ 0</td>
+                            <td>75</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">SCC</span><span class="zh hidden">深南电路</span></td>
+                            <td>38,428</td>
+                            <td>2,651 ~ 4,235</td>
+                            <td>7,730 ~ 12,348</td>
+                            <td>4,338</td>
+                            <td>12,641</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Lingyi iTech</span><span class="zh hidden">领益智造</span></td>
+                            <td>3,115</td>
+                            <td>214 ~ 342</td>
+                            <td>1,454 ~ 2,322</td>
+                            <td>91</td>
+                            <td>1,024</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Kinwong</span><span class="zh hidden">光弘科技</span></td>
+                            <td>2,567</td>
+                            <td>152 ~ 244</td>
+                            <td>1,384 ~ 2,210</td>
+                            <td>171</td>
+                            <td>844</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Foxconn</span><span class="zh hidden">富士康科技集团</span></td>
+                            <td>5,082</td>
+                            <td>175 ~ 279</td>
+                            <td>1,731 ~ 2,765</td>
+                            <td>178</td>
+                            <td>1,671</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Fii</span><span class="zh hidden">工业富联</span></td>
+                            <td>939</td>
+                            <td>72 ~ 114</td>
+                            <td>0 ~ 0</td>
+                            <td>85</td>
+                            <td>309</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="summary-text" style="margin-top: 24px;">
+                <span class="en"><strong>Analysis:</strong> SCC dominates the market with 38,428 daily visitors and 4,338 indexed keywords, establishing itself as the clear SEO leader. Foxconn ranks second with 5,082 daily visitors, while Lingyi iTech secures third place with 3,115 visitors. Jabil's position at 304 daily visitors represents approximately 7.9% of SCC's traffic volume but exceeds Fii's traffic by 32%. The Competitive Index reveals that SCC operates at 12,641 times Jabil's efficiency level. Notably, Jabil and Fii are the only companies with zero Bing traffic, indicating limited performance in international search channels. This presents both a competitive weakness and an opportunity for expansion into English-language and international markets.</span>
+                <span class="zh hidden"><strong>分析：</strong>深南电路以38,428日访问量和4,338个已收录关键词主导市场，确立了明确的SEO领导地位。富士康排名第二，日访问量为5,082，而领益智造以3,115访问量排在第三位。捷普以304日访问量的位置约占深南电路流量的7.9%，但超过了工业富联的流量32%。竞争指数显示深南电路的效率水平是捷普的12,641倍。值得注意的是，捷普和工业富联是仅有的Bing流量为零的公司，表明在国际搜索渠道中的表现有限。这既代表竞争劣势，也代表了拓展英文和国际市场的机会。</span>
+            </p>
+        </section>
+
+        <!-- SECTION 3: SWOT ANALYSIS -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 32px;">
+                <span class="en">Comprehensive strategic assessment of Jabil's SEO position, identifying internal capabilities, external challenges, and market opportunities.</span>
+                <span class="zh hidden">对捷普SEO地位的全面战略评估，确定内部能力、外部挑战和市场机会。</span>
+            </p>
+
+            <div class="swot-grid">
+                <!-- Strengths -->
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li><span class="en">Established brand presence with focused keyword targeting in core manufacturing sectors</span><span class="zh hidden">在核心制造业部门拥有既定的品牌形象和专注的关键词定位</span></li>
+                        <li><span class="en">Selective but efficient keyword portfolio with 4.07% top-10 keyword efficiency rate</span><span class="zh hidden">精选但高效的关键词组合，顶10关键词效率率达4.07%</span></li>
+                        <li><span class="en">Moderate keyword distribution (11-50 positions) showing some established page authority</span><span class="zh hidden">适度的关键词分布（11-50位置）显示某些既定的页面权限</span></li>
+                        <li><span class="en">Global brand recognition can support expansion into new geographic markets and keywords</span><span class="zh hidden">全球品牌认可度可支持向新地理市场和关键词的扩展</span></li>
+                    </ul>
+                </div>
+
+                <!-- Weaknesses -->
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">Weaknesses</span><span class="zh hidden">劣势</span></h3>
+                    <ul>
+                        <li><span class="en">Significantly underperforming in daily traffic (304 vs. 10,262 competitor average) with 97% traffic deficit</span><span class="zh hidden">日流量明显不足（304对10,262竞争对手平均值），流量赤字97%</span></li>
+                        <li><span class="en">Minimal keyword coverage with only 75 indexed keywords vs. SCC's 4,338 (127x smaller portfolio)</span><span class="zh hidden">关键词覆盖最少，仅75个已收录关键词，相比之下深南电路有4,338个（小127倍）</span></li>
+                        <li><span class="en">Zero Bing/international search presence, losing market share in English-language and Western markets</span><span class="zh hidden">零Bing/国际搜索存在，在英文和西方市场中失去市场份额</span></li>
+                        <li><span class="en">Concentrated Baidu dependency with no traffic diversification creates market volatility risk</span><span class="zh hidden">对百度的集中依赖，没有流量多样化，造成市场波动风险</span></li>
+                    </ul>
+                </div>
+
+                <!-- Opportunities -->
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">Opportunities</span><span class="zh hidden">机会</span></h3>
+                    <ul>
+                        <li><span class="en">Aggressive keyword expansion: Target underutilized long-tail keywords in contract manufacturing, electronics procurement, and supply chain solutions</span><span class="zh hidden">激进的关键词扩展：针对合同制造、电子采购和供应链解决方案中未充分利用的长尾关键词</span></li>
+                        <li><span class="en">International SEO penetration: Develop English content strategy for Bing/Google to capture 1,500+ daily visitors from Western markets</span><span class="zh hidden">国际SEO渗透：为Bing/Google开发英文内容策略以从西方市场获取1,500+日访问者</span></li>
+                        <li><span class="en">Content gap exploitation: Create comprehensive resources in underserved topics (Industry 4.0, IoT manufacturing, sustainability) where competitors lag</span><span class="zh hidden">内容差距利用：在竞争对手滞后的服务不足主题（工业4.0、物联网制造、可持续性）中创建综合资源</span></li>
+                        <li><span class="en">Market consolidation: Partner with or acquire SEO expertise to rapidly close 3,273% traffic gap with aggressive content and technical SEO initiatives</span><span class="zh hidden">市场巩固：与SEO专业知识合作或收购，通过积极的内容和技术SEO举措快速缩小3,273%的流量差距</span></li>
+                    </ul>
+                </div>
+
+                <!-- Threats -->
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li><span class="en">SCC's dominant position (12,641x competitive index) may exclude Jabil from high-value search results through algorithm optimization</span><span class="zh hidden">深南电路的主导地位（12,641倍竞争指数）可能通过算法优化将捷普排除在高价值搜索结果之外</span></li>
+                        <li><span class="en">Rapid expansion by Lingyi iTech (3,115 daily traffic) and Kinwong (2,567) in similar markets threatens market share erosion</span><span class="zh hidden">领益智造（日流量3,115）和光弘科技（2,567）在相似市场中的快速扩张威胁市场份额流失</span></li>
+                        <li><span class="en">Algorithm changes favoring established players with large content libraries (SCC: 4,338 keywords) could further disadvantage smaller portfolios</span><span class="zh hidden">有利于拥有大型内容库的既定参与者（深南电路：4,338关键词）的算法更改可能进一步不利于较小的产品组合</span></li>
+                        <li><span class="en">Regional competition intensification in China market where Jabil's Baidu presence faces increasing pressure from well-optimized local competitors</span><span class="zh hidden">中国市场区域竞争加剧，捷普的百度存在面临优化良好的本地竞争对手的不断压力</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: DEEP METRICS ANALYSIS -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 24px;">
+                <span class="en">Detailed examination of traffic channels, keyword efficiency, and competitive positioning across search platforms.</span>
+                <span class="zh hidden">跨搜索平台的流量渠道、关键词效率和竞争定位的详细检查。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Distribution (Baidu vs. Bing)</span><span class="zh hidden">流量渠道分布（百度vs必应）</span></h3>
+                <div class="chart-bars">
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Jabil</span><span class="zh hidden">捷普电子</span></div>
+                        <div class="chart-bar-wrapper" style="max-width: 60px;">
+                            <div class="stacked-bar-wrapper" style="width: 100%;">
+                                <div class="stacked-bar-segment baidu-segment" style="width: 100%; flex-grow: 1;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value">100% <span class="en">Baidu</span><span class="zh hidden">百度</span></div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">SCC</span><span class="zh hidden">深南电路</span></div>
+                        <div class="chart-bar-wrapper" style="max-width: 600px;">
+                            <div class="stacked-bar-wrapper" style="width: 100%; max-width: 600px;">
+                                <div class="stacked-bar-segment baidu-segment" style="width: 12%; flex-grow: 0;"></div>
+                                <div class="stacked-bar-segment bing-segment" style="width: 88%; flex-grow: 1;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value">12% / 88%</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Lingyi iTech</span><span class="zh hidden">领益智造</span></div>
+                        <div class="chart-bar-wrapper" style="max-width: 300px;">
+                            <div class="stacked-bar-wrapper" style="width: 100%; max-width: 300px;">
+                                <div class="stacked-bar-segment baidu-segment" style="width: 18%; flex-grow: 0;"></div>
+                                <div class="stacked-bar-segment bing-segment" style="width: 82%; flex-grow: 1;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value">18% / 82%</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Kinwong</span><span class="zh hidden">光弘科技</span></div>
+                        <div class="chart-bar-wrapper" style="max-width: 250px;">
+                            <div class="stacked-bar-wrapper" style="width: 100%; max-width: 250px;">
+                                <div class="stacked-bar-segment baidu-segment" style="width: 15%; flex-grow: 0;"></div>
+                                <div class="stacked-bar-segment bing-segment" style="width: 85%; flex-grow: 1;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value">15% / 85%</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Foxconn</span><span class="zh hidden">富士康科技集团</span></div>
+                        <div class="chart-bar-wrapper" style="max-width: 500px;">
+                            <div class="stacked-bar-wrapper" style="width: 100%; max-width: 500px;">
+                                <div class="stacked-bar-segment baidu-segment" style="width: 12%; flex-grow: 0;"></div>
+                                <div class="stacked-bar-segment bing-segment" style="width: 88%; flex-grow: 1;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value">12% / 88%</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Fii</span><span class="zh hidden">工业富联</span></div>
+                        <div class="chart-bar-wrapper" style="max-width: 90px;">
+                            <div class="stacked-bar-wrapper" style="width: 100%;">
+                                <div class="stacked-bar-segment baidu-segment" style="width: 100%; flex-grow: 1;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value">100% <span class="en">Baidu</span><span class="zh hidden">百度</span></div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; color: var(--text-secondary); font-size: 14px;">
+                    <span class="en"><strong>Insight:</strong> Jabil and Fii operate exclusively in the Baidu market, whereas competitors derive 82-88% of traffic from Bing and international channels. This represents a critical strategic gap: Jabil's zero Bing presence means potential revenue loss of 1,500+ monthly visitors in high-value Western markets. Competitor data shows that successful companies achieve 12-18% Baidu + 82-88% Bing split, indicating balanced global reach.</span>
+                    <span class="zh hidden"><strong>洞察：</strong>捷普和工业富联完全在百度市场中运营，而竞争对手从Bing和国际渠道获得82-88%的流量。这代表了一个关键的战略差距：捷普零Bing存在意味着在高价值西方市场中可能丧失1,500+月访问者。竞争对手数据显示成功的公司实现12-18% 百度 + 82-88% Bing分割，表明全球覆盖平衡。</span>
+                </p>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency Comparison</span><span class="zh hidden">关键词效率比较</span></h3>
+                <div class="chart-bars">
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">SCC</span><span class="zh hidden">深南电路</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 100%; background: linear-gradient(90deg, #3b82f6, #2563eb);">8.87 visitors/keyword</div>
+                        </div>
+                        <div class="chart-bar-value">Highest</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Foxconn</span><span class="zh hidden">富士康科技集团</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 85%; background: linear-gradient(90deg, #3b82f6, #2563eb);">28.56 visitors/keyword</div>
+                        </div>
+                        <div class="chart-bar-value">28.56</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Lingyi iTech</span><span class="zh hidden">领益智造</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 75%; background: linear-gradient(90deg, #3b82f6, #2563eb);">34.23 visitors/keyword</div>
+                        </div>
+                        <div class="chart-bar-value">34.23</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Kinwong</span><span class="zh hidden">光弘科技</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 60%; background: linear-gradient(90deg, #3b82f6, #2563eb);">15.01 visitors/keyword</div>
+                        </div>
+                        <div class="chart-bar-value">15.01</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Fii</span><span class="zh hidden">工业富联</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 50%; background: linear-gradient(90deg, #3b82f6, #2563eb);">11.06 visitors/keyword</div>
+                        </div>
+                        <div class="chart-bar-value">11.06</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Jabil</span><span class="zh hidden">捷普电子</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 20%; background: linear-gradient(90deg, #f59e0b, #d97706);">4.05 visitors/keyword</div>
+                        </div>
+                        <div class="chart-bar-value">4.05 (Lowest)</div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; color: var(--text-secondary); font-size: 14px;">
+                    <span class="en"><strong>Insight:</strong> Jabil's keyword efficiency of 4.05 visitors/keyword ranks last among competitors, 7x lower than SCC's 8.87. This indicates inefficient keyword targeting or poor content quality. Competitors achieve 2.7-8.5x better efficiency through comprehensive keyword research, high-quality backlink profiles, and optimized content strategies. Improving keyword efficiency to 15+ visitors per keyword could increase Jabil's traffic by 370%.</span>
+                    <span class="zh hidden"><strong>洞察：</strong>捷普的关键词效率4.05访问者/关键词在竞争对手中排名最后，比深南电路的8.87低7倍。这表明关键词定位效率不高或内容质量较差。竞争对手通过全面的关键词研究、高质量反向链接档案和优化的内容策略实现2.7-8.5倍更好的效率。将关键词效率提高到15+访问者/关键词可以使捷普的流量增加370%。</span>
+                </p>
+            </div>
+
+            <!-- Keyword Position Distribution -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Position Distribution (Top Keywords in Rankings 11-50)</span><span class="zh hidden">关键词位置分布（排名11-50的顶级关键词）</span></h3>
+                <div class="chart-bars">
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">SCC</span><span class="zh hidden">深南电路</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 100%; background: linear-gradient(90deg, #3b82f6, #2563eb);">3,527 keywords</div>
+                        </div>
+                        <div class="chart-bar-value">3,527</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Foxconn</span><span class="zh hidden">富士康科技集团</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 42%; background: linear-gradient(90deg, #3b82f6, #2563eb);">127 keywords</div>
+                        </div>
+                        <div class="chart-bar-value">127</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Lingyi iTech</span><span class="zh hidden">领益智造</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 25%; background: linear-gradient(90deg, #3b82f6, #2563eb);">61 keywords</div>
+                        </div>
+                        <div class="chart-bar-value">61</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Kinwong</span><span class="zh hidden">光弘科技</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 35%; background: linear-gradient(90deg, #3b82f6, #2563eb);">142 keywords</div>
+                        </div>
+                        <div class="chart-bar-value">142</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Fii</span><span class="zh hidden">工业富联</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 17%; background: linear-gradient(90deg, #3b82f6, #2563eb);">57 keywords</div>
+                        </div>
+                        <div class="chart-bar-value">57</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Jabil</span><span class="zh hidden">捷普电子</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 14%; background: linear-gradient(90deg, #f59e0b, #d97706);">44 keywords</div>
+                        </div>
+                        <div class="chart-bar-value">44</div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; color: var(--text-secondary); font-size: 14px;">
+                    <span class="en"><strong>Insight:</strong> Jabil has only 44 keywords in positions 11-50, suggesting poor ranking depth. SCC commands 3,527 keywords in this range, representing 80x greater keyword footprint. Competitive companies like Kinwong (142 keywords) and Foxconn (127 keywords) demonstrate that sustained keyword ranking depth is achievable through consistent optimization efforts. Focus on moving 20-30 additional keywords from unranked to positions 11-30 could increase Jabil's traffic by 500+ daily visitors.</span>
+                    <span class="zh hidden"><strong>洞察：</strong>捷普在排名11-50中仅有44个关键词，表明排名深度较差。深南电路在此范围内指挥3,527个关键词，代表80倍更大的关键词足迹。像光弘科技（142个关键词）和富士康（127个关键词）这样的竞争公司展示了通过持续优化工作可以实现持续的关键词排名深度。专注于将20-30个额外关键词从未排名移至排名11-30可以将捷普的流量增加500+日访问者。</span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap Analysis (vs. Top Competitor: SCC)</span><span class="zh hidden">竞争差距分析（vs.顶级竞争对手：深南电路）</span></h3>
+                <div class="chart-bars">
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Daily Traffic</span><span class="zh hidden">日流量</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 100%; background: linear-gradient(90deg, #ef4444, #dc2626);">Gap: 38,124 (12,541%)</div>
+                        </div>
+                        <div class="chart-bar-value">Jabil 304 / SCC 38,428</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Keywords Indexed</span><span class="zh hidden">已收录关键词</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 100%; background: linear-gradient(90deg, #ef4444, #dc2626);">Gap: 4,263 (5,684%)</div>
+                        </div>
+                        <div class="chart-bar-value">Jabil 75 / SCC 4,338</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Rank 11-50 Keywords</span><span class="zh hidden">排名11-50关键词</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 100%; background: linear-gradient(90deg, #ef4444, #dc2626);">Gap: 3,483 (7,825%)</div>
+                        </div>
+                        <div class="chart-bar-value">Jabil 44 / SCC 3,527</div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; color: var(--text-secondary); font-size: 14px;">
+                    <span class="en"><strong>Critical Findings:</strong> The competitive gap between Jabil and SCC is extraordinary across all metrics. Jabil would need to increase daily traffic by 12,541% to match SCC, expand its keyword portfolio by 5,684%, and improve rank distribution by 7,825%. However, this gap also represents the magnitude of opportunity available. Achieving 25% of SCC's metrics would require: (1) Expanding to 1,085 keywords, (2) Targeting 881 rank 11-50 positions, (3) Generating 9,607 daily visitors. This represents a realistic 31.5x growth scenario over 24-36 months.</span>
+                    <span class="zh hidden"><strong>关键发现：</strong>捷普与深南电路之间的竞争差距在所有指标上都是非凡的。捷普需要将日流量增加12,541%以匹配深南电路，将其关键词组合扩展5,684%，并改进排名分布7,825%。然而，这个差距也代表了现有机会的规模。实现深南电路指标的25%需要：（1）扩展至1,085个关键词，（2）针对881个排名11-50位置，（3）产生9,607日访问者。这代表了24-36个月内现实的31.5倍增长情景。</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: OPPORTUNITY IDENTIFICATION -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 32px;">
+                <span class="en">Prioritized analysis of untapped market opportunities and strategic initiatives to accelerate Jabil's SEO performance and competitive positioning.</span>
+                <span class="zh hidden">优先级分析未开发的市场机会和战略举措，以加速捷普的SEO性能和竞争定位。</span>
+            </p>
+
+            <!-- Opportunity Cards -->
+            <div>
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">1. International Market Expansion via Bing/Google</span>
+                        <span class="zh hidden">1. 通过Bing/Google的国际市场扩展</span>
+                    </h4>
+                    <p>
+                        <span class="en">Current Status: 0% Bing traffic vs. competitor average of 85%. Estimated monthly opportunity: 1,200-1,500 additional daily visitors.</span>
+                        <span class="zh hidden">当前状态：0% Bing流量对比竞争对手平均85%。估计月度机会：1,200-1,500额外日访问者。</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Action Items:</strong> Develop English-language content strategy targeting global contract manufacturing audiences; implement hreflang tags and international SEO framework; build English backlink profile; optimize for high-value keywords like "EMS provider," "PCB contract manufacturer," "electronics assembly outsourcing."</span>
+                        <span class="zh hidden"><strong>行动项：</strong>开发针对全球合同制造受众的英文内容策略；实施hreflang标签和国际SEO框架；建立英文反向链接档案；针对高价值关键词进行优化，如"EMS提供商"、"PCB合同制造商"、"电子装配外包"。</span>
+                    </p>
+                    <span class="priority-badge priority-high"><span class="en">PRIORITY: HIGH</span><span class="zh hidden">优先级：高</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>ROI Potential:</strong> 400-500% increase in total traffic within 6-12 months</span><span class="zh hidden"><strong>ROI潜力：</strong>6-12个月内总流量增加400-500%</span></p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">2. Long-Tail Keyword Penetration in Baidu</span>
+                        <span class="zh hidden">2. 百度中的长尾关键词渗透</span>
+                    </h4>
+                    <p>
+                        <span class="en">Current Status: 75 indexed keywords; Top 5 competitors average 1,195 keywords. Gap: 1,120 keywords. Estimated opportunity: 800-1,200 additional daily visitors through long-tail optimization.</span>
+                        <span class="zh hidden">当前状态：75个已收录关键词；前5竞争对手平均1,195个关键词。差距：1,120个关键词。估计机会：通过长尾优化增加800-1,200日访问者。</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Action Items:</strong> Conduct comprehensive keyword research for supply chain, materials, processes, and industry verticals; create pillar content clusters targeting high-volume + low-difficulty keywords; implement content hub strategy for "PCB manufacturing," "component sourcing," "manufacturing partnerships," "quality certifications."</span>
+                        <span class="zh hidden"><strong>行动项：</strong>进行供应链、材料、工艺和行业垂直领域的全面关键词研究；创建针对高流量+低难度关键词的支柱内容集群；为"PCB制造"、"零部件采购"、"制造合作伙伴关系"、"质量认证"实施内容中心策略。</span>
+                    </p>
+                    <span class="priority-badge priority-high"><span class="en">PRIORITY: HIGH</span><span class="zh hidden">优先级：高</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>ROI Potential:</strong> 350-450% increase in Baidu traffic within 9-15 months</span><span class="zh hidden"><strong>ROI潜力：</strong>9-15个月内百度流量增加350-450%</span></p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">3. Technical SEO & Content Quality Optimization</span>
+                        <span class="zh hidden">3. 技术SEO和内容质量优化</span>
+                    </h4>
+                    <p>
+                        <span class="en">Current Status: 4.05 visitors/keyword (lowest among peers). Improvement target: 15+ visitors/keyword. Estimated opportunity: 2,000+ additional daily visitors by optimizing existing 75 keywords.</span>
+                        <span class="zh hidden">当前状态：4.05访问者/关键词（同行最低）。改进目标：15+访问者/关键词。估计机会：通过优化现有75个关键词增加2,000+日访问者。</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Action Items:</strong> Conduct technical SEO audit (Core Web Vitals, site speed, mobile optimization); upgrade content quality to topical authority standards; build high-quality backlink profile (target 150-200 EDAs); implement schema markup for products, organizations, reviews; optimize meta tags and snippet optimization.</span>
+                        <span class="zh hidden"><strong>行动项：</strong>进行技术SEO审计（核心网页指标、网站速度、移动优化）；升级内容质量至主题权威标准；建立高质量反向链接档案（目标150-200个EDAs）；实施产品、组织、评论的架构标记；优化元标签和摘要优化。</span>
+                    </p>
+                    <span class="priority-badge priority-medium"><span class="en">PRIORITY: MEDIUM</span><span class="zh hidden">优先级：中等</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>ROI Potential:</strong> 300-400% improvement in keyword efficiency within 3-6 months</span><span class="zh hidden"><strong>ROI潜力：</strong>3-6个月内关键词效率提高300-400%</span></p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">4. Competitive Content Gap Exploitation</span>
+                        <span class="zh hidden">4. 竞争内容差距利用</span>
+                    </h4>
+                    <p>
+                        <span class="en">Current Status: No content leadership in emerging topics. Analysis shows gaps in Industry 4.0, IoT manufacturing, supply chain resilience, ESG compliance, and sustainability. Estimated opportunity: 400-600 daily visitors from underserved content pillars.</span>
+                        <span class="zh hidden">当前状态：新兴主题中没有内容领导力。分析显示工业4.0、物联网制造、供应链韧性、ESG合规性和可持续性方面存在差距。估计机会：来自服务不足内容支柱的400-600日访问者。</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Action Items:</strong> Create definitive guides on "Smart Manufacturing," "AI in Electronics," "Green Manufacturing," "Supply Chain Resilience"; develop thought leadership content; publish case studies and whitepapers; build authority through industry conference mentions and speaking engagements.</span>
+                        <span class="zh hidden"><strong>行动项：</strong>创建关于"智能制造"、"电子产品中的AI"、"绿色制造"、"供应链韧性"的权威指南；开发思想领导力内容；发布案例研究和白皮书；通过行业会议提及和发言参与建立权威。</span>
+                    </p>
+                    <span class="priority-badge priority-medium"><span class="en">PRIORITY: MEDIUM</span><span class="zh hidden">优先级：中等</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>ROI Potential:</strong> 150-250% increase in branded traffic + thought leadership within 6-12 months</span><span class="zh hidden"><strong>ROI潜力：</strong>6-12个月内品牌流量+思想领导力增加150-250%</span></p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">5. Local Market Consolidation & Regional Authority</span>
+                        <span class="zh hidden">5. 本地市场巩固和区域权限</span>
+                    </h4>
+                    <p>
+                        <span class="en">Current Status: Concentrated Baidu presence, primarily in China. Opportunity to establish regional authority in Asia-Pacific markets. Estimated opportunity: 300-500 daily visitors from localized content and regional partnership content.</span>
+                        <span class="zh hidden">当前状态：集中的百度存在，主要在中国。有机会在亚太市场建立区域权限。估计机会：来自本地化内容和区域合作伙伴内容的300-500日访问者。</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Action Items:</strong> Develop localized content for Southeast Asia, Japan, Korea markets; create partnerships with regional industry publications; build internal links between regional content pillars; implement geo-targeting and local SEO signals; engage with regional procurement managers through localized case studies.</span>
+                        <span class="zh hidden"><strong>行动项：</strong>为东南亚、日本、韩国市场开发本地化内容；与区域行业出版物建立合作伙伴关系；在区域内容支柱之间建立内部链接；实施地理定位和本地SEO信号；通过本地化案例研究与区域采购经理互动。</span>
+                    </p>
+                    <span class="priority-badge priority-low"><span class="en">PRIORITY: LOW</span><span class="zh hidden">优先级：低</span></span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);"><span class="en"><strong>ROI Potential:</strong> 100-150% increase in Asia-Pacific regional traffic within 9-18 months</span><span class="zh hidden"><strong>ROI潜力：</strong>9-18个月内亚太地区流量增加100-150%</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: ACTION PLAN -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Strategic Action Plan</span><span class="zh hidden">战略行动计划</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 32px;">
+                <span class="en">A detailed 36-month roadmap to close the competitive gap and establish Jabil as a SEO leader in the electronics manufacturing sector. Implementation is organized into three strategic phases with measurable milestones.</span>
+                <span class="zh hidden">一份详细的36个月路线图，以缩小竞争差距并将捷普确立为电子制造行业的SEO领导者。实施分为三个战略阶段，具有可衡量的里程碑。</span>
+            </p>
+
+            <!-- Phase 1: Foundation & Stabilization (Months 1-6) -->
+            <h3 style="color: var(--primary-color); margin-top: 32px; margin-bottom: 16px;">
+                <span class="en">Phase 1: Foundation & Stabilization (Months 1-6)</span>
+                <span class="zh hidden">阶段1：基础和稳定化（第1-6个月）</span>
+            </h3>
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 1-2: Audit & Strategy Development</span><span class="zh hidden">第1-2个月：审计和战略开发</span></div>
+                <h4><span class="en">Technical SEO Audit & Quick Wins</span><span class="zh hidden">技术SEO审计和快速胜利</span></h4>
+                <p><span class="en">• Conduct comprehensive technical SEO audit (Core Web Vitals, mobile optimization, site speed)</span><span class="zh hidden">• 进行全面的技术SEO审计（核心网页指标、移动优化、网站速度）</span></p>
+                <p><span class="en">• Implement critical fixes: meta tag optimization, schema markup, XML sitemap updates</span><span class="zh hidden">• 实施关键修复：元标签优化、架构标记、XML站点地图更新</span></p>
+                <p><span class="en">• Expected Result: 10-15% improvement in search visibility for existing keywords</span><span class="zh hidden">• 预期结果：现有关键词搜索可见性提高10-15%</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 2-3: Content Audit & Backlink Analysis</span><span class="zh hidden">第2-3个月：内容审计和反向链接分析</span></div>
+                <h4><span class="en">Content Quality Baseline & Competitor Backlink Mapping</span><span class="zh hidden">内容质量基线和竞争对手反向链接映射</span></h4>
+                <p><span class="en">• Complete content audit of existing 75 keywords and supporting pages</span><span class="zh hidden">• 完整审计现有75个关键词和支持页面的内容</span></p>
+                <p><span class="en">• Analyze competitor backlink profiles (focus on SCC's top 500 referring domains)</span><span class="zh hidden">• 分析竞争对手反向链接档案（专注于深南电路的前500个推荐域）</span></p>
+                <p><span class="en">• Identify 100-150 high-quality link-building opportunities</span><span class="zh hidden">• 确定100-150个高质量的链接建设机会</span></p>
+                <p><span class="en">• Expected Result: Actionable roadmap for content improvement and link acquisition</span><span class="zh hidden">• 预期结果：内容改进和链接获取的可行性路线图</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 3-6: Phase 1 Optimization</span><span class="zh hidden">第3-6个月：阶段1优化</span></div>
+                <h4><span class="en">Content Upgrade & Link Building Initiation</span><span class="zh hidden">内容升级和链接建设启动</span></h4>
+                <p><span class="en">• Upgrade 50 existing pages with expanded content (3,000+ word depth)</span><span class="zh hidden">• 升级50个现有页面（3,000+字深度内容）</span></p>
+                <p><span class="en">• Build 75-100 quality backlinks (target: 40% from industry publications, 60% from niche authorities)</span><span class="zh hidden">• 建立75-100个高质量反向链接（目标：40%来自行业出版物，60%来自利基权威）</span></p>
+                <p><span class="en">• Implement internal linking optimization for top 30 keywords</span><span class="zh hidden">• 为前30个关键词实施内部链接优化</span></p>
+                <p><span class="en">• Expected Result: +150-200 daily traffic (from 304 to 454-504)</span><span class="zh hidden">• 预期结果：+150-200日流量（从304增至454-504）</span></p>
+            </div>
+
+            <!-- Phase 2: Expansion & Diversification (Months 7-18) -->
+            <h3 style="color: var(--primary-color); margin-top: 32px; margin-bottom: 16px;">
+                <span class="en">Phase 2: Expansion & Diversification (Months 7-18)</span>
+                <span class="zh hidden">阶段2：扩展和多样化（第7-18个月）</span>
+            </h3>
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 7-12: Multi-Channel & Long-Tail Expansion</span><span class="zh hidden">第7-12个月：多渠道和长尾扩展</span></div>
+                <h4><span class="en">Baidu Long-Tail Keywords & English Content Soft Launch</span><span class="zh hidden">百度长尾关键词和英文内容软发布</span></h4>
+                <p><span class="en">• Expand keyword portfolio from 75 to 250+ keywords (focus: 60% long-tail, 40% mid-tail)</span><span class="zh hidden">• 将关键词组合从75扩展至250+关键词（专注：60%长尾，40%中尾）</span></p>
+                <p><span class="en">• Create 40-50 new optimized pages targeting: "PCB assembly," "component sourcing," "contract manufacturing," "supply chain solutions"</span><span class="zh hidden">• 创建40-50个针对以下目标的新优化页面："PCB装配"、"零部件采购"、"合同制造"、"供应链解决方案"</span></p>
+                <p><span class="en">• Launch English website section (soft launch) targeting "electronics manufacturing," "EMS provider," "PCB contract manufacturer"</span><span class="zh hidden">• 启动英文网站部分（软发布），目标为"电子制造"、"EMS提供商"、"PCB合同制造商"</span></p>
+                <p><span class="en">• Build 150-200 additional backlinks (target: 50 from international domains for English content)</span><span class="zh hidden">• 建立150-200个额外的反向链接（目标：50个来自国际域名用于英文内容）</span></p>
+                <p><span class="en">• Expected Result: +500-700 daily traffic (total: 950-1,200); 10-15 Bing search impressions monthly</span><span class="zh hidden">• 预期结果：+500-700日流量（总计：950-1,200）；每月10-15次必应搜索展示</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 13-18: Pillar Content & Authority Building</span><span class="zh hidden">第13-18个月：支柱内容和权限建设</span></div>
+                <h4><span class="en">Content Hub Strategy & Thought Leadership</span><span class="zh hidden">内容中心战略和思想领导力</span></h4>
+                <p><span class="en">• Create 5 comprehensive pillar content pieces (8,000-12,000 words each): "Guide to Contract Manufacturing," "PCB Manufacturing Excellence," "Supply Chain Optimization," "Industry 4.0 in Electronics," "Quality & Compliance Standards"</span><span class="zh hidden">• 创建5份综合支柱内容（每份8,000-12,000字）："合同制造指南"、"PCB制造卓越"、"供应链优化"、"电子产品中的工业4.0"、"质量和合规标准"</span></p>
+                <p><span class="en">• Publish 8-12 original research reports and case studies</span><span class="zh hidden">• 发布8-12份原始研究报告和案例研究</span></p>
+                <p><span class="en">• Expand English content to 100+ pages with full international SEO optimization</span><span class="zh hidden">• 将英文内容扩展至100+页，并进行完整的国际SEO优化</span></p>
+                <p><span class="en">• Build 100-150 more quality backlinks, including press mentions and industry feature placements</span><span class="zh hidden">• 建立100-150个更多高质量反向链接，包括新闻提及和行业特色刊登</span></p>
+                <p><span class="en">• Expected Result: +800-1,200 daily traffic (total: 1,750-2,400); 150-300 Bing search impressions monthly</span><span class="zh hidden">• 预期结果：+800-1,200日流量（总计：1,750-2,400）；每月150-300次必应搜索展示</span></p>
+            </div>
+
+            <!-- Phase 3: Market Leadership & Scaling (Months 19-36) -->
+            <h3 style="color: var(--primary-color); margin-top: 32px; margin-bottom: 16px;">
+                <span class="en">Phase 3: Market Leadership & Scaling (Months 19-36)</span>
+                <span class="zh hidden">阶段3：市场领导力和扩展（第19-36个月）</span>
+            </h3>
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 19-24: Enterprise Scaling</span><span class="zh hidden">第19-24个月：企业扩展</span></div>
+                <h4><span class="en">Aggressive Keyword Expansion & Regional Authority</span><span class="zh hidden">激进的关键词扩展和区域权限</span></h4>
+                <p><span class="en">• Scale keyword portfolio to 800-1,000 total keywords (4x growth from baseline)</span><span class="zh hidden">• 将关键词组合扩展至800-1,000个总关键词（相比基线增长4倍）</span></p>
+                <p><span class="en">• Achieve 400-500+ keywords in positions 11-30 (11x improvement from baseline of 44)</span><span class="zh hidden">• 在排名11-30位置实现400-500+个关键词（相比基线44的11倍改进）</span></p>
+                <p><span class="en">• Launch localized content for Southeast Asian markets (Vietnamese, Indonesian, Thai language content)</span><span class="zh hidden">• 为东南亚市场推出本地化内容（越南文、印尼文、泰文内容）</span></p>
+                <p><span class="en">• Scale English content library to 300+ pages; achieve 1,000+ Bing monthly impressions</span><span class="zh hidden">• 将英文内容库扩展至300+页；实现1,000+每月必应展示次数</span></p>
+                <p><span class="en">• Build strategic partnerships with 10-15 industry media outlets for ongoing content distribution</span><span class="zh hidden">• 与10-15个行业媒体机构建立战略合作伙伴关系，用于持续的内容分发</span></p>
+                <p><span class="en">• Expected Result: +1,500-2,500 daily traffic (total: 3,250-4,750); Full Google/Bing presence established</span><span class="zh hidden">• 预期结果：+1,500-2,500日流量（总计：3,250-4,750）；已建立完整的Google/Bing存在</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 25-30: Competitive Parity & Authority Peak</span><span class="zh hidden">第25-30个月：竞争对等和权限峰值</span></div>
+                <h4><span class="en">Advanced Optimization & Market Dominance</span><span class="zh hidden">高级优化和市场主导地位</span></h4>
+                <p><span class="en">• Reach 1,200-1,500 total indexed keywords (approaching Foxconn's 178 and Lingyi's 91 levels)</span><span class="zh hidden">• 达到1,200-1,500个总已收录关键词（接近富士康的178和领益的91水平）</span></p>
+                <p><span class="en">• Implement advanced topical authority framework across all content pillars</span><span class="zh hidden">• 在所有内容支柱中实施高级主题权限框架</span></p>
+                <p><span class="en">• Target 800-1,000 positions in top 50, with 200-300 in positions 1-10</span><span class="zh hidden">• 目标是前50名中800-1,000个位置，其中200-300个在排名1-10</span></p>
+                <p><span class="en">• Achieve 15+ visitors per keyword efficiency ratio (vs. current 4.05)</span><span class="zh hidden">• 实现15+访问者/关键词效率比（相比当前4.05）</span></p>
+                <p><span class="en">• Expected Result: +2,000-3,000 daily traffic (total: 5,250-7,000); Competitive parity with Foxconn/Kinwong achieved</span><span class="zh hidden">• 预期结果：+2,000-3,000日流量（总计：5,250-7,000）；已实现与富士康/光弘的竞争对等</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 31-36: Market Leadership & Consolidation</span><span class="zh hidden">第31-36个月：市场领导力和巩固</span></div>
+                <h4><span class="en">Industry Leadership Position</span><span class="zh hidden">行业领导地位</span></h4>
+                <p><span class="en">• Maintain and optimize 1,500+ keyword portfolio for sustained growth</span><span class="zh hidden">• 维护和优化1,500+关键词组合以实现持续增长</span></p>
+                <p><span class="en">• Establish thought leadership through 15+ published whitepapers, case studies, and original research</span><span class="zh hidden">• 通过15+已发布的白皮书、案例研究和原始研究确立思想领导力</span></p>
+                <p><span class="en">• Achieve 3-4x traffic of Fii (939 daily) and competitive positioning vs. Kinwong (2,567)</span><span class="zh hidden">• 达到工业富联（日流量939）的3-4倍流量和相比光弘（2,567）的竞争定位</span></p>
+                <p><span class="en">• Launch continuous optimization cycles; establish SEO as ongoing competitive advantage</span><span class="zh hidden">• 启动持续优化周期；将SEO确立为持续竞争优势</span></p>
+                <p><span class="en">• Expected Result: 7,000-9,000+ daily traffic (23-29x growth from baseline 304)</span><span class="zh hidden">• 预期结果：7,000-9,000+日流量（相比基线304增长23-29倍）</span></p>
+            </div>
+
+            <!-- Summary & Metrics -->
+            <div class="metric-card" style="margin-top: 40px; border: 2px solid var(--primary-color);">
+                <h4 style="margin-bottom: 16px; color: var(--primary-color);"><span class="en">36-Month Roadmap: Key Milestones & Metrics</span><span class="zh hidden">36个月路线图：关键里程碑和指标</span></h4>
+                <table class="data-table">
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Phase 1 (Mo 1-6)</span><span class="zh hidden">阶段1（1-6月）</span></td>
+                            <td><span class="en">Days →</span><span class="zh hidden">日期 →</span> 454-504</td>
+                            <td><span class="en">Keywords →</span><span class="zh hidden">关键词 →</span> 75</td>
+                            <td><span class="en">Bing Traffic →</span><span class="zh hidden">Bing流量 →</span> 0%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Phase 2 (Mo 7-18)</span><span class="zh hidden">阶段2（7-18月）</span></td>
+                            <td><span class="en">Days →</span><span class="zh hidden">日期 →</span> 1,750-2,400</td>
+                            <td><span class="en">Keywords →</span><span class="zh hidden">关键词 →</span> 300-400</td>
+                            <td><span class="en">Bing Traffic →</span><span class="zh hidden">Bing流量 →</span> 8-12%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Phase 3 (Mo 19-36)</span><span class="zh hidden">阶段3（19-36月）</span></td>
+                            <td><span class="en">Days →</span><span class="zh hidden">日期 →</span> 7,000-9,000+</td>
+                            <td><span class="en">Keywords →</span><span class="zh hidden">关键词 →</span> 1,500+</td>
+                            <td><span class="en">Bing Traffic →</span><span class="zh hidden">Bing流量 →</span> 25-35%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="summary-text" style="margin-top: 32px;">
+                <span class="en"><strong>Implementation Notes:</strong> This roadmap assumes dedicated SEO resources (2-3 FTE specialists minimum) and a budget of $150,000-250,000 annually. Success requires cross-functional collaboration with product, marketing, and engineering teams. Monthly tracking of 15+ KPIs is essential for agile optimization and course correction. The projected 23-29x traffic growth represents realistic achievement through disciplined execution, competitive intelligence, and sustained investment in content quality and technical excellence. Milestones should be revisited quarterly to ensure alignment with market dynamics and competitor movements.</span>
+                <span class="zh hidden"><strong>实施说明：</strong>本路线图假设有专用的SEO资源（最少2-3名全职专家）和150,000-250,000美元的年度预算。成功需要与产品、营销和工程团队的跨职能合作。每月跟踪15+个KPI对敏捷优化和路线修正至关重要。预计的23-29倍流量增长代表通过纪律性执行、竞争情报和对内容质量和技术卓越的持续投资而实现的现实成就。应每季度重新审视里程碑，以确保与市场动态和竞争对手动向的对齐。</span>
+            </p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">Download Complete PDF Report</span><span class="zh hidden">下载完整PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Get Expert Implementation Support</span><span class="zh hidden">获取专家实施支持</span></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtns = document.querySelectorAll('#download-pdf-btn');
+            downloadBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
