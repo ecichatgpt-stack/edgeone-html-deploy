@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ian D'Agata Wine Culture - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+            page-break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+        }
+        .data-table thead {
+            display: table-header-group;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+            page-break-after: avoid;
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3{
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul{
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li{
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before{
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3{
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Chart Bar Styles */
+        .bar-chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+        .bar-label {
+            width: 150px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .bar-container {
+            flex: 1;
+            height: 30px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+        .bar-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+        .bar-segment.baidu {
+            background: #1890ff;
+        }
+        .bar-segment.bing {
+            background: #52c41a;
+        }
+        .bar-value {
+            width: 80px;
+            text-align: right;
+            font-size: 14px;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+        }
+
+        /* Horizontal Bar Chart */
+        .horizontal-bar-chart {
+            margin-top: 16px;
+        }
+        .h-bar-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+        .h-bar-label {
+            width: 150px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .h-bar-track {
+            flex: 1;
+            height: 24px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .h-bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .h-bar-value {
+            width: 50px;
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+        }
+
+        /* Gap Analysis */
+        .gap-item {
+            background: var(--alt-bg);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+        .gap-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .gap-comparison {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+        }
+        .gap-company {
+            display: flex;
+            flex-direction: column;
+        }
+        .gap-company-name {
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .gap-company-value {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-family: var(--font-data);
+        }
+
+        /* Timeline */
+        .timeline-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4{
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p{
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Action Cards */
+        .action-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fcd34d;
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover{
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">Ian D'Agata Wine Culture</span><span class="zh hidden">伊恩·达加塔葡萄酒文化</span></h1>
+            <p class="subtitle"><span class="en">SEO Competitive Analysis Report 2024</span><span class="zh hidden">SEO竞争分析报告 2024</span></p>
+            
+            <p class="section-intro" style="margin-top: 24px; margin-bottom: 32px;">
+                <span class="en">This comprehensive SEO competitive analysis report examines the digital landscape of Ian D'Agata Wine Culture against five major competitors in the wine industry. The analysis reveals a critical growth opportunity: while your brand currently has zero detected organic traffic, the wine industry in China demonstrates significant SEO potential with competitors like Wine-World achieving over 13,000 daily visitors. This report provides actionable insights to establish and scale your online presence.</span>
+                <span class="zh hidden">本综合SEO竞争分析报告考察了伊恩·达加塔葡萄酒文化与五大葡萄酒行业竞争对手的数字环境。分析表明存在一个关键的增长机会：虽然您的品牌目前未检测到有机流量，但中国葡萄酒行业展示了巨大的SEO潜力，竞争对手如红酒世界网每天达到13,000多访客。本报告提供可操作的见解以建立和扩大您的在线影响力。</span>
+            </p>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Current Market Position</span><span class="zh hidden">当前市场位置</span></div>
+                    <div class="value">6<span class="en">th</span><span class="zh hidden">位</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">PC Keywords</span><span class="zh hidden">PC关键词</span></div>
+                    <div class="value">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">0%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Industry Average Traffic</span><span class="zh hidden">行业平均流量</span></div>
+                    <div class="value">2,679</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value"><span class="en">CRITICAL</span><span class="zh hidden">关键</span></div>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px; padding: 20px; background: var(--alt-bg); border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                <h3 style="color: var(--text-heading); margin-bottom: 12px;"><span class="en">Key Finding</span><span class="zh hidden">关键发现</span></h3>
+                <p style="color: var(--text-secondary);">
+                    <span class="en">Ian D'Agata Wine Culture faces a critical starting point with zero detected organic traffic. However, this represents a significant opportunity: the wine industry in China demonstrates strong SEO potential with Wine-World commanding 13,297 daily users. The competitive landscape shows that companies with proper SEO strategies can capture substantial market share. Your immediate priority should be establishing SEO foundation, building keyword authority, and developing high-quality content to compete in this lucrative market.</span>
+                    <span class="zh hidden">伊恩·达加塔葡萄酒文化面临零有机流量的关键起点。然而，这代表了重大机会：中国葡萄酒行业展示了强劲的SEO潜力，红酒世界网拥有13,297个日均用户。竞争格局显示，具有适当SEO策略的公司可以获得大量市场份额。您的直接优先事项应该是建立SEO基础、建立关键词权威性和开发高质量内容以在这个有利可图的市场中竞争。</span>
+                </p>
+            </div>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">Download PDF Report</span><span class="zh hidden">下载PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Schedule Consultation</span><span class="zh hidden">预约咨询</span></button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="summary-text">
+                <span class="en">Comprehensive comparison of your brand against the top 5 competitors in the wine industry. The analysis includes traffic metrics, keyword rankings, and competitive positioning across all major search engines.</span>
+                <span class="zh hidden">您的品牌与葡萄酒行业前5大竞争对手的全面比较。分析包括流量指标、关键词排名和所有主要搜索引擎的竞争定位。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu Traffic Range</span><span class="zh hidden">百度流量范围</span></th>
+                            <th><span class="en">Bing Traffic Range</span><span class="zh hidden">必应流量范围</span></th>
+                            <th><span class="en">PC Keywords</span><span class="zh hidden">PC关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争力指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user">YOU</span><span class="en">Ian D'Agata Wine Culture</span><span class="zh hidden">伊恩·达加塔葡萄酒文化</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td style="font-weight: 600; color: var(--danger-color);">0.00</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Wine-World</span><span class="zh hidden">红酒世界网</span></td>
+                            <td>13,297</td>
+                            <td>103 ~ 165</td>
+                            <td>18 ~ 30</td>
+                            <td>911</td>
+                            <td style="font-weight: 600; color: var(--success-color);">98.52</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Decanter China</span><span class="zh hidden">醇鉴中国</span></td>
+                            <td>100</td>
+                            <td>0 ~ 0</td>
+                            <td>42 ~ 68</td>
+                            <td>11</td>
+                            <td style="font-weight: 600; color: var(--warning-color);">7.43</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">TasteSpirit</span><span class="zh hidden">知味葡萄酒杂志</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td style="font-weight: 600; color: var(--danger-color);">0.00</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Penguin Guide</span><span class="zh hidden">企鹅吃喝指南</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td style="font-weight: 600; color: var(--danger-color);">0.00</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Wine Review</span><span class="zh hidden">葡萄酒评论</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td style="font-weight: 600; color: var(--danger-color);">0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 24px; padding: 20px; background: var(--alt-bg); border-radius: 8px;">
+                <h3 style="color: var(--text-heading); margin-bottom: 12px;"><span class="en">Competitive Insights</span><span class="zh hidden">竞争力洞察</span></h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Market Leader:</strong> Wine-World dominates with 13,297 daily users and 911 PC keywords, representing 496x higher traffic than the second-place competitor.</span>
+                        <span class="zh hidden"><strong>市场领导者：</strong>红酒世界网以13,297个日均用户和911个PC关键词主导市场，代表比第二名竞争对手高496倍的流量。</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Growing Competitor:</strong> Decanter China shows emerging strength with 100 daily users and 11 keywords, primarily through Bing traffic (42-68 range).</span>
+                        <span class="zh hidden"><strong>新兴竞争对手：</strong>醇鉴中国表现出100个日均用户和11个关键词的新兴实力，主要通过必应流量（42-68范围）。</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Market Opportunity:</strong> Five competitors show zero traffic, indicating saturated or niche market segments. Focus on differentiated content and unique value propositions.</span>
+                        <span class="zh hidden"><strong>市场机会：</strong>五个竞争对手显示零流量，表明市场饱和或小众市场细分。专注于差异化内容和独特价值主张。</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="summary-text">
+                <span class="en">Strategic assessment of Ian D'Agata Wine Culture's competitive position, internal capabilities, and external market dynamics within the wine industry SEO landscape.</span>
+                <span class="zh hidden">对伊恩·达加塔葡萄酒文化在葡萄酒行业SEO环保中的竞争地位、内部能力和外部市场动态的战略评估。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Brand Authority:</strong> Ian D'Agata is a globally recognized wine expert with established credibility in wine education and criticism</span>
+                            <span class="zh hidden"><strong>品牌权威性：</strong>伊恩·达加塔是全球公认的葡萄酒专家，在葡萄酒教育和评论中拥有确立的可信度</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Unique Content:</strong> Expert-level wine knowledge and analysis provide differentiation from competitors with generic content</span>
+                            <span class="zh hidden"><strong>独特内容：</strong>专家级葡萄酒知识和分析提供了与竞争对手通用内容的差异化</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Niche Positioning:</strong> Premium wine education market is less saturated than mass-market wine retail segments</span>
+                            <span class="zh hidden"><strong>小众定位：</strong>高端葡萄酒教育市场比大众葡萄酒零售市场饱和度低</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">Weaknesses</span><span class="zh hidden">弱势</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Zero Online Presence:</strong> No detected organic search traffic indicates absent SEO strategy and minimal digital footprint</span>
+                            <span class="zh hidden"><strong>零在线存在：</strong>未检测到任何有机搜索流量表明缺乏SEO策略和最小的数字足迹</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>No Keyword Authority:</strong> Zero PC keywords ranking demonstrates lack of SEO optimization and content strategy</span>
+                            <span class="zh hidden"><strong>无关键词权威性：</strong>零PC关键词排名表明缺乏SEO优化和内容策略</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Market Entry Barrier:</strong> Competitors like Wine-World have 911-keyword advantage and 130x more daily traffic</span>
+                            <span class="zh hidden"><strong>市场进入壁垒：</strong>竞争对手如红酒世界网拥有911个关键词优势和130倍的日均流量</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);"><span class="en">Opportunities</span><span class="zh hidden">机遇</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>First-Mover in Premium Segment:</strong> Establish authority in high-value wine education market before competitors saturate the space</span>
+                            <span class="zh hidden"><strong>高端市场先发：</strong>在竞争对手饱和市场之前在高价值葡萄酒教育市场中建立权威</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Underserved Keywords:</strong> Many wine education and sommeliership keywords remain available with moderate to high search volume</span>
+                            <span class="zh hidden"><strong>未被开发的关键词：</strong>许多葡萄酒教育和侍酒师关键词保持可用，具有中等到高搜索量</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Content Monetization:</strong> Build organic traffic to support wine courses, consulting, and premium content offerings</span>
+                            <span class="zh hidden"><strong>内容变现：</strong>建立有机流量以支持葡萄酒课程、咨询和高端内容产品</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Dominant Competitor:</strong> Wine-World's 98.52 competitive index and massive traffic advantage creates significant barrier to market share</span>
+                            <span class="zh hidden"><strong>主导竞争对手：</strong>红酒世界网的98.52竞争指数和巨大流量优势造成重大市场份额壁垒</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Emerging Competition:</strong> Well-funded competitors may quickly scale SEO efforts if they identify market opportunity</span>
+                            <span class="zh hidden"><strong>新兴竞争：</strong>如果资金充足的竞争对手发现市场机会，可能会迅速扩展SEO努力</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Algorithm Changes:</strong> Google and Baidu algorithm updates could shift ranking factors before brand establishes authority</span>
+                            <span class="zh hidden"><strong>算法变化：</strong>Google和百度算法更新可能在品牌建立权威之前改变排名因素</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="summary-text">
+                <span class="en">In-depth examination of traffic channels, keyword efficiency, competitive gaps, and strategic metrics to identify actionable optimization opportunities.</span>
+                <span class="zh hidden">对流量渠道、关键词效率、竞争力差距和战略指标的深入检查，以识别可操作的优化机会。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Analysis: Baidu vs Bing Distribution</span><span class="zh hidden">流量渠道分析：百度与必应分布</span></h3>
+                <div class="bar-chart-row">
+                    <div class="bar-label"><span class="en">Ian D'Agata Wine Culture</span><span class="zh hidden">伊恩·达加塔葡萄酒文化</span></div>
+                    <div class="bar-container">
+                        <div class="bar-segment baidu" style="width: 50%;"></div>
+                        <div class="bar-segment bing" style="width: 50%;"></div>
+                    </div>
+                    <div class="bar-value">0 users</div>
+                </div>
+                <div class="bar-chart-row">
+                    <div class="bar-label"><span class="en">Wine-World</span><span class="zh hidden">红酒世界网</span></div>
+                    <div class="bar-container">
+                        <div class="bar-segment baidu" style="width: 85%;"></div>
+                        <div class="bar-segment bing" style="width: 15%;"></div>
+                    </div>
+                    <div class="bar-value">13,297 users</div>
+                </div>
+                <div class="bar-chart-row">
+                    <div class="bar-label"><span class="en">Decanter China</span><span class="zh hidden">醇鉴中国</span></div>
+                    <div class="bar-container">
+                        <div class="bar-segment baidu" style="width: 10%;"></div>
+                        <div class="bar-segment bing" style="width: 90%;"></div>
+                    </div>
+                    <div class="bar-value">100 users</div>
+                </div>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency Analysis</span><span class="zh hidden">关键词效率分析</span></h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                    <span class="en">Keyword Efficiency = Daily Traffic ÷ Total PC Keywords. Higher ratios indicate better keyword optimization and content quality.</span>
+                    <span class="zh hidden">关键词效率 = 日均流量 ÷ 总PC关键词。较高的比率表明更好的关键词优化和内容质量。</span>
+                </p>
+                <div class="horizontal-bar-chart">
+                    <div class="h-bar-item">
+                        <div class="h-bar-label"><span class="en">Wine-World</span><span class="zh hidden">红酒世界网</span></div>
+                        <div class="h-bar-track">
+                            <div class="h-bar-fill" style="width: 100%;">14.60</div>
+                        </div>
+                        <div class="h-bar-value">14.60</div>
+                    </div>
+                    <div class="h-bar-item">
+                        <div class="h-bar-label"><span class="en">Decanter China</span><span class="zh hidden">醇鉴中国</span></div>
+                        <div class="h-bar-track">
+                            <div class="h-bar-fill" style="width: 61%;">9.09</div>
+                        </div>
+                        <div class="h-bar-value">9.09</div>
+                    </div>
+                    <div class="h-bar-item">
+                        <div class="h-bar-label"><span class="en">Ian D'Agata Wine Culture</span><span class="zh hidden">伊恩·达加塔葡萄酒文化</span></div>
+                        <div class="h-bar-track">
+                            <div class="h-bar-fill" style="width: 0%;">—</div>
+                        </div>
+                        <div class="h-bar-value">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap Analysis: You vs Top Competitor</span><span class="zh hidden">竞争力差距分析：您与顶级竞争对手</span></h3>
+                <div class="gap-item">
+                    <div class="gap-title"><span class="en">Daily Organic Traffic</span><span class="zh hidden">日均有机流量</span></div>
+                    <div class="gap-comparison">
+                        <div class="gap-company">
+                            <div class="gap-company-name"><span class="en">Your Brand</span><span class="zh hidden">您的品牌</span></div>
+                            <div class="gap-company-value">0</div>
+                        </div>
+                        <div style="color: var(--text-muted); padding-top: 20px;">→</div>
+                        <div class="gap-company">
+                            <div class="gap-company-name"><span class="en">Wine-World</span><span class="zh hidden">红酒世界网</span></div>
+                            <div class="gap-company-value">13,297</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap-item">
+                    <div class="gap-title"><span class="en">Ranking Keywords (PC)</span><span class="zh hidden">排名关键词（PC）</span></div>
+                    <div class="gap-comparison">
+                        <div class="gap-company">
+                            <div class="gap-company-name"><span class="en">Your Brand</span><span class="zh hidden">您的品牌</span></div>
+                            <div class="gap-company-value">0</div>
+                        </div>
+                        <div style="color: var(--text-muted); padding-top: 20px;">→</div>
+                        <div class="gap-company">
+                            <div class="gap-company-name"><span class="en">Wine-World</span><span class="zh hidden">红酒世界网</span></div>
+                            <div class="gap-company-value">911</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gap-item">
+                    <div class="gap-title"><span class="en">Position 11-20 Keywords</span><span class="zh hidden">位置11-20关键词</span></div>
+                    <div class="gap-comparison">
+                        <div class="gap-company">
+                            <div class="gap-company-name"><span class="en">Your Brand</span><span class="zh hidden">您的品牌</span></div>
+                            <div class="gap-company-value">0</div>
+                        </div>
+                        <div style="color: var(--text-muted); padding-top: 20px;">→</div>
+                        <div class="gap-company">
+                            <div class="gap-company-name"><span class="en">Wine-World</span><span class="zh hidden">红酒世界网</span></div>
+                            <div class="gap-company-value">159</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Insights -->
+            <div style="margin-top: 24px; padding: 20px; background: var(--alt-bg); border-radius: 8px;">
+                <h3 style="color: var(--text-heading); margin-bottom: 12px;"><span class="en">Strategic Insights</span><span class="zh hidden">战略洞察</span></h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Baidu Dominance:</strong> Wine-World's traffic is 85% from Baidu (organic) and only 15% from Bing, highlighting Baidu's critical importance in China. Your strategy must prioritize Baidu optimization.</span>
+                        <span class="zh hidden"><strong>百度主导：</strong>红酒世界网的流量85%来自百度（有机），仅15%来自必应，突出了百度在中国的关键重要性。您的策略必须优先考虑百度优化。</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Keyword Efficiency Benchmark:</strong> Wine-World achieves 14.60 users per keyword. To reach 1,000 daily users with similar efficiency, you'd need 68 ranking keywords as a starting target.</span>
+                        <span class="zh hidden"><strong>关键词效率基准：</strong>红酒世界网每个关键词达到14.60用户。要以类似效率达到1,000日均用户，您需要68个排名关键词作为起始目标。</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Mid-Range Opportunity:</strong> Decanter China shows viability at smaller scale (100 users, 11 keywords), proving the market can support multiple players with niche positioning.</span>
+                        <span class="zh hidden"><strong>中端市场机会：</strong>醇鉴中国在较小规模（100用户，11个关键词）显示可行性，证明市场可以支持多个具有小众定位的参与者。</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="summary-text">
+                <span class="en">Specific, actionable opportunities to establish market presence and scale organic traffic through strategic keyword targeting, content development, and search engine optimization initiatives.</span>
+                <span class="zh hidden">通过战略关键词定位、内容开发和搜索引擎优化举措建立市场存在和扩展有机流量的具体可操作机会。</span>
+            </p>
+
+            <div style="margin-bottom: 32px;">
+                <h3 style="color: var(--text-heading); margin-bottom: 20px; font-size: 18px;"><span class="en">Opportunity Priority Matrix</span><span class="zh hidden">机会优先级矩阵</span></h3>
+                
+                <!-- High Priority -->
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                    <h4><span class="en">Establish Baidu SEO Foundation</span><span class="zh hidden">建立百度SEO基础</span></h4>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Opportunity:</strong> Baidu accounts for 85% of Wine-World's traffic. Establishing Baidu presence should be your first priority given zero current presence.</span>
+                        <span class="zh hidden"><strong>机会：</strong>百度占红酒世界网流量的85%。鉴于目前零存在，建立百度存在应该是您的首要优先事项。</span>
+                    </p>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Timeline:</strong> Months 1-3</span>
+                        <span class="zh hidden"><strong>时间表：</strong>第1-3个月</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Expected Impact:</strong> Establish 50+ ranking keywords and 500-1,000 daily users within 6-9 months</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>在6-9个月内建立50+排名关键词和500-1,000日均用户</span>
+                    </p>
+                </div>
+
+                <!-- High Priority -->
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                    <h4><span class="en">Develop Premium Wine Education Content Hub</span><span class="zh hidden">开发高端葡萄酒教育内容中心</span></h4>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Opportunity:</strong> Create high-quality educational content around wine tasting, regions, varieties, and sommeliership to capture underserved premium market segment.</span>
+                        <span class="zh hidden"><strong>机会：</strong>创建围绕葡萄酒品尝、产区、品种和侍酒师的高质量教育内容，以捕获服务不足的高端市场。</span>
+                    </p>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Timeline:</strong> Months 2-4</span>
+                        <span class="zh hidden"><strong>时间表：</strong>第2-4个月</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Expected Impact:</strong> Generate 100+ long-tail keyword opportunities with lower competition but high conversion intent</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>生成100+长尾关键词机会，竞争较低但转化意图高</span>
+                    </p>
+                </div>
+
+                <!-- Medium Priority -->
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中等优先级</span></span>
+                    <h4><span class="en">Target High-Intent Keywords in Niche Segments</span><span class="zh hidden">针对小众细分市场中的高意图关键词</span></h4>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Opportunity:</strong> Keywords like "葡萄酒品鉴师培训" (wine tasting certification), "高端葡萄酒知识" (premium wine knowledge) have moderate search volume with less competition than brand keywords.</span>
+                        <span class="zh hidden"><strong>机会：</strong>"葡萄酒品鉴师培训"（葡萄酒品尝认证）、"高端葡萄酒知识"（高端葡萄酒知识）等关键词搜索量适中，竞争少于品牌关键词。</span>
+                    </p>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Timeline:</strong> Months 3-6</span>
+                        <span class="zh hidden"><strong>时间表：</strong>第3-6个月</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Expected Impact:</strong> Rank for 20+ high-intent keywords in 4-6 months with strong monetization potential</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>在4-6个月内为20+高意图关键词排名，具有强大变现潜力</span>
+                    </p>
+                </div>
+
+                <!-- Medium Priority -->
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中等优先级</span></span>
+                    <h4><span class="en">Build Strategic Internal Linking Structure</span><span class="zh hidden">构建战略性内部链接结构</span></h4>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Opportunity:</strong> Develop interconnected content clusters around wine regions, grape varieties, and educational topics to maximize keyword authority and user engagement.</span>
+                        <span class="zh hidden"><strong>机会：</strong>围绕葡萄酒产区、葡萄品种和教育主题开发相互连接的内容集群，以最大化关键词权威性和用户参与度。</span>
+                    </p>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Timeline:</strong> Ongoing (Months 2+)</span>
+                        <span class="zh hidden"><strong>时间表：</strong>持续进行（第2个月以后）</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Expected Impact:</strong> Improve crawl efficiency and keyword correlation, supporting 30%+ increase in rankable keywords within 6 months</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>提高爬虫效率和关键词相关性，支持6个月内可排名关键词增加30%+</span>
+                    </p>
+                </div>
+
+                <!-- Low Priority -->
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-low"><span class="en">LOW PRIORITY (Future)</span><span class="zh hidden">低优先级（未来）</span></span>
+                    <h4><span class="en">Expand to Bing and International Markets</span><span class="zh hidden">扩展到必应和国际市场</span></h4>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Opportunity:</strong> After establishing Baidu presence, expand to Bing (which shows 15% of Wine-World traffic) and English-language wine markets.</span>
+                        <span class="zh hidden"><strong>机会：</strong>在建立百度存在后，扩展到必应（显示红酒世界网15%的流量）和英文葡萄酒市场。</span>
+                    </p>
+                    <p style="margin-bottom: 12px;">
+                        <span class="en"><strong>Timeline:</strong> Months 6-12</span>
+                        <span class="zh hidden"><strong>时间表：</strong>第6-12个月</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Expected Impact:</strong> Additional 100-300 daily users from international search engines and English-language markets</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>来自国际搜索引擎和英文市场的额外100-300日均用户</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Potential Calculation -->
+            <div style="margin-top: 32px; padding: 20px; background: var(--alt-bg); border-radius: 8px;">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">Growth Potential Calculation</span><span class="zh hidden">增长潜力计算</span></h3>
+                <table class="data-table" style="margin-top: 16px;">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Scenario</span><span class="zh hidden">场景</span></th>
+                            <th><span class="en">Timeline</span><span class="zh hidden">时间表</span></th>
+                            <th><span class="en">Target Keywords</span><span class="zh hidden">目标关键词</span></th>
+                            <th><span class="en">Projected Daily Traffic</span><span class="zh hidden">预计日均流量</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争力指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Conservative</span><span class="zh hidden">保守</span></td>
+                            <td><span class="en">6 months</span><span class="zh hidden">6个月</span></td>
+                            <td>50</td>
+                            <td>500</td>
+                            <td>3.71</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Moderate</span><span class="zh hidden">适度</span></td>
+                            <td><span class="en">9 months</span><span class="zh hidden">9个月</span></td>
+                            <td>150</td>
+                            <td>1,500</td>
+                            <td>11.14</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Aggressive</span><span class="zh hidden">积极</span></td>
+                            <td><span class="en">12 months</span><span class="zh hidden">12个月</span></td>
+                            <td>300</td>
+                            <td>3,500</td>
+                            <td>25.98</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 16px; color: var(--text-secondary); font-size: 13px;">
+                    <span class="en"><strong>Basis:</strong> Conservative assumes 10 users per keyword average (vs Wine-World's 14.6), Moderate assumes 10 users/keyword, Aggressive assumes 11.7 users/keyword with strong execution.</span>
+                    <span class="zh hidden"><strong>基础：</strong>保守假设平均每个关键词10个用户（与红酒世界网的14.6相比），适度假设每个关键词10个用户，积极假设每个关键词11.7个用户，执行强劲。</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan & Implementation Timeline</span><span class="zh hidden">行动计划与实施时间表</span></h2>
+            <p class="summary-text">
+                <span class="en">Detailed, phased approach to establishing SEO presence, capturing market share, and building sustainable organic traffic for Ian D'Agata Wine Culture over the next 12 months.</span>
+                <span class="zh hidden">在未来12个月内为伊恩·达加塔葡萄酒文化建立SEO存在、获取市场份额和构建可持续有机流量的详细分阶段方法。</span>
+            </p>
+
+            <!-- Phase 1 -->
+            <div class="timeline-item">
+                <h4 style="color: var(--primary-color);"><span class="en">Phase 1: Foundation & SEO Audit (Weeks 1-4)</span><span class="zh hidden">第1阶段：基础和SEO审计（第1-4周）</span></h4>
+                <p style="margin-bottom: 12px; color: var(--text-secondary);">
+                    <span class="en"><strong>Objectives:</strong> Establish technical SEO foundation, conduct competitive keyword research, and create content strategy roadmap.</span>
+                    <span class="zh hidden"><strong>目标：</strong>建立技术SEO基础，进行竞争关键词研究，创建内容战略路线图。</span>
+                </p>
+                <ul style="list-style: none; padding: 0; margin-left: 12px;">
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Conduct comprehensive SEO audit of existing website/domain</span><span class="zh hidden">对现有网站/域名进行全面SEO审计</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Analyze top 100 ranking keywords from Wine-World and competitors</span><span class="zh hidden">分析来自红酒世界网和竞争对手的前100名关键词</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Identify 200+ long-tail keyword opportunities in niche segments</span><span class="zh hidden">在小众细分市场中确定200+长尾关键词机会</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Submit website to Baidu Webmaster Tools and verify ownership</span><span class="zh hidden">将网站提交到百度网站管理员工具并验证所有权</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Optimize website metadata, headers, and technical structure</span><span class="zh hidden">优化网站元数据、标题和技术结构</span>
+                    </li>
+                </ul>
+                <p style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--alt-bg); color: var(--text-muted); font-size: 13px;">
+                    <span class="en"><strong>Deliverables:</strong> SEO audit report, keyword research database, content calendar (50+ articles), Baidu verification complete</span>
+                    <span class="zh hidden"><strong>交付物：</strong>SEO审计报告、关键词研究数据库、内容日历（50+文章）、百度验证完成</span>
+                </p>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="timeline-item">
+                <h4 style="color: var(--primary-color);"><span class="en">Phase 2: Content Development & Initial Optimization (Weeks 5-12)</span><span class="zh hidden">第2阶段：内容开发和初始优化（第5-12周）</span></h4>
+                <p style="margin-bottom: 12px; color: var(--text-secondary);">
+                    <span class="en"><strong>Objectives:</strong> Create high-quality, optimized content; establish keyword authority; begin capturing early-stage organic traffic.</span>
+                    <span class="zh hidden"><strong>目标：</strong>创建高质量、优化的内容；建立关键词权威性；开始捕获早期有机流量。</span>
+                </p>
+                <ul style="list-style: none; padding: 0; margin-left: 12px;">
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Publish 50+ comprehensive blog posts targeting identified keywords</span><span class="zh hidden">发布50+综合博文，针对已确定的关键词</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Develop 10 cornerstone guides on wine regions, varieties, tasting techniques</span><span class="zh hidden">开发10个关于葡萄酒产区、品种、品尝技巧的基础指南</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Implement internal linking strategy connecting related content</span><span class="zh hidden">实施连接相关内容的内部链接策略</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Optimize all pages for Baidu SEO best practices (title, meta, H1, schema)</span><span class="zh hidden">优化所有页面以符合百度SEO最佳实践（标题、元数据、H1、架构）</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Begin acquiring high-quality backlinks from wine education and industry sites</span><span class="zh hidden">开始从葡萄酒教育和行业网站获取高质量反向链接</span>
+                    </li>
+                </ul>
+                <p style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--alt-bg); color: var(--text-muted); font-size: 13px;">
+                    <span class="en"><strong>Deliverables:</strong> 50+ published articles, 10 pillar pages, backlink profile (20+ quality links), initial traffic monitoring dashboard</span>
+                    <span class="zh hidden"><strong>交付物：</strong>50+发布文章、10个核心页面、反向链接档案（20+质量链接）、初始流量监控仪表板</span>
+                </p>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="timeline-item">
+                <h4 style="color: var(--primary-color);"><span class="en">Phase 3: Scaling & Authority Building (Weeks 13-24)</span><span class="zh hidden">第3阶段：扩展和权威建设（第13-24周）</span></h4>
+                <p style="margin-bottom: 12px; color: var(--text-secondary);">
+                    <span class="en"><strong>Objectives:</strong> Scale to 50-75 ranking keywords; build brand authority; establish 500+ daily users; create monetization pathways.</span>
+                    <span class="zh hidden"><strong>目标：</strong>扩展至50-75个排名关键词；建立品牌权威性；建立500+日均用户；创建变现途径。</span>
+                </p>
+                <ul style="list-style: none; padding: 0; margin-left: 12px;">
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Publish additional 75+ articles targeting secondary keyword opportunities</span><span class="zh hidden">发布额外75+篇文章，针对二级关键词机会</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Develop multimedia content (videos, infographics) for top 20 pages</span><span class="zh hidden">为前20页开发多媒体内容（视频、信息图）</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Build guest posting relationships with wine education platforms</span><span class="zh hidden">与葡萄酒教育平台建立访客发布关系</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Launch email newsletter to build subscriber base and repeat traffic</span><span class="zh hidden">启动电子邮件通讯以建立订阅者基础和重复流量</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Create premium courses/guides linked from free content</span><span class="zh hidden">创建与免费内容链接的高级课程/指南</span>
+                    </li>
+                </ul>
+                <p style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--alt-bg); color: var(--text-muted); font-size: 13px;">
+                    <span class="en"><strong>Deliverables:</strong> 125+ total published articles, 50-75 ranking keywords, 500+ daily users, monetization framework launched</span>
+                    <span class="zh hidden"><strong>交付物：</strong>125+总发布文章、50-75个排名关键词、500+日均用户、变现框架启动</span>
+                </p>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="timeline-item">
+                <h4 style="color: var(--primary-color);"><span class="en">Phase 4: Optimization & Market Expansion (Weeks 25-52)</span><span class="zh hidden">第4阶段：优化和市场扩展（第25-52周）</span></h4>
+                <p style="margin-bottom: 12px; color: var(--text-secondary);">
+                    <span class="en"><strong>Objectives:</strong> Reach 150+ ranking keywords; establish 1,500+ daily users; expand to international markets; build competitive advantage.</span>
+                    <span class="zh hidden"><strong>目标：</strong>达到150+排名关键词；建立1,500+日均用户；扩展到国际市场；建立竞争优势。</span>
+                </p>
+                <ul style="list-style: none; padding: 0; margin-left: 12px;">
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Implement advanced analytics and conversion tracking across all content</span><span class="zh hidden">在所有内容中实施高级分析和转化跟踪</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Optimize underperforming pages and refresh outdated content</span><span class="zh hidden">优化表现不佳的页面并刷新过时内容</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Expand to English language content targeting global wine markets</span><span class="zh hidden">扩展到英文内容，针对全球葡萄酒市场</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Develop strategic partnerships with wine retailers and educators</span><span class="zh hidden">与葡萄酒零售商和教育工作者建立战略伙伴关系</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">
+                        ✓ <span class="en">Scale paid advertising to accelerate traffic growth in key seasons</span><span class="zh hidden">扩展付费广告以在关键季节加快流量增长</span>
+                    </li>
+                </ul>
+                <p style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--alt-bg); color: var(--text-muted); font-size: 13px;">
+                    <span class="en"><strong>Deliverables:</strong> 150-300 ranking keywords, 1,500+ daily users (Baidu), 300+ daily users (Bing), competitive index 11.14-25.98</span>
+                    <span class="zh hidden"><strong>交付物：</strong>150-300个排名关键词、1,500+日均用户（百度）、300+日均用户（必应）、竞争力指数11.14-25.98</span>
+                </p>
+            </div>
+
+            <!-- Success Metrics -->
+            <div style="margin-top: 32px; padding: 20px; background: var(--alt-bg); border-radius: 8px;">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">Key Success Metrics & Milestones</span><span class="zh hidden">关键成功指标和里程碑</span></h3>
+                <table class="data-table" style="margin-top: 16px;">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Milestone</span><span class="zh hidden">里程碑</span></th>
+                            <th><span class="en">Timeline</span><span class="zh hidden">时间表</span></th>
+                            <th><span class="en">Daily Traffic Target</span><span class="zh hidden">日均流量目标</span></th>
+                            <th><span class="en">Keywords Target</span><span class="zh hidden">关键词目标</span></th>
+                            <th><span class="en">Success Indicator</span><span class="zh hidden">成功指标</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">First Rankings</span><span class="zh hidden">首次排名</span></td>
+                            <td><span class="en">Month 2</span><span class="zh hidden">第2个月</span></td>
+                            <td>10-20</td>
+                            <td>5-10</td>
+                            <td><span class="en">Positions 21-50 achievable</span><span class="zh hidden">达到位置21-50</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Initial Traction</span><span class="zh hidden">初期牵引</span></td>
+                            <td><span class="en">Month 3-4</span><span class="zh hidden">第3-4个月</span></td>
+                            <td>50-100</td>
+                            <td>15-25</td>
+                            <td><span class="en">Position 11-20 keywords visible</span><span class="zh hidden">显示位置11-20的关键词</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Growth Phase</span><span class="zh hidden">增长阶段</span></td>
+                            <td><span class="en">Month 6-9</span><span class="zh hidden">第6-9个月</span></td>
+                            <td>500-1,000</td>
+                            <td>50-75</td>
+                            <td><span class="en">Competitive Index 3.71+</span><span class="zh hidden">竞争力指数3.71+</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Scaling Phase</span><span class="zh hidden">扩展阶段</span></td>
+                            <td><span class="en">Month 12</span><span class="zh hidden">第12个月</span></td>
+                            <td>1,500-3,500</td>
+                            <td>150-300</td>
+                            <td><span class="en">Competitive Index 11.14-25.98</span><span class="zh hidden">竞争力指数11.14-25.98</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Resource Requirements -->
+            <div style="margin-top: 24px; padding: 20px; background: var(--alt-bg); border-radius: 8px;">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">Recommended Resources & Budget</span><span class="zh hidden">推荐资源和预算</span></h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 12px 0; padding-left: 24px; position: relative; color: var(--text-secondary); font-size: 14px;">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>SEO Specialist (1 FTE):</strong> Baidu/Bing optimization, technical SEO, strategy – Essential for first 6 months</span>
+                        <span class="zh hidden"><strong>SEO专家（1 FTE）：</strong>百度/必应优化、技术SEO、战略 - 前6个月必需</span>
+                    </li>
+                    <li style="padding: 12px 0; padding-left: 24px; position: relative; color: var(--text-secondary); font-size: 14px;">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Content Writers (2-3):</strong> High-quality article production targeting 50+ articles/month – Essential months 1-12</span>
+                        <span class="zh hidden"><strong>内容撰稿人（2-3）：</strong>高质量文章生产，目标50+文章/月 - 第1-12个月必需</span>
+                    </li>
+                    <li style="padding: 12px 0; padding-left: 24px; position: relative; color: var(--text-secondary); font-size: 14px;">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>SEO Tools & Subscriptions:</strong> Ahrefs, SEMrush, Keyword research tools – $300-500/month</span>
+                        <span class="zh hidden"><strong>SEO工具和订阅：</strong>Ahrefs、SEMrush、关键词研究工具 - $300-500/月</span>
+                    </li>
+                    <li style="padding: 12px 0; padding-left: 24px; position: relative; color: var(--text-secondary); font-size: 14px;">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Web Hosting & Infrastructure:</strong> Fast, China-optimized server – $150-300/month</span>
+                        <span class="zh hidden"><strong>网络托管和基础设施：</strong>快速、中国优化服务器 - $150-300/月</span>
+                    </li>
+                    <li style="padding: 12px 0; padding-left: 24px; position: relative; color: var(--text-secondary); font-size: 14px;">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">•</span>
+                        <span class="en"><strong>Link Building & PR:</strong> Outreach and backlink acquisition – $1,000-2,000/month</span>
+                        <span class="zh hidden"><strong>链接建设和公关：</strong>外展和反向链接获取 - $1,000-2,000/月</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">Download Full Report (PDF)</span><span class="zh hidden">下载完整报告（PDF）</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Schedule Expert Consultation</span><span class="zh hidden">预约专家咨询</span></button>
+            </div>
+        </section>
+
+        <!-- Closing Statement -->
+        <div style="margin-top: 40px; padding: 24px; background: var(--alt-bg); border-radius: 8px; text-align: center; border: 2px solid var(--primary-color);">
+            <h3 style="color: var(--text-heading); margin-bottom: 12px;"><span class="en">Ready to Dominate the Wine Industry SEO Market?</span><span class="zh hidden">准备好主导葡萄酒行业SEO市场了吗？</span></h3>
+            <p style="color: var(--text-secondary); margin-bottom: 16px;">
+                <span class="en">Ian D'Agata Wine Culture has the brand authority and expertise to establish market dominance. With strategic SEO execution, your first-mover advantage in premium wine education could generate 1,500+ daily users and establish industry authority within 12 months.</span>
+                <span class="zh hidden">伊恩·达加塔葡萄酒文化拥有品牌权威性和专业知识来建立市场主导地位。通过战略SEO执行，您在高端葡萄酒教育中的先发优势可以在12个月内生成1,500+日均用户并建立行业权威。</span>
+            </p>
+            <button class="primary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')" style="margin-top: 12px;"><span class="en">Let's Discuss Your SEO Strategy</span><span class="zh hidden">让我们讨论您的SEO策略</span></button>
+        </div>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
