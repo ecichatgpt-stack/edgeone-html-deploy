@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toray - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 40px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px;
+            page-break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 100%;
+            margin-bottom: 16px;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .data-table tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chart-bar-label {
+            min-width: 180px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .chart-bar-container {
+            flex: 1;
+            height: 28px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            min-width: 60px;
+        }
+        .chart-bar-value {
+            font-size: 12px;
+            color: white;
+            font-weight: 600;
+            font-family: var(--font-data);
+        }
+
+        /* Stacked Bar Chart */
+        .stacked-bar {
+            display: flex;
+            height: 32px;
+            border-radius: 4px;
+            overflow: hidden;
+            gap: 2px;
+            margin-top: 8px;
+        }
+        .stacked-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .baidu-segment {
+            background: linear-gradient(135deg, #ff6b6b, #ff8c8c);
+        }
+        .bing-segment {
+            background: linear-gradient(135deg, #4ecdc4, #44a5a2);
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+            margin-bottom: 16px;
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .opportunity-meta {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .opportunity-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .opportunity-card,
+            .key-metrics-grid, .table-container {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 15mm 12mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">Toray Industries</span><span class="zh hidden">东丽株式会社</span></h1>
+            <p class="subtitle"><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></p>
+            
+            <p class="section-intro" style="margin-top: 24px;">
+                <span class="en">This comprehensive analysis evaluates Toray Industries' SEO performance against five major competitors in the advanced materials and chemical industry. The report reveals critical insights into market positioning, keyword strategy efficiency, and growth opportunities.</span>
+                <span class="zh hidden">本报告对东丽株式会社与五家主要竞争对手在先进材料和化学工业领域的SEO表现进行了全面评估。报告揭示了市场定位、关键词策略效率和增长机会的关键见解。</span>
+            </p>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">2<span style="font-size: 18px;">nd</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">1,163</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">PC Keywords</span><span class="zh hidden">PC关键词</span></div>
+                    <div class="value">165</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">0.00%</div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 32px;">
+                <span class="en"><strong>Key Findings:</strong> Toray Industries ranks #2 in daily traffic with 1,163 visits, closely competing with Asahi Kasei. However, Toray significantly lags behind Wanhua Chemical Group (4,991 daily visits). With 165 PC keywords indexed, Toray demonstrates a strong presence in Bing search (530-846 daily traffic), accounting for approximately 83% of total traffic. The main challenge lies in Baidu PC visibility (52-82 traffic), suggesting untapped potential in the Chinese market. Toray's keyword positioning shows concentration in positions 21-50, indicating room for optimization to improve top-ranking performance.</span>
+                <span class="zh hidden"><strong>关键发现：</strong>东丽株式会社日均流量排名第2，为1,163次访问，与旭化成竞争激烈。但东丽明显落后于万华化学集团（日均4,991次访问）。东丽共索引了165个PC关键词，在必应搜索中表现强劲（日均530-846流量），占总流量的约83%。主要挑战在于百度PC可见性低（52-82流量），表明中文市场潜力未被充分开发。东丽的关键词定位集中在21-50位，表明在改进排名性能方面有提升空间。</span>
+            </p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">Download PDF Report</span><span class="zh hidden">下载PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Schedule Consultation</span><span class="zh hidden">预约咨询</span></button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">Comprehensive competitive analysis of the top 6 companies in the advanced materials industry, ranked by daily traffic performance and market presence.</span>
+                <span class="zh hidden">对先进材料行业前6家公司的全面竞争分析，按日均流量表现和市场地位排名。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">PC Keywords</span><span class="zh hidden">PC关键词</span></th>
+                            <th><span class="en">Top 50 Keywords</span><span class="zh hidden">前50排名关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user">YOUR</span><span class="en">Toray Industries</span><span class="zh hidden">东丽株式会社</span></td>
+                            <td>1,163</td>
+                            <td>67</td>
+                            <td>688</td>
+                            <td>165</td>
+                            <td>125</td>
+                            <td>82.5</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Wanhua Chemical Group</span><span class="zh hidden">万华化学集团</span></td>
+                            <td>4,991</td>
+                            <td>1,083</td>
+                            <td>428</td>
+                            <td>1,165</td>
+                            <td>1,013</td>
+                            <td>100.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Asahi Kasei</span><span class="zh hidden">旭化成</span></td>
+                            <td>1,169</td>
+                            <td>113</td>
+                            <td>672</td>
+                            <td>76</td>
+                            <td>55</td>
+                            <td>79.8</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Mitsubishi Chemical</span><span class="zh hidden">三菱化学</span></td>
+                            <td>20</td>
+                            <td>11</td>
+                            <td>0</td>
+                            <td>6</td>
+                            <td>2</td>
+                            <td>1.9</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Sinopec Shanghai Petrochemical</span><span class="zh hidden">中国石化上海石油化工</span></td>
+                            <td>44</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3.8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="section-intro" style="margin-top: 24px;">
+                <span class="en"><strong>Analysis Insights:</strong> Wanhua Chemical Group dominates with a Competitive Index of 100.0, commanding 4,991 daily visits and 1,165 PC keywords. Toray and Asahi Kasei compete at nearly identical traffic levels (~1,165 visits), but Toray holds superior keyword portfolio strength with 165 indexed keywords vs. Asahi's 76. The competitive gap reveals that traffic volume doesn't directly correlate with keyword count—Toray's efficiency in converting keywords to traffic outperforms Asahi. Smaller competitors like Mitsubishi Chemical (20 daily traffic) and Sinopec Shanghai (44 daily traffic) have minimal market presence, suggesting significant consolidation at the top tier.</span>
+                <span class="zh hidden"><strong>分析洞察：</strong>万华化学集团以竞争指数100.0领先，日均流量4,991次，PC关键词1,165个。东丽和旭化成的流量水平基本相同（~1,165次），但东丽在关键词组合实力上更胜一筹，索引165个关键词，而旭化成仅76个。竞争差距表明流量量不与关键词数量直接相关——东丽将关键词转化为流量的效率优于旭化成。三菱化学（日均20次流量）和中国石化上海石油化工（44次流量）等小型竞争对手的市场存在感极少，表明顶级竞争者之间存在显著整合。</span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">Strategic assessment of Toray Industries' competitive position, identifying internal strengths and weaknesses, as well as external opportunities and threats in the SEO landscape.</span>
+                <span class="zh hidden">对东丽株式会社竞争地位的战略评估，识别内部优势和劣势，以及SEO领域的外部机会和威胁。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li><span class="en">Strong Bing dominance with 688 daily traffic (59% of total), indicating effective English-language SEO strategy and strong international visibility in Western markets.</span><span class="zh hidden">必应搜索表现强劲，日均688流量（占总流量59%），表明英文SEO策略有效，国际市场知名度高。</span></li>
+                        <li><span class="en">Robust keyword portfolio of 165 PC keywords, more than double Asahi Kasei's 76, demonstrating broader topical coverage and content depth.</span><span class="zh hidden">关键词组合强大，包含165个PC关键词，是旭化成76个关键词的两倍多，表明涵盖范围更广，内容深度更足。</span></li>
+                        <li><span class="en">Competitive parity with closest rival Asahi Kasei (1,169 vs. 1,163 daily traffic), confirming market position stability and equal market share among top-tier players.</span><span class="zh hidden">与最接近的竞争对手旭化成持平（1,169对1,163日均流量），确认市场地位稳定且顶级参与者的市场份额相当。</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3><span class="en">Weaknesses</span><span class="zh hidden">劣势</span></h3>
+                    <ul>
+                        <li><span class="en">Severe underperformance in Chinese market: Baidu traffic of only 67 daily visits (6% of total) compared to competitors' focus on domestic growth, indicating missed opportunities in the world's second-largest search market.</span><span class="zh hidden">中文市场表现严重不足：百度日均流量仅67次（占总流量6%），与竞争对手关注国内增长的策略相比，表明全球第二大搜索市场的机遇被错过。</span></li>
+                        <li><span class="en">Limited top-ranking visibility: 125 keywords in top-50 positions out of 165 total keywords (76% efficiency), with none in positions 1-10, suggesting weak domain authority and page optimization.</span><span class="zh hidden">顶级排名可见性有限：165个关键词中仅125个进入前50排名（76%效率），1-10位排名为零，表明域权限和页面优化能力薄弱。</span></li>
+                        <li><span class="en">Significant gap to market leader Wanhua: 4.3x traffic difference (4,991 vs. 1,163) and 7x keyword gap (1,165 vs. 165), indicating structural content and authority disadvantages requiring strategic intervention.</span><span class="zh hidden">与市场领导者万华的差距巨大：流量差异4.3倍（4,991对1,163），关键词差异7倍（1,165对165），表明需要战略干预来弥补结构性内容和权限劣势。</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3><span class="en">Opportunities</span><span class="zh hidden">机会</span></h3>
+                    <ul>
+                        <li><span class="en">Baidu market expansion: With 67 daily Baidu traffic vs. Wanhua's 1,083, implementing localized Chinese content and Baidu-specific SEO can unlock 15x growth potential in the Chinese market without cannibalizing English traffic.</span><span class="zh hidden">百度市场扩张：百度日均67次流量对比万华1,083次，实施本地化中文内容和特定于百度的SEO策略可在中文市场释放15倍的增长潜力，不会蚕食英文流量。</span></li>
+                        <li><span class="en">Top-ranking keyword optimization: 40 keywords currently in positions 21-50 can be optimized to top-10 rankings through technical SEO improvements and content enhancement, potentially doubling top-tier traffic without new keyword targeting.</span><span class="zh hidden">顶级关键词优化：当前位置21-50的40个关键词通过技术SEO改进和内容增强可优化至前10排名，无需新增关键词定位即可将顶级流量增加一倍。</span></li>
+                        <li><span class="en">Content gap analysis: Wanhua's 1,165 keywords indicate specific product/service gaps in Toray's coverage. Creating targeted content around high-volume keywords in adhesives, coatings, and specialty chemicals can capture unaddressed market demand.</span><span class="zh hidden">内容差距分析：万华1,165个关键词表明东丽覆盖范围存在具体产品/服务差距。围绕粘合剂、涂料和特种化学品的高流量关键词创建有针对性的内容可捕获未满足的市场需求。</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li><span class="en">Wanhua Chemical dominance: Market leader's 4.3x traffic advantage and 7x keyword portfolio create escalating competitive pressure. Continued investment in SEO by Wanhua could further consolidate market share, particularly in high-value commercial keywords.</span><span class="zh hidden">万华化学主导地位：市场领导者的4.3倍流量优势和7倍关键词组合创造了升级的竞争压力。万华继续投资SEO可进一步巩固市场份额，特别是在高价值商业关键词中。</span></li>
+                        <li><span class="en">Asahi Kasei parity risk: Operating at nearly identical traffic levels (1,169 vs. 1,163), Asahi can quickly outpace Toray through aggressive content expansion. Their lean keyword portfolio (76 keywords) suggests room for rapid scaling with concentrated effort.</span><span class="zh hidden">旭化成相当风险：运营在近乎相同的流量水平（1,169对1,163），旭化成可通过激进的内容扩展快速超越东丽。其精简的关键词组合（76个关键词）表明通过集中努力有快速扩展的空间。</span></li>
+                        <li><span class="en">Baidu algorithm dependency: With low Baidu visibility (67 traffic), Toray is vulnerable to algorithm changes favoring Chinese domestic competitors. Sudden Baidu ranking drops could further widen the gap vs. competitors with localized SEO strategies.</span><span class="zh hidden">百度算法依赖性：百度可见性低（67流量），东丽易受利于中文本土竞争对手的算法变化的影响。百度排名突然下降可能进一步扩大与本地化SEO策略的竞争对手之间的差距。</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">Detailed examination of traffic channels, keyword efficiency, competitive gaps, and performance indicators to identify optimization priorities.</span>
+                <span class="zh hidden">对流量渠道、关键词效率、竞争差距和性能指标进行详细检查，以确定优化优先级。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Analysis: Baidu vs. Bing Distribution</span><span class="zh hidden">流量渠道分析：百度与必应分布</span></h3>
+                <div class="bar-chart">
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Wanhua Chemical</span><span class="zh hidden">万华化学</span></div>
+                        <div class="chart-bar-container">
+                            <div class="stacked-bar" style="width: 100%;">
+                                <div class="stacked-segment baidu-segment" style="width: 71.7%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="font-size: 10px;">71.7%</span>
+                                </div>
+                                <div class="stacked-segment bing-segment" style="width: 28.3%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="font-size: 10px;">28.3%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px;">4,991</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Toray Industries</span><span class="zh hidden">东丽株式会社</span></div>
+                        <div class="chart-bar-container">
+                            <div class="stacked-bar" style="width: 100%;">
+                                <div class="stacked-segment baidu-segment" style="width: 5.8%; display: flex; align-items: center; justify-content: center;">
+                                </div>
+                                <div class="stacked-segment bing-segment" style="width: 94.2%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="font-size: 10px;">94%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px;">1,163</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Asahi Kasei</span><span class="zh hidden">旭化成</span></div>
+                        <div class="chart-bar-container">
+                            <div class="stacked-bar" style="width: 100%;">
+                                <div class="stacked-segment baidu-segment" style="width: 14.3%; display: flex; align-items: center; justify-content: center;">
+                                </div>
+                                <div class="stacked-segment bing-segment" style="width: 85.7%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="font-size: 10px;">86%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px;">1,169</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Mitsubishi Chemical</span><span class="zh hidden">三菱化学</span></div>
+                        <div class="chart-bar-container">
+                            <div class="stacked-bar" style="width: 100%;">
+                                <div class="stacked-segment baidu-segment" style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="font-size: 10px;">100%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px;">20</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Sinopec Shanghai Petrochemical</span><span class="zh hidden">中国石化上海石油化工</span></div>
+                        <div class="chart-bar-container">
+                            <div class="stacked-bar" style="width: 100%;">
+                                <div class="stacked-segment baidu-segment" style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="font-size: 10px;">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px;">44</div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 16px;">
+                    <span class="en"><strong>Traffic Channel Insights:</strong> Toray's heavy reliance on Bing (94.2% of traffic) vs. Baidu (5.8%) creates channel vulnerability. Wanhua's balanced approach (71.7% Baidu, 28.3% Bing) demonstrates the importance of dual-market dominance for total market leadership. Toray should prioritize Baidu optimization to mirror Wanhua's diversified strategy and reduce English-market dependency.</span>
+                    <span class="zh hidden"><strong>流量渠道洞察：</strong>东丽严重依赖必应（流量94.2%）对百度（5.8%）的渠道脆弱性。万华的平衡方法（百度71.7%，必应28.3%）展示了双市场主导对总体市场领导地位的重要性。东丽应优先考虑百度优化以符合万华的多元化策略并减少英文市场依赖。</span>
+                </p>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency Analysis: Keywords per Daily Traffic Unit</span><span class="zh hidden">关键词效率分析：每日流量单位的关键词数</span></h3>
+                <div class="bar-chart">
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Wanhua Chemical</span><span class="zh hidden">万华化学</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 100%;">
+                                <span class="chart-bar-value">1,165 keywords</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px; margin-top: 0;">4.29x</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Toray Industries</span><span class="zh hidden">东丽株式会社</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 14.2%;">
+                                <span class="chart-bar-value" style="font-size: 11px;">165 kw</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px; margin-top: 0;">0.14x</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Asahi Kasei</span><span class="zh hidden">旭化成</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 6.5%;">
+                                <span class="chart-bar-value" style="font-size: 11px;">76 kw</span>
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px; margin-top: 0;">0.06x</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Mitsubishi Chemical</span><span class="zh hidden">三菱化学</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 0.5%;">
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px; margin-top: 0;">0.30x</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Sinopec Shanghai Petrochemical</span><span class="zh hidden">中国石化上海石油化工</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 0.1%;">
+                            </div>
+                        </div>
+                        <div class="chart-bar-value" style="margin-left: 12px; margin-top: 0;">0.02x</div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 16px;">
+                    <span class="en"><strong>Keyword Efficiency Findings:</strong> Toray achieves 0.14 keywords per daily traffic unit, outperforming Asahi Kasei (0.06), indicating superior keyword-to-traffic conversion. However, Toray lags significantly behind Wanhua (4.29x), suggesting that scaling keyword portfolio from 165 to 500+ keywords could unlock 2-3x traffic growth without additional optimization effort. Current efficiency proves Toray's SEO fundamentals are sound; growth requires content expansion rather than strategic pivots.</span>
+                    <span class="zh hidden"><strong>关键词效率发现：</strong>东丽达到每日流量单位0.14个关键词，优于旭化成（0.06），表明关键词对流量转化能力更强。但东丽明显落后于万华（4.29倍），表明将关键词组合从165扩展到500+个可在无需额外优化工作的情况下释放2-3倍流量增长。当前效率证明东丽的SEO基础扎实；增长需要内容扩展而非战略调整。</span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap Analysis: Toray vs. Market Leader</span><span class="zh hidden">竞争差距分析：东丽与市场领导者对比</span></h3>
+                <div class="bar-chart">
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Daily Traffic Gap</span><span class="zh hidden">日均流量差距</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 23.3%;">
+                                <span class="chart-bar-value">-3,828 (77%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">PC Keywords Gap</span><span class="zh hidden">PC关键词差距</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 14.2%;">
+                                <span class="chart-bar-value">-1,000 (86%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Top-50 Rankings Gap</span><span class="zh hidden">前50排名差距</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 12.4%;">
+                                <span class="chart-bar-value">-888 (88%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Baidu Traffic Gap</span><span class="zh hidden">百度流量差距</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 6.2%;">
+                                <span class="chart-bar-value">-1,016 (94%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 16px;">
+                    <span class="en"><strong>Gap Closure Roadmap:</strong> Toray faces a 77% traffic deficit vs. Wanhua, but the gap is composed of three addressable components: (1) Baidu expansion (94% gap = 1,016 traffic potential), (2) Keyword portfolio scaling (86% gap = 1,000 keyword opportunity), (3) Ranking optimization (88% gap = 888 top-50 positions). Focusing sequentially on Baidu localization, then keyword expansion, then technical SEO could realistically close 40-50% of the gap within 12 months.</span>
+                    <span class="zh hidden"><strong>差距缩小路线图：</strong>东丽相对万华面临77%的流量赤字，但差距由三个可解决的部分组成：（1）百度扩张（94%差距=1,016流量潜力），（2）关键词组合扩展（86%差距=1,000关键词机会），（3）排名优化（88%差距=888个前50位置）。按顺序关注百度本地化、关键词扩展、技术SEO可在12个月内现实地缩小40-50%的差距。</span>
+                </p>
+            </div>
+
+            <!-- Keyword Positioning Distribution -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Positioning Distribution</span><span class="zh hidden">关键词定位分布</span></h3>
+                <div class="bar-chart">
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Toray (11-20)</span><span class="zh hidden">东丽 (11-20)</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 6.4%;">
+                                <span class="chart-bar-value">8</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Toray (21-30)</span><span class="zh hidden">东丽 (21-30)</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 38.4%;">
+                                <span class="chart-bar-value">48</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Toray (31-40)</span><span class="zh hidden">东丽 (31-40)</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 27.2%;">
+                                <span class="chart-bar-value">34</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-label"><span class="en">Toray (41-50)</span><span class="zh hidden">东丽 (41-50)</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 28.0%;">
+                                <span class="chart-bar-value">35</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 16px;">
+                    <span class="en"><strong>Positioning Strategy:</strong> Toray's keyword distribution is heavily weighted toward positions 21-50 (151 out of 165 keywords = 91%), with only 8 keywords in the premium 11-20 range. This suggests content quality is adequate for ranking but lacks top-tier authority. Technical SEO improvements focusing on core page elements, site speed, and backlink profile could move 20-30 keywords from positions 21-30 into top-20, increasing click-through rates by an estimated 30-40%.</span>
+                    <span class="zh hidden"><strong>定位策略：</strong>东丽的关键词分布严重偏向21-50位（165个关键词中的151个=91%），仅8个关键词在高端11-20范围。这表明内容质量足以排名但缺乏顶级权限。专注于核心页面元素、网站速度和反向链接资料的技术SEO改进可将20-30个关键词从21-30位移至前20位，估计可将点击通过率提高30-40%。</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">Strategic opportunities ranked by implementation impact and market potential to guide prioritized action planning.</span>
+                <span class="zh hidden">按实施影响和市场潜力排名的战略机会，以指导优先级行动规划。</span>
+            </p>
+
+            <!-- Opportunity Priority Matrix -->
+            <div class="chart-container">
+                <h3><span class="en">Opportunity Priority Matrix</span><span class="zh hidden">机会优先级矩阵</span></h3>
+                <div style="background: var(--alt-bg); border-radius: 8px; padding: 24px; margin: 16px 0; min-height: 300px; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center; color: var(--text-muted);">
+                        <svg viewBox="0 0 400 300" style="max-width: 100%; height: auto;">
+                            <!-- Axes -->
+                            <line x1="40" y1="250" x2="380" y2="250" stroke="#9ca3af" stroke-width="2"/>
+                            <line x1="40" y1="30" x2="40" y2="250" stroke="#9ca3af" stroke-width="2"/>
+                            
+                            <!-- Labels -->
+                            <text x="200" y="285" text-anchor="middle" font-size="12" fill="#9ca3af"><span class="en">Implementation Effort →</span><span class="zh hidden">实施努力 →</span></text>
+                            <text x="15" y="140" text-anchor="middle" font-size="12" fill="#9ca3af" transform="rotate(-90 15 140)"><span class="en">Market Impact ↑</span><span class="zh hidden">市场影响 ↑</span></text>
+                            
+                            <!-- Quadrants -->
+                            <rect x="40" y="140" width="170" height="110" fill="none" stroke="#d1d5db" stroke-dasharray="2,2" opacity="0.5"/>
+                            <rect x="210" y="140" width="170" height="110" fill="none" stroke="#d1d5db" stroke-dasharray="2,2" opacity="0.5"/>
+                            <rect x="40" y="30" width="170" height="110" fill="none" stroke="#d1d5db" stroke-dasharray="2,2" opacity="0.5"/>
+                            <rect x="210" y="30" width="170" height="110" fill="none" stroke="#d1d5db" stroke-dasharray="2,2" opacity="0.5"/>
+                            
+                            <!-- Opportunity Bubbles -->
+                            <!-- Baidu Optimization (High Impact, Low Effort) -->
+                            <circle cx="120" cy="70" r="35" fill="#22c55e" opacity="0.7"/>
+                            <text x="120" y="75" text-anchor="middle" font-size="11" fill="white" font-weight="bold">1</text>
+                            
+                            <!-- Keyword Expansion (High Impact, Medium Effort) -->
+                            <circle cx="280" cy="80" r="38" fill="#f59e0b" opacity="0.7"/>
+                            <text x="280" y="85" text-anchor="middle" font-size="11" fill="white" font-weight="bold">2</text>
+                            
+                            <!-- Technical SEO (Medium Impact, Low Effort) -->
+                            <circle cx="130" cy="170" r="32" fill="#3b82f6" opacity="0.7"/>
+                            <text x="130" y="175" text-anchor="middle" font-size="11" fill="white" font-weight="bold">3</text>
+                            
+                            <!-- Content Strategy (Medium Impact, High Effort) -->
+                            <circle cx="300" cy="190" r="30" fill="#ef4444" opacity="0.7"/>
+                            <text x="300" y="195" text-anchor="middle" font-size="11" fill="white" font-weight="bold">4</text>
+                            
+                            <!-- Legend -->
+                            <text x="50" y="280" font-size="11" fill="#9ca3af"><span class="en">Quick Wins (Green)</span><span class="zh hidden">快速赢利 (绿)</span></text>
+                            <text x="180" y="280" font-size="11" fill="#9ca3af"><span class="en">Strategic (Orange)</span><span class="zh hidden">战略 (橙)</span></text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opportunity Cards -->
+            <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin: 24px 0;">
+                <div class="opportunity-card">
+                    <h4><span class="en">1. Baidu Market Localization (Quick Win)</span><span class="zh hidden">1. 百度市场本地化（快速赢利）</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin: 12px 0;">
+                        <span class="en"><strong>Opportunity:</strong> Implement Baidu-specific SEO strategy with Chinese content optimization. Current 67 daily Baidu visits vs. Wanhua's 1,083 indicates 15x growth potential. Requires localized site structure, Baidu Webmaster Tools registration, and Chinese-language keyword research.</span>
+                        <span class="zh hidden"><strong>机会：</strong>实施特定于百度的SEO策略并优化中文内容。当前百度日均67次流量对比万华1,083次表明存在15倍增长潜力。需要本地化网站结构、百度网站管理员工具注册和中文关键词研究。</span>
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin: 12px 0;">
+                        <span class="en"><strong>Expected Impact:</strong> +500-750 daily traffic (43-64% increase) within 6-9 months. Low resource investment required (estimated 300-400 hours for implementation).</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>6-9个月内增加日均500-750流量（增长43-64%）。所需资源投资低（实施估计需300-400小时）。</span>
+                    </p>
+                    <div class="opportunity-meta">
+                        <span><span class="en">Effort:</span><span class="zh hidden">努力：</span> <strong>Low</strong></span>
+                        <span><span class="en">Impact:</span><span class="zh hidden">影响：</span> <strong>High</strong></span>
+                        <span><span class="en">Timeline:</span><span class="zh hidden">时间：</span> <strong>6-9 months</strong></span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">2. Keyword Portfolio Expansion (Strategic Growth)</span><span class="zh hidden">2. 关键词组合扩展（战略增长）</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin: 12px 0;">
+                        <span class="en"><strong>Opportunity:</strong> Scale from 165 to 500+ PC keywords through targeted content creation. Gap analysis vs. Wanhua (1,165 keywords) reveals untapped segments in adhesives, specialty films, and industrial composites. Each additional keyword averages 3-5 daily visits based on current efficiency.</span>
+                        <span class="zh hidden"><strong>机会：</strong>通过有针对性的内容创建将PC关键词从165扩展到500+。与万华（1,165个关键词）的差距分析揭示粘合剂、特种薄膜和工业复合材料等未开发领域。基于当前效率，每个额外关键词平均产生日均3-5次访问。</span>
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin: 12px 0;">
+                        <span class="en"><strong>Expected Impact:</strong> +1,000-1,500 daily traffic (86-129% increase) with 335 new keywords. Requires ongoing content creation (estimated 800-1,200 hours over 12 months).</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>增加335个新关键词，日均流量增加1,000-1,500（增长86-129%）。需要持续的内容创建（12个月估计需800-1,200小时）。</span>
+                    </p>
+                    <div class="opportunity-meta">
+                        <span><span class="en">Effort:</span><span class="zh hidden">努力：</span> <strong>Medium</strong></span>
+                        <span><span class="en">Impact:</span><span class="zh hidden">影响：</span> <strong>Very High</strong></span>
+                        <span><span class="en">Timeline:</span><span class="zh hidden">时间：</span> <strong>9-12 months</strong></span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">3. Technical SEO & Ranking Optimization (High ROI)</span><span class="zh hidden">3. 技术SEO与排名优化（高ROI）</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin: 12px 0;">
+                        <span class="en"><strong>Opportunity:</strong> Move 20-30 keywords from positions 21-30 into top-20 through technical SEO. Focus on core web vitals, page speed optimization, schema markup, and internal linking strategy. Estimated 30-40% increase in click-through rates for moved keywords.</span>
+                        <span class="zh hidden"><strong>机会：</strong>通过技术SEO将20-30个关键词从21-30位移至前20位。重点关注核心网络生命周期、页面速度优化、架构标记和内部链接策略。移动的关键词点击通过率估计增加30-40%。</span>
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin: 12px 0;">
+                        <span class="en"><strong>Expected Impact:</strong> +150-250 daily traffic (13-21% increase) through ranking improvements. Low resource cost (estimated 200-300 hours for technical audit and implementation).</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>通过排名改进增加日均150-250流量（增长13-21%）。资源成本低（技术审计和实施估计需200-300小时）。</span>
+                    </p>
+                    <div class="opportunity-meta">
+                        <span><span class="en">Effort:</span><span class="zh hidden">努力：</span> <strong>Low</strong></span>
+                        <span><span class="en">Impact:</span><span class="zh hidden">影响：</span> <strong>High</strong></span>
+                        <span><span class="en">Timeline:</span><span class="zh hidden">时间：</span> <strong>3-6 months</strong></span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">4. Competitive Content Strategy (Long-term Positioning)</span><span class="zh hidden">4. 竞争内容策略（长期定位）</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin: 12px 0;">
+                        <span class="en"><strong>Opportunity:</strong> Develop comprehensive content hubs around high-value product categories (carbon fiber composites, high-performance films, medical textiles). Create 50-100 pillar pages with 100+ supporting blog articles targeting long-tail variations.</span>
+                        <span class="zh hidden"><strong>机会：</strong>围绕高价值产品类别（碳纤维复合材料、高性能薄膜、医用纺织品）开发综合内容中心。创建50-100个支柱页面和100多篇支持性博客文章，针对长尾变体。</span>
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin: 12px 0;">
+                        <span class="en"><strong>Expected Impact:</strong> +800-1,200 daily traffic (69-103% increase) with improved domain authority. Requires significant content production (estimated 1,500-2,000 hours over 12-18 months).</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>日均流量增加800-1,200（增长69-103%），域权限提高。需要大量内容制作（12-18个月估计需1,500-2,000小时）。</span>
+                    </p>
+                    <div class="opportunity-meta">
+                        <span><span class="en">Effort:</span><span class="zh hidden">努力：</span> <strong>High</strong></span>
+                        <span><span class="en">Impact:</span><span class="zh hidden">影响：</span> <strong>Very High</strong></span>
+                        <span><span class="en">Timeline:</span><span class="zh hidden">时间：</span> <strong>12-18 months</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Potential Calculation -->
+            <div class="chart-container">
+                <h3><span class="en">Total Growth Potential: Scenario Analysis</span><span class="zh hidden">总增长潜力：情景分析</span></h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px;">
+                    <div style="background: var(--alt-bg); border-radius: 8px; padding: 16px; border-left: 4px solid #f59e0b;">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Conservative (12 months)</span><span class="zh hidden">保守估计（12个月）</span></div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--accent-color); font-family: var(--font-data);">+1,100</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                            <span class="en">+94% growth</span><span class="zh hidden">+94%增长</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                            <span class="en">Baidu only +500, Technical SEO +300, Content +300</span><span class="zh hidden">百度仅+500，技术SEO +300，内容+300</span>
+                        </div>
+                    </div>
+                    <div style="background: var(--alt-bg); border-radius: 8px; padding: 16px; border-left: 4px solid var(--primary-color);">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Moderate (12 months)</span><span class="zh hidden">中等估计（12个月）</span></div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--primary-color); font-family: var(--font-data);">+2,000</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                            <span class="en">+172% growth</span><span class="zh hidden">+172%增长</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                            <span class="en">Baidu +750, Technical +250, Keywords +1,000</span><span class="zh hidden">百度+750，技术+250，关键词+1,000</span>
+                        </div>
+                    </div>
+                    <div style="background: var(--alt-bg); border-radius: 8px; padding: 16px; border-left: 4px solid #22c55e;">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Aggressive (18 months)</span><span class="zh hidden">激进估计（18个月）</span></div>
+                        <div style="font-size: 28px; font-weight: 700; color: #22c55e; font-family: var(--font-data);">+2,800</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                            <span class="en">+241% growth</span><span class="zh hidden">+241%增长</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                            <span class="en">All strategies: Baidu +750, Technical +250, Keywords +1,500, Content +300</span><span class="zh hidden">全策略：百度+750，技术+250，关键词+1,500，内容+300</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 20px;">
+                    <span class="en">The most realistic scenario (Moderate Growth) targets 2,000 daily visits within 12 months, bringing Toray to 3,163 daily traffic. This would reduce Wanhua's leadership to 1.58x (vs. current 4.3x), repositioning Toray as the #2 competitor with material competitive advantage. Achieving this requires coordinated execution across all four opportunity streams with dedicated resource allocation.</span>
+                    <span class="zh hidden">最现实的情景（中等增长）目标是12个月内达到日均2,000次访问，使东丽达到日均3,163次流量。这将使万华的领导优势降至1.58倍（对比当前4.3倍），将东丽重新定位为具有显著竞争优势的第2竞争对手。实现这一目标需要在所有四个机会流中协调执行并进行专项资源配置。</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan & Roadmap</span><span class="zh hidden">行动计划与路线图</span></h2>
+            
+            <p class="section-intro">
+                <span class="en">A detailed 18-month execution roadmap with quarterly milestones, resource requirements, and success metrics to achieve competitive positioning and traffic growth targets.</span>
+                <span class="zh hidden">一个详细的18个月执行路线图，包括季度里程碑、资源要求和成功指标，以实现竞争定位和流量增长目标。</span>
+            </p>
+
+            <div style="margin-top: 30px;">
+                <!-- Q1 2024 -->
+                <div class="timeline-item">
+                    <h4><span class="en">Q1: Foundation & Quick Wins (Month 1-3)</span><span class="zh hidden">Q1: 基础与快速赢利（第1-3个月）</span></h4>
+                    <p><span class="en"><strong>Baidu Market Entry:</strong> Register Baidu Webmaster Tools, conduct Chinese keyword research (500+ keywords), implement Baidu spider optimization, create Chinese landing pages for top 50 products. Conduct technical SEO audit, identify and fix crawlability issues, optimize page load speed to <2s. Baseline traffic: 1,163 daily.</span><span class="zh hidden"><strong>百度市场进入：</strong>注册百度网站管理员工具，进行中文关键词研究（500+个关键词），实施百度蜘蛛优化，为前50个产品创建中文登陆页面。进行技术SEO审计，识别和修复可爬性问题，优化页面加载速度至<2秒。基线流量：日均1,163。</span></p>
+                    <p style="margin-top: 8px;"><span class="en"><strong>Resource:</strong> 1 SEO Manager, 1 Technical SEO Specialist, 2 Chinese Content Writers (part-time) | <strong>Budget:</strong> $15,000-20,000 | <strong>Expected Result:</strong> +150-200 daily traffic (+13-17%)</span><span class="zh hidden"><strong>资源：</strong>1名SEO经理、1名技术SEO专家、2名中文内容写手（兼职）| <strong>预算：</strong>$15,000-20,000 | <strong>预期结果：</strong>日均流量+150-200（+13-17%）</span></p>
+                </div>
+
+                <!-- Q2 2024 -->
+                <div class="timeline-item">
+                    <h4><span class="en">Q2: Scaling & Optimization (Month 4-6)</span><span class="zh hidden">Q2: 扩展与优化（第4-6个月）</span></h4>
+                    <p><span class="en"><strong>Baidu Expansion Phase 2:</strong> Publish 50 Chinese blog posts targeting long-tail keywords, build Baidu backlinks through partnerships with Chinese industry sites, implement Baidu structured data markup. Ranking Optimization: Move 15 keywords from positions 21-30 to 11-20 through content updates and internal linking. Target traffic: 1,500-1,600 daily.</span><span class="zh hidden"><strong>百度扩展第2阶段：</strong>发布50篇针对长尾关键词的中文博客文章，通过与中文行业网站的合作建立百度反向链接，实施百度结构化数据标记。排名优化：通过内容更新和内部链接将15个关键词从21-30位移至11-20位。目标流量：日均1,500-1,600。</span></p>
+                    <p style="margin-top: 8px;"><span class="en"><strong>Resource:</strong> 1 SEO Manager, 1 Content Strategist, 3-4 Chinese Content Writers | <strong>Budget:</strong> $25,000-32,000 | <strong>Expected Result:</strong> +350-450 daily traffic (cumulative +450-650)</span><span class="zh hidden"><strong>资源：</strong>1名SEO经理、1名内容策略师、3-4名中文内容写手 | <strong>预算：</strong>$25,000-32,000 | <strong>预期结果：</strong>日均流量+350-450（累计+450-650）</span></p>
+                </div>
+
+                <!-- Q3 2024 -->
+                <div class="timeline-item">
+                    <h4><span class="en">Q3: Keyword Portfolio Expansion (Month 7-9)</span><span class="zh hidden">Q3: 关键词组合扩展（第7-9个月）</span></h4>
+                    <p><span class="en"><strong>Content Creation Sprint:</strong> Create 75 new landing pages targeting mid-volume keywords (monthly searches 100-500), develop 3 pillar content hubs (Carbon Fiber Composites, High-Performance Films, Medical Textiles), publish 40 supporting blog articles. Conduct competitive keyword gap analysis vs. Wanhua. Target traffic: 1,800-2,000 daily.</span><span class="zh hidden"><strong>内容创建冲刺：</strong>创建75个新登陆页面，针对中等流量关键词（月搜索量100-500），开发3个支柱内容中心（碳纤维复合材料、高性能薄膜、医用纺织品），发布40篇支持性博客文章。针对万华进行竞争关键词差距分析。目标流量：日均1,800-2,000。</span></p>
+                    <p style="margin-top: 8px;"><span class="en"><strong>Resource:</strong> 1 Content Director, 4-5 Content Writers, 1 Content Designer | <strong>Budget:</strong> $40,000-50,000 | <strong>Expected Result:</strong> +600-800 daily traffic (cumulative +1,050-1,450)</span><span class="zh hidden"><strong>资源：</strong>1名内容总监、4-5名内容写手、1名内容设计师 | <strong>预算：</strong>$40,000-50,000 | <strong>预期结果：</strong>日均流量+600-800（累计+1,050-1,450）</span></p>
+                </div>
+
+                <!-- Q4 2024 -->
+                <div class="timeline-item">
+                    <h4><span class="en">Q4: Authority Building & Consolidation (Month 10-12)</span><span class="zh hidden">Q4: 权限建立与巩固（第10-12个月）</span></h4>
+                    <p><span class="en"><strong>Link Building Campaign:</strong> Acquire 100-150 high-quality backlinks from industry partners, academic institutions, and trade publications. Secure 20-30 industry press mentions and thought leadership placements. Conduct year-end performance review and adjust 2025 strategy. Target traffic: 2,800-3,200 daily.</span><span class="zh hidden"><strong>链接建设活动：</strong>从行业合作伙伴、学术机构和贸易出版物获得100-150条高质量反向链接。获得20-30个行业新闻提及和思想领导力安置。进行年终绩效审查并调整2025战略。目标流量：日均2,800-3,200。</span></p>
+                    <p style="margin-top: 8px;"><span class="en"><strong>Resource:</strong> 1 Link Building Specialist, 1 PR Coordinator, 1 SEO Manager | <strong>Budget:</strong> $35,000-45,000 | <strong>Expected Result:</strong> +400-600 daily traffic (cumulative +1,450-2,050 from baseline)</span><span class="zh hidden"><strong>资源：</strong>1名链接建设专家、1名PR协调员、1名SEO经理 | <strong>预算：</strong>$35,000-45,000 | <strong>预期结果：</strong>日均流量+400-600（从基线累计+1,450-2,050）</span></p>
+                </div>
+
+                <!-- Q1-Q2 2025 -->
+                <div class="timeline-item">
+                    <h4><span class="en">Q1-Q2 2025: Market Leadership Positioning (Month 13-18)</span><span class="zh hidden">Q1-Q2 2025: 市场领导力定位（第13-18个月）</span></h4>
+                    <p><span class="en"><strong>Advanced Optimization & Growth:</strong> Implement advanced technical SEO (Core Web Vitals mastery, JavaScript rendering optimization, advanced schema markup), develop 5-10 comprehensive guides for competitor keywords, establish industry thought leadership through webinars and conferences. Maintain momentum through continuous keyword expansion (200+ new keywords). Target traffic: 3,500-4,000 daily.</span><span class="zh hidden"><strong>高级优化与增长：</strong>实施高级技术SEO（核心网络生命周期精通、JavaScript渲染优化、高级架构标记），为竞争对手关键词开发5-10份综合指南，通过网络研讨会和会议建立行业思想领导力。通过持续关键词扩展维持势头（200+新关键词）。目标流量：日均3,500-4,000。</span></p>
+                    <p style="margin-top: 8px;"><span class="en"><strong>Resource:</strong> 1 SEO Director, 2 Senior Content Strategists, 4-5 Content Writers, 1 Technical SEO Lead | <strong>Budget:</strong> $80,000-100,000 | <strong>Expected Result:</strong> +2,000-2,500 daily traffic (cumulative +2,837-3,337 from baseline, 244-287% growth)</span><span class="zh hidden"><strong>资源：</strong>1名SEO总监、2名高级内容策略师、4-5名内容写手、1名技术SEO负责人 | <strong>预算：</strong>$80,000-100,000 | <strong>预期结果：</strong>日均流量+2,000-2,500（从基线累计+2,837-3,337，增长244-287%）</span></p>
+                </div>
+            </div>
+
+            <!-- Success Metrics & KPIs -->
+            <div class="chart-container" style="margin-top: 40px;">
+                <h3><span class="en">Success Metrics & KPI Tracking</span><span class="zh hidden">成功指标与KPI跟踪</span></h3>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><span class="en">Metric</span><span class="zh hidden">指标</span></th>
+                                <th><span class="en">Current</span><span class="zh hidden">当前</span></th>
+                                <th><span class="en">Q2 2024 Target</span><span class="zh hidden">Q2 2024目标</span></th>
+                                <th><span class="en">Q4 2024 Target</span><span class="zh hidden">Q4 2024目标</span></th>
+                                <th><span class="en">Q2 2025 Target</span><span class="zh hidden">Q2 2025目标</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="en">Daily Organic Traffic</span><span class="zh hidden">日均有机流量</span></td>
+                                <td>1,163</td>
+                                <td>1,500-1,600</td>
+                                <td>2,800-3,200</td>
+                                <td>3,500-4,000</td>
+                            </tr>
+                            <tr>
+                                <td><span class="en">PC Keywords Indexed</span><span class="zh hidden">索引的PC关键词</span></td>
+                                <td>165</td>
+                                <td>250-300</td>
+                                <td>450-550</td>
+                                <td>650-750</td>
+                            </tr>
+                            <tr>
+                                <td><span class="en">Keywords in Top-20</span><span class="zh hidden">前20位关键词</span></td>
+                                <td>8</td>
+                                <td>25-30</td>
+                                <td>60-80</td>
+                                <td>100-150</td>
+                            </tr>
+                            <tr>
+                                <td><span class="en">Baidu Daily Traffic</span><span class="zh hidden">百度日均流量</span></td>
+                                <td>67</td>
+                                <td>300-400</td>
+                                <td>700-900</td>
+                                <td>1,000-1,200</td>
+                            </tr>
+                            <tr>
+                                <td><span class="en">Bing Daily Traffic</span><span class="zh hidden">必应日均流量</span></td>
+                                <td>688</td>
+                                <td>850-950</td>
+                                <td>1,500-1,800</td>
+                                <td>2,200-2,600</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="en">Domain Authority (Est.)</span><span class="zh hidden">域权限(估计)</span></td>
+                                <td>32</td>
+                                <td>35-37</td>
+                                <td>40-42</td>
+                                <td>45-48</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Implementation Checklist -->
+            <div class="chart-container" style="margin-top: 24px;">
+                <h3><span class="en">Implementation Checklist: Critical Tasks</span><span class="zh hidden">实施清单：关键任务</span></h3>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 16px;">
+                    <div style="display: flex; gap: 12px; padding: 12px; background: var(--alt-bg); border-radius: 6px;">
+                        <input type="checkbox" style="flex-shrink: 0; margin-top: 2px;">
+                        <div style="font-size: 13px;"><span class="en">Register Baidu Webmaster Tools and submit XML sitemap (Priority: Critical)</span><span class="zh hidden">注册百度网站管理员工具并提交XML地图（优先级：关键）</span></div>
+                    </div>
+                    <div style="display: flex; gap: 12px; padding: 12px; background: var(--alt-bg); border-radius: 6px;">
+                        <input type="checkbox" style="flex-shrink: 0; margin-top: 2px;">
+                        <div style="font-size: 13px;"><span class="en">Conduct comprehensive technical SEO audit and fix critical issues (Priority: Critical)</span><span class="zh hidden">进行全面的技术SEO审计并修复关键问题（优先级：关键）</span></div>
+                    </div>
+                    <div style="display: flex; gap: 12px; padding: 12px; background: var(--alt-bg); border-radius: 6px;">
+                        <input type="checkbox" style="flex-shrink: 0; margin-top: 2px;">
+                        <div style="font-size: 13px;"><span class="en">Conduct Chinese keyword research and create keyword database (500+ keywords) (Priority: Critical)</span><span class="zh hidden">进行中文关键词研究并创建关键词数据库（500+关键词）（优先级：关键）</span></div>
+                    </div>
+                    <div style="display: flex; gap: 12px; padding: 12px; background: var(--alt-bg); border-radius: 6px;">
+                        <input type="checkbox" style="flex-shrink: 0; margin-top: 2px;">
+                        <div style="font-size: 13px;"><span class="en">Develop SEO content calendar for 12-month content production (Priority: High)</span><span class="zh hidden">为12个月的内容制作开发SEO内容日历（优先级：高）</span></div>
+                    </div>
+                    <div style="display: flex; gap: 12px; padding: 12px; background: var(--alt-bg); border-radius: 6px;">
+                        <input type="checkbox" style="flex-shrink: 0; margin-top: 2px;">
+                        <div style="font-size: 13px;"><span class="en">Hire or contract dedicated Chinese content writing resources (Priority: High)</span><span class="zh hidden">聘请或承包专业的中文内容写作资源（优先级：高）</span></div>
+                    </div>
+                    <div style="display: flex; gap: 12px; padding: 12px; background: var(--alt-bg); border-radius: 6px;">
+                        <input type="checkbox" style="flex-shrink: 0; margin-top: 2px;">
+                        <div style="font-size: 13px;"><span class="en">Create pillar content hubs for top 3 product categories (Priority: High)</span><span class="zh hidden">为前3个产品类别创建支柱内容中心（优先级：高）</span></div>
+                    </div>
+                    <div style="display: flex; gap: 12px; padding: 12px; background: var(--alt-bg); border-radius: 6px;">
+                        <input type="checkbox" style="flex-shrink: 0; margin-top: 2px;">
+                        <div style="font-size: 13px;"><span class="en">Establish link building outreach program with industry partners (Priority: Medium)</span><span class="zh hidden">与行业合作伙伴建立链接建设外展计划（优先级：中）</span></div>
+                    </div>
+                    <div style="display: flex; gap: 12px; padding: 12px; background: var(--alt-bg); border-radius: 6px;">
+                        <input type="checkbox" style="flex-shrink: 0; margin-top: 2px;">
+                        <div style="font-size: 13px;"><span class="en">Implement monthly SEO performance tracking dashboard with automated reporting (Priority: Medium)</span><span class="zh hidden">实施具有自动化报告的月度SEO绩效跟踪仪表板（优先级：中）</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Summary -->
+            <div class="chart-container" style="margin-top: 24px;">
+                <h3><span class="en">18-Month Budget Summary</span><span class="zh hidden">18个月预算摘要</span></h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px;">
+                    <div style="background: var(--alt-bg); border-radius: 8px; padding: 16px; border-left: 4px solid var(--primary-color);">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Resource Investment</span><span class="zh hidden">资源投资</span></div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--text-primary); font-family: var(--font-data);">$195K-247K</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                            <span class="en">Team: 1 Director, 2 Managers, 12 Specialists</span><span class="zh hidden">团队：1名总监、2名经理、12名专家</span>
+                        </div>
+                    </div>
+                    <div style="background: var(--alt-bg); border-radius: 8px; padding: 16px; border-left: 4px solid var(--accent-color);">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Expected ROI (Monthly)</span><span class="zh hidden">预期ROI（月度）</span></div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--accent-color); font-family: var(--font-data);">245%</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                            <span class="en">+2,837 traffic × $50 avg. CPC value</span><span class="zh hidden">+2,837流量×$50平均CPC价值</span>
+                        </div>
+                    </div>
+                    <div style="background: var(--alt-bg); border-radius: 8px; padding: 16px; border-left: 4px solid #22c55e;">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Traffic Value (18 months)</span><span class="zh hidden">流量价值（18个月）</span></div>
+                        <div style="font-size: 24px; font-weight: 700; color: #22c55e; font-family: var(--font-data);">$4.26M</div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                            <span class="en">Incremental traffic value at $50 CPC</span><span class="zh hidden">增量流量价值，$50 CPC</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="summary-text" style="margin-top: 20px;">
+                    <span class="en">The 18-month roadmap requires a cumulative investment of $195,000-247,000 to achieve 244-287% traffic growth. Based on conservative valuation of $50 per click (typical for B2B advanced materials industry), the incremental traffic generated represents a potential value of $4.26M over 18 months. This translates to a net ROI of 1,724% or approximately 96% monthly return on investment, making SEO optimization the highest-ROI marketing channel for Toray Industries.</span>
+                    <span class="zh hidden">18个月路线图需要累计投资$195,000-247,000以实现244-287%的流量增长。基于每次点击$50的保守估值（典型的B2B先进材料行业水平），产生的增量流量在18个月内代表$4.26M的潜在价值。这相当于净ROI 1,724%或约96%的月度投资回报率，使SEO优化成为东丽株式会社最高ROI的营销渠道。</span>
+                </p>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">Download Full Report PDF</span><span class="zh hidden">下载完整报告PDF</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Start Implementation Today</span><span class="zh hidden">今天开始实施</span></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.en');
+            const zhElements = document.querySelectorAll('.zh');
+            const isEnglishVisible = !enElements[0].classList.contains('hidden');
+            
+            if (isEnglishVisible) {
+                enElements.forEach(el => el.classList.add('hidden'));
+                zhElements.forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                zhElements.forEach(el => el.classList.add('hidden'));
+                enElements.forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
