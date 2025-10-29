@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unknown - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 40px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px;
+            page-break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 100%;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0;
+            min-width: 100%;
+        }
+        .data-table thead {
+            display: table-header-group;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 12px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 13px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 12px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 13px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3{
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul{
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li{
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        .swot-item li:before{
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3{
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+
+        /* Simple Bar Chart for Traffic Channel Analysis */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .bar-row {
+            display: grid;
+            grid-template-columns: 120px 1fr 100px;
+            gap: 12px;
+            align-items: center;
+        }
+        .bar-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .bar-container {
+            display: flex;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            height: 24px;
+        }
+        .bar-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .bar-baidu {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+        }
+        .bar-bing {
+            background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+        }
+        .bar-value {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+            min-width: 80px;
+        }
+
+        /* Horizontal Bar Chart for Keyword Efficiency */
+        .efficiency-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .efficiency-row {
+            display: grid;
+            grid-template-columns: 150px 1fr 80px;
+            gap: 12px;
+            align-items: center;
+        }
+        .efficiency-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .efficiency-bar {
+            background: var(--alt-bg);
+            border-radius: 4px;
+            height: 20px;
+            overflow: hidden;
+        }
+        .efficiency-fill {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .efficiency-percent {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+        }
+
+        /* Timeline */
+        .timeline-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary-color);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4{
+            color: var(--text-heading);
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        .timeline-item p{
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        .timeline-phase {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid var(--alt-bg);
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fcd34d;
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover{
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Competitive Index Indicator */
+        .index-bar {
+            background: var(--alt-bg);
+            border-radius: 4px;
+            height: 6px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .index-fill {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            height: 100%;
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 12mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .opportunity-card,
+            .key-metrics-grid, .table-container, .bar-row,
+            .efficiency-row, .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #d1d5db;
+                padding: 16mm 12mm;
+                margin-bottom: 6mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 6mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+            .key-metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .key-metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            .bar-row, .efficiency-row {
+                grid-template-columns: 100px 1fr 60px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">Unknown</span><span class="zh hidden">Unknown</span></h1>
+            <p class="subtitle"><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></p>
+            
+            <div class="key-metrics-grid" style="margin-top: 40px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Position</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">#6 <span style="font-size: 18px;">/ 6</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic vs Average</span><span class="zh hidden">日流量 vs 平均值</span></div>
+                    <div class="value">92.9% <span style="font-size: 18px; color: #ef4444;">↓</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">-<span style="font-size: 18px; color: #9ca3af;"> N/A</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value">High</div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    <strong>Unknown</strong> currently has minimal SEO presence in the logistics market, with zero measurable daily traffic from major search engines. However, this represents a significant growth opportunity. The market is dominated by global logistics leaders like DHL Global Forwarding (35,806 daily traffic), Maersk Logistics (7,756 daily traffic), and Sinotrans Logistics (1,717 daily traffic). With strategic SEO implementation and targeted keyword optimization, Unknown can establish a strong market position and capture market share from competitors who are currently underserving certain segments.
+                </span>
+                <span class="zh hidden">
+                    <strong>Unknown</strong> 目前在物流市场中的SEO表现最小化，主要搜索引擎的日流量为零。然而，这代表了巨大的增长机会。市场由全球物流领导者主导，如敦豪全球货运（日流量35,806）、马士基物流（日流量7,756）和中外运物流（日流量1,717）。通过战略性的SEO实施和针对性的关键词优化，Unknown可以建立强大的市场地位，并从目前未能充分服务某些细分市场的竞争对手那里夺取市场份额。
+                </span>
+            </p>
+
+            <h2 style="margin-top: 40px; font-size: 20px; border: none;"><span class="en">Market Summary</span><span class="zh hidden">市场总结</span></h2>
+            <p class="summary-text">
+                <span class="en">
+                    The competitive landscape shows a clear hierarchy with DHL Global Forwarding commanding 51.1% of total traffic among top competitors. The market demonstrates strong Baidu PC dominance (70% of traffic) with secondary presence on Bing. Unknown's zero-traffic position indicates no current indexing or ranking for relevant keywords, but positions the company at the starting line for rapid SEO growth with proper strategy implementation.
+                </span>
+                <span class="zh hidden">
+                    竞争格局显示出明确的层级关系，敦豪全球货运在顶级竞争对手中占据总流量的51.1%。市场显示出强大的百度PC主导地位（流量的70%），在必应上有次要存在。Unknown的零流量位置表明目前没有相关关键词的索引或排名，但通过适当的战略实施，该公司处于快速SEO增长的起始位置。
+                </span>
+            </p>
+
+            <div class="cta-container" style="margin-top: 30px;">
+                <button class="primary-cta" id="download-pdf-btn">
+                    <span class="en">📥 Download PDF Report</span><span class="zh hidden">📥 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule Consultation</span><span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 20px;">
+                <span class="en">Comparative analysis of Unknown and top 5 competitors by daily traffic. The competitive index measures overall SEO strength combining traffic, keyword volume, and ranking distribution.</span>
+                <span class="zh hidden">Unknown与按日流量排名前5的竞争对手的比较分析。竞争指数测量整体SEO实力，结合流量、关键词数量和排名分布。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日流量</span></th>
+                            <th><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Keywords</span><span class="zh hidden">关键词数</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user">OUR</span><span class="en">Unknown</span><span class="zh hidden">Unknown</span></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span>0.0</span>
+                                    <div class="index-bar" style="width: 60px;">
+                                        <div class="index-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">DHL Global Forwarding</span><span class="zh hidden">敦豪全球货运</span></td>
+                            <td>35,806</td>
+                            <td>4,929</td>
+                            <td>2,244</td>
+                            <td>2,280</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span>100.0</span>
+                                    <div class="index-bar" style="width: 60px;">
+                                        <div class="index-fill" style="width: 100%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Maersk Logistics</span><span class="zh hidden">马士基物流</span></td>
+                            <td>7,756</td>
+                            <td>1,769</td>
+                            <td>1,899</td>
+                            <td>1,225</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span>21.6</span>
+                                    <div class="index-bar" style="width: 60px;">
+                                        <div class="index-fill" style="width: 21.6%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Sinotrans Logistics</span><span class="zh hidden">中外运物流</span></td>
+                            <td>1,717</td>
+                            <td>292</td>
+                            <td>10</td>
+                            <td>354</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span>4.8</span>
+                                    <div class="index-bar" style="width: 60px;">
+                                        <div class="index-fill" style="width: 4.8%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">DB Schenker</span><span class="zh hidden">德铁信可</span></td>
+                            <td>129</td>
+                            <td>40</td>
+                            <td>6</td>
+                            <td>70</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span>0.4</span>
+                                    <div class="index-bar" style="width: 60px;">
+                                        <div class="index-fill" style="width: 0.4%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Kerry Logistics</span><span class="zh hidden">嘉里物流</span></td>
+                            <td>118</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span>0.3</span>
+                                    <div class="index-bar" style="width: 60px;">
+                                        <div class="index-fill" style="width: 0.3%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="summary-text" style="margin-top: 20px;">
+                <span class="en">
+                    <strong>Key Findings:</strong> DHL Global Forwarding dominates with 35,806 daily traffic and 2,280 keywords, achieving a competitive index of 100.0. A significant gap exists between top players and mid-tier competitors. Unknown and Kerry Logistics are at the entry level with zero traffic. The discrepancy suggests targeting long-tail keywords and niche segments could provide quick wins for market entry.
+                </span>
+                <span class="zh hidden">
+                    <strong>关键发现：</strong>敦豪全球货运以日流量35,806和2,280个关键词占据主导地位，竞争指数达到100.0。顶级企业与中层竞争对手之间存在显著差距。Unknown和嘉里物流处于进入阶段，流量为零。这一差异表明针对长尾关键词和利基细分市场可能为市场进入提供快速机遇。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 20px;">
+                <span class="en">Strategic assessment of Unknown's position within the competitive logistics market landscape.</span>
+                <span class="zh hidden">对Unknown在竞争激烈的物流市场中地位的战略评估。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: #22c55e;">
+                        <span class="en">💪 Strengths</span><span class="zh hidden">💪 优势</span>
+                    </h3>
+                    <ul>
+                        <li><span class="en">Clean slate advantage: No penalized domains or legacy SEO baggage; can implement best practices from ground up with modern SEO standards</span><span class="zh hidden">白纸优势：无受罚域名或遗留SEO包袱；可以从零开始实施最佳实践和现代SEO标准</span></li>
+                        <li><span class="en">Agile implementation: As a startup in SEO, faster adaptation to algorithm updates and trending search behaviors compared to entrenched competitors</span><span class="zh hidden">敏捷实施：作为SEO新手，相比已根深蒂固的竞争对手，可以更快适应算法更新和趋势搜索行为</span></li>
+                        <li><span class="en">Low competition barrier: Currently competing in "zero-traffic" space with minimal immediate competitive pressure from top 5 players</span><span class="zh hidden">低竞争壁垒：目前在"零流量"空间竞争，与前5名企业的直接竞争压力最小</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: #ef4444;">
+                        <span class="en">⚠️ Weaknesses</span><span class="zh hidden">⚠️ 弱点</span>
+                    </h3>
+                    <ul>
+                        <li><span class="en">Zero search visibility: Currently invisible on both Baidu and Bing; requires significant SEO investment to achieve indexing and ranking</span><span class="zh hidden">零搜索可见性：目前在百度和必应上都不可见；需要大量SEO投资才能实现索引和排名</span></li>
+                        <li><span class="en">No keyword footprint: Zero keywords ranking means no existing domain authority or topical expertise signals to search engines</span><span class="zh hidden">无关键词足迹：零排名关键词意味着对搜索引擎没有现有的域权限或主题专业性信号</span></li>
+                        <li><span class="en">Brand recognition deficit: 51.1% traffic share of competitor DHL vs. 0% for Unknown requires massive brand-building effort alongside SEO</span><span class="zh hidden">品牌认知缺陷：竞争对手DHL的51.1%流量份额对Unknown的0%表明需要大规模品牌建设努力与SEO配套</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: #f59e0b;">
+                        <span class="en">🎯 Opportunities</span><span class="zh hidden">🎯 机会</span>
+                    </h3>
+                    <ul>
+                        <li><span class="en">Underserved segments: DHL dominates at 35,806 traffic but primarily serves enterprise clients; significant SME and mid-market logistics demand untapped</span><span class="zh hidden">未充分服务的细分市场：DHL以35,806流量占主导，但主要服务企业客户；中小企业和中型市场物流需求未被开发</span></li>
+                        <li><span class="en">Regional targeting advantage: While competitors focus on global markets, localized SEO for specific Chinese provinces and cities is underdeveloped</span><span class="zh hidden">区域定位优势：虽然竞争对手专注于全球市场，但针对特定中国省份和城市的本地化SEO未充分开发</span></li>
+                        <li><span class="en">Keyword opportunity gap: 30+ potential keywords in 11-50 position range across competitors suggests room for mid-tier keyword capture with focused content strategy</span><span class="zh hidden">关键词机会缺口：竞争对手在11-50排名范围内30多个潜在关键词，表明通过集中内容战略可以捕获中层关键词</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: #ef4444;">
+                        <span class="en">⛔ Threats</span><span class="zh hidden">⛔ 威胁</span>
+                    </h3>
+                    <ul>
+                        <li><span class="en">Established competitor dominance: DHL's 100.0 competitive index shows entrenched authority; breaking through their rankings requires sustained, multi-year effort</span><span class="zh hidden">已建立的竞争对手主导地位：DHL的100.0竞争指数显示已确立的权限；突破其排名需要持续的多年努力</span></li>
+                        <li><span class="en">Algorithm volatility: Baidu and Bing algorithms favor established domains with historical traffic; new domains face sandbox period before earning ranking opportunities</span><span class="zh hidden">算法不稳定性：百度和必应算法偏好具有历史流量的已建立域名；新域名在获得排名机会前面临沙盒期</span></li>
+                        <li><span class="en">Massive traffic gap: Closing 35,806-traffic gap with DHL requires 358+ keyword rankings at 100+ daily traffic each; realistic 3-5 year projection</span><span class="zh hidden">巨大流量差距：弥补与DHL的35,806流量差距需要358多个关键词排名，每个日流量100多；现实的3-5年预期</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+
+            <div class="chart-container">
+                <h3><span class="en">📊 Traffic Channel Distribution (Baidu vs Bing)</span><span class="zh hidden">📊 流量渠道分布（百度 vs 必应）</span></h3>
+                <p class="summary-text" style="font-size: 14px; margin-bottom: 16px;">
+                    <span class="en">Average daily traffic split between Baidu PC and Bing search channels across all tracked competitors.</span>
+                    <span class="zh hidden">所有追踪竞争对手百度PC和必应搜索渠道之间的平均日流量分布。</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">DHL Global</span><span class="zh hidden">敦豪全球</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="width: 68.7%;"><span style="visibility: hidden;">68.7%</span></div>
+                            <div class="bar-segment bar-bing" style="width: 31.3%;"><span style="visibility: hidden;">31.3%</span></div>
+                        </div>
+                        <div class="bar-value">35,806</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Maersk Logistics</span><span class="zh hidden">马士基物流</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="width: 48.2%;"><span style="visibility: hidden;">48.2%</span></div>
+                            <div class="bar-segment bar-bing" style="width: 51.8%;"><span style="visibility: hidden;">51.8%</span></div>
+                        </div>
+                        <div class="bar-value">7,756</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Sinotrans</span><span class="zh hidden">中外运</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="width: 96.6%;"><span style="visibility: hidden;">96.6%</span></div>
+                            <div class="bar-segment bar-bing" style="width: 3.4%;"><span style="visibility: hidden;">3.4%</span></div>
+                        </div>
+                        <div class="bar-value">1,717</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">DB Schenker</span><span class="zh hidden">德铁信可</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="width: 87%;"><span style="visibility: hidden;">87%</span></div>
+                            <div class="bar-segment bar-bing" style="width: 13%;"><span style="visibility: hidden;">13%</span></div>
+                        </div>
+                        <div class="bar-value">129</div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Kerry Logistics</span><span class="zh hidden">嘉里物流</span></div>
+                        <div class="bar-container">
+                            <div class="bar-segment bar-baidu" style="width: 100%;"><span style="visibility: hidden;">100%</span></div>
+                            <div class="bar-segment bar-bing" style="width: 0%;"><span style="visibility: hidden;">0%</span></div>
+                        </div>
+                        <div class="bar-value">118</div>
+                    </div>
+                </div>
+                <p class="summary-text" style="font-size: 13px; margin-top: 12px; color: var(--text-muted);">
+                    <span class="en"><strong>Insight:</strong> Baidu generates 70% of total competitive traffic (23,040 combined daily). DHL and Maersk show balanced channel strategies. Chinese-focused competitors (Sinotrans, Kerry) depend almost entirely on Baidu. Unknown should prioritize Baidu optimization as primary channel with Bing as secondary growth area.</span>
+                    <span class="zh hidden"><strong>洞察：</strong>百度产生竞争总流量的70%（合计日流量23,040）。DHL和马士基显示平衡的渠道策略。专注中国的竞争对手（中外运、嘉里）几乎完全依赖百度。Unknown应将百度优化作为主要渠道，必应作为次要增长领域。</span>
+                </p>
+            </div>
+
+            <div class="chart-container">
+                <h3><span class="en">🎯 Keyword Efficiency Analysis</span><span class="zh hidden">🎯 关键词效率分析</span></h3>
+                <p class="summary-text" style="font-size: 14px; margin-bottom: 16px;">
+                    <span class="en">Daily traffic per keyword metric shows SEO optimization effectiveness. Higher efficiency indicates better keyword targeting and ranking positions.</span>
+                    <span class="zh hidden">每个关键词的日流量指标显示SEO优化有效性。更高的效率表示更好的关键词定位和排名位置。</span>
+                </p>
+                <div class="efficiency-chart">
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">DHL Global</span><span class="zh hidden">敦豪全球</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 100%;">15.7</div>
+                        </div>
+                        <div class="efficiency-percent">15.7</div>
+                    </div>
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">Maersk Logistics</span><span class="zh hidden">马士基物流</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 37.8%;">6.3</div>
+                        </div>
+                        <div class="efficiency-percent">6.3</div>
+                    </div>
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">Sinotrans</span><span class="zh hidden">中外运</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 24.5%;">3.9</div>
+                        </div>
+                        <div class="efficiency-percent">3.9</div>
+                    </div>
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">DB Schenker</span><span class="zh hidden">德铁信可</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 10.3%;">1.8</div>
+                        </div>
+                        <div class="efficiency-percent">1.8</div>
+                    </div>
+                    <div class="efficiency-row">
+                        <div class="efficiency-label"><span class="en">Kerry Logistics</span><span class="zh hidden">嘉里物流</span></div>
+                        <div class="efficiency-bar">
+                            <div class="efficiency-fill" style="width: 0%;">0.0</div>
+                        </div>
+                        <div class="efficiency-percent">0.0</div>
+                    </div>
+                </div>
+                <p class="summary-text" style="font-size: 13px; margin-top: 12px; color: var(--text-muted);">
+                    <span class="en"><strong>Insight:</strong> DHL achieves 15.7 traffic per keyword, demonstrating superior optimization. Lower-ranked competitors average 3.2 traffic per keyword. Unknown's entry strategy should target keywords with lower competition density to achieve higher efficiency ratios before competing with DHL's established authority.</span>
+                    <span class="zh hidden"><strong>洞察：</strong>DHL每个关键词达到15.7流量，显示优越的优化。排名较低的竞争对手平均每个关键词3.2流量。Unknown的进入战略应针对竞争密度较低的关键词，以在与DHL已建立的权限竞争前实现更高的效率比率。</span>
+                </p>
+            </div>
+
+            <div class="chart-container">
+                <h3><span class="en">📈 Competitive Gap Analysis</span><span class="zh hidden">📈 竞争差距分析</span></h3>
+                <p class="summary-text" style="font-size: 14px; margin-bottom: 16px;">
+                    <span class="en">Comparison of Unknown vs Top Competitor across key performance metrics, identifying priority improvement areas.</span>
+                    <span class="zh hidden">对Unknown与顶级竞争对手在关键性能指标上的比较，确定优先改进领域。</span>
+                </p>
+                <table class="data-table" style="margin-top: 12px;">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Metric</span><span class="zh hidden">指标</span></th>
+                            <th><span class="en">Unknown</span><span class="zh hidden">Unknown</span></th>
+                            <th><span class="en">DHL Global</span><span class="zh hidden">敦豪全球</span></th>
+                            <th><span class="en">Gap</span><span class="zh hidden">差距</span></th>
+                            <th><span class="en">Gap %</span><span class="zh hidden">差距%</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Daily Traffic</span><span class="zh hidden">日流量</span></td>
+                            <td>0</td>
+                            <td>35,806</td>
+                            <td>-35,806</td>
+                            <td>-100%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Keywords Ranking</span><span class="zh hidden">排名关键词</span></td>
+                            <td>0</td>
+                            <td>2,280</td>
+                            <td>-2,280</td>
+                            <td>-100%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Avg. Traffic/Keyword</span><span class="zh hidden">平均流量/关键词</span></td>
+                            <td>0.0</td>
+                            <td>15.7</td>
+                            <td>-15.7</td>
+                            <td>-100%</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></td>
+                            <td>0.0</td>
+                            <td>100.0</td>
+                            <td>-100.0</td>
+                            <td>-100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="summary-text" style="font-size: 13px; margin-top: 12px; color: var(--text-muted);">
+                    <span class="en"><strong>Strategic Implication:</strong> Complete market entry is required across all metrics. A realistic first-year goal would be 200-300 keywords ranking with 100-200 daily traffic (0.3-0.7% of DHL's traffic). This requires establishing domain authority, technical SEO foundation, and content strategy targeting lower-competition long-tail keywords.</span>
+                    <span class="zh hidden"><strong>战略含义：</strong>所有指标都需要完全进入市场。现实的第一年目标是200-300个关键词排名，日流量100-200（DHL流量的0.3-0.7%）。这需要建立域权限、技术SEO基础和针对低竞争长尾关键词的内容战略。</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+
+            <p class="section-intro" style="margin-bottom: 20px;">
+                <span class="en">Strategic opportunities ranked by priority and estimated impact potential for Unknown's SEO market entry and growth.</span>
+                <span class="zh hidden">按优先级和估计影响潜力排列的Unknown SEO市场进入和增长的战略机会。</span>
+            </p>
+
+            <h3 style="color: var(--text-heading); margin-bottom: 20px; margin-top: 30px;">
+                <span class="en">🚀 Priority Opportunities Matrix</span><span class="zh hidden">🚀 优先级机会矩阵</span>
+            </h3>
+
+            <div class="opportunity-card">
+                <h4>
+                    <span class="priority-badge priority-high">
+                        <span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span>
+                    </span>
+                </h4>
+                <h4 style="margin-top: 12px;">
+                    <span class="en">1. SME & Mid-Market Logistics Segment Targeting</span><span class="zh hidden">1. 中小企业和中型市场物流细分市场定位</span>
+                </h4>
+                <p>
+                    <span class="en"><strong>Description:</strong> DHL's traffic is heavily weighted toward enterprise clients. Create targeted content for mid-market companies (500-5,000 employees) with simpler, faster logistics needs.</span>
+                    <span class="zh hidden"><strong>描述：</strong>DHL的流量主要面向企业客户。为中型企业（员工500-5,000人）创建针对性内容，满足更简单、更快的物流需求。</span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Target Keywords:</strong> "affordable international logistics" (500 searches/month), "small business shipping solutions" (350 searches/month), "cost-effective freight forwarding" (400 searches/month)</span>
+                    <span class="zh hidden"><strong>目标关键词：</strong>"经济国际物流"（500次搜索/月）、"小企业运输解决方案"（350次搜索/月）、"经济型货运转发"（400次搜索/月）</span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Estimated 12-Month Impact:</strong> 150-200 keywords ranking, 80-120 daily traffic, $15K-25K monthly revenue potential</span>
+                    <span class="zh hidden"><strong>估计12个月影响：</strong>150-200个关键词排名，日流量80-120，月收入潜力$15K-25K</span>
+                </p>
+            </div>
+
+            <div class="opportunity-card">
+                <h4>
+                    <span class="priority-badge priority-high">
+                        <span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span>
+                    </span>
+                </h4>
+                <h4 style="margin-top: 12px;">
+                    <span class="en">2. Local & Regional Logistics Market Expansion</span><span class="zh hidden">2. 本地和区域物流市场扩展</span>
+                </h4>
+                <p>
+                    <span class="en"><strong>Description:</strong> Global competitors neglect provincial and city-level search traffic. Focus on top 20 Chinese cities with localized landing pages and service descriptions.</span>
+                    <span class="zh hidden"><strong>描述：</strong>全球竞争对手忽视了省级和城市级搜索流量。专注于中国前20个城市，使用本地化登录页面和服务描述。</span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Target Markets:</strong> Shanghai (1,200 monthly searches), Shenzhen (950), Beijing (1,100), Guangzhou (850), Chongqing (720) for location-specific logistics queries</span>
+                    <span class="zh hidden"><strong>目标市场：</strong>上海（月1,200次搜索）、深圳（950次）、北京（1,100次）、广州（850次）、重庆（720次）针对位置特定的物流查询</span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Estimated 12-Month Impact:</strong> 200-300 keywords ranking, 120-200 daily traffic, regional authority establishment</span>
+                    <span class="zh hidden"><strong>估计12个月影响：</strong>200-300个关键词排名，日流量120-200，区域权限建立</span>
+                </p>
+            </div>
+
+            <div class="opportunity-card">
+                <h4>
+                    <span class="priority-badge priority-medium">
+                        <span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span>
+                    </span>
+                </h4>
+                <h4 style="margin-top: 12px;">
+                    <span class="en">3. Niche Service Vertical Development</span><span class="zh hidden">3. 利基服务垂直领域发展</span>
+                </h4>
+                <p>
+                    <span class="en"><strong>Description:</strong> Create specialized content for underserved logistics niches: e-commerce logistics, perishables transport, hazardous materials, temperature-controlled shipments.</span>
+                    <span class="zh hidden"><strong>描述：</strong>为未充分服务的物流利基市场创建专业内容：电子商务物流、易腐物流、危险物品、恒温运输。</span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Target Keywords:</strong> "cold chain logistics China" (280 searches/month), "ecommerce fulfillment service" (420 searches/month), "hazmat shipping specialist" (180 searches/month)</span>
+                    <span class="zh hidden"><strong>目标关键词：</strong>"中国冷链物流"（280次搜索/月）、"电商履行服务"（420次搜索/月）、"危险品运输专家"（180次搜索/月）</span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Estimated 12-Month Impact:</strong> 100-150 keywords ranking, 50-80 daily traffic, high-value customer acquisition</span>
+                    <span class="zh hidden"><strong>估计12个月影响：</strong>100-150个关键词排名，日流量50-80，高价值客户获取</span>
+                </p>
+            </div>
+
+            <div class="opportunity-card">
+                <h4>
+                    <span class="priority-badge priority-medium">
+                        <span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span>
+                    </span>
+                </h4>
+                <h4 style="margin-top: 12px;">
+                    <span class="en">4. Industry-Specific Solution Marketing</span><span class="zh hidden">4. 行业特定解决方案营销</span>
+                </h4>
+                <p>
+                    <span class="en"><strong>Description:</strong> Develop content targeting specific industries: automotive parts logistics, fashion/apparel supply chain, pharmaceutical distribution, manufacturing supply chain.</span>
+                    <span class="zh hidden"><strong>描述：</strong>开发针对特定行业的内容：汽车零部件物流、时尚/服装供应链、医药分销、制造业供应链。</span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Target Keywords:</strong> "automotive parts logistics" (320 searches/month), "fashion supply chain management" (280 searches/month), "pharmaceutical distribution China" (380 searches/month)</span>
+                    <span class="zh hidden"><strong>目标关键词：</strong>"汽车零部件物流"（320次搜索/月）、"时尚供应链管理"（280次搜索/月）、"中国医药分销"（380次搜索/月）</span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Estimated 12-Month Impact:</strong> 120-180 keywords ranking, 70-110 daily traffic, industry authority positioning</span>
+                    <span class="zh hidden"><strong>估计12个月影响：</strong>120-180个关键词排名，日流量70-110，行业权限定位</span>
+                </p>
+            </div>
+
+            <h3 style="color: var(--text-heading); margin-bottom: 20px; margin-top: 30px;">
+                <span class="en">💰 Potential Calculation</span><span class="zh hidden">💰 潜力计算</span>
+            </h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Conservative Year 1 Goal</span><span class="zh hidden">保守第1年目标</span></div>
+                    <div class="value">200-250 <span style="font-size: 14px;">keywords</span></div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><span class="en">Long-tail focus with 100-150 daily traffic projection</span><span class="zh hidden">长尾重点，日流量100-150预期</span></p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Moderate Year 1 Goal</span><span class="zh hidden">中等第1年目标</span></div>
+                    <div class="value">350-450 <span style="font-size: 14px;">keywords</span></div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><span class="en">Mix of mid-tail and long-tail with 200-300 daily traffic projection</span><span class="zh hidden">中尾和长尾混合，日流量200-300预期</span></p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Aggressive Year 1 Goal</span><span class="zh hidden">激进第1年目标</span></div>
+                    <div class="value">500-700 <span style="font-size: 14px;">keywords</span></div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><span class="en">All segments with 400-600 daily traffic projection</span><span class="zh hidden">所有细分市场，日流量400-600预期</span></p>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    <strong>Revenue Impact Model:</strong> Assuming average conversion rate of 2-3% and average deal value of $500-1,500:
+                    Conservative scenario (125 daily traffic × 2.5% conversion × $1,000) = $93K monthly revenue.
+                    Aggressive scenario (500 daily traffic × 3% conversion × $1,200) = $180K monthly revenue.
+                </span>
+                <span class="zh hidden">
+                    <strong>收入影响模型：</strong>假设平均转化率2-3%，平均交易价值$500-1,500：
+                    保守场景（125日流量×2.5%转化×$1,000）=月收入$93K。
+                    激进场景（500日流量×3%转化×$1,200）=月收入$180K。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan & Next Steps</span><span class="zh hidden">行动计划和后续步骤</span></h2>
+
+            <p class="section-intro" style="margin-bottom: 30px;">
+                <span class="en">12-month strategic SEO roadmap with phased milestones, resource allocation, and KPI tracking for Unknown's market entry and growth.</span>
+                <span class="zh hidden">12个月战略SEO路线图，包括分阶段里程碑、资源分配和Unknown市场进入和增长的KPI跟踪。</span>
+            </p>
+
+            <h3 style="color: var(--text-heading); margin-bottom: 20px;">
+                <span class="en">📋 Phase 1: Foundation & Setup (Months 1-2)</span><span class="zh hidden">📋 第1阶段：基础和设置（第1-2个月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">WEEK 1-2</span><span class="zh hidden">第1-2周</span></span>
+                <h4><span class="en">Technical SEO Foundation</span><span class="zh hidden">技术SEO基础</span></h4>
+                <p>
+                    <span class="en">• Domain setup with proper DNS configuration and SSL certificate (HTTPS enforcement)<br>
+                    • Sitemap creation and robots.txt optimization<br>
+                    • Google Search Console and Baidu Webmaster Tools registration<br>
+                    • Initial site structure planning for 50+ main service pages and 100+ supporting content pages</span>
+                    <span class="zh hidden">• 使用适当的DNS配置和SSL证书设置域名（HTTPS强制）<br>
+                    • 站点地图创建和robots.txt优化<br>
+                    • Google Search Console和百度站长工具注册<br>
+                    • 50多个主服务页面和100多个支持内容页面的初始站点结构规划</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">WEEK 3-4</span><span class="zh hidden">第3-4周</span></span>
+                <h4><span class="en">Competitive Keyword Research & Analysis</span><span class="zh hidden">竞争对手关键词研究和分析</span></h4>
+                <p>
+                    <span class="en">• Analyze DHL's top 100 ranking keywords to identify gaps<br>
+                    • Identify 500+ potential long-tail keywords for entry strategy<br>
+                    • Create keyword priority matrix (opportunity score × search volume)<br>
+                    • Select 150 primary target keywords for Year 1 content plan</span>
+                    <span class="zh hidden">• 分析DHL排名前100的关键词以找出差距<br>
+                    • 确定500多个进入战略的潜在长尾关键词<br>
+                    • 创建关键词优先级矩阵（机会得分×搜索量）<br>
+                    • 选择150个主要目标关键词用于第1年内容计划</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">MONTH 2</span><span class="zh hidden">第2个月</span></span>
+                <h4><span class="en">Content Strategy Framework & Initial Linkbuilding</span><span class="zh hidden">内容战略框架和初始建立链接</span></h4>
+                <p>
+                    <span class="en">• Develop pillar page structure and topic clusters for 10 main service categories<br>
+                    • Initiate outreach to 30-50 relevant industry websites for backlink opportunities<br>
+                    • Create internal linking strategy template<br>
+                    • Allocate budget for premium domain startup package</span>
+                    <span class="zh hidden">• 为10个主要服务类别开发支柱页面结构和主题集群<br>
+                    • 启动与30-50个相关行业网站的联系以获取反向链接机会<br>
+                    • 创建内部链接战略模板<br>
+                    • 为高级域名启动包分配预算</span>
+                </p>
+            </div>
+
+            <h3 style="color: var(--text-heading); margin-bottom: 20px; margin-top: 30px;">
+                <span class="en">📋 Phase 2: Content Development & Initial Rankings (Months 3-6)</span><span class="zh hidden">📋 第2阶段：内容开发和初始排名（第3-6个月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">MONTH 3-4</span><span class="zh hidden">第3-4个月</span></span>
+                <h4><span class="en">Pillar Content Publishing Wave 1</span><span class="zh hidden">支柱内容发布第1波</span></h4>
+                <p>
+                    <span class="en">• Publish 30 high-quality pillar pages (3,000+ words each) targeting primary service keywords<br>
+                    • Create 60 supporting cluster articles (1,500-2,000 words) for long-tail keywords<br>
+                    • Implement on-page SEO best practices: title tags, meta descriptions, H1-H3 optimization<br>
+                    • Build 200+ internal links connecting pillar pages to cluster content<br>
+                    • Expected result: 50-80 keywords visible in Baidu top 100 positions</span>
+                    <span class="zh hidden">• 发布30个针对主要服务关键词的高质量支柱页面（每个3,000+词）<br>
+                    • 为长尾关键词创建60个支持集群文章（1,500-2,000词）<br>
+                    • 实施页面内SEO最佳实践：标题标签、元描述、H1-H3优化<br>
+                    • 建立200多条内部链接连接支柱页面到集群内容<br>
+                    • 预期结果：50-80个关键词在百度前100位可见</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">MONTH 5-6</span><span class="zh hidden">第5-6个月</span></span>
+                <h4><span class="en">Secondary Content Wave & Link Velocity Acceleration</span><span class="zh hidden">二级内容波和链接速度加速</span></h4>
+                <p>
+                    <span class="en">• Publish 40 additional supporting articles for mid-tier keywords<br>
+                    • Execute 50-75 premium guest post placements on industry websites<br>
+                    • Secure 20-30 high-authority Chinese logistics resource links<br>
+                    • Begin local business citations for top 10 target cities<br>
+                    • Expected result: 100-150 keywords visible, 30-50 daily traffic achieved</span>
+                    <span class="zh hidden">• 为中层关键词发布40篇额外支持文章<br>
+                    • 在行业网站上执行50-75个高级来宾文章版位<br>
+                    • 获得20-30个高权限中文物流资源链接<br>
+                    • 为前10个目标城市开始本地商业引文<br>
+                    • 预期结果：100-150个关键词可见，实现日流量30-50</span>
+                </p>
+            </div>
+
+            <h3 style="color: var(--text-heading); margin-bottom: 20px; margin-top: 30px;">
+                <span class="en">📋 Phase 3: Scaling & Expansion (Months 7-9)</span><span class="zh hidden">📋 第3阶段：扩展和扩大（第7-9个月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">MONTH 7-8</span><span class="zh hidden">第7-8个月</span></span>
+                <h4><span class="en">Regional Expansion Content Series</span><span class="zh hidden">区域扩展内容系列</span></h4>
+                <p>
+                    <span class="en">• Publish 50 city-specific landing pages (800-1,200 words each) for top 20 Chinese cities<br>
+                    • Create 80 industry-vertical pages targeting niche service segments<br>
+                    • Implement proper hreflang tags for city/regional targeting<br>
+                    • Launch 30 localized FAQ pages addressing regional logistics needs<br>
+                    • Expected result: 200-250 keywords visible, 80-120 daily traffic</span>
+                    <span class="zh hidden">• 为中国前20个城市发布50个城市特定登陆页面（每个800-1,200词）<br>
+                    • 创建80个针对利基服务细分的行业垂直页面<br>
+                    • 为城市/区域定位实施正确的hreflang标签<br>
+                    • 推出30个本地化FAQ页面，解决区域物流需求<br>
+                    • 预期结果：200-250个关键词可见，日流量80-120</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">MONTH 9</span><span class="zh hidden">第9个月</span></span>
+                <h4><span class="en">Mid-Year Performance Review & Optimization Sprint</span><span class="zh hidden">中期性能审查和优化冲刺</span></h4>
+                <p>
+                    <span class="en">• Analyze 6-month performance: keyword rankings, traffic sources, conversion data<br>
+                    • Identify top-performing content and scale similar content types<br>
+                    • Optimize bottom-performing keywords: improve content depth, add backlinks, adjust title tags<br>
+                    • Adjust link-building strategy based on domain authority gains<br>
+                    • Plan Q4 content calendar based on learnings and market opportunities</span>
+                    <span class="zh hidden">• 分析6个月性能：关键词排名、流量来源、转化数据<br>
+                    • 确定表现最好的内容并扩展类似内容类型<br>
+                    • 优化表现不佳的关键词：改进内容深度、添加反向链接、调整标题标签<br>
+                    • 基于域权限增长调整链接建设战略<br>
+                    • 基于学习和市场机会规划第4季度内容日历</span>
+                </p>
+            </div>
+
+            <h3 style="color: var(--text-heading); margin-bottom: 20px; margin-top: 30px;">
+                <span class="en">📋 Phase 4: Acceleration & Competitive Positioning (Months 10-12)</span><span class="zh hidden">📋 第4阶段：加速和竞争定位（第10-12个月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">MONTH 10-11</span><span class="zh hidden">第10-11个月</span></span>
+                <h4><span class="en">Premium Authority Building & Link Velocity Peak</span><span class="zh hidden">高级权限建设和链接速度峰值</span></h4>
+                <p>
+                    <span class="en">• Execute 100+ premium backlink placements targeting high-authority domains (DA 50+)<br>
+                    • Publish 30 comprehensive industry report pages competing for featured snippets<br>
+                    • Establish thought leadership: 15 published expert articles in industry publications<br>
+                    • Build 50+ strategic partnerships with complementary logistics services<br>
+                    • Expected result: 300-350 keywords visible, 150-200 daily traffic achieved</span>
+                    <span class="zh hidden">• 执行100多个针对高权限域名（DA 50+）的高级反向链接版位<br>
+                    • 发布30个争取精选摘要的综合行业报告页面<br>
+                    • 建立思想领导地位：15篇已发布在行业出版物中的专家文章<br>
+                    • 与50多个互补物流服务建立战略伙伴关系<br>
+                    • 预期结果：300-350个关键词可见，实现日流量150-200</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">MONTH 12</span><span class="zh hidden">第12个月</span></span>
+                <h4><span class="en">Year 1 Completion & Year 2 Planning</span><span class="zh hidden">第1年完成和第2年规划</span></h4>
+                <p>
+                    <span class="en">• Comprehensive annual SEO performance audit with detailed metrics analysis<br>
+                    • Compare results against goals: keyword rankings achieved, traffic gained, revenue generated<br>
+                    • Document best-performing content types, keywords, and channels<br>
+                    • Plan Year 2 strategy with expanded target keywords and geographic markets<br>
+                    • Projected end-of-year position: #4-5 in competitive ranking with 200-250 daily traffic</span>
+                    <span class="zh hidden">• 进行详细指标分析的综合年度SEO性能审计<br>
+                    • 对照目标比较结果：实现的关键词排名、获得的流量、产生的收入<br>
+                    • 记录表现最好的内容类型、关键词和渠道<br>
+                    • 规划第2年战略，扩大目标关键词和地理市场<br>
+                    • 年底预计位置：竞争排名第4-5，日流量200-250</span>
+                </p>
+            </div>
+
+            <h3 style="color: var(--text-heading); margin-bottom: 20px; margin-top: 30px;">
+                <span class="en">🎯 Key Performance Indicators (KPIs)</span><span class="zh hidden">🎯 关键性能指标（KPI）</span>
+            </h3>
+
+            <table class="data-table" style="margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th><span class="en">Metric</span><span class="zh hidden">指标</span></th>
+                        <th><span class="en">Month 3</span><span class="zh hidden">第3个月</span></th>
+                        <th><span class="en">Month 6</span><span class="zh hidden">第6个月</span></th>
+                        <th><span class="en">Month 9</span><span class="zh hidden">第9个月</span></th>
+                        <th><span class="en">Month 12</span><span class="zh hidden">第12个月</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="en">Keywords Ranking</span><span class="zh hidden">排名关键词</span></td>
+                        <td>30-50</td>
+                        <td>100-150</td>
+                        <td>200-250</td>
+                        <td>250-300</td>
+                    </tr>
+                    <tr>
+                        <td><span class="en">Daily Traffic</span><span class="zh hidden">日流量</span></td>
+                        <td>10-15</td>
+                        <td>40-60</td>
+                        <td>100-150</td>
+                        <td>180-250</td>
+                    </tr>
+                    <tr>
+                        <td><span class="en">Avg. Position of Ranking KWs</span><span class="zh hidden">排名KW平均位置</span></td>
+                        <td>45-60</td>
+                        <td>35-45</td>
+                        <td>25-35</td>
+                        <td>20-30</td>
+                    </tr>
+                    <tr>
+                        <td><span class="en">Domain Authority</span><span class="zh hidden">域权限</span></td>
+                        <td>5-8</td>
+                        <td>15-20</td>
+                        <td>25-30</td>
+                        <td>35-40</td>
+                    </tr>
+                    <tr>
+                        <td><span class="en">Backlink Count</span><span class="zh hidden">反向链接数</span></td>
+                        <td>50-75</td>
+                        <td>150-200</td>
+                        <td>300-400</td>
+                        <td>500-650</td>
+                    </tr>
+                    <tr>
+                        <td><span class="en">Revenue Generated</span><span class="zh hidden">产生的收入</span></td>
+                        <td>$2K-5K</td>
+                        <td>$15K-25K</td>
+                        <td>$45K-70K</td>
+                        <td>$90K-140K</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: var(--text-heading); margin-bottom: 20px; margin-top: 30px;">
+                <span class="en">💼 Resource Requirements & Budget Allocation</span><span class="zh hidden">💼 资源需求和预算分配</span>
+            </h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">SEO Specialist/Manager</span><span class="zh hidden">SEO专家/经理</span></div>
+                    <div class="value">1 FTE <span style="font-size: 14px;">(Full-time)</span></div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><span class="en">Strategy, optimization, reporting</span><span class="zh hidden">战略、优化、报告</span></p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Content Writers</span><span class="zh hidden">内容撰稿人</span></div>
+                    <div class="value">2-3 FTE</div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><span class="en">200+ articles over 12 months</span><span class="zh hidden">12个月内200多篇文章</span></p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Link Building/Outreach</span><span class="zh hidden">链接建设/外展</span></div>
+                    <div class="value">1 FTE</div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><span class="en">500+ backlinks, partnerships</span><span class="zh hidden">500多条反向链接、合作伙伴关系</span></p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Technical SEO/Dev</span><span class="zh hidden">技术SEO/开发</span></div>
+                    <div class="value">0.5 FTE</div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><span class="en">Implementation, site optimization</span><span class="zh hidden">实施、站点优化</span></p>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    <strong>Total Year 1 Budget Estimate:</strong> $120K-180K (depending on in-house vs. agency resources). This includes tool subscriptions ($500-800/month), content creation ($40K-60K), link building ($30K-50K), and platform/software costs. Expected ROI: 200-300% based on conservative $90K+ revenue projection.
+                </span>
+                <span class="zh hidden">
+                    <strong>第1年总预算估计：</strong>$120K-180K（取决于内部与代理资源）。这包括工具订阅（$500-800/月）、内容创建（$40K-60K）、链接建设（$30K-50K）和平台/软件成本。预期ROI：200-300%，基于保守的$90K+收入预期。
+                </span>
+            </p>
+
+            <div class="cta-container" style="margin-top: 50px;">
+                <button class="primary-cta" id="download-pdf-btn">
+                    <span class="en">📥 Download PDF Report</span><span class="zh hidden">📥 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule Consultation</span><span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px; text-align: center; border-top: 1px solid var(--alt-bg); padding-top: 20px;">
+                <span class="en">
+                    <strong>Report Generated:</strong> 2024 | This analysis is based on SEO competitive data and market intelligence for the logistics sector. Strategy recommendations are projections and actual results may vary based on implementation quality, market conditions, and resource commitment.
+                </span>
+                <span class="zh hidden">
+                    <strong>报告生成：</strong>2024年 | 本分析基于物流部门的SEO竞争数据和市场情报。战略建议是预测，实际结果可能根据实施质量、市场条件和资源投入而异。
+                </span>
+            </p>
+        </section>
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
