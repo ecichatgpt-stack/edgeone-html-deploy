@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANXESS AG - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+        
+        /* Bar Chart Styles */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            min-width: 160px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .bar-container {
+            flex: 1;
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            border-radius: 6px;
+            transition: width 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+        }
+        .bar-value {
+            font-size: 12px;
+            color: white;
+            font-weight: 600;
+            font-family: var(--font-data);
+        }
+        
+        /* Stacked Bar Chart */
+        .stacked-bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .stacked-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .stacked-bar-container {
+            flex: 1;
+            height: 32px;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+        }
+        .stacked-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .segment-baidu {
+            background: #3b82f6;
+        }
+        .segment-bing {
+            background: #8b5cf6;
+        }
+        
+        /* Gap Analysis */
+        .gap-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .gap-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+        }
+        .gap-card h4 {
+            font-size: 16px;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+        }
+        .gap-value {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: var(--font-data);
+            color: var(--danger-color);
+            margin-bottom: 8px;
+        }
+        .gap-description {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            font-size: 18px;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+        }
+        .opportunity-priority {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-color);
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success-color);
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2 {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Opportunity Grid */
+            .opportunity-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8mm;
+            }
+            
+            /* Gap Analysis */
+            .gap-analysis {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 6mm;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1>
+                <span class="en">LANXESS AG</span>
+                <span class="zh hidden">朗盛化学（中国）有限公司</span>
+            </h1>
+            <p class="subtitle">
+                <span class="en">SEO Competitive Intelligence Report | Generated on December 2024</span>
+                <span class="zh hidden">SEO竞争情报报告 | 生成于2024年12月</span>
+            </p>
+            
+            <h2>
+                <span class="en">Executive Summary</span>
+                <span class="zh hidden">执行摘要</span>
+            </h2>
+            
+            <p class="summary-text">
+                <span class="en">
+                    LANXESS currently ranks 6th among analyzed competitors in the Chinese specialty chemicals sector, with significant opportunities for growth. The company generates 51 daily visits from organic search, representing only 0.65% of market leader Wanhua Chemical's traffic and 1.48% of BASF's performance. While LANXESS maintains a modest keyword portfolio of 67 terms, its keyword efficiency ratio of 17.91% indicates strong potential for strategic expansion. The competitive landscape is dominated by domestic leader Wanhua Chemical (7,655 daily visits) and international giant BASF (3,456 daily visits), creating both challenges and learning opportunities for LANXESS's digital strategy.
+                </span>
+                <span class="zh hidden">
+                    朗盛目前在中国特种化学品行业的竞争分析中排名第6位，具有显著的增长机会。该公司每日从自然搜索获得51次访问，仅占市场领导者万华化学流量的0.65%和巴斯夫表现的1.48%。虽然朗盛维持着67个关键词的适度组合，但其17.91%的关键词效率比率表明具有战略扩张的强大潜力。竞争格局由国内领导者万华化学（每日7,655次访问）和国际巨头巴斯夫（每日3,456次访问）主导，为朗盛的数字战略创造了挑战和学习机会。
+                </span>
+            </p>
+            
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Market Ranking</span>
+                        <span class="zh hidden">市场排名</span>
+                    </div>
+                    <div class="value">
+                        #6
+                        <span style="font-size: 14px; color: var(--text-muted);">
+                            <span class="en">of 6</span>
+                            <span class="zh hidden">/ 共6家</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Daily Traffic vs. Average</span>
+                        <span class="zh hidden">日流量对比平均值</span>
+                    </div>
+                    <div class="value">
+                        -93.9%
+                        <span style="font-size: 14px; color: var(--danger-color);">↓</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Keyword Efficiency</span>
+                        <span class="zh hidden">关键词效率</span>
+                    </div>
+                    <div class="value">
+                        17.91%
+                        <span style="font-size: 14px; color: var(--text-muted);">
+                            <span class="en">Ratio</span>
+                            <span class="zh hidden">比率</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Growth Potential</span>
+                        <span class="zh hidden">增长潜力</span>
+                    </div>
+                    <div class="value" style="color: var(--warning-color);">
+                        <span class="en">High</span>
+                        <span class="zh hidden">高</span>
+                        <span style="font-size: 14px;">⚡</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn">
+                    <span class="en">📥 Download PDF Report</span>
+                    <span class="zh hidden">📥 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2>
+                <span class="en">Competition Overview</span>
+                <span class="zh hidden">竞争概览</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Comprehensive analysis of LANXESS against the top 5 competitors in the Chinese specialty chemicals market, ranked by organic search performance. The competitive index synthesizes multiple factors including traffic volume, keyword portfolio strength, and search engine distribution to provide a holistic view of each company's digital market position.
+                </span>
+                <span class="zh hidden">
+                    全面分析朗盛与中国特种化学品市场前5大竞争对手的对比，按自然搜索表现排名。竞争力指数综合了流量规模、关键词组合实力和搜索引擎分布等多个因素，全面展示各公司的数字市场地位。
+                </span>
+            </p>
+            
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu PC Traffic</span><span class="zh hidden">百度PC流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Top 11-20</span><span class="zh hidden">11-20名</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争力指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Wanhua Chemical</span><span class="zh hidden">万华化学集团</span></td>
+                            <td>7,655</td>
+                            <td>787 ~ 1,257</td>
+                            <td>2,412 ~ 3,852</td>
+                            <td>1,197</td>
+                            <td>191</td>
+                            <td style="color: var(--success-color); font-weight: 700;">95.8</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">BASF</span><span class="zh hidden">巴斯夫</span></td>
+                            <td>3,456</td>
+                            <td>243 ~ 389</td>
+                            <td>248 ~ 396</td>
+                            <td>493</td>
+                            <td>73</td>
+                            <td style="color: var(--success-color); font-weight: 700;">78.4</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Clariant</span><span class="zh hidden">科莱恩化工</span></td>
+                            <td>618</td>
+                            <td>30 ~ 48</td>
+                            <td>407 ~ 651</td>
+                            <td>35</td>
+                            <td>5</td>
+                            <td style="color: var(--warning-color); font-weight: 700;">52.1</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Covestro</span><span class="zh hidden">科思创聚合物</span></td>
+                            <td>438</td>
+                            <td>28 ~ 46</td>
+                            <td>172 ~ 274</td>
+                            <td>72</td>
+                            <td>8</td>
+                            <td style="color: var(--warning-color); font-weight: 700;">48.7</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Evonik</span><span class="zh hidden">赢创工业集团</span></td>
+                            <td>414</td>
+                            <td>8 ~ 12</td>
+                            <td>287 ~ 459</td>
+                            <td>32</td>
+                            <td>2</td>
+                            <td style="color: var(--warning-color); font-weight: 700;">45.3</td>
+                        </tr>
+                        <tr class="user-company-row">
+                            <td>
+                                <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span>
+                                <span class="en">LANXESS</span><span class="zh hidden">朗盛化学</span>
+                            </td>
+                            <td>51</td>
+                            <td>8 ~ 14</td>
+                            <td>15 ~ 25</td>
+                            <td>67</td>
+                            <td>12</td>
+                            <td style="color: var(--danger-color); font-weight: 700;">32.4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p style="margin-top: 20px; color: var(--text-muted); font-size: 14px;">
+                <span class="en">
+                    <strong>Note:</strong> Competitive Index is calculated based on traffic volume (40%), keyword portfolio size (30%), traffic distribution balance (20%), and positions 11-20 ratio (10%). A score above 70 indicates strong market presence, 50-70 represents moderate position, and below 50 suggests significant growth opportunities.
+                </span>
+                <span class="zh hidden">
+                    <strong>注：</strong>竞争力指数基于流量规模（40%）、关键词组合规模（30%）、流量分布平衡度（20%）和11-20名位置比率（10%）计算。分数高于70表示市场地位强劲，50-70代表中等位置，低于50表明存在显著增长机会。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2>
+                <span class="en">SWOT Analysis</span>
+                <span class="zh hidden">SWOT分析</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Strategic assessment of LANXESS's digital market position, identifying internal capabilities and external market dynamics that impact SEO performance and growth potential in the Chinese specialty chemicals sector.
+                </span>
+                <span class="zh hidden">
+                    朗盛数字市场地位的战略评估，识别影响中国特种化学品行业SEO表现和增长潜力的内部能力和外部市场动态。
+                </span>
+            </p>
+            
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);">
+                        <span class="en">💪 Strengths</span>
+                        <span class="zh hidden">💪 优势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Strong keyword efficiency ratio of 17.91% (12 keywords in positions 11-20 out of 67 total), indicating high-quality keyword targeting</span>
+                            <span class="zh hidden">强劲的关键词效率比率为17.91%（67个关键词中有12个排在11-20位），表明高质量的关键词定位</span>
+                        </li>
+                        <li>
+                            <span class="en">Balanced traffic distribution between Baidu (8-14) and Bing (15-25), showing platform diversification</span>
+                            <span class="zh hidden">百度（8-14）和必应（15-25）之间的流量分布均衡，显示平台多元化</span>
+                        </li>
+                        <li>
+                            <span class="en">Moderate keyword portfolio of 67 terms provides manageable foundation for strategic optimization</span>
+                            <span class="zh hidden">67个关键词的适度组合为战略优化提供了可管理的基础</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);">
+                        <span class="en">⚠️ Weaknesses</span>
+                        <span class="zh hidden">⚠️ 劣势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Significantly low daily traffic of 51 visits, ranking last among analyzed competitors</span>
+                            <span class="zh hidden">每日流量仅51次访问显著偏低，在分析的竞争对手中排名最后</span>
+                        </li>
+                        <li>
+                            <span class="en">Traffic gap of 7,604 visits compared to market leader Wanhua Chemical represents 99.3% deficit</span>
+                            <span class="zh hidden">与市场领导者万华化学相比，流量差距为7,604次访问，占比99.3%</span>
+                        </li>
+                        <li>
+                            <span class="en">Limited keyword portfolio compared to BASF (493 keywords) and Wanhua (1,197 keywords)</span>
+                            <span class="zh hidden">与巴斯夫（493个关键词）和万华（1,197个关键词）相比，关键词组合有限</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);">
+                        <span class="en">🎯 Opportunities</span>
+                        <span class="zh hidden">🎯 机会</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Substantial growth potential with 93.9% gap below competitor average, indicating untapped market share</span>
+                            <span class="zh hidden">显著的增长潜力，与竞争对手平均水平相差93.9%，表明未开发的市场份额</span>
+                        </li>
+                        <li>
+                            <span class="en">Opportunity to expand into long-tail keywords in specialty chemicals, where competition is lower</span>
+                            <span class="zh hidden">有机会扩展到特种化学品的长尾关键词，竞争较低</span>
+                        </li>
+                        <li>
+                            <span class="en">Potential to leverage technical content marketing to capture high-intent B2B traffic</span>
+                            <span class="zh hidden">有潜力利用技术内容营销来捕获高意向的B2B流量</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);">
+                        <span class="en">⚡ Threats</span>
+                        <span class="zh hidden">⚡ 威胁</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Intense competition from domestic leader Wanhua Chemical with 150x traffic advantage</span>
+                            <span class="zh hidden">来自国内领导者万华化学的激烈竞争，流量优势达150倍</span>
+                        </li>
+                        <li>
+                            <span class="en">International competitors (BASF, Clariant, Covestro) have established stronger digital presence</span>
+                            <span class="zh hidden">国际竞争对手（巴斯夫、科莱恩、科思创）已建立更强大的数字存在</span>
+                        </li>
+                        <li>
+                            <span class="en">Risk of visibility loss as competitors expand keyword coverage and improve rankings</span>
+                            <span class="zh hidden">随着竞争对手扩大关键词覆盖和提高排名，存在可见性丧失的风险</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2>
+                <span class="en">Deep Metrics Analysis</span>
+                <span class="zh hidden">深度指标分析</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Detailed examination of traffic sources, keyword efficiency, and competitive positioning reveals critical insights for strategic SEO investment. This analysis highlights specific areas where LANXESS can optimize resources for maximum impact in the Chinese digital landscape.
+                </span>
+                <span class="zh hidden">
+                    对流量来源、关键词效率和竞争定位的详细检查揭示了战略性SEO投资的关键见解。此分析突出了朗盛可以优化资源以在中国数字环境中实现最大影响的具体领域。
+                </span>
+            </p>
+            
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">🔍 Traffic Channel Distribution</span>
+                    <span class="zh hidden">🔍 流量渠道分布</span>
+                </h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Comparison of Baidu PC and Bing traffic distribution across all competitors (based on mid-range estimates)</span>
+                    <span class="zh hidden">所有竞争对手的百度PC和必应流量分布比较（基于中位数估计）</span>
+                </p>
+                <div class="stacked-bar-chart">
+                    <div class="stacked-bar-item">
+                        <div class="bar-label">
+                            <span class="en">Wanhua Chemical</span>
+                            <span class="zh hidden">万华化学</span>
+                        </div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 25.3%;">
+                                <span class="en">Baidu: 1,022</span>
+                                <span class="zh hidden">百度: 1,022</span>
+                            </div>
+                            <div class="stacked-segment segment-bing" style="width: 74.7%;">
+                                <span class="en">Bing: 3,132</span>
+                                <span class="zh hidden">必应: 3,132</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="bar-label">
+                            <span class="en">BASF</span>
+                            <span class="zh hidden">巴斯夫</span>
+                        </div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 49.3%;">
+                                <span class="en">Baidu: 316</span>
+                                <span class="zh hidden">百度: 316</span>
+                            </div>
+                            <div class="stacked-segment segment-bing" style="width: 50.7%;">
+                                <span class="en">Bing: 322</span>
+                                <span class="zh hidden">必应: 322</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="bar-label">
+                            <span class="en">Clariant</span>
+                            <span class="zh hidden">科莱恩</span>
+                        </div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 7.3%;">
+                                <span class="en">Baidu: 39</span>
+                                <span class="zh hidden">百度: 39</span>
+                            </div>
+                            <div class="stacked-segment segment-bing" style="width: 92.7%;">
+                                <span class="en">Bing: 529</span>
+                                <span class="zh hidden">必应: 529</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="bar-label">
+                            <span class="en">Covestro</span>
+                            <span class="zh hidden">科思创</span>
+                        </div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 15.3%;">
+                                <span class="en">Baidu: 37</span>
+                                <span class="zh hidden">百度: 37</span>
+                            </div>
+                            <div class="stacked-segment segment-bing" style="width: 84.7%;">
+                                <span class="en">Bing: 223</span>
+                                <span class="zh hidden">必应: 223</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="bar-label">
+                            <span class="en">Evonik</span>
+                            <span class="zh hidden">赢创</span>
+                        </div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 2.7%;">
+                                <span class="en">Baidu: 10</span>
+                                <span class="zh hidden">百度: 10</span>
+                            </div>
+                            <div class="stacked-segment segment-bing" style="width: 97.3%;">
+                                <span class="en">Bing: 373</span>
+                                <span class="zh hidden">必应: 373</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="bar-label" style="color: var(--primary-color); font-weight: 600;">
+                            <span class="en">LANXESS (You)</span>
+                            <span class="zh hidden">朗盛（本公司）</span>
+                        </div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-segment segment-baidu" style="width: 35.5%;">
+                                <span class="en">Baidu: 11</span>
+                                <span class="zh hidden">百度: 11</span>
+                            </div>
+                            <div class="stacked-segment segment-bing" style="width: 64.5%;">
+                                <span class="en">Bing: 20</span>
+                                <span class="zh hidden">必应: 20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">📊 Keyword Efficiency Comparison</span>
+                    <span class="zh hidden">📊 关键词效率对比</span>
+                </h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Ratio of positions 11-20 keywords to total keyword portfolio - higher percentages indicate better optimization opportunities</span>
+                    <span class="zh hidden">11-20位关键词占总关键词组合的比率 - 百分比越高表明优化机会越好</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label" style="color: var(--primary-color); font-weight: 600;">
+                            <span class="en">LANXESS (You)</span>
+                            <span class="zh hidden">朗盛（本公司）</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 100%;">
+                                <span class="bar-value">17.91%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">Wanhua Chemical</span>
+                            <span class="zh hidden">万华化学</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 89.4%;">
+                                <span class="bar-value">15.96%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">BASF</span>
+                            <span class="zh hidden">巴斯夫</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 82.5%;">
+                                <span class="bar-value">14.81%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">Clariant</span>
+                            <span class="zh hidden">科莱恩</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 79.6%;">
+                                <span class="bar-value">14.29%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">Covestro</span>
+                            <span class="zh hidden">科思创</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 61.9%;">
+                                <span class="bar-value">11.11%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">Evonik</span>
+                            <span class="zh hidden">赢创</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 34.8%;">
+                                <span class="bar-value">6.25%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">⚡ Competitive Gap Analysis</span>
+                    <span class="zh hidden">⚡ 竞争差距分析</span>
+                </h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Quantifying the performance gap between LANXESS and the market leader Wanhua Chemical</span>
+                    <span class="zh hidden">量化朗盛与市场领导者万华化学之间的表现差距</span>
+                </p>
+                <div class="gap-analysis">
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Traffic Gap</span>
+                            <span class="zh hidden">流量差距</span>
+                        </h4>
+                        <div class="gap-value">-7,604</div>
+                        <p class="gap-description">
+                            <span class="en">Daily visits behind market leader</span>
+                            <span class="zh hidden">落后市场领导者的每日访问量</span>
+                        </p>
+                    </div>
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Keyword Portfolio Gap</span>
+                            <span class="zh hidden">关键词组合差距</span>
+                        </h4>
+                        <div class="gap-value">-1,130</div>
+                        <p class="gap-description">
+                            <span class="en">Keywords behind Wanhua Chemical</span>
+                            <span class="zh hidden">落后万华化学的关键词数量</span>
+                        </p>
+                    </div>
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Growth Multiplier</span>
+                            <span class="zh hidden">增长倍数</span>
+                        </h4>
+                        <div class="gap-value" style="color: var(--warning-color);">150.1x</div>
+                        <p class="gap-description">
+                            <span class="en">Required growth to match leader</span>
+                            <span class="zh hidden">匹配领导者所需的增长倍数</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2>
+                <span class="en">Opportunity Identification</span>
+                <span class="zh hidden">机会识别</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Strategic opportunities for LANXESS to accelerate digital growth, prioritized by potential impact and implementation feasibility. These recommendations are based on competitive intelligence, market gaps, and proven success patterns from industry leaders.
+                </span>
+                <span class="zh hidden">
+                    朗盛加速数字增长的战略机会，按潜在影响和实施可行性排序。这些建议基于竞争情报、市场空白和行业领导者的成功模式。
+                </span>
+            </p>
+            
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-high">
+                        <span class="en">HIGH PRIORITY</span>
+                        <span class="zh hidden">高优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Expand Long-Tail Keyword Strategy</span>
+                        <span class="zh hidden">扩展长尾关键词策略</span>
+                    </h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+                        <span class="en">
+                            <strong>Opportunity:</strong> Target 200+ specialized technical keywords in specialty chemicals sector where competition is lower. Competitors like Covestro successfully leverage niche terminology.<br><br>
+                            <strong>Potential Impact:</strong> 300-500% traffic increase within 6-9 months<br>
+                            <strong>Investment:</strong> Content creation, technical SEO optimization
+                        </span>
+                        <span class="zh hidden">
+                            <strong>机会：</strong>针对特种化学品领域200+个专业技术关键词，竞争较低。科思创等竞争对手成功利用利基术语。<br><br>
+                            <strong>潜在影响：</strong>6-9个月内流量增长300-500%<br>
+                            <strong>投资：</strong>内容创作、技术SEO优化
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-high">
+                        <span class="en">HIGH PRIORITY</span>
+                        <span class="zh hidden">高优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Optimize Positions 11-20 Keywords</span>
+                        <span class="zh hidden">优化11-20位关键词</span>
+                    </h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+                        <span class="en">
+                            <strong>Opportunity:</strong> LANXESS has 12 keywords in positions 11-20 (17.91% efficiency). Moving these to top 10 positions can yield immediate traffic gains.<br><br>
+                            <strong>Potential Impact:</strong> 150-200% traffic increase from existing keywords<br>
+                            <strong>Investment:</strong> On-page optimization, content refresh
+                        </span>
+                        <span class="zh hidden">
+                            <strong>机会：</strong>朗盛有12个关键词排在11-20位（效率17.91%）。将这些移至前10位可立即获得流量增长。<br><br>
+                            <strong>潜在影响：</strong>现有关键词流量增长150-200%<br>
+                            <strong>投资：</strong>页面优化、内容刷新
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-medium">
+                        <span class="en">MEDIUM PRIORITY</span>
+                        <span class="zh hidden">中优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Enhance Baidu Presence</span>
+                        <span class="zh hidden">增强百度存在</span>
+                    </h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+                        <span class="en">
+                            <strong>Opportunity:</strong> Baidu generates only 35.5% of LANXESS traffic vs. 49.3% for BASF. Balancing Baidu optimization can unlock significant growth.<br><br>
+                            <strong>Potential Impact:</strong> 40-60% increase in total organic traffic<br>
+                            <strong>Investment:</strong> Baidu-specific SEO, structured data
+                        </span>
+                        <span class="zh hidden">
+                            <strong>机会：</strong>百度仅产生朗盛35.5%的流量，而巴斯夫为49.3%。平衡百度优化可释放显著增长。<br><br>
+                            <strong>潜在影响：</strong>总自然流量增长40-60%<br>
+                            <strong>投资：</strong>百度专属SEO、结构化数据
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-medium">
+                        <span class="en">MEDIUM PRIORITY</span>
+                        <span class="zh hidden">中优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Technical Content Hub Development</span>
+                        <span class="zh hidden">技术内容中心开发</span>
+                    </h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+                        <span class="en">
+                            <strong>Opportunity:</strong> Create comprehensive technical resource center covering product applications, industry solutions, and R&D insights to capture high-intent B2B traffic.<br><br>
+                            <strong>Potential Impact:</strong> 200-350% increase in qualified leads<br>
+                            <strong>Investment:</strong> Content strategy, multimedia assets
+                        </span>
+                        <span class="zh hidden">
+                            <strong>机会：</strong>创建全面的技术资源中心，涵盖产品应用、行业解决方案和研发见解，以捕获高意向B2B流量。<br><br>
+                            <strong>潜在影响：</strong>合格潜在客户增长200-350%<br>
+                            <strong>投资：</strong>内容策略、多媒体资产
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2>
+                <span class="en">Strategic Action Plan</span>
+                <span class="zh hidden">战略行动计划</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    A phased, 12-month roadmap to systematically close the competitive gap and establish LANXESS as a digital leader in the Chinese specialty chemicals market. This plan balances quick wins with long-term strategic initiatives.
+                </span>
+                <span class="zh hidden">
+                    分阶段的12个月路线图，系统性地缩小竞争差距，并将朗盛确立为中国特种化学品市场的数字领导者。该计划平衡了快速胜利与长期战略举措。
+                </span>
+            </p>
+            
+            <div class="timeline-item">
+                <h4 style="color: var(--primary-color);">
+                    <span class="en">📅 Month 1-2: Foundation & Quick Wins</span>
+                    <span class="zh hidden">📅 第1-2月：基础建设与快速成效</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Actions:</strong> Conduct comprehensive technical SEO audit, optimize the 12 keywords in positions 11-20 through on-page improvements, implement structured data markup for product pages.<br>
+                        <strong>Expected Results:</strong> 50-80% traffic increase from optimized keywords, improved Baidu indexing.<br>
+                        <strong>KPIs:</strong> Move 6-8 keywords to top 10 positions, fix critical technical issues.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>行动：</strong>进行全面的技术SEO审计，通过页面优化改进11-20位的12个关键词，为产品页面实施结构化数据标记。<br>
+                        <strong>预期结果：</strong>优化关键词流量增长50-80%，改善百度索引。<br>
+                        <strong>KPI：</strong>将6-8个关键词移至前10位，修复关键技术问题。
+                    </span>
+                </p>
+            </div>
+            
+            <div class="timeline-item">
+                <h4 style="color: var(--primary-color);">
+                    <span class="en">📅 Month 3-5: Content Expansion</span>
+                    <span class="zh hidden">📅 第3-5月：内容扩展</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Actions:</strong> Launch technical content hub with 50+ articles targeting long-tail keywords, develop industry-specific solution pages, create multimedia resources (videos, infographics).<br>
+                        <strong>Expected Results:</strong> 150-200% traffic growth from new content, improved engagement metrics.<br>
+                        <strong>KPIs:</strong> Publish 50+ optimized articles, achieve 100+ new keyword rankings.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>行动：</strong>推出技术内容中心，包含50+篇针对长尾关键词的文章，开发行业特定解决方案页面，创建多媒体资源（视频、信息图表）。<br>
+                        <strong>预期结果：</strong>新内容带来的流量增长150-200%，改善参与度指标。<br>
+                        <strong>KPI：</strong>发布50+篇优化文章，实现100+个新关键词排名。
+                    </span>
+                </p>
+            </div>
+            
+            <div class="timeline-item">
+                <h4 style="color: var(--primary-color);">
+                    <span class="en">📅 Month 6-8: Authority Building</span>
+                    <span class="zh hidden">📅 第6-8月：权威建设</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Actions:</strong> Initiate strategic backlink campaign targeting industry publications, develop thought leadership content series, optimize for featured snippets on Baidu.<br>
+                        <strong>Expected Results:</strong> 30-40% improvement in domain authority, enhanced brand visibility.<br>
+                        <strong>KPIs:</strong> Acquire 50+ quality backlinks, achieve 10+ featured snippets.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>行动：</strong>启动针对行业出版物的战略反向链接活动，开发思想领导力内容系列，优化百度精选摘要。<br>
+                        <strong>预期结果：</strong>域名权威度提高30-40%，增强品牌可见性。<br>
+                        <strong>KPI：</strong>获取50+个高质量反向链接，实现10+个精选摘要。
+                    </span>
+                </p>
+            </div>
+            
+            <div class="timeline-item">
+                <h4 style="color: var(--primary-color);">
+                    <span class="en">📅 Month 9-10: Baidu Optimization</span>
+                    <span class="zh hidden">📅 第9-10月：百度优化</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Actions:</strong> Implement Baidu-specific optimization strategies including Baidu Analytics integration, mobile optimization for Baidu spider, local content adaptation.<br>
+                        <strong>Expected Results:</strong> Balance Baidu/Bing traffic ratio to 45/55, 60-80% increase in Baidu traffic.<br>
+                        <strong>KPIs:</strong> Increase Baidu PC traffic from 8-14 to 25-40 daily visits.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>行动：</strong>实施百度专属优化策略，包括百度分析集成、百度爬虫的移动优化、本地内容适配。<br>
+                        <strong>预期结果：</strong>将百度/必应流量比率平衡至45/55，百度流量增长60-80%。<br>
+                        <strong>KPI：</strong>将百度PC流量从8-14次增加至25-40次日均访问。
+                    </span>
+                </p>
+            </div>
+            
+            <div class="timeline-item">
+                <h4 style="color: var(--primary-color);">
+                    <span class="en">📅 Month 11-12: Scale & Refinement</span>
+                    <span class="zh hidden">📅 第11-12月：规模化与优化</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Actions:</strong> Scale successful content formats, launch advanced conversion optimization, implement AI-powered personalization for Chinese market.<br>
+                        <strong>Expected Results:</strong> Achieve 400-500 daily visits, improve conversion rate by 40-50%.<br>
+                        <strong>KPIs:</strong> Total traffic growth of 800-900%, qualified lead increase of 200-300%.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>行动：</strong>扩大成功的内容格式，启动高级转化优化，为中国市场实施AI驱动的个性化。<br>
+                        <strong>预期结果：</strong>实现400-500次日均访问，转化率提高40-50%。<br>
+                        <strong>KPI：</strong>总流量增长800-900%，合格潜在客户增长200-300%。
+                    </span>
+                </p>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 24px; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--primary-color);">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;">
+                    <span class="en">💡 Implementation Success Factors</span>
+                    <span class="zh hidden">💡 实施成功要素</span>
+                </h3>
+                <ul style="color: var(--text-secondary); line-height: 2; list-style: none; padding-left: 0;">
+                    <li style="padding-left: 24px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">✓</span>
+                        <span class="en"><strong>Dedicated Resources:</strong> Assign 2-3 team members for content creation and 1 technical SEO specialist</span>
+                        <span class="zh hidden"><strong>专门资源：</strong>指派2-3名团队成员进行内容创作和1名技术SEO专家</span>
+                    </li>
+                    <li style="padding-left: 24px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">✓</span>
+                        <span class="en"><strong>Budget Allocation:</strong> Invest 20-30% of digital marketing budget in SEO initiatives</span>
+                        <span class="zh hidden"><strong>预算分配：</strong>将数字营销预算的20-30%投资于SEO举措</span>
+                    </li>
+                    <li style="padding-left: 24px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">✓</span>
+                        <span class="en"><strong>Cross-functional Collaboration:</strong> Engage product, R&D, and sales teams for authentic content</span>
+                        <span class="zh hidden"><strong>跨职能协作：</strong>让产品、研发和销售团队参与真实内容创作</span>
+                    </li>
+                    <li style="padding-left: 24px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">✓</span>
+                        <span class="en"><strong>Continuous Monitoring:</strong> Implement monthly KPI reviews and quarterly strategy adjustments</span>
+                        <span class="zh hidden"><strong>持续监控：</strong>实施月度KPI审查和季度策略调整</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn">
+                    <span class="en">📥 Download Full Action Plan (PDF)</span>
+                    <span class="zh hidden">📥 下载完整行动计划（PDF）</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Discuss Implementation Strategy</span>
+                    <span class="zh hidden">📞 讨论实施策略</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
