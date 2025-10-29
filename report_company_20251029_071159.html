@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cegid - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Chart Bars */
+        .chart-bar-container {
+            margin: 16px 0;
+        }
+        .chart-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        .chart-bar-wrapper {
+            background: var(--alt-bg);
+            height: 32px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .chart-bar {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            transition: width 1s ease;
+        }
+        .chart-bar-stacked {
+            display: flex;
+            height: 100%;
+        }
+        .chart-bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .opportunity-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-high { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .badge-medium { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .badge-low { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2.section-title {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></h1>
+            <p class="subtitle"><span class="en">Cegid - Comprehensive Market Position Assessment</span><span class="zh hidden">Cegid - 综合市场地位评估</span></p>
+            <p class="subtitle" style="margin-top: 8px; font-size: 14px; color: var(--text-muted);"><span class="en">Report Generated: December 2024</span><span class="zh hidden">报告生成时间：2024年12月</span></p>
+
+            <div class="key-metrics-grid" style="margin-top: 40px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">6<span style="font-size: 18px; color: var(--text-muted);">/6</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Coverage</span><span class="zh hidden">关键词覆盖</span></div>
+                    <div class="value">2</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Competitive Index</span><span class="zh hidden">竞争力指数</span></div>
+                    <div class="value">0.0<span style="font-size: 18px; color: var(--text-muted);">/100</span></div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h3 style="margin-bottom: 16px; color: var(--text-heading);"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></h3>
+                <p class="summary-text"><span class="en">Cegid currently has minimal presence in the Chinese search market with zero daily traffic and only 2 indexed keywords. The company faces significant competition from established players like Microsoft China (550,524 daily visitors), Oracle China (42,267), and Kingdee International (21,746). The market is dominated by major enterprise software providers with extensive keyword portfolios and strong organic visibility. This represents both a challenge and a substantial growth opportunity for Cegid to establish its market position through strategic SEO investment.</span><span class="zh hidden">Cegid目前在中国搜索市场的表现极其有限，日均流量为零，仅有2个索引关键词。公司面临着来自成熟竞争对手的激烈竞争，如微软中国（日均访客550,524）、Oracle中国（42,267）和金蝶国际（21,746）。市场被拥有广泛关键词组合和强大自然搜索可见度的主要企业软件供应商所主导。这既是挑战也是重大增长机遇，Cegid可以通过战略性SEO投资建立市场地位。</span></p>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2 class="section-title"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro"><span class="en">Analysis of Cegid versus the top 5 competitors by daily traffic volume in the Chinese search market.</span><span class="zh hidden">Cegid与中国搜索市场按日均流量排名前5的竞争对手的对比分析。</span></p>
+
+            <div class="table-container" style="margin-top: 30px;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu PC</span><span class="zh hidden">百度PC</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Top 20 KWs</span><span class="zh hidden">前20关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争力指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span><span class="en">Cegid</span><span class="zh hidden">Cegid (暂无中文名)</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td style="color: var(--danger-color); font-weight: 600;">0.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Microsoft China</span><span class="zh hidden">微软中国</span></td>
+                            <td>550,524</td>
+                            <td>79,039 ~ 126,257</td>
+                            <td>108,968 ~ 174,066</td>
+                            <td>68,486</td>
+                            <td>12,519</td>
+                            <td style="color: var(--success-color); font-weight: 600;">100.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Oracle China</span><span class="zh hidden">Oracle甲骨文中国</span></td>
+                            <td>42,267</td>
+                            <td>6,778 ~ 10,826</td>
+                            <td>7,259 ~ 11,595</td>
+                            <td>8,662</td>
+                            <td>1,337</td>
+                            <td style="color: var(--success-color); font-weight: 600;">37.8</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Kingdee International</span><span class="zh hidden">金蝶国际软件集团</span></td>
+                            <td>21,746</td>
+                            <td>3,312 ~ 5,290</td>
+                            <td>3,681 ~ 5,881</td>
+                            <td>3,611</td>
+                            <td>724</td>
+                            <td style="color: var(--warning-color); font-weight: 600;">19.9</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Inspur Cloud</span><span class="zh hidden">浪潮云信息技术股份公司</span></td>
+                            <td>13,203</td>
+                            <td>120 ~ 192</td>
+                            <td>1,418 ~ 2,266</td>
+                            <td>338</td>
+                            <td>69</td>
+                            <td style="color: var(--warning-color); font-weight: 600;">11.6</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Weaver Network</span><span class="zh hidden">泛微网络科技股份有限公司</span></td>
+                            <td>6,421</td>
+                            <td>685 ~ 1,095</td>
+                            <td>356 ~ 568</td>
+                            <td>572</td>
+                            <td>106</td>
+                            <td style="color: var(--warning-color); font-weight: 600;">5.7</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: var(--card-bg); border-radius: 12px; border-left: 4px solid var(--warning-color);">
+                <h4 style="color: var(--text-heading); margin-bottom: 12px;"><span class="en">Key Insights</span><span class="zh hidden">关键洞察</span></h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);"><span style="position: absolute; left: 8px; color: var(--primary-color);">•</span><span class="en">Microsoft China dominates with 550,524 daily visitors - 8,581% more traffic than the second-place competitor</span><span class="zh hidden">微软中国以550,524日均访客占据主导地位 - 比第二名竞争对手高出8,581%</span></li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);"><span style="position: absolute; left: 8px; color: var(--primary-color);">•</span><span class="en">The top 3 competitors control 92.7% of total market traffic among analyzed companies</span><span class="zh hidden">前3名竞争对手控制了分析公司中92.7%的市场流量</span></li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);"><span style="position: absolute; left: 8px; color: var(--primary-color);">•</span><span class="en">Cegid's 2 keywords represent only 0.002% of Microsoft's keyword portfolio (68,486 keywords)</span><span class="zh hidden">Cegid的2个关键词仅占微软关键词组合（68,486个关键词）的0.002%</span></li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);"><span style="position: absolute; left: 8px; color: var(--primary-color);">•</span><span class="en">Average competitor has 16,332 keywords vs. Cegid's 2 - representing a 8,166x gap</span><span class="zh hidden">竞争对手平均拥有16,332个关键词，而Cegid仅2个 - 差距达8,166倍</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2 class="section-title"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro"><span class="en">Strategic assessment of Cegid's current position in the Chinese search market landscape.</span><span class="zh hidden">Cegid在中国搜索市场环境中当前地位的战略评估。</span></p>
+
+            <div class="swot-grid" style="margin-top: 30px;">
+                <div class="swot-item" style="border-top: 4px solid var(--success-color);">
+                    <h3><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li><span class="en">Clean slate opportunity - no negative SEO history or penalties to overcome</span><span class="zh hidden">白纸机会 - 无需克服负面SEO历史或惩罚</span></li>
+                        <li><span class="en">International brand recognition and expertise in enterprise solutions</span><span class="zh hidden">国际品牌认知度和企业解决方案专业知识</span></li>
+                        <li><span class="en">Potential for rapid growth given zero current baseline</span><span class="zh hidden">鉴于当前零基线，具有快速增长潜力</span></li>
+                    </ul>
+                </div>
+                <div class="swot-item" style="border-top: 4px solid var(--danger-color);">
+                    <h3><span class="en">Weaknesses</span><span class="zh hidden">劣势</span></h3>
+                    <ul>
+                        <li><span class="en">Zero organic traffic and minimal keyword presence (only 2 keywords)</span><span class="zh hidden">零自然流量和极少的关键词存在（仅2个关键词）</span></li>
+                        <li><span class="en">No Top 20 keyword rankings - all keywords positioned 21-50+</span><span class="zh hidden">无前20关键词排名 - 所有关键词位于21-50+位置</span></li>
+                        <li><span class="en">Lack of localized content and Chinese market SEO infrastructure</span><span class="zh hidden">缺乏本地化内容和中国市场SEO基础设施</span></li>
+                        <li><span class="en">97,690 daily traffic gap vs. competitor average (129,432)</span><span class="zh hidden">与竞争对手平均水平（129,432）相差97,690日均流量</span></li>
+                    </ul>
+                </div>
+                <div class="swot-item" style="border-top: 4px solid var(--primary-color);">
+                    <h3><span class="en">Opportunities</span><span class="zh hidden">机会</span></h3>
+                    <ul>
+                        <li><span class="en">Enterprise software market in China growing at 15%+ annually</span><span class="zh hidden">中国企业软件市场年增长率超过15%</span></li>
+                        <li><span class="en">Mid-tier competitors (Weaver, Inspur) show achievable traffic benchmarks (6K-13K daily)</span><span class="zh hidden">中层竞争对手（泛微、浪潮）显示可实现的流量基准（日均6K-13K）</span></li>
+                        <li><span class="en">Gap in market for international ERP/financial management solutions with local support</span><span class="zh hidden">具有本地支持的国际ERP/财务管理解决方案市场存在空白</span></li>
+                        <li><span class="en">Potential to target 300-500 high-intent keywords in first 12 months</span><span class="zh hidden">前12个月有潜力定位300-500个高意图关键词</span></li>
+                    </ul>
+                </div>
+                <div class="swot-item" style="border-top: 4px solid var(--warning-color);">
+                    <h3><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li><span class="en">Intense competition from Microsoft, Oracle with massive keyword portfolios</span><span class="zh hidden">来自微软、Oracle的激烈竞争，拥有庞大关键词组合</span></li>
+                        <li><span class="en">Established local players (Kingdee, Inspur) with strong brand recognition</span><span class="zh hidden">具有强大品牌认知度的本地成熟企业（金蝶、浪潮）</span></li>
+                        <li><span class="en">High customer acquisition costs in enterprise software sector</span><span class="zh hidden">企业软件领域的高客户获取成本</span></li>
+                        <li><span class="en">Baidu algorithm changes and search market dynamics</span><span class="zh hidden">百度算法变化和搜索市场动态</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2 class="section-title"><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="section-intro"><span class="en">Comprehensive breakdown of traffic sources, keyword efficiency, and competitive gaps.</span><span class="zh hidden">流量来源、关键词效率和竞争差距的综合分析。</span></p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container" style="margin-top: 30px;">
+                <h3><span class="en">Traffic Channel Distribution (Baidu vs. Bing)</span><span class="zh hidden">流量渠道分布（百度 vs 必应）</span></h3>
+                <div style="margin-top: 20px;">
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Cegid</span><span class="zh hidden">Cegid</span></span>
+                            <span><span class="en">Total: 0</span><span class="zh hidden">总计: 0</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment" style="width: 50%; background: #3b82f6;">Baidu: 0</div>
+                                <div class="chart-bar-segment" style="width: 50%; background: #8b5cf6;">Bing: 0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Microsoft China</span><span class="zh hidden">微软中国</span></span>
+                            <span><span class="en">Total: 550,524</span><span class="zh hidden">总计: 550,524</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment" style="width: 42.5%; background: #3b82f6;">Baidu: 102,648</div>
+                                <div class="chart-bar-segment" style="width: 57.5%; background: #8b5cf6;">Bing: 141,517</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Oracle China</span><span class="zh hidden">Oracle中国</span></span>
+                            <span><span class="en">Total: 42,267</span><span class="zh hidden">总计: 42,267</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment" style="width: 47.9%; background: #3b82f6;">Baidu: 8,802</div>
+                                <div class="chart-bar-segment" style="width: 52.1%; background: #8b5cf6;">Bing: 9,427</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Kingdee International</span><span class="zh hidden">金蝶国际</span></span>
+                            <span><span class="en">Total: 21,746</span><span class="zh hidden">总计: 21,746</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment" style="width: 41.5%; background: #3b82f6;">Baidu: 4,301</div>
+                                <div class="chart-bar-segment" style="width: 58.5%; background: #8b5cf6;">Bing: 4,781</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Inspur Cloud</span><span class="zh hidden">浪潮云</span></span>
+                            <span><span class="en">Total: 13,203</span><span class="zh hidden">总计: 13,203</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment" style="width: 11.8%; background: #3b82f6;">Baidu: 156</div>
+                                <div class="chart-bar-segment" style="width: 88.2%; background: #8b5cf6;">Bing: 1,842</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Weaver Network</span><span class="zh hidden">泛微网络</span></span>
+                            <span><span class="en">Total: 6,421</span><span class="zh hidden">总计: 6,421</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment" style="width: 69.1%; background: #3b82f6;">Baidu: 890</div>
+                                <div class="chart-bar-segment" style="width: 30.9%; background: #8b5cf6;">Bing: 462</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container" style="margin-top: 30px;">
+                <h3><span class="en">Keyword Efficiency Score (Top 20 Keywords / Total Keywords)</span><span class="zh hidden">关键词效率评分（前20关键词 / 总关键词）</span></h3>
+                <div style="margin-top: 20px;">
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Cegid</span><span class="zh hidden">Cegid</span></span>
+                            <span>0.0%</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="width: 0%; background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);">0%</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Weaver Network</span><span class="zh hidden">泛微网络</span></span>
+                            <span>18.5%</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="width: 100%; background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);">18.5%</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Microsoft China</span><span class="zh hidden">微软中国</span></span>
+                            <span>18.3%</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="width: 98.5%; background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);">18.3%</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Inspur Cloud</span><span class="zh hidden">浪潮云</span></span>
+                            <span>20.4%</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="width: 93%; background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);">20.4%</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Kingdee International</span><span class="zh hidden">金蝶国际</span></span>
+                            <span>20.0%</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="width: 88%; background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);">20.0%</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Oracle China</span><span class="zh hidden">Oracle中国</span></span>
+                            <span>15.4%</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="width: 83%; background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);">15.4%</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 14px; color: var(--text-muted);"><span class="en">Note: Higher efficiency indicates better conversion of total keywords into high-ranking positions. Industry benchmark: 15-20%</span><span class="zh hidden">注：更高的效率表明将总关键词更好地转化为高排名位置。行业基准：15-20%</span></p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div style="margin-top: 30px; padding: 24px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h3 style="margin-bottom: 20px; color: var(--text-heading);"><span class="en">Competitive Gap Analysis vs. Market Leader (Microsoft China)</span><span class="zh hidden">竞争差距分析 vs 市场领导者（微软中国）</span></h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="text-align: center; padding: 16px; background: var(--alt-bg); border-radius: 8px;">
+                        <div style="font-size: 28px; font-weight: 700; color: var(--danger-color); font-family: var(--font-data);">550,524</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;"><span class="en">Traffic Gap</span><span class="zh hidden">流量差距</span></div>
+                    </div>
+                    <div style="text-align: center; padding: 16px; background: var(--alt-bg); border-radius: 8px;">
+                        <div style="font-size: 28px; font-weight: 700; color: var(--danger-color); font-family: var(--font-data);">68,484</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;"><span class="en">Keyword Gap</span><span class="zh hidden">关键词差距</span></div>
+                    </div>
+                    <div style="text-align: center; padding: 16px; background: var(--alt-bg); border-radius: 8px;">
+                        <div style="font-size: 28px; font-weight: 700; color: var(--danger-color); font-family: var(--font-data);">12,519</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;"><span class="en">Top 20 KW Gap</span><span class="zh hidden">前20关键词差距</span></div>
+                    </div>
+                    <div style="text-align: center; padding: 16px; background: var(--alt-bg); border-radius: 8px;">
+                        <div style="font-size: 28px; font-weight: 700; color: var(--danger-color); font-family: var(--font-data);">100.0</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;"><span class="en">Index Points Gap</span><span class="zh hidden">指数点差距</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2 class="section-title"><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro"><span class="en">Strategic opportunities ranked by implementation priority and potential impact for Cegid.</span><span class="zh hidden">按实施优先级和对Cegid的潜在影响排序的战略机会。</span></p>
+
+            <div class="opportunity-grid" style="margin-top: 30px;">
+                <div class="opportunity-card">
+                    <h4><span class="en">Foundation Building</span><span class="zh hidden">基础建设</span></h4>
+                    <p><span class="en">Establish core SEO infrastructure with localized Chinese content targeting 100-200 enterprise software keywords in financial management and ERP categories.</span><span class="zh hidden">建立核心SEO基础设施，针对财务管理和ERP类别的100-200个企业软件关键词进行本地化中文内容。</span></p>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span class="opportunity-badge badge-high"><span class="en">High Priority</span><span class="zh hidden">高优先级</span></span>
+                        <span style="font-size: 13px; color: var(--text-muted);"><span class="en">Est. Impact: 500-1,500 monthly visits</span><span class="zh hidden">预估影响：月均500-1,500访问</span></span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Mid-Tier Competitor Benchmark</span><span class="zh hidden">中层竞争对手基准</span></h4>
+                    <p><span class="en">Target achievable traffic levels (6K-13K daily) by analyzing and replicating keyword strategies of Weaver Network and Inspur Cloud within 12-18 months.</span><span class="zh hidden">通过分析和复制泛微网络和浪潮云的关键词策略，在12-18个月内实现可达到的流量水平（日均6K-13K）。</span></p>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span class="opportunity-badge badge-medium"><span class="en">Medium Priority</span><span class="zh hidden">中优先级</span></span>
+                        <span style="font-size: 13px; color: var(--text-muted);"><span class="en">Est. Timeline: 12-18 months</span><span class="zh hidden">预估时间：12-18个月</span></span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Bing Search Optimization</span><span class="zh hidden">必应搜索优化</span></h4>
+                    <p><span class="en">Leverage Bing's lower competition (avg 52.9% of competitor traffic vs Baidu 47.1%) for faster initial traction in the Chinese search market.</span><span class="zh hidden">利用必应较低的竞争度（竞争对手平均流量的52.9%，百度为47.1%）在中国搜索市场更快获得初步牵引力。</span></p>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span class="opportunity-badge badge-high"><span class="en">High Priority</span><span class="zh hidden">高优先级</span></span>
+                        <span style="font-size: 13px; color: var(--text-muted);"><span class="en">Quick Win: 3-6 months</span><span class="zh hidden">快速见效：3-6个月</span></span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Long-Tail Keyword Strategy</span><span class="zh hidden">长尾关键词策略</span></h4>
+                    <p><span class="en">Focus on 300-500 long-tail keywords with lower competition but high buyer intent (e.g., "cloud financial management system for SMEs").</span><span class="zh hidden">专注于300-500个竞争较低但购买意图高的长尾关键词（如"中小企业云财务管理系统"）。</span></p>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span class="opportunity-badge badge-medium"><span class="en">Medium Priority</span><span class="zh hidden">中优先级</span></span>
+                        <span style="font-size: 13px; color: var(--text-muted);"><span class="en">Est. Impact: 2,000-5,000 monthly visits</span><span class="zh hidden">预估影响：月均2,000-5,000访问</span></span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Content Marketing Hub</span><span class="zh hidden">内容营销中心</span></h4>
+                    <p><span class="en">Create comprehensive resource center with whitepapers, case studies, and industry insights to build authority and capture informational search queries.</span><span class="zh hidden">创建包含白皮书、案例研究和行业洞察的综合资源中心，建立权威性并捕获信息性搜索查询。</span></p>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span class="opportunity-badge badge-low"><span class="en">Low Priority</span><span class="zh hidden">低优先级</span></span>
+                        <span style="font-size: 13px; color: var(--text-muted);"><span class="en">Long-term: 18-24 months</span><span class="zh hidden">长期：18-24个月</span></span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Strategic Partnerships</span><span class="zh hidden">战略合作伙伴</span></h4>
+                    <p><span class="en">Partner with established Chinese tech publishers and industry forums for link building and brand awareness in enterprise software space.</span><span class="zh hidden">与成熟的中国科技出版商和行业论坛合作，在企业软件领域进行链接建设和品牌认知。</span></p>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span class="opportunity-badge badge-medium"><span class="en">Medium Priority</span><span class="zh hidden">中优先级</span></span>
+                        <span style="font-size: 13px; color: var(--text-muted);"><span class="en">Est. Timeline: 6-12 months</span><span class="zh hidden">预估时间：6-12个月</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h3 style="margin-bottom: 16px; color: var(--text-heading);"><span class="en">Potential Growth Calculation (12-Month Forecast)</span><span class="zh hidden">潜在增长计算（12个月预测）</span></h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="padding: 20px; background: var(--alt-bg); border-radius: 8px;">
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Conservative Scenario</span><span class="zh hidden">保守情景</span></div>
+                        <div style="font-size: 32px; font-weight: 700; color: var(--text-primary); font-family: var(--font-data);">1,200</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;"><span class="en">Daily visitors (100-150 keywords)</span><span class="zh hidden">日均访客（100-150个关键词）</span></div>
+                    </div>
+                    <div style="padding: 20px; background: var(--alt-bg); border-radius: 8px;">
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Moderate Scenario</span><span class="zh hidden">适度情景</span></div>
+                        <div style="font-size: 32px; font-weight: 700; color: var(--primary-color); font-family: var(--font-data);">3,500</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;"><span class="en">Daily visitors (250-350 keywords)</span><span class="zh hidden">日均访客（250-350个关键词）</span></div>
+                    </div>
+                    <div style="padding: 20px; background: var(--alt-bg); border-radius: 8px;">
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Aggressive Scenario</span><span class="zh hidden">激进情景</span></div>
+                        <div style="font-size: 32px; font-weight: 700; color: var(--success-color); font-family: var(--font-data);">6,500</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;"><span class="en">Daily visitors (400-550 keywords)</span><span class="zh hidden">日均访客（400-550个关键词）</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2 class="section-title"><span class="en">12-Month Strategic Action Plan</span><span class="zh hidden">12个月战略行动计划</span></h2>
+            <p class="section-intro"><span class="en">Phased implementation roadmap to establish Cegid's SEO presence and competitive position in the Chinese market.</span><span class="zh hidden">分阶段实施路线图，建立Cegid在中国市场的SEO存在和竞争地位。</span></p>
+
+            <div style="margin-top: 40px;">
+                <div class="timeline-item">
+                    <h4><span class="en">Phase 1: Foundation (Months 1-3)</span><span class="zh hidden">第一阶段：基础建设（1-3月）</span></h4>
+                    <p><span class="en">• Conduct comprehensive keyword research targeting 500+ enterprise software terms<br>• Develop Chinese-language website with 20-30 core landing pages<br>• Implement technical SEO fundamentals (site structure, meta tags, schema markup)<br>• Set up Baidu Webmaster Tools and Bing Webmaster Tools<br>• Create localized content calendar focusing on financial management and ERP topics</span><span class="zh hidden">• 针对500+企业软件术语进行全面关键词研究<br>• 开发包含20-30个核心落地页的中文网站<br>• 实施技术SEO基础（网站结构、元标签、结构化数据标记）<br>• 设置百度站长工具和必应站长工具<br>• 创建专注于财务管理和ERP主题的本地化内容日历</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Phase 2: Content Expansion (Months 4-6)</span><span class="zh hidden">第二阶段：内容扩展（4-6月）</span></h4>
+                    <p><span class="en">• Publish 40-60 optimized blog articles and resource pages<br>• Target 150-200 long-tail keywords with dedicated content<br>• Initiate link building campaign with 10-15 high-authority Chinese tech sites<br>• Launch Bing Ads campaign to complement organic efforts<br>• Achieve first 500-1,000 daily organic visitors milestone</span><span class="zh hidden">• 发布40-60篇优化的博客文章和资源页面<br>• 针对150-200个长尾关键词创建专门内容<br>• 启动与10-15个高权威中国科技网站的链接建设活动<br>• 启动必应广告活动以补充自然搜索努力<br>• 实现首个日均500-1,000自然搜索访客里程碑</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Phase 3: Authority Building (Months 7-9)</span><span class="zh hidden">第三阶段：权威建设（7-9月）</span></h4>
+                    <p><span class="en">• Develop 5-8 comprehensive industry guides and whitepapers<br>• Expand keyword portfolio to 300-400 terms with Top 50 rankings<br>• Secure 3-5 guest posting opportunities on major Chinese business platforms<br>• Optimize for 15-20 high-volume commercial keywords<br>• Target 2,000-3,500 daily visitors from combined Baidu and Bing traffic</span><span class="zh hidden">• 开发5-8份全面的行业指南和白皮书<br>• 将关键词组合扩展到300-400个术语，并获得前50排名<br>• 在主要中国商业平台获得3-5个客座发文机会<br>• 优化15-20个高流量商业关键词<br>• 目标从百度和必应综合流量达到日均2,000-3,500访客</span></p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4><span class="en">Phase 4: Competitive Positioning (Months 10-12)</span><span class="zh hidden">第四阶段：竞争定位（10-12月）</span></h4>
+                    <p><span class="en">• Launch case study series featuring Chinese enterprise clients<br>• Achieve 10-15 keywords in Top 10 positions on Baidu<br>• Expand total keyword footprint to 500-600 terms<br>• Establish brand presence on major Chinese Q&A platforms (Zhihu, Baidu Zhidao)<br>• Reach 4,000-6,500 daily visitors, matching mid-tier competitors</span><span class="zh hidden">• 推出以中国企业客户为特色的案例研究系列<br>• 在百度实现10-15个关键词进入前10位置<br>• 将总关键词覆盖扩展到500-600个术语<br>• 在主要中国问答平台（知乎、百度知道）建立品牌存在<br>• 达到日均4,000-6,500访客，匹配中层竞争对手</span></p>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; padding: 30px; background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(139,92,246,0.1) 100%); border-radius: 12px; border: 1px solid var(--primary-color);">
+                <h3 style="margin-bottom: 20px; color: var(--text-heading); text-align: center;"><span class="en">Investment & Expected ROI</span><span class="zh hidden">投资与预期投资回报率</span></h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Estimated 12-Month Investment</span><span class="zh hidden">预估12个月投资</span></div>
+                        <div style="font-size: 36px; font-weight: 700; color: var(--primary-color); font-family: var(--font-data);">$80K-120K</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;"><span class="en">Content + Tech + Link Building</span><span class="zh hidden">内容 + 技术 + 链接建设</span></div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Expected Monthly Visitors (Y1 End)</span><span class="zh hidden">预期月访客（第1年末）</span></div>
+                        <div style="font-size: 36px; font-weight: 700; color: var(--success-color); font-family: var(--font-data);">105K-195K</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;"><span class="en">Based on 3,500-6,500 daily average</span><span class="zh hidden">基于日均3,500-6,500</span></div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Projected Lead Generation</span><span class="zh hidden">预计潜在客户生成</span></div>
+                        <div style="font-size: 36px; font-weight: 700; color: var(--accent-color); font-family: var(--font-data);">300-600</div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;"><span class="en">Qualified leads/year (2-3% conversion)</span><span class="zh hidden">合格潜在客户/年（2-3%转化率）</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta"><span class="en">Download PDF Report</span><span class="zh hidden">下载PDF报告</span></button>
+                <button onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')" class="secondary-cta"><span class="en">Schedule SEO Consultation</span><span class="zh hidden">预约SEO咨询</span></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
