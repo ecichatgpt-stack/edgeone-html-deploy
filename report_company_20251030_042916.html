@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelin - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+        }
+        .data-table thead {
+            display: table-header-group;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 2;
+            widows: 2;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+            max-height: 180mm;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            width: 120px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .bar-container {
+            flex: 1;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            height: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            border-radius: 4px;
+            transition: width 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Stacked Bar Chart */
+        .stacked-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .stacked-bar-label {
+            width: 120px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .stacked-bar-container {
+            flex: 1;
+            display: flex;
+            height: 32px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--alt-bg);
+        }
+        .stacked-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+        }
+        .segment-baidu {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+        .segment-bing {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+            margin-bottom: 16px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .opportunity-card .priority {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fcd34d;
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .potential-score {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+        .score-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .score-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2 {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">Michelin SEO Competitive Analysis Report</span><span class="zh hidden">米其林 SEO 竞争分析报告</span></h1>
+            <p class="subtitle"><span class="en">Strategic Insights for Search Engine Dominance in the Tire Industry</span><span class="zh hidden">轮胎行业搜索引擎主导地位的战略洞察</span></p>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value"><span class="en">#1</span><span class="zh hidden">#1</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value"><span class="en">8,001</span><span class="zh hidden">8,001</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">VS Competitor Avg</span><span class="zh hidden">对比竞争对手平均</span></div>
+                    <div class="value"><span class="en">+271%</span><span class="zh hidden">+271%</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value"><span class="en">19.1x</span><span class="zh hidden">19.1x</span></div>
+                </div>
+            </div>
+
+            <h2><span class="en">Executive Overview</span><span class="zh hidden">执行概览</span></h2>
+            <p class="summary-text">
+                <span class="en">Michelin maintains a dominant position in the tire industry's search engine ecosystem, commanding 8,001 daily visits—significantly outpacing the competitive average of 2,481 daily visits. With 418 PC keywords and an exceptional keyword efficiency ratio of 19.1x, Michelin demonstrates superior SEO optimization strategies and stronger brand authority across search platforms.</span>
+                <span class="zh hidden">米其林在轮胎行业搜索引擎生态系统中保持着主导地位，日均访问量达到8,001次，远超竞争对手平均2,481次的水平。凭借418个PC关键词和卓越的19.1倍关键词效率比，米其林展现了优秀的SEO优化策略和更强的品牌权威性。</span>
+            </p>
+
+            <p class="summary-text" style="margin-top: 16px;">
+                <span class="en"><strong>Key Findings:</strong></span>
+                <span class="zh hidden"><strong>主要发现：</strong></span>
+            </p>
+            <ul style="margin-left: 20px; margin-top: 12px; color: var(--text-secondary);">
+                <li><span class="en">Largest traffic volume with 3.2x advantage over the second-ranked competitor (Goodyear: 6,236 visits)</span><span class="zh hidden">流量规模最大，比排名第二的竞争对手（固特异：6,236次访问）领先3.2倍</span></li>
+                <li><span class="en">Strong Baidu and Bing presence: 362-578 Baidu PC traffic + 526-840 Bing traffic daily</span><span class="zh hidden">百度和必应搜索存在强劲：日均百度PC流量362-578次 + 必应流量526-840次</span></li>
+                <li><span class="en">Balanced keyword distribution across long-tail positions (11-50), indicating comprehensive SEO coverage</span><span class="zh hidden">在长尾位置（11-50名）的关键词分布均衡，表明SEO覆盖面全面</span></li>
+                <li><span class="en">High growth potential: 304 positions in 11-50 range provides substantial opportunity for optimization</span><span class="zh hidden">高增长潜力：11-50名范围内有304个位置，提供优化的充足机会</span></li>
+            </ul>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">📥 Download PDF Report</span><span class="zh hidden">📥 下载PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Schedule Consultation</span><span class="zh hidden">📞 安排咨询</span></button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro">
+                <span class="en">Comparative analysis of Michelin and the top 5 competitors by daily traffic, showcasing market positioning and SEO performance metrics.</span>
+                <span class="zh hidden">米其林与日均流量排名前5的竞争对手的对比分析，展示市场定位和SEO性能指标。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司名称</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu PC</span><span class="zh hidden">百度PC</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Keywords</span><span class="zh hidden">关键词数</span></th>
+                            <th><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span><span class="en">Michelin</span><span class="zh hidden">米其林</span></td>
+                            <td>8,001</td>
+                            <td>470</td>
+                            <td>683</td>
+                            <td>418</td>
+                            <td>19.14x</td>
+                            <td>100.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Goodyear</span><span class="zh hidden">固特异</span></td>
+                            <td>6,236</td>
+                            <td>242</td>
+                            <td>1,680</td>
+                            <td>214</td>
+                            <td>29.14x</td>
+                            <td>77.9</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Double Star</span><span class="zh hidden">双星轮胎</span></td>
+                            <td>2,206</td>
+                            <td>442</td>
+                            <td>792</td>
+                            <td>201</td>
+                            <td>10.97x</td>
+                            <td>27.6</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Continental</span><span class="zh hidden">马牌</span></td>
+                            <td>2,399</td>
+                            <td>272</td>
+                            <td>65</td>
+                            <td>162</td>
+                            <td>14.81x</td>
+                            <td>30.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Dunlop</span><span class="zh hidden">邓禄普</span></td>
+                            <td>2,523</td>
+                            <td>231</td>
+                            <td>545</td>
+                            <td>231</td>
+                            <td>10.92x</td>
+                            <td>31.5</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Bridgestone</span><span class="zh hidden">普利司通</span></td>
+                            <td>1,643</td>
+                            <td>86</td>
+                            <td>0</td>
+                            <td>151</td>
+                            <td>10.88x</td>
+                            <td>20.5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top: 32px; margin-bottom: 16px; color: var(--text-heading);"><span class="en">Competitive Index Methodology</span><span class="zh hidden">竞争指数方法论</span></h3>
+            <p class="section-intro">
+                <span class="en">The Competitive Index is calculated using a weighted formula: (Daily Traffic × 0.5) + (Keywords × 0.3) + (Keyword Efficiency × 0.2), normalized to Michelin's index of 100.0 as the benchmark.</span>
+                <span class="zh hidden">竞争指数采用加权公式计算：(日均流量 × 0.5) + (关键词数 × 0.3) + (关键词效率 × 0.2)，以米其林的指数100.0作为基准。</span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic assessment of Michelin's strengths, weaknesses, opportunities, and threats in the competitive tire industry SEO landscape.</span>
+                <span class="zh hidden">米其林在轮胎行业竞争性SEO环境中的优势、劣势、机会和威胁的战略评估。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li><span class="en">Market Leader: 8,001 daily visits—3.2x advantage over second competitor, establishing unquestionable market dominance</span><span class="zh hidden">市场领导者：日均8,001访问量—相比第二名竞争对手领先3.2倍，确立无可争议的市场主导地位</span></li>
+                        <li><span class="en">Dual-Channel Strength: Balanced traffic from both Baidu (470 avg) and Bing (683 avg) demonstrates strong organic performance across multiple platforms</span><span class="zh hidden">双渠道优势：百度（平均470）和必应（平均683）的平衡流量展现了跨多个平台的强大有机性能</span></li>
+                        <li><span class="en">Comprehensive Keyword Portfolio: 418 PC keywords provide extensive long-tail coverage with strong 11-50 position distribution (304 keywords)</span><span class="zh hidden">完整关键词组合：418个PC关键词提供广泛的长尾覆盖，11-50名位置分布强劲（304个关键词）</span></li>
+                        <li><span class="en">Superior Keyword Efficiency: 19.14x efficiency ratio indicates highly optimized content and technical SEO implementation</span><span class="zh hidden">卓越关键词效率：19.14倍效率比表明内容优化和技术SEO执行高度优化</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">Weaknesses</span><span class="zh hidden">劣势</span></h3>
+                    <ul>
+                        <li><span class="en">Top Position Concentration Gap: Despite overall dominance, Goodyear shows higher efficiency (29.14x), suggesting opportunities to improve top-page rankings</span><span class="zh hidden">首页排名集中度差距：尽管整体占优，固特异展现更高效率（29.14倍），表明改进首页排名的机会</span></li>
+                        <li><span class="en">Limited Bing Advantage: While strong, Bing traffic (526-840) represents smaller growth potential compared to Baidu expansion opportunities</span><span class="zh hidden">必应优势有限：虽然强劲，必应流量（526-840）相比百度扩展机会代表较小的增长潜力</span></li>
+                        <li><span class="en">High Keyword Saturation: 418 keywords may indicate approaching saturation in the addressable market, limiting new keyword acquisition</span><span class="zh hidden">关键词饱和度高：418个关键词可能表明可寻址市场接近饱和，限制新关键词获取</span></li>
+                        <li><span class="en">Competitive Pressure Increasing: Growing efficiency ratios in competitors (Goodyear 29.14x) suggest intensifying competition in premium niches</span><span class="zh hidden">竞争压力增加：竞争对手效率比提高（固特异29.14倍）表明高端细分市场竞争加剧</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);"><span class="en">Opportunities</span><span class="zh hidden">机会</span></h3>
+                    <ul>
+                        <li><span class="en">Baidu Expansion Potential: With 470 avg Baidu traffic from 418 keywords, pushing top 10 rankings could yield 30-50% traffic increase within 6 months</span><span class="zh hidden">百度扩张潜力：以418个关键词平均470次百度流量，推进首页排名可在6个月内实现30-50%的流量增长</span></li>
+                        <li><span class="en">Long-Tail Optimization: 304 keywords in 11-50 positions provide immediate conversion opportunity with targeted content improvements</span><span class="zh hidden">长尾优化：11-50名位置的304个关键词通过有针对性的内容改进提供即时转化机会</span></li>
+                        <li><span class="en">Featured Snippet Domination: Current keyword distribution enables strategic targeting for position zero snippets, especially in tire specifications and comparisons</span><span class="zh hidden">精选片段主导：当前关键词分布使针对位置零片段的战略定位成为可能，尤其是在轮胎规格和对比方面</span></li>
+                        <li><span class="en">International Market Expansion: Bridgestone's weakness in Chinese channels (86 Baidu traffic) indicates underexploited regional opportunities</span><span class="zh hidden">国际市场扩张：普利司通在中文渠道的劣势（86百度流量）表明地区机会被充分利用</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li><span class="en">Goodyear's Efficiency Advantage: Superior 29.14x keyword efficiency suggests advanced content optimization, risking market share erosion in premium segments</span><span class="zh hidden">固特异效率优势：卓越29.14倍关键词效率表明先进的内容优化，存在高端细分市场份额侵蚀的风险</span></li>
+                        <li><span class="en">Emerging Competitors: Double Star (2,206 daily visits) shows rapid growth with 10.97x efficiency, indicating emerging threat from competitive domestic brands</span><span class="zh hidden">新兴竞争对手：双星轮胎（日均2,206访问）展现快速增长，10.97倍效率，表明来自竞争性国内品牌的新兴威胁</span></li>
+                        <li><span class="en">Algorithm Volatility: Dependence on Baidu and Bing creates exposure to search algorithm changes affecting 51% of total traffic</span><span class="zh hidden">算法波动性：对百度和必应的依赖造成对搜索算法变化的敞口，影响总流量51%</span></li>
+                        <li><span class="en">Mobile-First Indexing Risk: No data on mobile traffic optimization; competitors may gain advantage if mobile SEO becomes dominant ranking factor</span><span class="zh hidden">移动优先索引风险：缺乏移动流量优化数据；如果移动SEO成为主导排名因素，竞争对手可能获得优势</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="section-intro">
+                <span class="en">In-depth analysis of traffic channels, keyword efficiency, and competitive positioning to identify strategic optimization priorities.</span>
+                <span class="zh hidden">流量渠道、关键词效率和竞争地位的深入分析，以确定战略优化优先级。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Analysis: Baidu vs. Bing</span><span class="zh hidden">流量渠道分析：百度 vs. 必应</span></h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Distribution of search traffic across Baidu and Bing platforms for all competitors</span>
+                    <span class="zh hidden">所有竞争对手在百度和必应平台上的搜索流量分布</span>
+                </p>
+                <div class="stacked-bar">
+                    <div class="stacked-bar-label"><span class="en">Michelin</span><span class="zh hidden">米其林</span></div>
+                    <div class="stacked-bar-container">
+                        <div class="stacked-segment segment-baidu" style="width: 40.8%;"><span style="font-size: 12px;">40.8%</span></div>
+                        <div class="stacked-segment segment-bing" style="width: 59.2%;"><span style="font-size: 12px;">59.2%</span></div>
+                    </div>
+                </div>
+                <div class="stacked-bar">
+                    <div class="stacked-bar-label"><span class="en">Goodyear</span><span class="zh hidden">固特异</span></div>
+                    <div class="stacked-bar-container">
+                        <div class="stacked-segment segment-baidu" style="width: 12.6%;"><span style="font-size: 12px;">12.6%</span></div>
+                        <div class="stacked-segment segment-bing" style="width: 87.4%;"><span style="font-size: 12px;">87.4%</span></div>
+                    </div>
+                </div>
+                <div class="stacked-bar">
+                    <div class="stacked-bar-label"><span class="en">Double Star</span><span class="zh hidden">双星轮胎</span></div>
+                    <div class="stacked-bar-container">
+                        <div class="stacked-segment segment-baidu" style="width: 35.8%;"><span style="font-size: 12px;">35.8%</span></div>
+                        <div class="stacked-segment segment-bing" style="width: 64.2%;"><span style="font-size: 12px;">64.2%</span></div>
+                    </div>
+                </div>
+                <div class="stacked-bar">
+                    <div class="stacked-bar-label"><span class="en">Continental</span><span class="zh hidden">马牌</span></div>
+                    <div class="stacked-bar-container">
+                        <div class="stacked-segment segment-baidu" style="width: 80.7%;"><span style="font-size: 12px;">80.7%</span></div>
+                        <div class="stacked-segment segment-bing" style="width: 19.3%;"><span style="font-size: 12px;">19.3%</span></div>
+                    </div>
+                </div>
+                <div class="stacked-bar">
+                    <div class="stacked-bar-label"><span class="en">Dunlop</span><span class="zh hidden">邓禄普</span></div>
+                    <div class="stacked-bar-container">
+                        <div class="stacked-segment segment-baidu" style="width: 29.7%;"><span style="font-size: 12px;">29.7%</span></div>
+                        <div class="stacked-segment segment-bing" style="width: 70.3%;"><span style="font-size: 12px;">70.3%</span></div>
+                    </div>
+                </div>
+                <div class="stacked-bar">
+                    <div class="stacked-bar-label"><span class="en">Bridgestone</span><span class="zh hidden">普利司通</span></div>
+                    <div class="stacked-bar-container">
+                        <div class="stacked-segment segment-baidu" style="width: 100%;"><span style="font-size: 12px;">100%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="color: var(--text-secondary); font-size: 14px; margin-top: 24px;">
+                <span class="en"><strong>Key Insights:</strong> Michelin achieves balanced channel distribution (40.8% Baidu, 59.2% Bing), indicating diversified traffic sources. Continental's Baidu dominance (80.7%) suggests regional strength but platform dependency risk. Michelin's balanced approach provides stability and growth opportunities across both channels.</span>
+                <span class="zh hidden"><strong>关键洞察：</strong>米其林实现平衡的渠道分布（40.8%百度、59.2%必应），表明流量来源多样化。马牌的百度优势（80.7%）表明地区实力但平台依赖风险。米其林的平衡方法在两个渠道提供稳定性和增长机会。</span>
+            </p>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency Comparison</span><span class="zh hidden">关键词效率对比</span></h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Efficiency ratio = Daily Traffic ÷ Number of Keywords. Higher values indicate better conversion per keyword.</span>
+                    <span class="zh hidden">效率比 = 日均流量 ÷ 关键词数。更高的值表示每个关键词的更好转化。</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="chart-bar">
+                        <div class="bar-label"><span class="en">Goodyear</span><span class="zh hidden">固特异</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 100%; background: linear-gradient(90deg, #f59e0b, #fbbf24);">29.14x</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-label"><span class="en">Michelin</span><span class="zh hidden">米其林</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 65.7%; background: var(--bg-gradient);">19.14x</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-label"><span class="en">Continental</span><span class="zh hidden">马牌</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 50.8%; background: linear-gradient(90deg, #8b5cf6, #a78bfa);">14.81x</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-label"><span class="en">Double Star</span><span class="zh hidden">双星轮胎</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 37.7%; background: linear-gradient(90deg, #06b6d4, #22d3ee);">10.97x</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-label"><span class="en">Dunlop</span><span class="zh hidden">邓禄普</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 37.5%; background: linear-gradient(90deg, #ec4899, #f472b6);">10.92x</div>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-label"><span class="en">Bridgestone</span><span class="zh hidden">普利司通</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 37.4%; background: linear-gradient(90deg, #14b8a6, #2dd4bf);">10.88x</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="color: var(--text-secondary); font-size: 14px; margin-top: 24px;">
+                <span class="en"><strong>Analysis:</strong> Goodyear leads in keyword efficiency (29.14x), generating $1.74 traffic per keyword versus Michelin's $1.21. However, Michelin's total traffic volume (8,001 vs 6,236) compensates through absolute volume dominance. Optimization opportunity: reducing keyword bloat and focusing on high-conversion terms could increase Michelin's efficiency to 22-25x.</span>
+                <span class="zh hidden"><strong>分析：</strong>固特异在关键词效率中领先（29.14倍），每个关键词产生1.74倍流量，而米其林为1.21倍。然而，米其林的总流量量（8,001 vs 6,236）通过绝对量优势补偿。优化机会：减少关键词膨胀并专注于高转化词条可将米其林效率提高到22-25倍。</span>
+            </p>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap Analysis</span><span class="zh hidden">竞争差距分析</span></h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Michelin's advantage vs. top competitor (Goodyear) across key metrics</span>
+                    <span class="zh hidden">米其林相对于首要竞争对手（固特异）的优势跨关键指标</span>
+                </p>
+
+                <div class="key-metrics-grid" style="margin-top: 20px;">
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Daily Traffic Lead</span><span class="zh hidden">日均流量领先</span></div>
+                        <div class="value"><span class="en">+1,765</span><span class="zh hidden">+1,765</span></div>
+                        <p style="color: var(--success-color); font-size: 12px; margin-top: 8px;">
+                            <span class="en">+28.3% vs Goodyear</span>
+                            <span class="zh hidden">相比固特异 +28.3%</span>
+                        </p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Keyword Portfolio Lead</span><span class="zh hidden">关键词组合领先</span></div>
+                        <div class="value"><span class="en">+204</span><span class="zh hidden">+204</span></div>
+                        <p style="color: var(--success-color); font-size: 12px; margin-top: 8px;">
+                            <span class="en">+95.3% vs Goodyear</span>
+                            <span class="zh hidden">相比固特异 +95.3%</span>
+                        </p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Position 11-50 Advantage</span><span class="zh hidden">11-50位置优势</span></div>
+                        <div class="value"><span class="en">+224</span><span class="zh hidden">+224</span></div>
+                        <p style="color: var(--warning-color); font-size: 12px; margin-top: 8px;">
+                            <span class="en">Growth opportunity area</span>
+                            <span class="zh hidden">增长机会领域</span>
+                        </p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Efficiency Gap</span><span class="zh hidden">效率差距</span></div>
+                        <div class="value"><span class="en">-9.99x</span><span class="zh hidden">-9.99x</span></div>
+                        <p style="color: var(--danger-color); font-size: 12px; margin-top: 8px;">
+                            <span class="en">Optimization priority</span>
+                            <span class="zh hidden">优化优先级</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="color: var(--text-secondary); font-size: 14px; margin-top: 24px;">
+                <span class="en"><strong>Strategic Implication:</strong> While Michelin leads in absolute traffic and keyword volume, Goodyear's superior efficiency suggests more concentrated, high-value keyword targeting. Michelin should consider portfolio optimization to focus on highest-ROI keywords, potentially moving from 418 to 300-350 strategic keywords while maintaining or increasing traffic volume.</span>
+                <span class="zh hidden"><strong>战略含义：</strong>虽然米其林在绝对流量和关键词量上领先，但固特异的卓越效率表明更集中、高价值的关键词定位。米其林应考虑作品集优化，专注于最高ROI关键词，可能从418个减少到300-350个战略关键词，同时保持或增加流量。</span>
+            </p>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">Data-driven identification of priority opportunities for traffic growth, conversion improvement, and competitive advantage consolidation.</span>
+                <span class="zh hidden">针对流量增长、转化改进和竞争优势巩固的优先机会的数据驱动识别。</span>
+            </p>
+
+            <h3 style="margin-top: 32px; margin-bottom: 16px; color: var(--text-heading);"><span class="en">Priority Opportunity Matrix</span><span class="zh hidden">优先级机会矩阵</span></h3>
+
+            <div class="opportunity-card">
+                <div class="priority priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></div>
+                <h4><span class="en">🎯 Top 10 Ranking Optimization (11-20 → 1-10)</span><span class="zh hidden">🎯 首页排名优化（11-20 → 1-10）</span></h4>
+                <p>
+                    <span class="en"><strong>Opportunity:</strong> 58 keywords currently in 11-20 positions. Moving these to top-10 could yield 40-60% traffic increase (3,200-4,800 additional daily visits).</span>
+                    <span class="zh hidden"><strong>机会：</strong>58个关键词目前在11-20位置。将其移至前10位可产生40-60%的流量增长（日均增加3,200-4,800次访问）。</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Action Items:</strong> Enhance meta descriptions, improve internal linking, increase content depth, accelerate page load times.</span>
+                    <span class="zh hidden"><strong>行动项：</strong>增强元描述、改进内部链接、增加内容深度、加快页面加载速度。</span>
+                </p>
+                <div class="potential-score">
+                    <span><span class="en">Impact Potential: 85%</span><span class="zh hidden">影响潜力：85%</span></span>
+                    <div class="score-bar">
+                        <div class="score-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="opportunity-card">
+                <div class="priority priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></div>
+                <h4><span class="en">📊 Baidu Traffic Expansion</span><span class="zh hidden">📊 百度流量扩张</span></h4>
+                <p>
+                    <span class="en"><strong>Opportunity:</strong> Baidu currently generates 40.8% of traffic (3,264 visits). Competitors averaging higher Baidu performance (e.g., Continental 80.7%) suggest room for 60-80% Baidu traffic growth through Chinese market optimization.</span>
+                    <span class="zh hidden"><strong>机会：</strong>百度目前产生40.8%的流量（3,264次访问）。竞争对手平均更高的百度性能（如马牌80.7%）表明通过中文市场优化有60-80%的百度流量增长空间。</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Action Items:</strong> Optimize for Chinese keywords, improve content localization, enhance Baidu Webmaster Tools settings, increase Chinese backlinks.</span>
+                    <span class="zh hidden"><strong>行动项：</strong>优化中文关键词、改进内容本地化、增强百度站长工具设置、增加中文反向链接。</span>
+                </p>
+                <div class="potential-score">
+                    <span><span class="en">Impact Potential: 78%</span><span class="zh hidden">影响潜力：78%</span></span>
+                    <div class="score-bar">
+                        <div class="score-fill" style="width: 78%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="opportunity-card">
+                <div class="priority priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span></div>
+                <h4><span class="en">🔄 Long-Tail Keyword Conversion (21-50 positions)</span><span class="zh hidden">🔄 长尾关键词转换（21-50名位置）</span></h4>
+                <p>
+                    <span class="en"><strong>Opportunity:</strong> 246 keywords ranked 21-50 positions. These high-intent, lower-competition terms can be advanced to 11-20 with focused content optimization, yielding 25-35% traffic improvement (2,000-2,800 visits).</span>
+                    <span class="zh hidden"><strong>机会：</strong>246个关键词排名21-50位置。这些高意图、低竞争词条通过专注内容优化可推进到11-20位置，产生25-35%的流量改进（2,000-2,800次访问）。</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Action Items:</strong> Audit current 21-30 content quality, create dedicated landing pages for high-volume 31-50 terms, implement internal linking clusters.</span>
+                    <span class="zh hidden"><strong>行动项：</strong>审查当前21-30内容质量、为高流量31-50词条创建专门登陆页、实现内部链接集群。</span>
+                </p>
+                <div class="potential-score">
+                    <span><span class="en">Impact Potential: 68%</span><span class="zh hidden">影响潜力：68%</span></span>
+                    <div class="score-bar">
+                        <div class="score-fill" style="width: 68%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="opportunity-card">
+                <div class="priority priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span></div>
+                <h4><span class="en">🌟 Featured Snippet & Position Zero Strategy</span><span class="zh hidden">🌟 精选片段和位置零战略</span></h4>
+                <p>
+                    <span class="en"><strong>Opportunity:</strong> With 418 keywords, Michelin can target 20-30 high-value featured snippet opportunities in tire specifications, comparisons, and technical FAQs, potentially capturing 500-800 additional daily visits.</span>
+                    <span class="zh hidden"><strong>机会：</strong>凭借418个关键词，米其林可针对轮胎规格、对比和技术FAQ中的20-30个高价值精选片段机会，可能捕获日均增加500-800次访问。</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Action Items:</strong> Analyze top competitors' featured snippets, restructure content for snippet optimization, focus on definition, list, and table formats.</span>
+                    <span class="zh hidden"><strong>行动项：</strong>分析顶级竞争对手的精选片段、重组内容以进行片段优化、专注于定义、列表和表格格式。</span>
+                </p>
+                <div class="potential-score">
+                    <span><span class="en">Impact Potential: 62%</span><span class="zh hidden">影响潜力：62%</span></span>
+                    <div class="score-bar">
+                        <div class="score-fill" style="width: 62%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="opportunity-card">
+                <div class="priority priority-low"><span class="en">GROWTH OPPORTUNITY</span><span class="zh hidden">增长机会</span></div>
+                <h4><span class="en">💡 Bing Market Saturation & Optimization</span><span class="zh hidden">💡 必应市场饱和度优化</span></h4>
+                <p>
+                    <span class="en"><strong>Opportunity:</strong> Bing traffic (683 avg visits) is well-optimized but slower-growth channel. Leveraging Michelin's strong position to expand into related tire product categories and long-tail searches could add 200-400 daily visits.</span>
+                    <span class="zh hidden"><strong>机会：</strong>必应流量（平均683次访问）优化良好但增长缓慢的渠道。利用米其林强势地位扩展到相关轮胎产品类别和长尾搜索可增加日均200-400次访问。</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Action Items:</strong> Expand SKU pages, optimize for Bing's XML sitemap requirements, increase Bing Webmaster Tools optimization, create Bing-specific content variants.</span>
+                    <span class="zh hidden"><strong>行动项：</strong>扩展SKU页面、优化必应XML站点地图要求、增加必应站长工具优化、创建必应特定内容变体。</span>
+                </p>
+                <div class="potential-score">
+                    <span><span class="en">Impact Potential: 45%</span><span class="zh hidden">影响潜力：45%</span></span>
+                    <div class="score-bar">
+                        <div class="score-fill" style="width: 45%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 32px; margin-bottom: 16px; color: var(--text-heading);"><span class="en">Total Growth Potential</span><span class="zh hidden">总增长潜力</span></h3>
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Conservative Scenario (6 months)</span><span class="zh hidden">保守情景（6个月）</span></div>
+                    <div class="value"><span class="en">+25%</span><span class="zh hidden">+25%</span></div>
+                    <p style="color: var(--text-secondary); font-size: 12px; margin-top: 8px;">
+                        <span class="en">+2,000 daily visits</span>
+                        <span class="zh hidden">日均增加2,000访问</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Aggressive Scenario (12 months)</span><span class="zh hidden">激进情景（12个月）</span></div>
+                    <div class="value"><span class="en">+55%</span><span class="zh hidden">+55%</span></div>
+                    <p style="color: var(--success-color); font-size: 12px; margin-top: 8px;">
+                        <span class="en">+4,400 daily visits</span>
+                        <span class="zh hidden">日均增加4,400访问</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan & Implementation Timeline</span><span class="zh hidden">行动计划和实施时间表</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic 12-month roadmap for SEO optimization, competitive positioning, and sustainable growth achievement.</span>
+                <span class="zh hidden">针对SEO优化、竞争定位和可持续增长的12个月战略路线图。</span>
+            </p>
+
+            <h3 style="margin-top: 32px; margin-bottom: 16px; color: var(--text-heading);"><span class="en">Phase 1: Foundation & Quick Wins (Months 1-3)</span><span class="zh hidden">第一阶段：基础和快速赢胜（第1-3个月）</span></h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 1: Technical Audit & Infrastructure</span><span class="zh hidden">第1个月：技术审计和基础设施</span></h4>
+                <p>
+                    <span class="en">• Conduct comprehensive SEO technical audit across all 418 ranking keywords</span>
+                    <span class="zh hidden">• 对所有418个排名关键词进行全面的SEO技术审计</span><br>
+                    <span class="en">• Implement Core Web Vitals optimization (page speed, LCP, FID, CLS)</span>
+                    <span class="zh hidden">• 实施Core Web Vitals优化（页面速度、LCP、FID、CLS）</span><br>
+                    <span class="en">• Audit and enhance mobile responsiveness across keyword landing pages</span>
+                    <span class="zh hidden">• 审计和增强关键词登陆页的移动响应能力</span><br>
+                    <span class="en">Expected Impact: +5-8% traffic improvement from technical optimization</span>
+                    <span class="zh hidden">预期影响：技术优化带来5-8%的流量改进</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 2: Content Prioritization & Quick Wins</span><span class="zh hidden">第2个月：内容优先级和快速赢胜</span></h4>
+                <p>
+                    <span class="en">• Identify and optimize 58 keywords in 11-20 position range for top-10 advancement</span>
+                    <span class="zh hidden">• 识别并优化11-20位置范围内的58个关键词以推进前10名</span><br>
+                    <span class="en">• Update meta titles and descriptions for higher CTR (target +15-20% CTR improvement)</span>
+                    <span class="zh hidden">• 更新元标题和描述以提高CTR（目标CTR改进+15-20%）</span><br>
+                    <span class="en">• Strengthen internal linking structure for 11-20 ranked pages</span>
+                    <span class="zh hidden">• 加强11-20排名页的内部链接结构</span><br>
+                    <span class="en">Expected Impact: +400-600 daily visits from CTR improvement</span>
+                    <span class="zh hidden">预期影响：CTR改进带来日均增加400-600访问</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 3: Baidu Market Positioning</span><span class="zh hidden">第3个月：百度市场定位</span></h4>
+                <p>
+                    <span class="en">• Optimize top 50 keywords for Baidu search algorithm (add Chinese characteristics, cultural references)</span>
+                    <span class="zh hidden">• 优化百度搜索算法的前50个关键词（添加中文特色、文化参考）</span><br>
+                    <span class="en">• Submit XML sitemap to Baidu Webmaster Tools, verify site authority</span>
+                    <span class="zh hidden">• 向百度站长工具提交XML站点地图，验证网站权威</span><br>
+                    <span class="en">• Build 20-30 high-quality Chinese backlinks from tier-1 domains</span>
+                    <span class="zh hidden">• 从第一级域名建立20-30个高质量中文反向链接</span><br>
+                    <span class="en">Expected Impact: +200-300 daily Baidu visits</span>
+                    <span class="zh hidden">预期影响：日均增加200-300百度访问</span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 32px; margin-bottom: 16px; color: var(--text-heading);"><span class="en">Phase 2: Acceleration & Market Expansion (Months 4-8)</span><span class="zh hidden">第二阶段：加速和市场扩张（第4-8个月）</span></h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 4-5: Content Depth & Authority Building</span><span class="zh hidden">第4-5个月：内容深度和权威建立</span></h4>
+                <p>
+                    <span class="en">• Create comprehensive 3,000+ word pillar content for top 20 high-volume keywords</span>
+                    <span class="zh hidden">• 为前20个高流量关键词创建3,000字以上的综合支柱内容</span><br>
+                    <span class="en">• Develop 40-50 supporting cluster articles (1,000-1,500 words each) for related long-tail keywords</span>
+                    <span class="zh hidden">• 为相关长尾关键词开发40-50篇支持集群文章（每篇1,000-1,500字）</span><br>
+                    <span class="en">• Implement strategic internal linking topology to flow authority from high-performing pages</span>
+                    <span class="zh hidden">• 实施战略内部链接拓扑以从高性能页面流动权威</span><br>
+                    <span class="en">Expected Impact: +800-1,200 daily visits from content authority improvement</span>
+                    <span class="zh hidden">预期影响：内容权威改进带来日均增加800-1,200访问</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 6-7: Featured Snippet Dominance</span><span class="zh hidden">第6-7个月：精选片段主导</span></h4>
+                <p>
+                    <span class="en">• Analyze top 30 snippet opportunities in tire specifications, comparisons, FAQs</span>
+                    <span class="zh hidden">• 分析轮胎规格、对比、FAQ中前30个精选片段机会</span><br>
+                    <span class="en">• Restructure 25-30 landing pages for snippet optimization (tables, lists, definitions)</span>
+                    <span class="zh hidden">• 重组25-30个登陆页以进行片段优化（表格、列表、定义）</span><br>
+                    <span class="en">• Monitor snippet performance weekly, iterate on high-opportunity pages</span>
+                    <span class="zh hidden">• 每周监控片段性能，迭代高机会页面</span><br>
+                    <span class="en">Expected Impact: +300-500 daily visits from featured snippet captures</span>
+                    <span class="zh hidden">预期影响：精选片段捕获带来日均增加300-500访问</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 8: Competitive Link Building</span><span class="zh hidden">第8个月：竞争链接建立</span></h4>
+                <p>
+                    <span class="en">• Execute backlink analysis on top 10 competitors (Goodyear, Double Star, Continental)</span>
+                    <span class="zh hidden">• 对前10个竞争对手（固特异、双星轮胎、马牌）进行反向链接分析</span><br>
+                    <span class="en">• Identify 50+ high-authority link opportunities (industry directories, tire review sites, automotive blogs)</span>
+                    <span class="zh hidden">• 识别50+个高权威链接机会（行业目录、轮胎评论网站、汽车博客）</span><br>
+                    <span class="en">• Secure 15-20 tier-1 domain backlinks from high-relevance sources</span>
+                    <span class="zh hidden">• 从高相关来源获得15-20个第一级域名反向链接</span><br>
+                    <span class="en">Expected Impact: +5-8% authority boost, +2-3 ranking position average improvement</span>
+                    <span class="zh hidden">预期影响：权威提升5-8%，平均排名位置改进+2-3个</span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 32px; margin-bottom: 16px; color: var(--text-heading);"><span class="en">Phase 3: Consolidation & Sustainable Growth (Months 9-12)</span><span class="zh hidden">第三阶段：巩固和可持续增长（第9-12个月）</span></h3>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 9-10: Conversion Rate Optimization</span><span class="zh hidden">第9-10个月：转化率优化</span></h4>
+                <p>
+                    <span class="en">• Implement A/B testing on top 50 landing pages to improve conversion rates</span>
+                    <span class="zh hidden">• 在前50个登陆页上实施A/B测试以改进转化率</span><br>
+                    <span class="en">• Analyze user behavior on pages currently in 1-20 positions; reduce bounce rate through UX improvements</span>
+                    <span class="zh hidden">• 分析目前1-20位置页上的用户行为；通过UX改进减少跳出率</span><br>
+                    <span class="en">• Develop 10-15 targeted landing pages for high-intent commercial keywords</span>
+                    <span class="zh hidden">• 为高意图商业关键词开发10-15个针对性登陆页</span><br>
+                    <span class="en">Expected Impact: +15-25% conversion rate improvement per page</span>
+                    <span class="zh hidden">预期影响：每个页面的转化率改进+15-25%</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 11: Market Expansion & New Segments</span><span class="zh hidden">第11个月：市场扩张和新细分</span></h4>
+                <p>
+                    <span class="en">• Identify 30-40 new high-potential keywords in emerging tire categories (EV tires, eco-friendly, smart tires)</span>
+                    <span class="zh hidden">• 在新兴轮胎类别（电动轮胎、生态友好型、智能轮胎）中确定30-40个新的高潜力关键词</span><br>
+                    <span class="en">• Create dedicated content hub for emerging segments (50-100 supporting pages)</span>
+                    <span class="zh hidden">• 为新兴细分市场创建专用内容中心（50-100个支持页面）</span><br>
+                    <span class="en">• Target Bing market with 15-20 segment-specific optimizations to expand from 59.2% to 65%+ Bing share</span>
+                    <span class="zh hidden">• 通过15-20个细分市场特定优化瞄准必应市场，以将必应份额从59.2%扩展到65%以上</span><br>
+                    <span class="en">Expected Impact: +500-800 daily visits from new segments</span>
+                    <span class="zh hidden">预期影响：新细分市场带来日均增加500-800访问</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 12: Performance Review & Strategy Refinement</span><span class="zh hidden">第12个月：性能审查和策略优化</span></h4>
+                <p>
+                    <span class="en">• Conduct comprehensive 12-month performance analysis against baseline metrics</span>
+                    <span class="zh hidden">• 根据基准指标进行全面的12个月性能分析</span><br>
+                    <span class="en">• Document ROI across all initiative categories (content, technical, link building, conversion)</span>
+                    <span class="zh hidden">• 记录所有计划类别的ROI（内容、技术、链接建立、转化）</span><br>
+                    <span class="en">• Develop Year 2 strategy based on performance insights and competitive landscape shifts</span>
+                    <span class="zh hidden">• 根据性能洞察和竞争环境变化制定第2年战略</span><br>
+                    <span class="en">Expected Cumulative Impact: +2,000-4,400 daily visits (25-55% growth trajectory)</span>
+                    <span class="zh hidden">预期累积影响：日均增加2,000-4,400访问（25-55%增长轨迹）</span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 32px; margin-bottom: 16px; color: var(--text-heading);"><span class="en">Key Performance Indicators & Monitoring</span><span class="zh hidden">关键性能指标和监控</span></h3>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Monthly Tracking</span><span class="zh hidden">月度追踪</span></div>
+                    <p style="color: var(--text-secondary); font-size: 13px; margin-top: 12px; line-height: 1.6;">
+                        <span class="en">• Daily traffic volume<br>• Keyword ranking positions (top 100)<br>• Top 10 position keyword count<br>• Baidu vs Bing traffic split</span>
+                        <span class="zh hidden">• 日均流量<br>• 关键词排名位置（前100）<br>• 前10名关键词数量<br>• 百度 vs 必应流量分割</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Quarterly Assessment</span><span class="zh hidden">季度评估</span></div>
+                    <p style="color: var(--text-secondary); font-size: 13px; margin-top: 12px; line-height: 1.6;">
+                        <span class="en">• Traffic growth rate vs competitors<br>• Keyword efficiency ratio trends<br>• Organic conversion rate<br>• Featured snippet capture rate</span>
+                        <span class="zh hidden">• 相比竞争对手的流量增长率<br>• 关键词效率比趋势<br>• 有机转化率<br>• 精选片段捕获率</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">📥 Download Full PDF Report</span><span class="zh hidden">📥 下载完整PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Schedule Implementation Consultation</span><span class="zh hidden">📞 安排实施咨询</span></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Language Toggle
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+
+            // Ensure page starts in English
+            document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+        });
+    </script>
+</body>
+</html>
