@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUSA HyPower AG - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+            page-break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+        }
+        .data-table thead {
+            display: table-header-group;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3{
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul{
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li{
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before{
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3{
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Chart Wrapper */
+        .chart-wrapper {
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            min-width: 150px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .bar-container {
+            flex: 1;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .bar-value {
+            min-width: 80px;
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+        }
+
+        /* Stacked Bar Chart */
+        .stacked-bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .stacked-bar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .stacked-bar-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .stacked-bar {
+            display: flex;
+            height: 32px;
+            border-radius: 4px;
+            overflow: hidden;
+            gap: 1px;
+        }
+        .stacked-bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .baidu-segment {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+        .bing-segment {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        /* Timeline */
+        .timeline-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4{
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p{
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Action Card */
+        .action-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .action-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .action-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--accent-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .opportunity-card .priority {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover{
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid,
+            .chart-wrapper, .bar-chart, .stacked-bar-chart {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tbody, .data-table tfoot {
+                page-break-inside: avoid;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container, .chart-wrapper {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* Image optimization */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+
+            /* Bar chart optimization */
+            .bar-item, .stacked-bar-item {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+            .key-metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .key-metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+
+        <!-- Section 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">BRUSA HyPower AG</span><span class="zh hidden">博鲁斯动力</span></h1>
+            <p class="subtitle"><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></p>
+            
+            <p class="section-intro" style="margin-top: 24px; margin-bottom: 32px;">
+                <span class="en">This comprehensive analysis examines the current SEO landscape for BRUSA HyPower AG in the hydrogen energy industry. Despite zero current organic traffic, this report identifies critical market opportunities and competitive dynamics that position the company for significant growth in the Chinese and international markets.</span>
+                <span class="zh hidden">本报告对博鲁斯动力在氢能产业的当前SEO格局进行了全面分析。尽管目前有机流量为零，但该报告确定了关键的市场机会和竞争动态，为公司在中国和国际市场的显著增长奠定基础。</span>
+            </p>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Current Market Ranking</span><span class="zh hidden">当前市场排名</span></div>
+                    <div class="value">
+                        <span>#6</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic vs. Avg</span><span class="zh hidden">日均流量对比</span></div>
+                    <div class="value">
+                        <span>-100%</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">
+                        <span>0%</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value">
+                        <span style="color: var(--success-color);">High</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 32px;">
+                <span class="en"><strong>Key Findings:</strong> The hydrogen energy sector shows moderate SEO maturity with SinoHytec leading at 725 daily organic visits. BRUSA HyPower AG currently has zero organic visibility but occupies a strategic position to establish market dominance through targeted SEO initiatives. The market lacks significant competition, with only one major player (SinoHytec) generating substantial traffic, creating an exceptional opportunity for rapid market penetration.</span>
+                <span class="zh hidden"><strong>主要发现：</strong>氢能产业表现出中等的SEO成熟度，亿华通以725次日均有机访问量领先。博鲁斯动力目前有机可见性为零，但通过有针对性的SEO计划，公司处于建立市场主导地位的战略位置。市场缺乏重大竞争，仅有一个主要参与者（亿华通）产生大量流量，这为快速市场渗透创造了绝佳机会。</span>
+            </p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">Download as PDF</span><span class="zh hidden">下载PDF</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Schedule Consultation</span><span class="zh hidden">预约咨询</span></button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 24px;">
+                <span class="en">This section provides a comparative analysis of BRUSA HyPower AG against the five most prominent competitors based on SEO performance metrics. The analysis includes traffic volume, keyword positioning, and calculated competitive indices.</span>
+                <span class="zh hidden">本部分对博鲁斯动力与五个最突出的竞争对手进行了基于SEO性能指标的比较分析。分析包括流量量、关键词排名和计算的竞争指数。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日流量</span></th>
+                            <th><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">总关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user">YOU</span><span class="en">BRUSA HyPower AG</span><span class="zh hidden">博鲁斯动力</span></td>
+                            <td><strong>0</strong></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>0.00</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">SinoHytec</span><span class="zh hidden">亿华通</span></td>
+                            <td><strong>725</strong></td>
+                            <td>31</td>
+                            <td>341</td>
+                            <td>32</td>
+                            <td><strong>100.00</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Re-Fire</span><span class="zh hidden">重塑科技</span></td>
+                            <td><strong>21</strong></td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td><strong>2.90</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Sinohykey</span><span class="zh hidden">国鸿氢能</span></td>
+                            <td><strong>0</strong></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>0.00</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Sunrise Power</span><span class="zh hidden">明天氢能</span></td>
+                            <td><strong>0</strong></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>0.00</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Risen Energy</span><span class="zh hidden">雄韬氢能</span></td>
+                            <td><strong>0</strong></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>0.00</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="summary-text" style="margin-top: 24px;">
+                <span class="en"><strong>Competitive Index Methodology:</strong> The Competitive Index is calculated as (Daily Traffic × Keyword Efficiency) / 100, where Keyword Efficiency = (Total Keywords / 100). This metric provides a normalized measure of overall SEO competitiveness. SinoHytec dominates with an index of 100.00, while most competitors score 0.00, indicating minimal SEO optimization efforts across the industry.</span>
+                <span class="zh hidden"><strong>竞争指数方法论：</strong>竞争指数计算为（日流量×关键词效率）/ 100，其中关键词效率=（总关键词/ 100）。该指标提供了整体SEO竞争力的规范化度量。亿华通以100.00的指数占据主导地位，而大多数竞争对手的得分为0.00，表明整个行业的SEO优化工作最少。</span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 24px;">
+                <span class="en">A strategic assessment of BRUSA HyPower AG's strengths, weaknesses, opportunities, and threats in the context of hydrogen energy SEO competitive landscape.</span>
+                <span class="zh hidden">在氢能SEO竞争格局的背景下，对博鲁斯动力的优势、劣势、机会和威胁进行战略评估。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li><span class="en">Market Position: Operating in a relatively untapped SEO market with minimal competitor optimization efforts</span><span class="zh hidden">市场地位：在一个相对未开发、竞争对手优化工作最少的SEO市场中运营</span></li>
+                        <li><span class="en">Growth Foundation: Zero organic traffic presents a clean slate for building a comprehensive, modern SEO strategy from ground up</span><span class="zh hidden">增长基础：零有机流量为从头构建全面的现代SEO战略提供了基础</span></li>
+                        <li><span class="en">Industry Expertise: As a hydrogen energy technology leader, BRUSA possesses authentic technical content that can drive authority and trust signals</span><span class="zh hidden">行业专业知识：作为氢能技术领导者，博鲁斯拥有可以推动权威性和信任信号的真实技术内容</span></li>
+                        <li><span class="en">Competitive Gap: Only one major competitor (SinoHytec) has established SEO presence, creating space for rapid market capture</span><span class="zh hidden">竞争差距：仅有一个主要竞争对手（亿华通）建立了SEO存在，为快速市场占领创造了空间</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">Weaknesses</span><span class="zh hidden">劣势</span></h3>
+                    <ul>
+                        <li><span class="en">Zero Visibility: Currently has zero organic traffic and zero indexed keywords, requiring significant SEO investment</span><span class="zh hidden">零可见性：目前有机流量和索引关键词均为零，需要进行大量SEO投资</span></li>
+                        <li><span class="en">Domain Authority: Likely lacks established domain authority and backlink profile compared to industry players</span><span class="zh hidden">域权威性：与业界玩家相比，可能缺乏既定的域权威性和反向链接配置文件</span></li>
+                        <li><span class="en">Market Awareness: Missing brand recognition and online presence, requiring long-term content and reputation building</span><span class="zh hidden">市场认知度：缺乏品牌认知度和在线存在感，需要长期的内容和声誉建设</span></li>
+                        <li><span class="en">Competitive Deficit: Significantly behind SinoHytec's 725 daily visitors and 32 ranked keywords</span><span class="zh hidden">竞争赤字：远落后于亿华通的725名日访客和32个排名关键词</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">Opportunities</span><span class="zh hidden">机会</span></h3>
+                    <ul>
+                        <li><span class="en">Market Leadership: First-mover advantage available - rapid SEO implementation can establish BRUSA as hydrogen energy industry leader before competitors respond</span><span class="zh hidden">市场领导地位：先行者优势可用 - 快速的SEO实施可以在竞争对手做出反应之前建立博鲁斯为氢能行业领导者</span></li>
+                        <li><span class="en">Content Dominance: Hydrogen technology sector has limited quality content - opportunity to create authoritative guides, whitepapers, and technical resources</span><span class="zh hidden">内容主导地位：氢能技术部门内容质量有限 - 有机会创建权威性指南、白皮书和技术资源</span></li>
+                        <li><span class="en">International Expansion: Bing shows strong potential (341 visitors for SinoHytec) - opportunity to target Western markets through English content and international SEO</span><span class="zh hidden">国际扩展：必应显示出强大的潜力（亿华通341名访客）- 有机会通过英文内容和国际SEO针对西方市场</span></li>
+                        <li><span class="en">Niche Authority: Build topical authority around hydrogen energy, fuel cells, and green technologies with comprehensive content strategy</span><span class="zh hidden">利基权威性：通过全面的内容战略围绕氢能、燃料电池和绿色技术建立专题权威</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: #f59e0b;"><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li><span class="en">SinoHytec Dominance: Market leader SinoHytec may accelerate SEO efforts upon recognizing market growth, potentially establishing insurmountable competitive advantage</span><span class="zh hidden">亿华通主导地位：市场领导者亿华通在认识到市场增长后可能会加快SEO工作，可能建立难以克服的竞争优势</span></li>
+                        <li><span class="en">Industry Consolidation: Hydrogen energy sector consolidation could bring well-capitalized competitors with established online presence and marketing budgets</span><span class="zh hidden">行业整合：氢能行业整合可能会带来资本充足、具有既定在线存在和营销预算的竞争对手</span></li>
+                        <li><span class="en">Algorithm Updates: Google and Baidu algorithm changes could dramatically impact ranking potential and require continuous adaptation</span><span class="zh hidden">算法更新：谷歌和百度算法变化可能会严重影响排名潜力，需要持续调整</span></li>
+                        <li><span class="en">Budget Constraints: Limited SEO investment could slow growth trajectory and allow competitors to establish search dominance before BRUSA gains traction</span><span class="zh hidden">预算限制：有限的SEO投资可能会减缓增长轨迹，并在博鲁斯获得动力之前让竞争对手建立搜索主导地位</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 32px;">
+                <span class="en">Detailed examination of traffic distribution, keyword efficiency, and competitive positioning reveals critical insights for strategic SEO planning.</span>
+                <span class="zh hidden">对流量分配、关键词效率和竞争定位的详细检查揭示了战略性SEO规划的关键见解。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-wrapper">
+                <h3><span class="en">Traffic Channel Analysis: Baidu vs. Bing Distribution</span><span class="zh hidden">流量渠道分析：百度与必应分布</span></h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Understanding traffic source distribution is critical for localization and market strategy. Bing dominates BRUSA's competitive landscape, particularly for SinoHytec.</span>
+                    <span class="zh hidden">了解流量来源分布对于本地化和市场战略至关重要。必应在博鲁斯的竞争格局中占主导地位，特别是对亿华通。</span>
+                </p>
+                <div class="stacked-bar-chart">
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">BRUSA HyPower AG</span><span class="zh hidden">博鲁斯动力</span></div>
+                        <div class="stacked-bar">
+                            <div class="stacked-bar-segment baidu-segment" style="width: 0%;">0</div>
+                            <div class="stacked-bar-segment bing-segment" style="width: 0%;">0</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">SinoHytec</span><span class="zh hidden">亿华通</span></div>
+                        <div class="stacked-bar">
+                            <div class="stacked-bar-segment baidu-segment" style="width: 8.28%;">31</div>
+                            <div class="stacked-bar-segment bing-segment" style="width: 91.72%;">341</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Re-Fire</span><span class="zh hidden">重塑科技</span></div>
+                        <div class="stacked-bar">
+                            <div class="stacked-bar-segment baidu-segment" style="width: 100%;">4</div>
+                            <div class="stacked-bar-segment bing-segment" style="width: 0%;">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-wrapper">
+                <h3><span class="en">Keyword Efficiency Comparison</span><span class="zh hidden">关键词效率比较</span></h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Keyword Efficiency is calculated as Daily Traffic ÷ Total Keywords. Higher efficiency indicates better conversion of keyword rankings into actual traffic.</span>
+                    <span class="zh hidden">关键词效率计算为日流量÷总关键词。更高的效率表示将关键词排名转换为实际流量的效果更好。</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">SinoHytec</span><span class="zh hidden">亿华通</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 100%;">22.66</div>
+                        </div>
+                        <div class="bar-value">22.66</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Re-Fire</span><span class="zh hidden">重塑科技</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 4.40%;">1.00</div>
+                        </div>
+                        <div class="bar-value">10.50</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">BRUSA HyPower AG</span><span class="zh hidden">博鲁斯动力</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 0%;">-</div>
+                        </div>
+                        <div class="bar-value">0.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-wrapper">
+                <h3><span class="en">Competitive Gap Analysis vs. Market Leader</span><span class="zh hidden">相对于市场领导者的竞争差距分析</span></h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">SinoHytec serves as the competitive benchmark. BRUSA's gap to market leadership represents growth opportunity.</span>
+                    <span class="zh hidden">亿华通作为竞争基准。博鲁斯到市场领导地位的差距代表增长机会。</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Daily Traffic Gap</span><span class="zh hidden">日流量差</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 100%;">725</div>
+                        </div>
+                        <div class="bar-value">725</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Keyword Gap</span><span class="zh hidden">关键词差</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 100%;">32</div>
+                        </div>
+                        <div class="bar-value">32</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Traffic Source Gap (Bing)</span><span class="zh hidden">流量来源差（必应）</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 100%;">341</div>
+                        </div>
+                        <div class="bar-value">341</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card" style="margin-top: 24px;">
+                <div class="label"><span class="en">Critical Insight</span><span class="zh hidden">关键洞察</span></div>
+                <p style="color: var(--text-secondary); margin-top: 12px;">
+                    <span class="en">The market leader SinoHytec achieves 22.66 daily visitors per ranked keyword, demonstrating strong SEO efficiency. Re-Fire shows lower efficiency (10.50), suggesting less optimized keyword selection. BRUSA's immediate priority should be establishing a baseline of 10-15 ranked keywords in high-intent search queries to begin generating measurable organic traffic.</span>
+                    <span class="zh hidden">市场领导者亿华通每个排名关键词实现22.66名日访客，展示了强大的SEO效率。重塑科技表现出较低的效率（10.50），表明关键词选择优化程度较低。博鲁斯的首要任务应是在高意图搜索查询中建立10-15个排名关键词的基线，以开始产生可衡量的有机流量。</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 32px;">
+                <span class="en">Strategic opportunities identified through market gap analysis, competitive benchmarking, and industry trend assessment. Prioritized by potential impact and implementation feasibility.</span>
+                <span class="zh hidden">通过市场差距分析、竞争基准和行业趋势评估确定的战略机会。按潜在影响力和实施可行性排列优先级。</span>
+            </p>
+
+            <!-- Opportunity 1 -->
+            <div class="opportunity-card">
+                <div class="priority"><span class="en">HIGH</span><span class="zh hidden">高</span></div>
+                <h4><span class="en">1. Technical Content Leadership in Hydrogen Energy</span><span class="zh hidden">1. 氢能技术内容领导地位</span></h4>
+                <p>
+                    <span class="en"><strong>Opportunity:</strong> Create authoritative technical content around hydrogen fuel cells, energy storage, and hybrid systems - areas where SinoHytec has minimal content presence</span>
+                    <span class="zh hidden"><strong>机会：</strong>围绕氢燃料电池、能源存储和混合系统创建权威技术内容 - 亿华通内容存在最少的领域</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Potential:</strong> 150-200 additional monthly visitors within 6-12 months through organic ranking of 15-20 long-tail keywords</span>
+                    <span class="zh hidden"><strong>潜力：</strong>通过15-20个长尾关键词的有机排名，6-12个月内增加150-200名月度访客</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Implementation Timeline:</strong> 3-4 months for initial content pillar development</span>
+                    <span class="zh hidden"><strong>实施时间表：</strong>3-4个月用于初始内容支柱开发</span>
+                </p>
+            </div>
+
+            <!-- Opportunity 2 -->
+            <div class="opportunity-card">
+                <div class="priority" style="background: var(--warning-color);"><span class="en">HIGH</span><span class="zh hidden">高</span></div>
+                <h4><span class="en">2. Bing/International English Market Targeting</span><span class="zh hidden">2. 必应/国际英语市场定位</span></h4>
+                <p>
+                    <span class="en"><strong>Opportunity:</strong> SinoHytec drives 341 visitors (47% of traffic) from Bing, suggesting strong international potential. Develop English-language content targeting Western hydrogen energy sector</span>
+                    <span class="zh hidden"><strong>机会：</strong>亿华通从必应获得341名访客（占流量的47%），表明国际潜力强大。开发以西方氢能行业为目标的英文内容</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Potential:</strong> 250-350 monthly visitors from international markets through targeted English keyword strategy</span>
+                    <span class="zh hidden"><strong>潜力：</strong>通过有针对性的英文关键词战略，来自国际市场的250-350名月度访客</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Implementation Timeline:</strong> 2-3 months for English site setup and initial content</span>
+                    <span class="zh hidden"><strong>实施时间表：</strong>2-3个月用于英文网站设置和初始内容</span>
+                </p>
+            </div>
+
+            <!-- Opportunity 3 -->
+            <div class="opportunity-card">
+                <div class="priority" style="background: #f59e0b;"><span class="en">MEDIUM</span><span class="zh hidden">中</span></div>
+                <h4><span class="en">3. Local SEO for Manufacturing/Partnership Locations</span><span class="zh hidden">3. 制造/合作地点的本地SEO</span></h4>
+                <p>
+                    <span class="en"><strong>Opportunity:</strong> Target local search queries for manufacturing facilities, partnership locations, and distribution networks. Competitors show minimal local optimization</span>
+                    <span class="zh hidden"><strong>机会：</strong>针对制造设施、合作地点和分销网络的本地搜索查询。竞争对手显示本地优化最少</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Potential:</strong> 100-150 monthly visitors through Google My Business optimization and local keyword targeting</span>
+                    <span class="zh hidden"><strong>潜力：</strong>通过Google My Business优化和本地关键词定位，每月获得100-150名访客</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Implementation Timeline:</strong> 1-2 months for foundational setup</span>
+                    <span class="zh hidden"><strong>实施时间表：</strong>1-2个月用于基础设置</span>
+                </p>
+            </div>
+
+            <!-- Opportunity 4 -->
+            <div class="opportunity-card">
+                <div class="priority" style="background: #f59e0b;"><span class="en">MEDIUM</span><span class="zh hidden">中</span></div>
+                <h4><span class="en">4. Industry Authority Building Through Guest Content</span><span class="zh hidden">4. 通过客座内容建立行业权威</span></h4>
+                <p>
+                    <span class="en"><strong>Opportunity:</strong> Publish guest articles, research papers, and thought leadership pieces on industry publications and technical platforms to establish brand authority</span>
+                    <span class="zh hidden"><strong>机会：</strong>在行业出版物和技术平台上发布客座文章、研究论文和思想领导力文章以建立品牌权威</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Potential:</strong> 50-100 referral visitors monthly plus improved domain authority signals for direct ranking improvements</span>
+                    <span class="zh hidden"><strong>潜力：</strong>每月50-100名推荐访客，加上改进的域权威信号以实现直接排名改进</span>
+                </p>
+                <p>
+                    <span class="en"><strong>Implementation Timeline:</strong> Ongoing strategy, first placements in 1-2 months</span>
+                    <span class="zh hidden"><strong>实施时间表：</strong>持续战略，1-2个月内首次投放</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan & Strategic Roadmap</span><span class="zh hidden">行动计划与战略路线图</span></h2>
+            
+            <p class="section-intro" style="margin-bottom: 32px;">
+                <span class="en">A phased 12-month implementation strategy designed to establish market presence, generate measurable organic traffic, and position BRUSA HyPower AG as the leading hydrogen energy technology authority.</span>
+                <span class="zh hidden">一项分阶段的12个月实施战略，旨在建立市场存在、产生可衡量的有机流量，并将博鲁斯动力定位为领先的氢能技术权威。</span>
+            </p>
+
+            <!-- Phase 1: Foundation -->
+            <div class="action-card">
+                <h4><span class="en">Phase 1: Foundation & SEO Infrastructure (Month 1-2)</span><span class="zh hidden">第1阶段：基础与SEO基础设施（第1-2个月）</span></h4>
+                <p><span class="en"><strong>Technical SEO Audit & Setup:</strong> Comprehensive site audit, Core Web Vitals optimization, XML sitemap creation, robots.txt configuration</span><span class="zh hidden"><strong>技术SEO审计与设置：</strong>全面的网站审计、核心网页性能指标优化、XML网站地图创建、robots.txt配置</span></p>
+                <p><span class="en"><strong>Keyword Research:</strong> Identify 50-75 target keywords across 4 categories: branded, navigational, informational, transactional</span><span class="zh hidden"><strong>关键词研究：</strong>在4个类别中识别50-75个目标关键词：品牌、导航、信息、交易</span></p>
+                <p><span class="en"><strong>Content Infrastructure:</strong> Plan 20-30 core pillar pages and establish content management system for ongoing optimization</span><span class="zh hidden"><strong>内容基础设施：</strong>规划20-30个核心支柱页面，建立内容管理系统以进行持续优化</span></p>
+            </div>
+
+            <!-- Phase 2: Quick Wins -->
+            <div class="action-card">
+                <h4><span class="en">Phase 2: Quick Wins & Initial Rankings (Month 3-4)</span><span class="zh hidden">第2阶段：快速胜利与初始排名（第3-4个月）</span></h4>
+                <p><span class="en"><strong>Content Pillar Publication:</strong> Launch 8-10 comprehensive guide pages targeting primary keywords with organic search intent</span><span class="zh hidden"><strong>内容支柱发布：</strong>推出8-10个全面指南页面，针对具有有机搜索意图的主要关键词</span></p>
+                <p><span class="en"><strong>Technical Content Creation:</strong> 15-20 technical deep-dive articles about hydrogen fuel cell systems, efficiency analysis, and industry comparisons</span><span class="zh hidden"><strong>技术内容创建：</strong>15-20篇关于氢燃料电池系统、效率分析和行业比较的技术深度文章</span></p>
+                <p><span class="en"><strong>On-Page Optimization:</strong> Implement schema markup, internal linking strategy, and meta optimization across all new content</span><span class="zh hidden"><strong>页面优化：</strong>在所有新内容中实施结构化数据标记、内部链接战略和元标记优化</span></p>
+                <p><span class="en"><strong>Expected Results:</strong> 3-5 keywords reaching positions 11-30, estimated 15-25 organic visitors/month</span><span class="zh hidden"><strong>预期结果：</strong>3-5个关键词达到第11-30位，估计每月15-25名有机访客</span></p>
+            </div>
+
+            <!-- Phase 3: Authority Building -->
+            <div class="action-card">
+                <h4><span class="en">Phase 3: Authority Building & Backlink Strategy (Month 5-7)</span><span class="zh hidden">第3阶段：权威建立与反向链接战略（第5-7个月）</span></h4>
+                <p><span class="en"><strong>Backlink Acquisition:</strong> Secure 10-15 high-quality backlinks from industry publications, research institutes, and technology blogs</span><span class="zh hidden"><strong>反向链接获取：</strong>从行业出版物、研究机构和技术博客获得10-15条高质量反向链接</span></p>
+                <p><span class="en"><strong>Guest Publishing Program:</strong> Place 3-4 guest articles on authoritative industry platforms</span><span class="zh hidden"><strong>客座发布计划：</strong>在权威行业平台上发布3-4篇客座文章</span></p>
+                <p><span class="en"><strong>Content Expansion:</strong> Launch 20-25 supporting blog posts addressing long-tail keywords and user questions</span><span class="zh hidden"><strong>内容扩展：</strong>推出20-25篇支持博客文章，解决长尾关键词和用户问题</span></p>
+                <p><span class="en"><strong>Expected Results:</strong> 5-8 keywords in top 30, 40-60 organic visitors/month, measurable domain authority increase</span><span class="zh hidden"><strong>预期结果：</strong>5-8个关键词进入前30名，每月40-60名有机访客，可衡量的域权威提升</span></p>
+            </div>
+
+            <!-- Phase 4: Scaling -->
+            <div class="action-card">
+                <h4><span class="en">Phase 4: Scaling & International Expansion (Month 8-10)</span><span class="zh hidden">第4阶段：扩展与国际扩张（第8-10个月）</span></h4>
+                <p><span class="en"><strong>English Content Launch:</strong> Publish 15-20 English-language technical articles targeting Western market audiences on Bing and Google International</span><span class="zh hidden"><strong>英文内容推出：</strong>在必应和Google International上发布15-20篇面向西方市场受众的英文技术文章</span></p>
+                <p><span class="en"><strong>Regional SEO Optimization:</strong> Establish Google My Business profiles for all manufacturing and partnership locations, optimize for local searches</span><span class="zh hidden"><strong>区域SEO优化：</strong>为所有制造和合作地点建立Google My Business资料，针对本地搜索进行优化</span></p>
+                <p><span class="en"><strong>Continuous Optimization:</strong> Analyze top-performing content, replicate success patterns across new pieces</span><span class="zh hidden"><strong>持续优化：</strong>分析表现最好的内容，在新内容中复制成功模式</span></p>
+                <p><span class="en"><strong>Expected Results:</strong> 8-12 keywords in top 20, 80-120 organic visitors/month, international traffic beginning to generate</span><span class="zh hidden"><strong>预期结果：</strong>8-12个关键词进入前20名，每月80-120名有机访客，国际流量开始产生</span></p>
+            </div>
+
+            <!-- Phase 5: Market Leadership -->
+            <div class="action-card">
+                <h4><span class="en">Phase 5: Market Leadership Consolidation (Month 11-12)</span><span class="zh hidden">第5阶段：市场领导地位巩固（第11-12个月）</span></h4>
+                <p><span class="en"><strong>Content Update Cycle:</strong> Implement systematic refresh of top-performing content with latest data, trends, and insights</span><span class="zh hidden"><strong>内容更新周期：</strong>实施对表现最好的内容进行系统性刷新，采用最新数据、趋势和见解</span></p>
+                <p><span class="en"><strong>Link Building Acceleration:</strong> Target 20-30 total quality backlinks for sustained ranking improvement</span><span class="zh hidden"><strong>链接建设加速：</strong>针对20-30条总体高质量反向链接以实现持续排名改进</span></p>
+                <p><span class="en"><strong>Performance Analysis:</strong> Conduct comprehensive analysis to identify next-phase opportunities and establish baseline for Year 2 planning</span><span class="zh hidden"><strong>性能分析：</strong>进行全面分析以确定下一阶段机会，并为第二年规划建立基线</span></p>
+                <p><span class="en"><strong>Expected Results:</strong> 12-18 keywords in top 20, 200-300+ organic visitors/month, established authority in hydrogen energy sector</span><span class="zh hidden"><strong>预期结果：</strong>12-18个关键词进入前20名，每月200-300名以上有机访客，在氢能部门建立了权威</span></p>
+            </div>
+
+            <!-- Key Performance Indicators -->
+            <div style="margin-top: 32px;">
+                <h3 style="color: var(--text-heading); margin-bottom: 20px;"><span class="en">Key Performance Indicators (KPIs) to Track</span><span class="zh hidden">要跟踪的关键绩效指标（KPI）</span></h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Organic Traffic (Month 12 Target)</span><span class="zh hidden">有机流量（第12个月目标）</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 35%; background: var(--success-color);">200-300 visitors</div>
+                        </div>
+                        <div class="bar-value"><span class="en">Target</span><span class="zh hidden">目标</span></div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Keywords in Top 20 (Month 12 Target)</span><span class="zh hidden">前20名关键词（第12个月目标）</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 45%; background: var(--success-color);">12-18 keywords</div>
+                        </div>
+                        <div class="bar-value"><span class="en">Target</span><span class="zh hidden">目标</span></div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Domain Authority Increase</span><span class="zh hidden">域权威增加</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 60%; background: var(--success-color);">+15-20 points</div>
+                        </div>
+                        <div class="bar-value"><span class="en">Target</span><span class="zh hidden">目标</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resource Requirements -->
+            <div style="margin-top: 32px; background: var(--card-bg); border-radius: 12px; padding: 24px; border: 1px solid var(--alt-bg);">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;"><span class="en">Recommended Resource Allocation</span><span class="zh hidden">推荐的资源分配</span></h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0;">•</span>
+                        <span class="en"><strong>SEO Specialist/Manager:</strong> 1 FTE for strategy, implementation oversight, and reporting</span><span class="zh hidden"><strong>SEO专家/经理：</strong>1个全职员工负责战略、实施监督和报告</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0;">•</span>
+                        <span class="en"><strong>Content Writers:</strong> 2-3 technical writers for high-quality content production (15-20 articles/month)</span><span class="zh hidden"><strong>内容撰稿人：</strong>2-3名技术撰稿人进行高质量内容创作（每月15-20篇文章）</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0;">•</span>
+                        <span class="en"><strong>Technical SEO/Dev Support:</strong> 0.5 FTE for implementation, site optimization, and technical troubleshooting</span><span class="zh hidden"><strong>技术SEO/开发支持：</strong>0.5个全职员工负责实施、网站优化和技术故障排除</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0;">•</span>
+                        <span class="en"><strong>Monthly Budget:</strong> €5,000-8,000 for tools (SEMrush, Ahrefs, keyword tools), link acquisition, and guest posting opportunities</span><span class="zh hidden"><strong>月度预算：</strong>€5,000-8,000用于工具（SEMrush、Ahrefs、关键词工具）、链接获取和客座发布机会</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Success Criteria -->
+            <div style="margin-top: 24px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">12-Month Success Criteria</span><span class="zh hidden">12个月成功标准</span></div>
+                    <ul style="list-style: none; padding: 0; margin-top: 16px;">
+                        <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">✓ <span class="en">200-300 organic visitors monthly</span><span class="zh hidden">每月200-300名有机访客</span></li>
+                        <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">✓ <span class="en">12-18 keywords ranking in top 20 positions</span><span class="zh hidden">12-18个关键词排名前20</span></li>
+                        <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">✓ <span class="en">Domain authority reaching 25-30 range</span><span class="zh hidden">域权威达到25-30范围</span></li>
+                        <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">✓ <span class="en">20-30 high-quality backlinks acquired</span><span class="zh hidden">获得20-30条高质量反向链接</span></li>
+                        <li style="padding: 8px 0; color: var(--text-secondary); font-size: 14px;">✓ <span class="en">Established authority status in hydrogen energy technology sector</span><span class="zh hidden">在氢能技术部门建立权威地位</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-container" style="margin-top: 40px;">
+                <button class="primary-cta" id="download-pdf-btn-2"><span class="en">Download Full Report as PDF</span><span class="zh hidden">下载完整报告PDF</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Get Expert Implementation Support</span><span class="zh hidden">获得专家实施支持</span></button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handlers
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            const downloadBtn2 = document.getElementById('download-pdf-btn-2');
+            
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+            
+            if (downloadBtn2) {
+                downloadBtn2.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
