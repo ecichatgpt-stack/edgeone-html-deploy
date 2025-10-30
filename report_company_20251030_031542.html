@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Liquide - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Chart Bars */
+        .chart-bar-container {
+            margin: 16px 0;
+        }
+        .chart-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-family: var(--font-data);
+        }
+        .chart-bar-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chart-bar {
+            height: 32px;
+            background: var(--bg-gradient);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            position: relative;
+            min-width: 20px;
+        }
+        .chart-value {
+            font-size: 13px;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+            font-weight: 600;
+            min-width: 50px;
+        }
+
+        /* Stacked Bar Chart */
+        .stacked-bar {
+            display: flex;
+            height: 32px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        .bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .bar-segment.baidu {
+            background: #3b82f6;
+        }
+        .bar-segment.bing {
+            background: #8b5cf6;
+        }
+        .bar-segment:hover {
+            opacity: 0.8;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Action Cards */
+        .action-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .action-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        .action-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+            margin-bottom: 16px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2.section-title {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></h1>
+            <p class="subtitle"><span class="en">Air Liquide - Industrial Gas Sector Performance Review</span><span class="zh hidden">液化空气集团 - 工业气体行业表现回顾</span></p>
+            <p class="subtitle" style="margin-top: 8px; font-size: 14px; color: var(--text-muted);"><span class="en">Report Generated: December 2024</span><span class="zh hidden">报告生成时间：2024年12月</span></p>
+
+            <div class="key-metrics-grid" style="margin-top: 40px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">#3 <span style="font-size: 16px; color: var(--text-muted);"><span class="en">of 6</span><span class="zh hidden">/ 6家</span></span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic vs Avg</span><span class="zh hidden">日均流量对比平均值</span></div>
+                    <div class="value">-72.4% <span style="font-size: 16px; color: var(--danger-color);">▼</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">12.28% <span style="font-size: 14px; color: var(--text-muted);"><span class="en">(7 in Top 20)</span><span class="zh hidden">(7个在前20)</span></span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value"><span class="en">High</span><span class="zh hidden">高</span> <span style="font-size: 16px; color: var(--success-color);">↑</span></div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-heading);"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></h3>
+                <p class="summary-text">
+                    <span class="en">
+                        Air Liquide currently ranks 3rd among 6 active competitors in the Chinese industrial gas sector's SEO landscape. While positioned below Taigang Gas (2,067 daily visits) and Linde plc (73 daily visits), Air Liquide's 62 daily visits and 57 ranking keywords demonstrate a solid foundation with significant untapped potential. The company's 77% keyword coverage in positions 11-50 indicates strong visibility opportunities that can be optimized to capture higher-value traffic positions.
+                    </span>
+                    <span class="zh hidden">
+                        液化空气集团目前在中国工业气体行业SEO领域的6家活跃竞争对手中排名第3位。虽然排名低于太钢气体（2,067次日访问）和林德集团（73次日访问），但液化空气集团的62次日访问和57个排名关键词展示了坚实的基础和巨大的未开发潜力。公司77%的关键词覆盖率在11-50位，表明存在可以优化以获取更高价值流量位置的强大可见度机会。
+                    </span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2 class="section-title"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro">
+                <span class="en">
+                    Comprehensive analysis of the top 6 active competitors in the industrial gas sector, ranked by total daily traffic and competitive performance metrics.
+                </span>
+                <span class="zh hidden">
+                    工业气体行业前6名活跃竞争对手的综合分析，按总日流量和竞争表现指标排名。
+                </span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Rank</span><span class="zh hidden">排名</span></th>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日流量</span></th>
+                            <th><span class="en">Baidu PC</span><span class="zh hidden">百度PC</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">总关键词</span></th>
+                            <th><span class="en">Top 20 KWs</span><span class="zh hidden">前20关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><span class="en">Taigang Gas</span><span class="zh hidden">太钢气体</span></td>
+                            <td>2,067</td>
+                            <td>156 ~ 250</td>
+                            <td>436 ~ 696</td>
+                            <td>371</td>
+                            <td>38</td>
+                            <td><strong>95.2</strong></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><span class="en">Linde plc</span><span class="zh hidden">林德集团</span></td>
+                            <td>73</td>
+                            <td>2 ~ 4</td>
+                            <td>20 ~ 32</td>
+                            <td>9</td>
+                            <td>2</td>
+                            <td><strong>42.8</strong></td>
+                        </tr>
+                        <tr class="user-company-row">
+                            <td>3</td>
+                            <td><span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span> <span class="en">Air Liquide</span><span class="zh hidden">液化空气集团</span></td>
+                            <td>62</td>
+                            <td>15 ~ 25</td>
+                            <td>8 ~ 12</td>
+                            <td>57</td>
+                            <td>7</td>
+                            <td><strong>38.5</strong></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><span class="en">Qiaoyuan Gas</span><span class="zh hidden">侨源气体</span></td>
+                            <td>23</td>
+                            <td>4 ~ 6</td>
+                            <td>0 ~ 0</td>
+                            <td>18</td>
+                            <td>0</td>
+                            <td><strong>15.7</strong></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><span class="en">Hangzhou Hangyang</span><span class="zh hidden">杭州杭氧</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>0.0</strong></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><span class="en">Yingde Gases</span><span class="zh hidden">盈德气体</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>0.0</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h4 style="font-size: 16px; color: var(--text-heading); margin-bottom: 12px;"><span class="en">Key Insights:</span><span class="zh hidden">关键洞察：</span></h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
+                        <span class="en">Taigang Gas dominates with 2,067 daily visits, capturing 92% of total market traffic</span>
+                        <span class="zh hidden">太钢气体以2,067次日访问占据主导地位，占据总市场流量的92%</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
+                        <span class="en">Air Liquide and Linde plc are closely matched, separated by only 11 daily visits</span>
+                        <span class="zh hidden">液化空气集团和林德集团势均力敌，仅相差11次日访问</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
+                        <span class="en">Air Liquide leads in keyword diversification with 57 ranking keywords vs Linde's 9</span>
+                        <span class="zh hidden">液化空气集团在关键词多样化方面领先，拥有57个排名关键词，而林德只有9个</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
+                        <span class="en">50% of analyzed competitors show zero SEO presence, indicating market opportunity</span>
+                        <span class="zh hidden">50%的分析竞争对手显示零SEO存在，表明市场机会</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2 class="section-title"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">
+                    Strategic assessment of Air Liquide's competitive position, highlighting internal capabilities and external market dynamics.
+                </span>
+                <span class="zh hidden">
+                    液化空气集团竞争地位的战略评估，突出内部能力和外部市场动态。
+                </span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">💪 Strengths</span><span class="zh hidden">💪 优势</span></h3>
+                    <ul>
+                        <li><span class="en">Largest keyword portfolio (57 KWs) among top-tier competitors, indicating comprehensive content strategy</span><span class="zh hidden">顶级竞争对手中最大的关键词组合（57个关键词），表明全面的内容策略</span></li>
+                        <li><span class="en">Strong Baidu presence (15-25 daily visits) with balanced traffic distribution across search engines</span><span class="zh hidden">强大的百度存在（15-25次日访问），搜索引擎流量分布均衡</span></li>
+                        <li><span class="en">7 keywords in top 20 positions, demonstrating content quality and relevance</span><span class="zh hidden">7个关键词在前20位，展示内容质量和相关性</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">⚠️ Weaknesses</span><span class="zh hidden">⚠️ 劣势</span></h3>
+                    <ul>
+                        <li><span class="en">77% of keywords rank between positions 11-50, missing high-value top-10 visibility</span><span class="zh hidden">77%的关键词排名在11-50位，错失高价值前10可见度</span></li>
+                        <li><span class="en">Daily traffic (62 visits) is 97% lower than market leader Taigang Gas</span><span class="zh hidden">日流量（62次访问）比市场领导者太钢气体低97%</span></li>
+                        <li><span class="en">Limited Bing traffic (8-12 visits) compared to competitors, indicating untapped international market potential</span><span class="zh hidden">必应流量有限（8-12次访问），与竞争对手相比，表明未开发的国际市场潜力</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);"><span class="en">🎯 Opportunities</span><span class="zh hidden">🎯 机遇</span></h3>
+                    <ul>
+                        <li><span class="en">50% of major competitors have zero SEO presence, creating immediate market share capture opportunities</span><span class="zh hidden">50%的主要竞争对手没有SEO存在，创造了直接的市场份额捕获机会</span></li>
+                        <li><span class="en">44 keywords in positions 11-50 can be optimized to top-10 with targeted content improvements</span><span class="zh hidden">44个11-50位的关键词可以通过针对性的内容改进优化到前10位</span></li>
+                        <li><span class="en">Growing Bing/international search market with low competition penetration in the sector</span><span class="zh hidden">必应/国际搜索市场增长，该领域竞争渗透率低</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">⚡ Threats</span><span class="zh hidden">⚡ 威胁</span></h3>
+                    <ul>
+                        <li><span class="en">Taigang Gas's dominant position (33x more traffic) creates high competitive barrier to market leadership</span><span class="zh hidden">太钢气体的主导地位（流量33倍）对市场领导地位构成高竞争壁垒</span></li>
+                        <li><span class="en">Linde plc shows higher keyword efficiency (22.2% vs 12.3%), indicating superior content optimization</span><span class="zh hidden">林德集团显示更高的关键词效率（22.2% vs 12.3%），表明内容优化更优</span></li>
+                        <li><span class="en">Inactive competitors may quickly activate SEO strategies, intensifying competition for rankings</span><span class="zh hidden">不活跃的竞争对手可能会快速激活SEO策略，加剧排名竞争</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2 class="section-title"><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">📊 Traffic Channel Distribution</span><span class="zh hidden">📊 流量渠道分布</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Comparison of Baidu vs Bing traffic sources across competitors</span>
+                    <span class="zh hidden">竞争对手百度与必应流量来源对比</span>
+                </p>
+                
+                <div style="margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <div class="chart-label"><span class="en">Taigang Gas - Total: 2,067 visits</span><span class="zh hidden">太钢气体 - 总计: 2,067次访问</span></div>
+                        <div class="stacked-bar" style="max-width: 100%;">
+                            <div class="bar-segment baidu" style="width: 26%; min-width: 60px;" title="Baidu: 156-250">
+                                <span class="en">Baidu 26%</span><span class="zh hidden">百度 26%</span>
+                            </div>
+                            <div class="bar-segment bing" style="width: 74%;" title="Bing: 436-696">
+                                <span class="en">Bing 74%</span><span class="zh hidden">必应 74%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <div class="chart-label"><span class="en">Linde plc - Total: 73 visits</span><span class="zh hidden">林德集团 - 总计: 73次访问</span></div>
+                        <div class="stacked-bar" style="max-width: 20%;">
+                            <div class="bar-segment baidu" style="width: 12%; min-width: 40px;" title="Baidu: 2-4">
+                                <span class="en">Baidu 12%</span><span class="zh hidden">百度 12%</span>
+                            </div>
+                            <div class="bar-segment bing" style="width: 88%;" title="Bing: 20-32">
+                                <span class="en">Bing 88%</span><span class="zh hidden">必应 88%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 20px; background: rgba(59,130,246,0.1); padding: 12px; border-radius: 8px;">
+                        <div class="chart-label" style="color: var(--primary-color); font-weight: 600;"><span class="en">Air Liquide (YOU) - Total: 62 visits</span><span class="zh hidden">液化空气集团 (本公司) - 总计: 62次访问</span></div>
+                        <div class="stacked-bar" style="max-width: 18%;">
+                            <div class="bar-segment baidu" style="width: 67%; min-width: 50px;" title="Baidu: 15-25">
+                                <span class="en">Baidu 67%</span><span class="zh hidden">百度 67%</span>
+                            </div>
+                            <div class="bar-segment bing" style="width: 33%;" title="Bing: 8-12">
+                                <span class="en">Bing 33%</span><span class="zh hidden">必应 33%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <div class="chart-label"><span class="en">Qiaoyuan Gas - Total: 23 visits</span><span class="zh hidden">侨源气体 - 总计: 23次访问</span></div>
+                        <div class="stacked-bar" style="max-width: 10%;">
+                            <div class="bar-segment baidu" style="width: 100%; min-width: 60px;" title="Baidu: 4-6">
+                                <span class="en">Baidu 100%</span><span class="zh hidden">百度 100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 24px; padding: 16px; background: var(--alt-bg); border-radius: 8px;">
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 8px;">
+                        <strong style="color: var(--text-heading);"><span class="en">Key Insight:</span><span class="zh hidden">关键洞察：</span></strong>
+                        <span class="en">Air Liquide has the highest Baidu dependency (67%) among active competitors, while Bing traffic represents a significant growth opportunity. Competitors are capturing 74-88% of their traffic from Bing, suggesting Air Liquide should invest in international SEO optimization.</span>
+                        <span class="zh hidden">液化空气集团在活跃竞争对手中百度依赖度最高（67%），而必应流量代表了显著的增长机会。竞争对手从必应获取74-88%的流量，表明液化空气集团应该投资国际SEO优化。</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container" style="margin-top: 30px;">
+                <h3><span class="en">🎯 Keyword Efficiency Comparison</span><span class="zh hidden">🎯 关键词效率对比</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Percentage of keywords ranking in top 20 positions (higher is better)</span>
+                    <span class="zh hidden">关键词在前20位排名的百分比（越高越好）</span>
+                </p>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label"><span class="en">Linde plc</span><span class="zh hidden">林德集团</span></div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 22.2%;"></div>
+                        <span class="chart-value">22.22%</span>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container" style="background: rgba(59,130,246,0.1); padding: 8px; border-radius: 8px; margin: 12px 0;">
+                    <div class="chart-label" style="color: var(--primary-color); font-weight: 600;"><span class="en">Air Liquide (YOU)</span><span class="zh hidden">液化空气集团 (本公司)</span></div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 12.28%;"></div>
+                        <span class="chart-value">12.28%</span>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label"><span class="en">Taigang Gas</span><span class="zh hidden">太钢气体</span></div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 10.24%;"></div>
+                        <span class="chart-value">10.24%</span>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label"><span class="en">Qiaoyuan Gas</span><span class="zh hidden">侨源气体</span></div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 0%;"></div>
+                        <span class="chart-value">0.00%</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 24px; padding: 16px; background: var(--alt-bg); border-radius: 8px;">
+                    <p style="color: var(--text-secondary); font-size: 14px;">
+                        <strong style="color: var(--text-heading);"><span class="en">Analysis:</span><span class="zh hidden">分析：</span></strong>
+                        <span class="en">While Air Liquide ranks 2nd in keyword efficiency at 12.28%, there's a 9.94 percentage point gap from Linde plc's 22.22%. Improving just 5-7 keywords from positions 21-30 to top 20 would close this efficiency gap and significantly boost traffic quality.</span>
+                        <span class="zh hidden">虽然液化空气集团在关键词效率方面排名第2，为12.28%，但与林德集团的22.22%存在9.94个百分点的差距。将5-7个关键词从21-30位提升到前20位就能缩小这个效率差距，并显著提升流量质量。</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container" style="margin-top: 30px;">
+                <h3><span class="en">📈 Competitive Gap Analysis</span><span class="zh hidden">📈 竞争差距分析</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Performance gaps between Air Liquide and market leaders</span>
+                    <span class="zh hidden">液化空气集团与市场领导者之间的表现差距</span>
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                    <div style="background: var(--alt-bg); padding: 20px; border-radius: 8px;">
+                        <h4 style="color: var(--text-heading); font-size: 16px; margin-bottom: 12px;"><span class="en">vs Taigang Gas (Leader)</span><span class="zh hidden">对比太钢气体（领导者）</span></h4>
+                        <div style="margin-bottom: 12px;">
+                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;"><span class="en">Traffic Gap</span><span class="zh hidden">流量差距</span></div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--danger-color);">-2,005 <span style="font-size: 14px;"><span class="en">visits/day</span><span class="zh hidden">访问/天</span></span></div>
+                        </div>
+                        <div>
+                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;"><span class="en">Keyword Gap</span><span class="zh hidden">关键词差距</span></div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--warning-color);">-314 <span style="font-size: 14px;"><span class="en">keywords</span><span class="zh hidden">关键词</span></span></div>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--alt-bg); padding: 20px; border-radius: 8px;">
+                        <h4 style="color: var(--text-heading); font-size: 16px; margin-bottom: 12px;"><span class="en">vs Linde plc (Direct Rival)</span><span class="zh hidden">对比林德集团（直接竞争对手）</span></h4>
+                        <div style="margin-bottom: 12px;">
+                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;"><span class="en">Traffic Gap</span><span class="zh hidden">流量差距</span></div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--warning-color);">-11 <span style="font-size: 14px;"><span class="en">visits/day</span><span class="zh hidden">访问/天</span></span></div>
+                        </div>
+                        <div>
+                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;"><span class="en">Keyword Advantage</span><span class="zh hidden">关键词优势</span></div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--success-color);">+48 <span style="font-size: 14px;"><span class="en">keywords</span><span class="zh hidden">关键词</span></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; padding: 16px; background: rgba(59,130,246,0.1); border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                    <p style="color: var(--text-secondary); font-size: 14px;">
+                        <strong style="color: var(--primary-color);"><span class="en">Strategic Recommendation:</span><span class="zh hidden">战略建议：</span></strong>
+                        <span class="en">Focus on surpassing Linde plc first (only 11 visits behind). With 48 more keywords than Linde, Air Liquide has the content foundation. Optimizing keyword positions and improving CTR can quickly flip the #2 vs #3 ranking. Competing directly with Taigang Gas requires a longer-term strategy due to the 33x traffic difference.</span>
+                        <span class="zh hidden">首先专注于超越林德集团（仅落后11次访问）。拥有比林德多48个关键词，液化空气集团具有内容基础。优化关键词位置和提高点击率可以快速翻转第2名与第3名的排名。由于33倍的流量差异，直接与太钢气体竞争需要更长期的战略。</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2 class="section-title"><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">
+                    Data-driven opportunities ranked by potential impact and implementation feasibility for Air Liquide's SEO growth.
+                </span>
+                <span class="zh hidden">
+                    基于数据驱动的机会，按液化空气集团SEO增长的潜在影响和实施可行性排序。
+                </span>
+            </p>
+
+            <h3 style="font-size: 20px; margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);"><span class="en">🎯 Priority Opportunity Matrix</span><span class="zh hidden">🎯 优先机会矩阵</span></h3>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                <div class="opportunity-card" style="border-left: 4px solid var(--success-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h4 style="color: var(--success-color);"><span class="en">🚀 High Priority: Position 11-20 Optimization</span><span class="zh hidden">🚀 高优先级：11-20位优化</span></h4>
+                        <span style="background: var(--success-color); color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;"><span class="en">QUICK WIN</span><span class="zh hidden">快速见效</span></span>
+                    </div>
+                    <p style="margin-bottom: 8px;">
+                        <span class="en"><strong>Target:</strong> 7 keywords currently in positions 11-20</span>
+                        <span class="zh hidden"><strong>目标：</strong> 目前在11-20位的7个关键词</span>
+                    </p>
+                    <p style="margin-bottom: 8px;">
+                        <span class="en"><strong>Estimated Impact:</strong> +25-40% traffic increase</span>
+                        <span class="zh hidden"><strong>预计影响：</strong> 流量增加25-40%</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Effort:</strong> Medium - Technical SEO + content refresh</span>
+                        <span class="zh hidden"><strong>难度：</strong> 中等 - 技术SEO + 内容更新</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card" style="border-left: 4px solid var(--primary-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h4 style="color: var(--primary-color);"><span class="en">🎯 High Priority: Bing Market Expansion</span><span class="zh hidden">🎯 高优先级：必应市场扩张</span></h4>
+                        <span style="background: var(--primary-color); color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;"><span class="en">STRATEGIC</span><span class="zh hidden">战略性</span></span>
+                    </div>
+                    <p style="margin-bottom: 8px;">
+                        <span class="en"><strong>Current State:</strong> Only 33% traffic from Bing (vs 74-88% for competitors)</span>
+                        <span class="zh hidden"><strong>当前状态：</strong> 仅33%的流量来自必应（竞争对手74-88%）</span>
+                    </p>
+                    <p style="margin-bottom: 8px;">
+                        <span class="en"><strong>Estimated Impact:</strong> +50-80% total traffic if Bing share reaches 60%</span>
+                        <span class="zh hidden"><strong>预计影响：</strong> 如果必应份额达到60%，总流量增加50-80%</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Effort:</strong> Medium - International SEO + Bing Webmaster Tools</span>
+                        <span class="zh hidden"><strong>难度：</strong> 中等 - 国际SEO + 必应站长工具</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card" style="border-left: 4px solid var(--warning-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h4 style="color: var(--warning-color);"><span class="en">⚡ Medium Priority: Position 21-30 Keyword Push</span><span class="zh hidden">⚡ 中优先级：21-30位关键词推进</span></h4>
+                        <span style="background: var(--warning-color); color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;"><span class="en">FOUNDATION</span><span class="zh hidden">基础性</span></span>
+                    </div>
+                    <p style="margin-bottom: 8px;">
+                        <span class="en"><strong>Target:</strong> 15 keywords in positions 21-30</span>
+                        <span class="zh hidden"><strong>目标：</strong> 15个21-30位的关键词</span>
+                    </p>
+                    <p style="margin-bottom: 8px;">
+                        <span class="en"><strong>Estimated Impact:</strong> +15-25% traffic if moved to 11-20 range</span>
+                        <span class="zh hidden"><strong>预计影响：</strong> 如果移动到11-20位范围，流量增加15-25%</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Effort:</strong> High - Content expansion + backlink building</span>
+                        <span class="zh hidden"><strong>难度：</strong> 高 - 内容扩展 + 外链建设</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card" style="border-left: 4px solid var(--accent-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h4 style="color: var(--accent-color);"><span class="en">🔍 Long-term: Competitor Gap Targeting</span><span class="zh hidden">🔍 长期：竞争对手差距定位</span></h4>
+                        <span style="background: var(--accent-color); color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;"><span class="en">GROWTH</span><span class="zh hidden">增长性</span></span>
+                    </div>
+                    <p style="margin-bottom: 8px;">
+                        <span class="en"><strong>Opportunity:</strong> 50% of major competitors have zero SEO presence</span>
+                        <span class="zh hidden"><strong>机会：</strong> 50%的主要竞争对手没有SEO存在</span>
+                    </p>
+                    <p style="margin-bottom: 8px;">
+                        <span class="en"><strong>Estimated Impact:</strong> Capture 100-200 additional keywords in 12-18 months</span>
+                        <span class="zh hidden"><strong>预计影响：</strong> 在12-18个月内获取100-200个额外关键词</span>
+                    </p>
+                    <p>
+                        <span class="en"><strong>Effort:</strong> Very High - Comprehensive content strategy + market research</span>
+                        <span class="zh hidden"><strong>难度：</strong> 非常高 - 全面的内容策略 + 市场研究</span>
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="font-size: 20px; margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);"><span class="en">📊 Potential Growth Calculation</span><span class="zh hidden">📊 潜在增长计算</span></h3>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                <div class="metric-card" style="background: linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(34,197,94,0.05) 100%);">
+                    <div class="label"><span class="en">3-Month Potential</span><span class="zh hidden">3个月潜力</span></div>
+                    <div class="value" style="color: var(--success-color);">+35% <span style="font-size: 16px;">↑</span></div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                        <span class="en">Quick wins from top 20 optimization</span>
+                        <span class="zh hidden">前20位优化的快速胜利</span>
+                    </p>
+                </div>
+
+                <div class="metric-card" style="background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(59,130,246,0.05) 100%);">
+                    <div class="label"><span class="en">6-Month Potential</span><span class="zh hidden">6个月潜力</span></div>
+                    <div class="value" style="color: var(--primary-color);">+75% <span style="font-size: 16px;">↑</span></div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                        <span class="en">Bing expansion + position improvements</span>
+                        <span class="zh hidden">必应扩张 + 位置提升</span>
+                    </p>
+                </div>
+
+                <div class="metric-card" style="background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(245,158,11,0.05) 100%);">
+                    <div class="label"><span class="en">12-Month Potential</span><span class="zh hidden">12个月潜力</span></div>
+                    <div class="value" style="color: var(--accent-color);">+150% <span style="font-size: 16px;">↑</span></div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                        <span class="en">Full strategy implementation + new keywords</span>
+                        <span class="zh hidden">全面战略实施 + 新关键词</span>
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: var(--alt-bg); border-radius: 8px; border-left: 4px solid var(--success-color);">
+                <h4 style="color: var(--text-heading); margin-bottom: 12px; font-size: 18px;"><span class="en">💡 Recommended First Step</span><span class="zh hidden">💡 推荐第一步</span></h4>
+                <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+                    <span class="en">
+                        Begin with the <strong style="color: var(--success-color);">Position 11-20 Optimization</strong> opportunity. These 7 keywords are already on page 2 of search results and require minimal effort to push into top-10 visibility. Expected timeline: 4-8 weeks. This quick win will build momentum and provide proof-of-concept for larger investments in Bing expansion and content strategy.
+                    </span>
+                    <span class="zh hidden">
+                        从<strong style="color: var(--success-color);">11-20位优化</strong>机会开始。这7个关键词已经在搜索结果的第2页，需要最少的努力就能推进到前10可见度。预期时间：4-8周。这个快速胜利将建立动力，并为必应扩张和内容策略的更大投资提供概念验证。
+                    </span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2 class="section-title"><span class="en">Strategic Action Plan</span><span class="zh hidden">战略行动计划</span></h2>
+            <p class="section-intro">
+                <span class="en">
+                    Phased implementation roadmap designed to systematically improve Air Liquide's SEO performance over 12 months.
+                </span>
+                <span class="zh hidden">
+                    分阶段实施路线图，旨在系统地提高液化空气集团在12个月内的SEO表现。
+                </span>
+            </p>
+
+            <h3 style="font-size: 20px; margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);"><span class="en">📅 Implementation Timeline</span><span class="zh hidden">📅 实施时间表</span></h3>
+
+            <div class="timeline-item" style="border-left-color: var(--success-color);">
+                <h4><span class="en">Phase 1: Months 1-2 - Quick Wins & Foundation</span><span class="zh hidden">第1阶段：第1-2个月 - 快速胜利与基础</span></h4>
+                <p><strong><span class="en">Focus:</span><span class="zh hidden">重点：</span></strong> <span class="en">Optimize 7 keywords in positions 11-20 to break into top 10</span><span class="zh hidden">优化7个11-20位的关键词以突破前10</span></p>
+                <p><strong><span class="en">Actions:</span><span class="zh hidden">行动：</span></strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px; color: var(--text-secondary);">
+                    <li><span class="en">Conduct technical SEO audit (site speed, mobile optimization, schema markup)</span><span class="zh hidden">进行技术SEO审计（网站速度、移动优化、结构化数据）</span></li>
+                    <li><span class="en">Refresh and expand content for target keywords with user intent optimization</span><span class="zh hidden">刷新和扩展目标关键词的内容，优化用户意图</span></li>
+                    <li><span class="en">Improve internal linking structure to boost target pages</span><span class="zh hidden">改进内部链接结构以提升目标页面</span></li>
+                </ul>
+                <p style="margin-top: 8px;"><strong><span class="en">Expected Result:</span><span class="zh hidden">预期结果：</span></strong> <span class="en">+20-30 daily visits</span><span class="zh hidden">+20-30次日访问</span></p>
+            </div>
+
+            <div class="timeline-item" style="border-left-color: var(--primary-color);">
+                <h4><span class="en">Phase 2: Months 3-4 - Bing Market Entry</span><span class="zh hidden">第2阶段：第3-4个月 - 必应市场进入</span></h4>
+                <p><strong><span class="en">Focus:</span><span class="zh hidden">重点：</span></strong> <span class="en">Increase Bing traffic share from 33% to 50%</span><span class="zh hidden">将必应流量份额从33%提高到50%</span></p>
+                <p><strong><span class="en">Actions:</span><span class="zh hidden">行动：</span></strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px; color: var(--text-secondary);">
+                    <li><span class="en">Register and optimize Bing Webmaster Tools configuration</span><span class="zh hidden">注册和优化必应站长工具配置</span></li>
+                    <li><span class="en">Create English-language content targeting international industrial gas buyers</span><span class="zh hidden">创建针对国际工业气体买家的英文内容</span></li>
+                    <li><span class="en">Implement hreflang tags for multilingual SEO</span><span class="zh hidden">实施hreflang标签以进行多语言SEO</span></li>
+                </ul>
+                <p style="margin-top: 8px;"><strong><span class="en">Expected Result:</span><span class="zh hidden">预期结果：</span></strong> <span class="en">+25-35 daily visits from Bing expansion</span><span class="zh hidden">必应扩张带来+25-35次日访问</span></p>
+            </div>
+
+            <div class="timeline-item" style="border-left-color: var(--warning-color);">
+                <h4><span class="en">Phase 3: Months 5-7 - Content Expansion</span><span class="zh hidden">第3阶段：第5-7个月 - 内容扩展</span></h4>
+                <p><strong><span class="en">Focus:</span><span class="zh hidden">重点：</span></strong> <span class="en">Move 15 keywords from positions 21-30 into 11-20 range</span><span class="zh hidden">将15个关键词从21-30位移动到11-20位范围</span></p>
+                <p><strong><span class="en">Actions:</span><span class="zh hidden">行动：</span></strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px; color: var(--text-secondary);">
+                    <li><span class="en">Create 10-15 new comprehensive guides on industrial gas applications</span><span class="zh hidden">创建10-15个关于工业气体应用的新综合指南</span></li>
+                    <li><span class="en">Launch backlink acquisition campaign targeting industry publications</span><span class="zh hidden">启动针对行业出版物的反向链接获取活动</span></li>
+                    <li><span class="en">Develop case studies and customer success stories for long-tail keywords</span><span class="zh hidden">为长尾关键词开发案例研究和客户成功故事</span></li>
+                </ul>
+                <p style="margin-top: 8px;"><strong><span class="en">Expected Result:</span><span class="zh hidden">预期结果：</span></strong> <span class="en">+15-25 daily visits, improved domain authority</span><span class="zh hidden">+15-25次日访问，提高域名权威</span></p>
+            </div>
+
+            <div class="timeline-item" style="border-left-color: var(--accent-color);">
+                <h4><span class="en">Phase 4: Months 8-10 - Competitive Positioning</span><span class="zh hidden">第4阶段：第8-10个月 - 竞争定位</span></h4>
+                <p><strong><span class="en">Focus:</span><span class="zh hidden">重点：</span></strong> <span class="en">Target competitor gaps and expand keyword portfolio to 100+ keywords</span><span class="zh hidden">瞄准竞争对手差距，将关键词组合扩大到100+关键词</span></p>
+                <p><strong><span class="en">Actions:</span><span class="zh hidden">行动：</span></strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px; color: var(--text-secondary);">
+                    <li><span class="en">Perform gap analysis against inactive competitors (Messer, Yingde, etc.)</span><span class="zh hidden">对不活跃的竞争对手进行差距分析（梅塞尔、盈德等）</span></li>
+                    <li><span class="en">Create content for 40-50 new target keywords with zero competition</span><span class="zh hidden">为40-50个零竞争的新目标关键词创建内容</span></li>
+                    <li><span class="en">Optimize for featured snippets and position zero opportunities</span><span class="zh hidden">优化精选摘要和位置零机会</span></li>
+                </ul>
+                <p style="margin-top: 8px;"><strong><span class="en">Expected Result:</span><span class="zh hidden">预期结果：</span></strong> <span class="en">+30-50 daily visits, surpass Linde plc to become #2</span><span class="zh hidden">+30-50次日访问，超越林德集团成为第2名</span></p>
+            </div>
+
+            <div class="timeline-item" style="border-left-color: var(--primary-color);">
+                <h4><span class="en">Phase 5: Months 11-12 - Scale & Automation</span><span class="zh hidden">第5阶段：第11-12个月 - 规模化与自动化</span></h4>
+                <p><strong><span class="en">Focus:</span><span class="zh hidden">重点：</span></strong> <span class="en">Establish systematic content production and SEO monitoring</span><span class="zh hidden">建立系统化的内容生产和SEO监控</span></p>
+                <p><strong><span class="en">Actions:</span><span class="zh hidden">行动：</span></strong></p>
+                <ul style="margin-left: 20px; margin-top: 8px; color: var(--text-secondary);">
+                    <li><span class="en">Implement automated rank tracking and competitor monitoring systems</span><span class="zh hidden">实施自动化排名跟踪和竞争对手监控系统</span></li>
+                    <li><span class="en">Create content calendar for ongoing monthly content production</span><span class="zh hidden">创建持续的月度内容生产内容日历</span></li>
+                    <li><span class="en">Launch quarterly SEO performance reviews with stakeholders</span><span class="zh hidden">与利益相关者启动季度SEO绩效审查</span></li>
+                </ul>
+                <p style="margin-top: 8px;"><strong><span class="en">Expected Result:</span><span class="zh hidden">预期结果：</span></strong> <span class="en">Sustainable 150-200 daily visits, 100+ ranking keywords</span><span class="zh hidden">可持续的150-200次日访问，100+排名关键词</span></p>
+            </div>
+
+            <h3 style="font-size: 20px; margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);"><span class="en">💼 Resource Requirements</span><span class="zh hidden">💼 资源需求</span></h3>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                <div class="action-card">
+                    <h4><span class="en">👥 Team</span><span class="zh hidden">👥 团队</span></h4>
+                    <p><span class="en">• SEO Manager (0.5 FTE)</span><span class="zh hidden">• SEO经理（0.5 FTE）</span></p>
+                    <p><span class="en">• Content Writers (2 FTE)</span><span class="zh hidden">• 内容作家（2 FTE）</span></p>
+                    <p><span class="en">• Technical SEO Specialist (0.3 FTE)</span><span class="zh hidden">• 技术SEO专家（0.3 FTE）</span></p>
+                </div>
+
+                <div class="action-card">
+                    <h4><span class="en">🛠️ Tools</span><span class="zh hidden">🛠️ 工具</span></h4>
+                    <p><span class="en">• Baidu Webmaster Tools (Free)</span><span class="zh hidden">• 百度站长工具（免费）</span></p>
+                    <p><span class="en">• Bing Webmaster Tools (Free)</span><span class="zh hidden">• 必应站长工具（免费）</span></p>
+                    <p><span class="en">• SEO Suite (e.g., Ahrefs, SEMrush)</span><span class="zh hidden">• SEO套件（如Ahrefs、SEMrush）</span></p>
+                </div>
+
+                <div class="action-card">
+                    <h4><span class="en">💰 Budget Estimate</span><span class="zh hidden">💰 预算估算</span></h4>
+                    <p><span class="en">• Content: $15,000-25,000</span><span class="zh hidden">• 内容：$15,000-25,000</span></p>
+                    <p><span class="en">• Tools & Software: $5,000-8,000</span><span class="zh hidden">• 工具与软件：$5,000-8,000</span></p>
+                    <p><span class="en">• Backlinks & PR: $10,000-15,000</span><span class="zh hidden">• 反向链接与公关：$10,000-15,000</span></p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(139,92,246,0.1) 100%); border-radius: 12px; border: 2px solid var(--primary-color);">
+                <h4 style="color: var(--primary-color); margin-bottom: 16px; font-size: 20px;"><span class="en">🎯 Success Metrics (12-Month Target)</span><span class="zh hidden">🎯 成功指标（12个月目标）</span></h4>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                    <div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--primary-color);">150+</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;"><span class="en">Daily Visits</span><span class="zh hidden">日访问量</span></div>
+                    </div>
+                    <div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--success-color);">100+</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;"><span class="en">Ranking Keywords</span><span class="zh hidden">排名关键词</span></div>
+                    </div>
+                    <div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--warning-color);">20+</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;"><span class="en">Top 10 Keywords</span><span class="zh hidden">前10关键词</span></div>
+                    </div>
+                    <div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--accent-color);">#2</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;"><span class="en">Market Position</span><span class="zh hidden">市场地位</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta">
+                    <span class="en">📄 Download PDF Report</span>
+                    <span class="zh hidden">📄 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
