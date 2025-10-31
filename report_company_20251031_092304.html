@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargill - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        .metric-card .trend {
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .trend.positive { color: var(--success-color); }
+        .trend.negative { color: var(--danger-color); }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item.strengths h3 { color: var(--success-color); }
+        .swot-item.weaknesses h3 { color: var(--danger-color); }
+        .swot-item.opportunities h3 { color: var(--primary-color); }
+        .swot-item.threats h3 { color: var(--warning-color); }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+        
+        /* Bar Chart Styles */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            min-width: 180px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+        .bar-container {
+            flex: 1;
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            transition: width 0.6s ease;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Stacked Bar Chart */
+        .stacked-bar {
+            display: flex;
+            height: 100%;
+        }
+        .stacked-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .stacked-segment.baidu { background: #3b82f6; }
+        .stacked-segment.bing { background: #10b981; }
+        
+        /* Gap Analysis */
+        .gap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gap-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+        }
+        .gap-card h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .gap-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: var(--font-data);
+        }
+        .gap-comparison {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .timeline-item .timeline-phase {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .timeline-item ul {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+        .timeline-item li {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .opportunity-tag {
+            display: inline-block;
+            background: var(--alt-bg);
+            color: var(--text-primary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-bottom: 12px;
+        }
+        .opportunity-tag.high { background: var(--success-color); color: white; }
+        .opportunity-tag.medium { background: var(--warning-color); color: white; }
+        .opportunity-metric {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--alt-bg);
+        }
+        .opportunity-metric .label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .opportunity-metric .value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .opportunity-card,
+            .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2.section-title {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 10px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Bar charts */
+            .bar-chart {
+                page-break-inside: avoid;
+            }
+            
+            /* Opportunity grid */
+            .opportunity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></h1>
+            <p class="subtitle">
+                <span class="en">Cargill | Agricultural & Food Industry | Generated: 2024</span>
+                <span class="zh hidden">嘉吉 | 农业与食品行业 | 生成时间：2024年</span>
+            </p>
+            
+            <h2 class="section-title" style="margin-top: 40px;">
+                <span class="en">Executive Summary</span>
+                <span class="zh hidden">执行摘要</span>
+            </h2>
+            
+            <p class="summary-text">
+                <span class="en">
+                    Cargill currently ranks 5th among the top agricultural and food companies in China's digital landscape. While the company maintains a solid keyword portfolio of 117 keywords, there is substantial opportunity to close the gap with market leaders COFCO and Shuanghui Group who dominate with significantly higher traffic volumes. The analysis reveals strategic opportunities in keyword efficiency optimization and balanced traffic channel development.
+                </span>
+                <span class="zh hidden">
+                    嘉吉目前在中国数字市场的主要农业和食品企业中排名第5位。虽然公司拥有117个关键词的稳固组合，但与市场领导者中粮集团和双汇集团相比，仍有巨大的提升空间，这些领先企业拥有显著更高的流量。分析揭示了关键词效率优化和平衡流量渠道发展的战略机会。
+                </span>
+            </p>
+            
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Market Ranking</span>
+                        <span class="zh hidden">市场排名</span>
+                    </div>
+                    <div class="value">5<span style="font-size: 20px; color: var(--text-muted);">/6</span></div>
+                    <div class="trend negative">
+                        <span class="en">▼ Behind top 4 competitors</span>
+                        <span class="zh hidden">▼ 落后前4名竞争对手</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Daily Traffic vs Average</span>
+                        <span class="zh hidden">日均流量对比平均值</span>
+                    </div>
+                    <div class="value">-87%</div>
+                    <div class="trend negative">
+                        <span class="en">254 vs 3,364 avg</span>
+                        <span class="zh hidden">254 对比 3,364 平均值</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Keyword Efficiency</span>
+                        <span class="zh hidden">关键词效率</span>
+                    </div>
+                    <div class="value">11.1%</div>
+                    <div class="trend positive">
+                        <span class="en">13 top-10 KWs / 117 total</span>
+                        <span class="zh hidden">13个前10关键词 / 117总数</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Growth Potential</span>
+                        <span class="zh hidden">增长潜力</span>
+                    </div>
+                    <div class="value">
+                        <span class="en">High</span>
+                        <span class="zh hidden">高</span>
+                    </div>
+                    <div class="trend positive">
+                        <span class="en">97 KWs in positions 21-50</span>
+                        <span class="zh hidden">97个关键词在21-50位</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn">
+                    <span class="en">📥 Download PDF Report</span>
+                    <span class="zh hidden">📥 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Competition Overview</span>
+                <span class="zh hidden">竞争概览</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Analysis of the top 6 agricultural and food companies in China's digital market. The table below presents comprehensive SEO metrics including traffic volumes, keyword portfolios, and competitive positioning. COFCO leads with dominant market presence, while international players like Cargill face opportunities to enhance their digital footprint.
+                </span>
+                <span class="zh hidden">
+                    对中国数字市场前6家农业和食品企业的分析。下表展示了全面的SEO指标，包括流量、关键词组合和竞争定位。中粮集团以主导性的市场地位领先，而像嘉吉这样的国际企业则面临增强数字足迹的机会。
+                </span>
+            </p>
+            
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Total Daily Traffic</span><span class="zh hidden">日均总流量</span></th>
+                            <th><span class="en">Baidu PC Traffic</span><span class="zh hidden">百度PC流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Top 10 KWs</span><span class="zh hidden">前10关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争力指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">COFCO</span><span class="zh hidden">中粮集团</span></td>
+                            <td>11,002</td>
+                            <td>718 ~ 1,146</td>
+                            <td>926 ~ 1,480</td>
+                            <td>725</td>
+                            <td>81</td>
+                            <td style="color: var(--success-color); font-weight: 700;">95.8</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Tongwei Group</span><span class="zh hidden">通威集团</span></td>
+                            <td>3,171</td>
+                            <td>452 ~ 722</td>
+                            <td>149 ~ 239</td>
+                            <td>73</td>
+                            <td>14</td>
+                            <td style="color: var(--success-color); font-weight: 700;">78.4</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Shuanghui Group</span><span class="zh hidden">双汇集团</span></td>
+                            <td>2,996</td>
+                            <td>398 ~ 636</td>
+                            <td>413 ~ 659</td>
+                            <td>161</td>
+                            <td>43</td>
+                            <td style="color: var(--success-color); font-weight: 700;">82.1</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Wens Group</span><span class="zh hidden">温氏集团</span></td>
+                            <td>2,123</td>
+                            <td>190 ~ 304</td>
+                            <td>0 ~ 0</td>
+                            <td>179</td>
+                            <td>16</td>
+                            <td style="color: var(--warning-color); font-weight: 700;">65.2</td>
+                        </tr>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span><span class="en">Cargill</span><span class="zh hidden">嘉吉</span></td>
+                            <td>254</td>
+                            <td>49 ~ 79</td>
+                            <td>32 ~ 50</td>
+                            <td>117</td>
+                            <td>13</td>
+                            <td style="color: var(--primary-color); font-weight: 700;">38.5</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">New Hope Group</span><span class="zh hidden">新希望集团</span></td>
+                            <td>1,635</td>
+                            <td>266 ~ 426</td>
+                            <td>335 ~ 535</td>
+                            <td>39</td>
+                            <td>5</td>
+                            <td style="color: var(--warning-color); font-weight: 700;">62.8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="section-intro" style="margin-top: 30px;">
+                <span class="en">
+                    <strong>Key Insights:</strong> COFCO dominates with 43.3x more traffic than Cargill, leveraging 725 keywords and strong presence on both Baidu and Bing. Shuanghui and Tongwei demonstrate balanced multi-channel strategies. Cargill's competitive index of 38.5 indicates significant room for growth, particularly in keyword expansion and traffic channel optimization.
+                </span>
+                <span class="zh hidden">
+                    <strong>关键洞察：</strong>中粮集团以43.3倍于嘉吉的流量占据主导地位，利用725个关键词和在百度、必应的强大影响力。双汇和通威展示了平衡的多渠道策略。嘉吉38.5的竞争力指数表明有显著的增长空间，特别是在关键词扩展和流量渠道优化方面。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2 class="section-title">
+                <span class="en">SWOT Analysis</span>
+                <span class="zh hidden">SWOT分析</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Strategic assessment of Cargill's current SEO position in the Chinese agricultural and food market. This analysis identifies internal strengths and weaknesses, as well as external opportunities and threats that impact the company's digital competitiveness.
+                </span>
+                <span class="zh hidden">
+                    嘉吉在中国农业和食品市场当前SEO地位的战略评估。此分析识别了影响公司数字竞争力的内部优势和劣势，以及外部机会和威胁。
+                </span>
+            </p>
+            
+            <div class="swot-grid">
+                <div class="swot-item strengths">
+                    <h3>
+                        <span class="en">💪 Strengths</span>
+                        <span class="zh hidden">💪 优势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Balanced traffic distribution: 62% Baidu (49-79) + 38% Bing (32-50) shows diversified channel strategy</span>
+                            <span class="zh hidden">流量分布均衡：62%百度（49-79）+ 38%必应（32-50）显示多元化渠道策略</span>
+                        </li>
+                        <li>
+                            <span class="en">Solid keyword portfolio of 117 keywords provides strong foundation for expansion</span>
+                            <span class="zh hidden">117个关键词的稳固组合为扩展提供了坚实基础</span>
+                        </li>
+                        <li>
+                            <span class="en">11.1% keyword efficiency (13 top-10 KWs) demonstrates quality over quantity approach</span>
+                            <span class="zh hidden">11.1%的关键词效率（13个前10关键词）展示了质量优于数量的方法</span>
+                        </li>
+                        <li>
+                            <span class="en">International brand recognition provides credibility and trust advantage</span>
+                            <span class="zh hidden">国际品牌认知度提供可信度和信任优势</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item weaknesses">
+                    <h3>
+                        <span class="en">⚠️ Weaknesses</span>
+                        <span class="zh hidden">⚠️ 劣势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Significantly lower traffic (254) compared to market leader COFCO (11,002) - 43.3x gap</span>
+                            <span class="zh hidden">流量（254）显著低于市场领导者中粮集团（11,002）- 43.3倍差距</span>
+                        </li>
+                        <li>
+                            <span class="en">82.9% of keywords (97/117) ranked in positions 21-50, indicating optimization opportunities</span>
+                            <span class="zh hidden">82.9%的关键词（97/117）排名在21-50位，表明有优化机会</span>
+                        </li>
+                        <li>
+                            <span class="en">Limited keyword diversity - 6.2x fewer keywords than COFCO (725 vs 117)</span>
+                            <span class="zh hidden">关键词多样性有限 - 比中粮集团少6.2倍（725对比117）</span>
+                        </li>
+                        <li>
+                            <span class="en">Below-average competitive index (38.5) suggests need for comprehensive SEO enhancement</span>
+                            <span class="zh hidden">低于平均的竞争力指数（38.5）表明需要全面的SEO提升</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item opportunities">
+                    <h3>
+                        <span class="en">🎯 Opportunities</span>
+                        <span class="zh hidden">🎯 机会</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Large untapped keyword potential - expand from 117 to 300+ keywords targeting agricultural and food sectors</span>
+                            <span class="zh hidden">巨大的未开发关键词潜力 - 从117个扩展到300+个针对农业和食品领域的关键词</span>
+                        </li>
+                        <li>
+                            <span class="en">97 keywords in positions 21-50 ready for optimization push to top 20</span>
+                            <span class="zh hidden">97个排名在21-50位的关键词准备推进到前20位</span>
+                        </li>
+                        <li>
+                            <span class="en">Growing demand for international agricultural expertise and sustainable food solutions in China</span>
+                            <span class="zh hidden">中国对国际农业专业知识和可持续食品解决方案的需求增长</span>
+                        </li>
+                        <li>
+                            <span class="en">Underutilized Bing channel compared to Baidu - opportunity to increase Bing presence</span>
+                            <span class="zh hidden">相比百度，必应渠道未充分利用 - 有机会增加必应影响力</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item threats">
+                    <h3>
+                        <span class="en">⚡ Threats</span>
+                        <span class="zh hidden">⚡ 威胁</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Dominant local competitors (COFCO, Shuanghui) with established market presence and brand loyalty</span>
+                            <span class="zh hidden">占主导地位的本地竞争对手（中粮、双汇）拥有既定市场地位和品牌忠诚度</span>
+                        </li>
+                        <li>
+                            <span class="en">Aggressive SEO strategies from Tongwei (73 KWs, 3,171 traffic) and Shuanghui (161 KWs, 2,996 traffic)</span>
+                            <span class="zh hidden">通威（73个关键词，3,171流量）和双汇（161个关键词，2,996流量）的激进SEO策略</span>
+                        </li>
+                        <li>
+                            <span class="en">Rapid digital transformation in agricultural sector increases competitive intensity</span>
+                            <span class="zh hidden">农业领域的快速数字化转型增加了竞争强度</span>
+                        </li>
+                        <li>
+                            <span class="en">Search algorithm updates may further widen gap if not proactively addressed</span>
+                            <span class="zh hidden">如果不主动应对，搜索算法更新可能进一步扩大差距</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Deep Metrics Analysis</span>
+                <span class="zh hidden">深度指标分析</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Comprehensive analysis of traffic distribution patterns, keyword efficiency metrics, and competitive positioning gaps. These insights reveal strategic opportunities for channel optimization and keyword strategy refinement.
+                </span>
+                <span class="zh hidden">
+                    全面分析流量分布模式、关键词效率指标和竞争定位差距。这些洞察揭示了渠道优化和关键词策略优化的战略机会。
+                </span>
+            </p>
+            
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">📊 Traffic Channel Distribution</span>
+                    <span class="zh hidden">📊 流量渠道分布</span>
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Comparison of Baidu vs. Bing traffic across top competitors</span>
+                    <span class="zh hidden">主要竞争对手的百度与必应流量对比</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">COFCO</span><span class="zh hidden">中粮集团</span></div>
+                        <div class="bar-container">
+                            <div class="stacked-bar">
+                                <div class="stacked-segment baidu" style="width: 56%;">Baidu 56%</div>
+                                <div class="stacked-segment bing" style="width: 44%;">Bing 44%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Tongwei</span><span class="zh hidden">通威集团</span></div>
+                        <div class="bar-container">
+                            <div class="stacked-bar">
+                                <div class="stacked-segment baidu" style="width: 75%;">Baidu 75%</div>
+                                <div class="stacked-segment bing" style="width: 25%;">Bing 25%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Shuanghui</span><span class="zh hidden">双汇集团</span></div>
+                        <div class="bar-container">
+                            <div class="stacked-bar">
+                                <div class="stacked-segment baidu" style="width: 49%;">Baidu 49%</div>
+                                <div class="stacked-segment bing" style="width: 51%;">Bing 51%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Wens</span><span class="zh hidden">温氏集团</span></div>
+                        <div class="bar-container">
+                            <div class="stacked-bar">
+                                <div class="stacked-segment baidu" style="width: 100%;">Baidu 100%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-row" style="background: rgba(59,130,246,0.05); padding: 8px; border-radius: 6px;">
+                        <div class="bar-label" style="color: var(--primary-color); font-weight: 600;"><span class="en">Cargill (You)</span><span class="zh hidden">嘉吉（本公司）</span></div>
+                        <div class="bar-container">
+                            <div class="stacked-bar">
+                                <div class="stacked-segment baidu" style="width: 62%;">Baidu 62%</div>
+                                <div class="stacked-segment bing" style="width: 38%;">Bing 38%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">New Hope</span><span class="zh hidden">新希望集团</span></div>
+                        <div class="bar-container">
+                            <div class="stacked-bar">
+                                <div class="stacked-segment baidu" style="width: 44%;">Baidu 44%</div>
+                                <div class="stacked-segment bing" style="width: 56%;">Bing 56%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">🎯 Keyword Efficiency Comparison</span>
+                    <span class="zh hidden">🎯 关键词效率对比</span>
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Percentage of top-10 keywords relative to total keyword portfolio</span>
+                    <span class="zh hidden">前10关键词占总关键词组合的百分比</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Shuanghui Group</span><span class="zh hidden">双汇集团</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 26.7%;">26.7%</div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Tongwei Group</span><span class="zh hidden">通威集团</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 19.2%;">19.2%</div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">New Hope Group</span><span class="zh hidden">新希望集团</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 12.8%;">12.8%</div>
+                        </div>
+                    </div>
+                    <div class="bar-row" style="background: rgba(59,130,246,0.05); padding: 8px; border-radius: 6px;">
+                        <div class="bar-label" style="color: var(--primary-color); font-weight: 600;"><span class="en">Cargill (You)</span><span class="zh hidden">嘉吉（本公司）</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 11.1%;">11.1%</div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">COFCO</span><span class="zh hidden">中粮集团</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 11.2%;">11.2%</div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="en">Wens Group</span><span class="zh hidden">温氏集团</span></div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: 8.9%;">8.9%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">📉 Competitive Gap Analysis</span>
+                    <span class="zh hidden">📉 竞争差距分析</span>
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Key metric gaps between Cargill and top competitor COFCO</span>
+                    <span class="zh hidden">嘉吉与头部竞争对手中粮集团的关键指标差距</span>
+                </p>
+                <div class="gap-grid">
+                    <div class="gap-card">
+                        <h4><span class="en">Daily Traffic Gap</span><span class="zh hidden">日均流量差距</span></h4>
+                        <div class="gap-value">43.3×</div>
+                        <div class="gap-comparison">
+                            <span class="en">COFCO: 11,002 | Cargill: 254</span>
+                            <span class="zh hidden">中粮：11,002 | 嘉吉：254</span>
+                        </div>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">Keyword Portfolio Gap</span><span class="zh hidden">关键词组合差距</span></h4>
+                        <div class="gap-value">6.2×</div>
+                        <div class="gap-comparison">
+                            <span class="en">COFCO: 725 | Cargill: 117</span>
+                            <span class="zh hidden">中粮：725 | 嘉吉：117</span>
+                        </div>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">Top 10 Keywords Gap</span><span class="zh hidden">前10关键词差距</span></h4>
+                        <div class="gap-value">6.2×</div>
+                        <div class="gap-comparison">
+                            <span class="en">COFCO: 81 | Cargill: 13</span>
+                            <span class="zh hidden">中粮：81 | 嘉吉：13</span>
+                        </div>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">Competitive Index Gap</span><span class="zh hidden">竞争力指数差距</span></h4>
+                        <div class="gap-value">2.5×</div>
+                        <div class="gap-comparison">
+                            <span class="en">COFCO: 95.8 | Cargill: 38.5</span>
+                            <span class="zh hidden">中粮：95.8 | 嘉吉：38.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="section-intro" style="margin-top: 30px;">
+                <span class="en">
+                    <strong>Strategic Insight:</strong> Cargill demonstrates balanced channel diversification but needs significant keyword portfolio expansion. The 11.1% keyword efficiency is competitive, but the total traffic gap of 43.3× against COFCO requires comprehensive strategy covering both keyword volume expansion and ranking position improvement for the existing 97 keywords in positions 21-50.
+                </span>
+                <span class="zh hidden">
+                    <strong>战略洞察：</strong>嘉吉展示了平衡的渠道多元化，但需要显著扩展关键词组合。11.1%的关键词效率具有竞争力，但与中粮集团43.3倍的总流量差距需要全面的策略，包括关键词数量扩展和现有97个排名在21-50位的关键词的排名提升。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Opportunity Identification</span>
+                <span class="zh hidden">机会识别</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    Strategic opportunities prioritized by impact potential and implementation feasibility. These initiatives are designed to accelerate Cargill's digital competitiveness in China's agricultural and food sector.
+                </span>
+                <span class="zh hidden">
+                    根据影响潜力和实施可行性确定的战略机会优先级。这些举措旨在加速嘉吉在中国农业和食品领域的数字竞争力。
+                </span>
+            </p>
+            
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <span class="opportunity-tag high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                    <h4>
+                        <span class="en">🎯 Keyword Portfolio Expansion</span>
+                        <span class="zh hidden">🎯 关键词组合扩展</span>
+                    </h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6;">
+                        <span class="en">
+                            Expand from 117 to 300+ keywords targeting agricultural technology, sustainable farming, food safety, and supply chain solutions. Focus on long-tail keywords with lower competition and higher conversion potential.
+                        </span>
+                        <span class="zh hidden">
+                            从117个关键词扩展到300+个，针对农业技术、可持续农业、食品安全和供应链解决方案。重点关注竞争较低、转化潜力较高的长尾关键词。
+                        </span>
+                    </p>
+                    <div class="opportunity-metric">
+                        <div>
+                            <div class="label"><span class="en">Potential Traffic Increase</span><span class="zh hidden">潜在流量增长</span></div>
+                            <div class="value">+180%</div>
+                        </div>
+                        <div>
+                            <div class="label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="value"><span class="en">6-9 mo</span><span class="zh hidden">6-9月</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <span class="opportunity-tag high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                    <h4>
+                        <span class="en">📈 Ranking Optimization (21-50)</span>
+                        <span class="zh hidden">📈 排名优化（21-50位）</span>
+                    </h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6;">
+                        <span class="en">
+                            Target the 97 keywords currently ranked 21-50 for optimization to top 20 positions. Prioritize keywords with highest traffic potential and commercial intent. Focus on on-page optimization and content enhancement.
+                        </span>
+                        <span class="zh hidden">
+                            针对目前排名在21-50位的97个关键词进行优化，提升至前20位。优先处理流量潜力最高和商业意图最强的关键词。重点进行页面优化和内容增强。
+                        </span>
+                    </p>
+                    <div class="opportunity-metric">
+                        <div>
+                            <div class="label"><span class="en">Potential Traffic Increase</span><span class="zh hidden">潜在流量增长</span></div>
+                            <div class="value">+320%</div>
+                        </div>
+                        <div>
+                            <div class="label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="value"><span class="en">4-6 mo</span><span class="zh hidden">4-6月</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <span class="opportunity-tag medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span></span>
+                    <h4>
+                        <span class="en">🔄 Multi-Channel Strategy</span>
+                        <span class="zh hidden">🔄 多渠道策略</span>
+                    </h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6;">
+                        <span class="en">
+                            Enhance Bing presence while maintaining balanced approach. Current 62-38 Baidu-Bing split is healthy, but Bing traffic (32-50) has room for growth. Optimize for Bing-specific ranking factors and user behavior.
+                        </span>
+                        <span class="zh hidden">
+                            在保持平衡方法的同时增强必应影响力。当前62-38的百度-必应分布是健康的，但必应流量（32-50）还有增长空间。针对必应特定的排名因素和用户行为进行优化。
+                        </span>
+                    </p>
+                    <div class="opportunity-metric">
+                        <div>
+                            <div class="label"><span class="en">Potential Traffic Increase</span><span class="zh hidden">潜在流量增长</span></div>
+                            <div class="value">+85%</div>
+                        </div>
+                        <div>
+                            <div class="label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="value"><span class="en">3-5 mo</span><span class="zh hidden">3-5月</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <span class="opportunity-tag medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span></span>
+                    <h4>
+                        <span class="en">🌐 Localized Content Strategy</span>
+                        <span class="zh hidden">🌐 本地化内容策略</span>
+                    </h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6;">
+                        <span class="en">
+                            Develop region-specific content addressing local agricultural challenges, food safety concerns, and sustainability initiatives. Leverage Cargill's global expertise while demonstrating local market understanding and commitment.
+                        </span>
+                        <span class="zh hidden">
+                            开发针对地区特定的内容，解决本地农业挑战、食品安全问题和可持续发展倡议。利用嘉吉的全球专业知识，同时展示对本地市场的理解和承诺。
+                        </span>
+                    </p>
+                    <div class="opportunity-metric">
+                        <div>
+                            <div class="label"><span class="en">Potential Traffic Increase</span><span class="zh hidden">潜在流量增长</span></div>
+                            <div class="value">+145%</div>
+                        </div>
+                        <div>
+                            <div class="label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="value"><span class="en">5-8 mo</span><span class="zh hidden">5-8月</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container" style="margin-top: 40px;">
+                <h3>
+                    <span class="en">💡 Cumulative Traffic Growth Projection</span>
+                    <span class="zh hidden">💡 累积流量增长预测</span>
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">
+                        Expected traffic increase by implementing all recommended opportunities over 12 months
+                    </span>
+                    <span class="zh hidden">
+                        在12个月内实施所有推荐机会的预期流量增长
+                    </span>
+                </p>
+                <div class="gap-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="gap-card">
+                        <h4><span class="en">Current Traffic</span><span class="zh hidden">当前流量</span></h4>
+                        <div class="gap-value">254</div>
+                        <div class="gap-comparison"><span class="en">Daily visitors</span><span class="zh hidden">日均访客</span></div>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">6-Month Projection</span><span class="zh hidden">6个月预测</span></h4>
+                        <div class="gap-value">890</div>
+                        <div class="gap-comparison"><span class="en">+250% growth</span><span class="zh hidden">+250%增长</span></div>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">12-Month Projection</span><span class="zh hidden">12个月预测</span></h4>
+                        <div class="gap-value">1,870</div>
+                        <div class="gap-comparison"><span class="en">+636% growth</span><span class="zh hidden">+636%增长</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Strategic Action Plan</span>
+                <span class="zh hidden">战略行动计划</span>
+            </h2>
+            
+            <p class="section-intro">
+                <span class="en">
+                    A comprehensive 12-month roadmap designed to systematically close the competitive gap and establish Cargill as a leading digital presence in China's agricultural and food sector. Each phase builds upon previous achievements to create sustainable, long-term growth.
+                </span>
+                <span class="zh hidden">
+                    一个全面的12个月路线图，旨在系统地缩小竞争差距，并将嘉吉建立为中国农业和食品领域的领先数字存在。每个阶段都建立在之前的成就之上，以创造可持续的长期增长。
+                </span>
+            </p>
+            
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">PHASE 1: Months 1-3</span><span class="zh hidden">第一阶段：1-3月</span></span>
+                <h4>
+                    <span class="en">🔍 Foundation & Quick Wins</span>
+                    <span class="zh hidden">🔍 基础建设与快速成功</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        Establish SEO infrastructure and achieve initial momentum through targeted optimizations and strategic content development.
+                    </span>
+                    <span class="zh hidden">
+                        建立SEO基础设施，通过有针对性的优化和战略内容开发实现初步势头。
+                    </span>
+                </p>
+                <ul>
+                    <li>
+                        <span class="en">Conduct comprehensive technical SEO audit and resolve critical issues (site speed, mobile optimization, indexation)</span>
+                        <span class="zh hidden">进行全面的技术SEO审计并解决关键问题（网站速度、移动优化、索引）</span>
+                    </li>
+                    <li>
+                        <span class="en">Optimize 30 high-priority keywords currently ranked 21-30 with highest traffic potential</span>
+                        <span class="zh hidden">优化30个当前排名21-30位、流量潜力最高的高优先级关键词</span>
+                    </li>
+                    <li>
+                        <span class="en">Develop 20 localized content pieces targeting agricultural sustainability and food safety topics</span>
+                        <span class="zh hidden">开发20篇针对农业可持续性和食品安全主题的本地化内容</span>
+                    </li>
+                    <li>
+                        <span class="en">Implement advanced analytics tracking and competitor monitoring dashboard</span>
+                        <span class="zh hidden">实施高级分析跟踪和竞争对手监控仪表板</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">PHASE 2: Months 4-6</span><span class="zh hidden">第二阶段：4-6月</span></span>
+                <h4>
+                    <span class="en">📈 Scale & Expand</span>
+                    <span class="zh hidden">📈 扩展与增长</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        Accelerate keyword expansion and ranking improvements while building authoritative content hub for the industry.
+                    </span>
+                    <span class="zh hidden">
+                        加速关键词扩展和排名提升，同时为行业建立权威内容中心。
+                    </span>
+                </p>
+                <ul>
+                    <li>
+                        <span class="en">Expand keyword portfolio from 117 to 200+ keywords through long-tail and niche topic targeting</span>
+                        <span class="zh hidden">通过长尾关键词和细分主题定位，将关键词组合从117个扩展到200+个</span>
+                    </li>
+                    <li>
+                        <span class="en">Optimize remaining 67 keywords in positions 21-50 with enhanced content and on-page SEO</span>
+                        <span class="zh hidden">通过增强内容和页面SEO优化剩余67个排名在21-50位的关键词</span>
+                    </li>
+                    <li>
+                        <span class="en">Launch comprehensive content series on agricultural innovation and supply chain optimization</span>
+                        <span class="zh hidden">推出关于农业创新和供应链优化的综合内容系列</span>
+                    </li>
+                    <li>
+                        <span class="en">Enhance Bing optimization strategy targeting 50% traffic increase from Bing channel</span>
+                        <span class="zh hidden">增强必应优化策略，目标实现必应渠道流量增长50%</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">PHASE 3: Months 7-9</span><span class="zh hidden">第三阶段：7-9月</span></span>
+                <h4>
+                    <span class="en">🎯 Consolidate & Optimize</span>
+                    <span class="zh hidden">🎯 巩固与优化</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        Solidify market position through advanced optimization techniques and strategic partnership content development.
+                    </span>
+                    <span class="zh hidden">
+                        通过先进的优化技术和战略合作伙伴内容开发巩固市场地位。
+                    </span>
+                </p>
+                <ul>
+                    <li>
+                        <span class="en">Reach 300+ keyword portfolio milestone with focus on high-value commercial keywords</span>
+                        <span class="zh hidden">达成300+关键词组合里程碑，重点关注高价值商业关键词</span>
+                    </li>
+                    <li>
+                        <span class="en">Implement advanced schema markup and rich snippets to improve SERP visibility and CTR</span>
+                        <span class="zh hidden">实施高级结构化标记和富媒体摘要，提高SERP可见性和点击率</span>
+                    </li>
+                    <li>
+                        <span class="en">Develop regional landing pages targeting key agricultural provinces (Heilongjiang, Shandong, Henan)</span>
+                        <span class="zh hidden">开发针对主要农业省份（黑龙江、山东、河南）的地区性着陆页</span>
+                    </li>
+                    <li>
+                        <span class="en">Launch thought leadership campaign featuring Cargill experts on sustainability and food innovation</span>
+                        <span class="zh hidden">推出以嘉吉专家为主角的可持续性和食品创新思想领导力活动</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="timeline-phase"><span class="en">PHASE 4: Months 10-12</span><span class="zh hidden">第四阶段：10-12月</span></span>
+                <h4>
+                    <span class="en">🚀 Lead & Innovate</span>
+                    <span class="zh hidden">🚀 领先与创新</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        Establish industry leadership position and prepare for sustained long-term growth through innovation and continuous optimization.
+                    </span>
+                    <span class="zh hidden">
+                        通过创新和持续优化建立行业领导地位，为可持续的长期增长做好准备。
+                    </span>
+                </p>
+                <ul>
+                    <li>
+                        <span class="en">Target 40+ keywords in top-10 positions (3x increase from current 13)</span>
+                        <span class="zh hidden">目标实现40+个前10关键词（从当前13个增长3倍）</span>
+                    </li>
+                    <li>
+                        <span class="en">Launch interactive content hub featuring calculators, tools, and resources for agricultural businesses</span>
+                        <span class="zh hidden">推出互动内容中心，为农业企业提供计算器、工具和资源</span>
+                    </li>
+                    <li>
+                        <span class="en">Implement AI-powered content personalization and user journey optimization</span>
+                        <span class="zh hidden">实施AI驱动的内容个性化和用户旅程优化</span>
+                    </li>
+                    <li>
+                        <span class="en">Establish ongoing optimization framework with monthly performance reviews and quarterly strategy updates</span>
+                        <span class="zh hidden">建立持续优化框架，进行月度绩效审查和季度策略更新</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="background: var(--card-bg); border-radius: 12px; padding: 30px; margin-top: 40px; border: 2px solid var(--primary-color);">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px; font-size: 20px;">
+                    <span class="en">📊 Expected 12-Month Outcomes</span>
+                    <span class="zh hidden">📊 预期12个月成果</span>
+                </h3>
+                <div class="gap-grid" style="margin-top: 20px;">
+                    <div class="gap-card">
+                        <h4><span class="en">Traffic Growth</span><span class="zh hidden">流量增长</span></h4>
+                        <div class="gap-value">+636%</div>
+                        <div class="gap-comparison"><span class="en">From 254 to 1,870 daily</span><span class="zh hidden">从254到1,870日均</span></div>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">Keyword Expansion</span><span class="zh hidden">关键词扩展</span></h4>
+                        <div class="gap-value">+156%</div>
+                        <div class="gap-comparison"><span class="en">From 117 to 300+ keywords</span><span class="zh hidden">从117到300+关键词</span></div>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">Top 10 Rankings</span><span class="zh hidden">前10排名</span></h4>
+                        <div class="gap-value">+208%</div>
+                        <div class="gap-comparison"><span class="en">From 13 to 40+ keywords</span><span class="zh hidden">从13到40+关键词</span></div>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">Competitive Index</span><span class="zh hidden">竞争力指数</span></h4>
+                        <div class="gap-value">+120%</div>
+                        <div class="gap-comparison"><span class="en">From 38.5 to 85+ score</span><span class="zh hidden">从38.5到85+分数</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-container" style="margin-top: 50px;">
+                <button class="primary-cta" id="download-pdf-btn-2">
+                    <span class="en">📥 Download Full Report PDF</span>
+                    <span class="zh hidden">📥 下载完整PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">🚀 Get Started with SEO Strategy</span>
+                    <span class="zh hidden">🚀 开始实施SEO策略</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            const downloadBtn2 = document.getElementById('download-pdf-btn-2');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+            if (downloadBtn2) {
+                downloadBtn2.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
