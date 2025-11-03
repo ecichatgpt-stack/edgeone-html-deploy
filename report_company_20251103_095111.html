@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockit Apple - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        .metric-card .trend { 
+            font-size: 14px; 
+            margin-top: 8px; 
+        }
+        .metric-card .trend.positive { 
+            color: var(--success-color); 
+        }
+        .metric-card .trend.negative { 
+            color: var(--danger-color); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 2;
+            widows: 2;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+        .chart-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .chart-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chart-bar-label {
+            min-width: 120px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .chart-bar-wrapper {
+            flex: 1;
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 12px;
+            color: white;
+            font-weight: 600;
+        }
+        .chart-bar-value {
+            min-width: 60px;
+            text-align: right;
+            font-size: 14px;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+        }
+
+        /* Stacked Bar Chart */
+        .stacked-chart-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .stacked-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .stacked-bar-label {
+            min-width: 120px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .stacked-bar-wrapper {
+            flex: 1;
+            height: 28px;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            background: var(--alt-bg);
+        }
+        .stacked-bar-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+            transition: width 0.5s ease;
+        }
+        .stacked-bar-segment.baidu {
+            background: #3b82f6;
+        }
+        .stacked-bar-segment.bing {
+            background: #8b5cf6;
+        }
+        .chart-legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        /* Gap Analysis */
+        .gap-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .gap-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+        }
+        .gap-card h4 {
+            font-size: 16px;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+        }
+        .gap-comparison {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .gap-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .gap-value {
+            font-size: 20px;
+            font-weight: 700;
+            font-family: var(--font-data);
+        }
+        .gap-value.user {
+            color: var(--primary-color);
+        }
+        .gap-value.competitor {
+            color: var(--text-muted);
+        }
+        .gap-diff {
+            margin-top: 8px;
+            padding: 8px;
+            background: var(--alt-bg);
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .gap-diff.negative {
+            color: var(--danger-color);
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            font-size: 18px;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+        }
+        .opportunity-priority {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-color);
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success-color);
+        }
+        .opportunity-metrics {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .opportunity-metric {
+            flex: 1;
+        }
+        .opportunity-metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .opportunity-metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: var(--font-data);
+        }
+
+        /* Timeline */
+        .timeline-container {
+            margin: 30px 0;
+        }
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .timeline-phase {
+            font-size: 12px;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .timeline-duration {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .timeline-actions {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--alt-bg);
+        }
+        .timeline-actions ul {
+            list-style: none;
+            padding: 0;
+        }
+        .timeline-actions li {
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        .timeline-actions li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .gap-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2 {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+
+            /* Gap analysis grid */
+            .gap-analysis {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Opportunity grid */
+            .opportunity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></h1>
+            <p class="subtitle"><span class="en">Rockit Apple - Market Position & Growth Strategy</span><span class="zh hidden">Rockit Apple - 市场定位与增长策略</span></p>
+            <p class="section-intro" style="margin-top: 24px;">
+                <span class="en">This comprehensive analysis evaluates Rockit Apple's SEO performance against the top 5 competitors in the Chinese fresh fruit market. The report reveals critical insights into market positioning, competitive gaps, and actionable growth opportunities.</span>
+                <span class="zh hidden">本综合分析评估了Rockit Apple在中国生鲜水果市场中与前5大竞争对手的SEO表现。报告揭示了市场定位、竞争差距和可行增长机会的关键见解。</span>
+            </p>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">5<span style="font-size: 18px; color: var(--text-muted);">/6</span></div>
+                    <div class="trend negative"><span class="en">▼ Below Average</span><span class="zh hidden">▼ 低于平均水平</span></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">10</div>
+                    <div class="trend negative"><span class="en">▼ 98.5% below avg</span><span class="zh hidden">▼ 低于平均98.5%</span></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">0%</div>
+                    <div class="trend negative"><span class="en">No Top 10 Keywords</span><span class="zh hidden">无前10关键词</span></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value" style="color: var(--success-color);">High</div>
+                    <div class="trend positive"><span class="en">✓ Untapped Market</span><span class="zh hidden">✓ 未开发市场</span></div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en"><strong>Key Finding:</strong> Rockit Apple currently operates with minimal SEO presence, ranking 5th among 6 competitors with only 10 daily visitors. However, this represents a significant opportunity—competitors like Pagoda generate 143x more traffic, indicating substantial market demand. With strategic keyword targeting and content optimization, Rockit Apple can rapidly improve its market position.</span>
+                <span class="zh hidden"><strong>关键发现：</strong>Rockit Apple目前SEO存在感较弱，在6家竞争对手中排名第5，日访客量仅为10。然而，这代表了重大机遇——百果园等竞争对手的流量是其143倍，表明市场需求巨大。通过战略性关键词定位和内容优化，Rockit Apple可以快速提升市场地位。</span>
+            </p>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro">
+                <span class="en">Comparative analysis of Rockit Apple against the top 5 traffic-generating competitors in the fresh fruit industry. The competitive index is calculated based on traffic volume, keyword portfolio, and search engine presence.</span>
+                <span class="zh hidden">Rockit Apple与生鲜水果行业前5大流量竞争对手的比较分析。竞争指数基于流量规模、关键词组合和搜索引擎存在感计算。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Top Rankings (11-20)</span><span class="zh hidden">高排名(11-20)</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span><span class="en">Rockit Apple</span><span class="zh hidden">Rockit Apple</span></td>
+                            <td>10</td>
+                            <td>2 ~ 2</td>
+                            <td>0 ~ 0</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td style="color: var(--danger-color); font-weight: 700;">2.8/100</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Pagoda</span><span class="zh hidden">百果园</span></td>
+                            <td>1,432</td>
+                            <td>98 ~ 156</td>
+                            <td>2 ~ 2</td>
+                            <td>49</td>
+                            <td>6</td>
+                            <td style="color: var(--success-color); font-weight: 700;">100.0/100</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Fruitday</span><span class="zh hidden">天天果园</span></td>
+                            <td>644</td>
+                            <td>16 ~ 26</td>
+                            <td>39 ~ 63</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td style="color: var(--warning-color); font-weight: 700;">45.8/100</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Dole</span><span class="zh hidden">都乐食品</span></td>
+                            <td>168</td>
+                            <td>16 ~ 26</td>
+                            <td>0 ~ 0</td>
+                            <td>29</td>
+                            <td>5</td>
+                            <td style="color: var(--warning-color); font-weight: 700;">20.1/100</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Joy Wing Mau</span><span class="zh hidden">鑫荣懋集团</span></td>
+                            <td>9</td>
+                            <td>7 ~ 11</td>
+                            <td>0 ~ 0</td>
+                            <td>9</td>
+                            <td>5</td>
+                            <td style="color: var(--danger-color); font-weight: 700;">3.6/100</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="summary-text" style="margin-top: 24px;">
+                <span class="en"><strong>Market Insights:</strong> Pagoda dominates the market with 1,432 daily visitors and a competitive index of 100/100. Rockit Apple's competitive index of 2.8/100 indicates significant room for improvement. The 4 active keywords suggest limited content coverage, while zero top-20 rankings reveal the need for stronger SEO fundamentals.</span>
+                <span class="zh hidden"><strong>市场洞察：</strong>百果园以1,432日均访客和100/100竞争指数主导市场。Rockit Apple的竞争指数仅为2.8/100，表明有巨大提升空间。4个活跃关键词显示内容覆盖有限，零个前20排名揭示了需要加强SEO基础。</span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic assessment of Rockit Apple's competitive position, identifying internal strengths and weaknesses alongside external opportunities and threats in the Chinese SEO landscape.</span>
+                <span class="zh hidden">对Rockit Apple竞争地位的战略评估，识别中国SEO环境中的内部优势和劣势，以及外部机会和威胁。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li><span class="en">Established brand presence with minimal SEO investment to date</span><span class="zh hidden">品牌知名度初步建立，SEO投入尚少</span></li>
+                        <li><span class="en">Baidu indexing achieved with 4 active keywords showing search visibility</span><span class="zh hidden">已获得百度索引，4个活跃关键词显示搜索可见性</span></li>
+                        <li><span class="en">Low competition in apple-specific niche compared to general fruit retailers</span><span class="zh hidden">相比综合水果零售商，苹果细分市场竞争较低</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">Weaknesses</span><span class="zh hidden">劣势</span></h3>
+                    <ul>
+                        <li><span class="en">Critically low daily traffic (10 visitors) - 98.5% below market average</span><span class="zh hidden">日均流量严重偏低(10访客) - 低于市场平均98.5%</span></li>
+                        <li><span class="en">Zero keywords ranking in top 10, limiting high-intent traffic capture</span><span class="zh hidden">无关键词进入前10，限制高意向流量获取</span></li>
+                        <li><span class="en">Minimal keyword portfolio (4 vs. competitor avg of 23) indicates thin content</span><span class="zh hidden">关键词组合极少(4个 vs 竞争对手均值23)表明内容薄弱</span></li>
+                        <li><span class="en">No Bing presence, missing alternative search engine opportunities</span><span class="zh hidden">无必应存在感，错失替代搜索引擎机会</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);"><span class="en">Opportunities</span><span class="zh hidden">机会</span></h3>
+                    <ul>
+                        <li><span class="en">Significant traffic gap (1,422 visitors) shows massive growth potential to leader</span><span class="zh hidden">巨大流量差距(1,422访客)显示追赶市场领导者的巨大增长潜力</span></li>
+                        <li><span class="en">Premium apple positioning can capture health-conscious, affluent demographics</span><span class="zh hidden">高端苹果定位可吸引注重健康的富裕人群</span></li>
+                        <li><span class="en">Content marketing opportunities around Rockit variety, nutrition, and recipes</span><span class="zh hidden">围绕Rockit品种、营养价值和食谱的内容营销机会</span></li>
+                        <li><span class="en">Low competition in positions 21-30 allows for quick ranking improvements</span><span class="zh hidden">21-30位竞争较低，可快速提升排名</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li><span class="en">Pagoda's dominant market position (143x traffic) creates high entry barriers</span><span class="zh hidden">百果园的市场主导地位(143倍流量)形成高进入壁垒</span></li>
+                        <li><span class="en">Established competitors have extensive content libraries and backlink profiles</span><span class="zh hidden">老牌竞争对手拥有庞大内容库和外链资源</span></li>
+                        <li><span class="en">Fresh fruit market is highly seasonal, requiring agile SEO adaptation</span><span class="zh hidden">生鲜水果市场季节性强，需灵活调整SEO策略</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 24px;">
+                <span class="en"><strong>Strategic Recommendation:</strong> Rockit Apple must prioritize aggressive content expansion and technical SEO optimization to bridge the massive performance gap. The premium brand positioning presents a unique opportunity to target underserved niche keywords around specialty apples, health benefits, and sustainability—areas where mass-market competitors have less focus.</span>
+                <span class="zh hidden"><strong>战略建议：</strong>Rockit Apple必须优先进行大规模内容扩展和技术SEO优化，以弥合巨大的性能差距。高端品牌定位为针对专业苹果、健康益处和可持续性等服务不足的细分关键词提供了独特机会——这些领域大众市场竞争对手关注较少。</span>
+            </p>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Detailed breakdown of traffic sources, keyword efficiency, and competitive gaps to identify specific areas for SEO improvement.</span>
+                <span class="zh hidden">详细分解流量来源、关键词效率和竞争差距，以识别SEO改进的具体领域。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Distribution (Baidu vs. Bing)</span><span class="zh hidden">流量渠道分布 (百度 vs 必应)</span></h3>
+                <div class="stacked-chart-bars">
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Rockit Apple</span><span class="zh hidden">Rockit Apple</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-bar-segment baidu" style="width: 100%;">100%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Pagoda</span><span class="zh hidden">百果园</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-bar-segment baidu" style="width: 98.6%;">98.6%</div>
+                            <div class="stacked-bar-segment bing" style="width: 1.4%;">1.4%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Fruitday</span><span class="zh hidden">天天果园</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-bar-segment baidu" style="width: 32.3%;">32.3%</div>
+                            <div class="stacked-bar-segment bing" style="width: 67.7%;">67.7%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Dole</span><span class="zh hidden">都乐食品</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-bar-segment baidu" style="width: 100%;">100%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Joy Wing Mau</span><span class="zh hidden">鑫荣懋集团</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-bar-segment baidu" style="width: 100%;">100%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #3b82f6;"></div>
+                        <span><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #8b5cf6;"></div>
+                        <span><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></span>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
+                    <span class="en"><strong>Insight:</strong> Rockit Apple relies 100% on Baidu, missing Bing's opportunity (Fruitday captures 67.7% from Bing). Diversifying to Bing can unlock incremental traffic with lower competition.</span>
+                    <span class="zh hidden"><strong>洞察：</strong>Rockit Apple 100%依赖百度，错失必应机会（天天果园从必应获得67.7%流量）。拓展必应可解锁竞争较低的增量流量。</span>
+                </p>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency Comparison</span><span class="zh hidden">关键词效率对比</span></h3>
+                <p style="margin-bottom: 16px; font-size: 14px; color: var(--text-secondary);">
+                    <span class="en">Efficiency measured as percentage of keywords ranking in positions 11-20 (high visibility zone)</span>
+                    <span class="zh hidden">效率以排名11-20位（高可见区）的关键词百分比衡量</span>
+                </p>
+                <div class="chart-bars">
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Joy Wing Mau</span><span class="zh hidden">鑫荣懋集团</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 55.6%;">55.6%</div>
+                        </div>
+                        <div class="chart-bar-value">55.6%</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Fruitday</span><span class="zh hidden">天天果园</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 50%;">50.0%</div>
+                        </div>
+                        <div class="chart-bar-value">50.0%</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Dole</span><span class="zh hidden">都乐食品</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 17.2%;">17.2%</div>
+                        </div>
+                        <div class="chart-bar-value">17.2%</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Pagoda</span><span class="zh hidden">百果园</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 12.2%;">12.2%</div>
+                        </div>
+                        <div class="chart-bar-value">12.2%</div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label"><span class="en">Rockit Apple</span><span class="zh hidden">Rockit Apple</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 0%; background: var(--danger-color);">0%</div>
+                        </div>
+                        <div class="chart-bar-value" style="color: var(--danger-color);">0%</div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
+                    <span class="en"><strong>Critical Gap:</strong> Zero keyword efficiency means Rockit Apple lacks competitive rankings. Smaller competitors like Joy Wing Mau achieve 55.6% efficiency with focused keyword strategies—a proven path forward.</span>
+                    <span class="zh hidden"><strong>关键差距：</strong>零关键词效率意味着Rockit Apple缺乏竞争排名。鑫荣懋等小型竞争对手通过聚焦关键词策略实现55.6%效率——这是一条行之有效的道路。</span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap Analysis vs. Market Leader (Pagoda)</span><span class="zh hidden">竞争差距分析 vs 市场领导者（百果园）</span></h3>
+                <div class="gap-analysis">
+                    <div class="gap-card">
+                        <h4><span class="en">Daily Traffic Gap</span><span class="zh hidden">日均流量差距</span></h4>
+                        <div class="gap-comparison">
+                            <div>
+                                <div class="gap-label"><span class="en">Rockit Apple</span><span class="zh hidden">Rockit Apple</span></div>
+                                <div class="gap-value user">10</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="gap-label"><span class="en">Pagoda</span><span class="zh hidden">百果园</span></div>
+                                <div class="gap-value competitor">1,432</div>
+                            </div>
+                        </div>
+                        <div class="gap-diff negative">
+                            <span class="en">▼ 1,422 visitors behind (-99.3%)</span>
+                            <span class="zh hidden">▼ 落后1,422访客 (-99.3%)</span>
+                        </div>
+                    </div>
+
+                    <div class="gap-card">
+                        <h4><span class="en">Keyword Portfolio Gap</span><span class="zh hidden">关键词组合差距</span></h4>
+                        <div class="gap-comparison">
+                            <div>
+                                <div class="gap-label"><span class="en">Rockit Apple</span><span class="zh hidden">Rockit Apple</span></div>
+                                <div class="gap-value user">4</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="gap-label"><span class="en">Pagoda</span><span class="zh hidden">百果园</span></div>
+                                <div class="gap-value competitor">49</div>
+                            </div>
+                        </div>
+                        <div class="gap-diff negative">
+                            <span class="en">▼ 45 keywords behind (-91.8%)</span>
+                            <span class="zh hidden">▼ 落后45个关键词 (-91.8%)</span>
+                        </div>
+                    </div>
+
+                    <div class="gap-card">
+                        <h4><span class="en">Top 20 Rankings Gap</span><span class="zh hidden">前20排名差距</span></h4>
+                        <div class="gap-comparison">
+                            <div>
+                                <div class="gap-label"><span class="en">Rockit Apple</span><span class="zh hidden">Rockit Apple</span></div>
+                                <div class="gap-value user">0</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="gap-label"><span class="en">Pagoda</span><span class="zh hidden">百果园</span></div>
+                                <div class="gap-value competitor">6</div>
+                            </div>
+                        </div>
+                        <div class="gap-diff negative">
+                            <span class="en">▼ 6 rankings behind (-100%)</span>
+                            <span class="zh hidden">▼ 落后6个排名 (-100%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 24px;">
+                <span class="en"><strong>Performance Summary:</strong> The data reveals a fundamental SEO deficit across all key metrics. However, the 99.3% traffic gap to Pagoda should not be viewed as insurmountable—it represents a clear roadmap for growth. Immediate priorities include expanding the keyword base from 4 to at least 20-30 targeted terms, achieving first-page rankings for brand and product keywords, and establishing a Bing presence to capture the 30% of users on alternative search engines.</span>
+                <span class="zh hidden"><strong>性能总结：</strong>数据揭示了所有关键指标的基础SEO缺陷。然而，与百果园99.3%的流量差距不应被视为不可逾越——它代表了明确的增长路线图。当务之急包括将关键词库从4个扩展至至少20-30个目标词，实现品牌和产品关键词的首页排名，并建立必应存在感以捕获30%的替代搜索引擎用户。</span>
+            </p>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">Prioritized opportunities based on potential impact, implementation difficulty, and competitive advantage for Rockit Apple's SEO growth.</span>
+                <span class="zh hidden">基于潜在影响、实施难度和竞争优势的优先机会排序，促进Rockit Apple的SEO增长。</span>
+            </p>
+
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                    <h4><span class="en">Premium Apple Content Hub</span><span class="zh hidden">高端苹果内容中心</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">
+                        <span class="en">Create comprehensive content around Rockit apple variety, nutritional benefits, recipes, and storage tips to own the premium apple niche.</span>
+                        <span class="zh hidden">围绕Rockit苹果品种、营养益处、食谱和储存技巧创建全面内容，占领高端苹果细分市场。</span>
+                    </p>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Est. Traffic</span><span class="zh hidden">预估流量</span></div>
+                            <div class="opportunity-metric-value">+150</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="opportunity-metric-value" style="font-size: 16px; color: var(--text-secondary);">3<span class="en">mo</span><span class="zh hidden">月</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                    <h4><span class="en">Technical SEO Foundation</span><span class="zh hidden">技术SEO基础</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">
+                        <span class="en">Implement core technical optimizations: site speed, mobile responsiveness, structured data, and XML sitemap to improve crawlability and ranking potential.</span>
+                        <span class="zh hidden">实施核心技术优化：网站速度、移动响应性、结构化数据和XML站点地图，以提高爬取性和排名潜力。</span>
+                    </p>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Impact</span><span class="zh hidden">影响</span></div>
+                            <div class="opportunity-metric-value" style="font-size: 16px;">+30%</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="opportunity-metric-value" style="font-size: 16px; color: var(--text-secondary);">2<span class="en">mo</span><span class="zh hidden">月</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span></span>
+                    <h4><span class="en">Bing Search Expansion</span><span class="zh hidden">必应搜索拓展</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">
+                        <span class="en">Register with Bing Webmaster Tools and optimize for Bing's algorithm to capture the 30% market share currently untapped by Rockit Apple.</span>
+                        <span class="zh hidden">注册必应站长工具并针对必应算法优化，捕获Rockit Apple目前未开发的30%市场份额。</span>
+                    </p>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Est. Traffic</span><span class="zh hidden">预估流量</span></div>
+                            <div class="opportunity-metric-value">+60</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="opportunity-metric-value" style="font-size: 16px; color: var(--text-secondary);">1<span class="en">mo</span><span class="zh hidden">月</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span></span>
+                    <h4><span class="en">Long-Tail Keyword Strategy</span><span class="zh hidden">长尾关键词策略</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">
+                        <span class="en">Target 15-20 long-tail keywords with lower competition (e.g., "best apples for kids lunch", "Rockit apple where to buy China") to achieve quick wins.</span>
+                        <span class="zh hidden">针对15-20个竞争较低的长尾关键词（如"适合儿童午餐的最佳苹果"、"中国哪里买Rockit苹果"）以实现快速胜利。</span>
+                    </p>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Est. Traffic</span><span class="zh hidden">预估流量</span></div>
+                            <div class="opportunity-metric-value">+80</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="opportunity-metric-value" style="font-size: 16px; color: var(--text-secondary);">4<span class="en">mo</span><span class="zh hidden">月</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-low"><span class="en">LOW PRIORITY</span><span class="zh hidden">低优先级</span></span>
+                    <h4><span class="en">Backlink Building Campaign</span><span class="zh hidden">外链建设活动</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">
+                        <span class="en">Develop strategic partnerships with health, nutrition, and lifestyle blogs to earn high-quality backlinks and improve domain authority.</span>
+                        <span class="zh hidden">与健康、营养和生活方式博客建立战略合作关系，赚取高质量外链并提升域名权威。</span>
+                    </p>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Impact</span><span class="zh hidden">影响</span></div>
+                            <div class="opportunity-metric-value" style="font-size: 16px;">+20%</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="opportunity-metric-value" style="font-size: 16px; color: var(--text-secondary);">6<span class="en">mo</span><span class="zh hidden">月</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-low"><span class="en">LOW PRIORITY</span><span class="zh hidden">低优先级</span></span>
+                    <h4><span class="en">Video SEO Initiative</span><span class="zh hidden">视频SEO计划</span></h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">
+                        <span class="en">Create video content showcasing Rockit apples (farm-to-table stories, recipe tutorials) and optimize for Baidu Video and YouTube China.</span>
+                        <span class="zh hidden">创建展示Rockit苹果的视频内容（从农场到餐桌的故事、食谱教程）并针对百度视频和YouTube中国优化。</span>
+                    </p>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Est. Traffic</span><span class="zh hidden">预估流量</span></div>
+                            <div class="opportunity-metric-value">+40</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                            <div class="opportunity-metric-value" style="font-size: 16px; color: var(--text-secondary);">5<span class="en">mo</span><span class="zh hidden">月</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 24px;">
+                <span class="en"><strong>Opportunity Summary:</strong> The recommended initiatives can collectively drive an estimated +330 daily visitors within 6 months—a 33x increase over current levels. High-priority actions focus on foundational improvements (technical SEO, content hub) that create sustainable long-term value, while medium-priority opportunities (Bing expansion, long-tail keywords) offer quicker wins to build momentum.</span>
+                <span class="zh hidden"><strong>机会总结：</strong>推荐的举措可在6个月内合计带来约+330日均访客——是当前水平的33倍。高优先级行动聚焦于创造可持续长期价值的基础改进（技术SEO、内容中心），而中优先级机会（必应拓展、长尾关键词）提供更快的胜利以建立势头。</span>
+            </p>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></h2>
+            <p class="section-intro">
+                <span class="en">A phased, 6-month roadmap to systematically close the SEO gap and establish Rockit Apple as a competitive player in the Chinese fresh fruit market.</span>
+                <span class="zh hidden">分阶段的6个月路线图，系统性地缩小SEO差距，确立Rockit Apple在中国生鲜水果市场的竞争地位。</span>
+            </p>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-phase"><span class="en">PHASE 1</span><span class="zh hidden">第一阶段</span></span>
+                        <span class="timeline-duration"><span class="en">Month 1-2</span><span class="zh hidden">第1-2月</span></span>
+                    </div>
+                    <h4><span class="en">Foundation Building</span><span class="zh hidden">基础建设</span></h4>
+                    <p>
+                        <span class="en">Establish core SEO infrastructure and conduct comprehensive competitive analysis to inform strategy.</span>
+                        <span class="zh hidden">建立核心SEO基础设施，进行全面竞争分析以指导策略。</span>
+                    </p>
+                    <div class="timeline-actions">
+                        <ul>
+                            <li><span class="en">Complete technical SEO audit (site speed, mobile optimization, crawl errors)</span><span class="zh hidden">完成技术SEO审计（网站速度、移动优化、爬取错误）</span></li>
+                            <li><span class="en">Implement structured data markup for products and organizational schema</span><span class="zh hidden">实施产品和组织架构的结构化数据标记</span></li>
+                            <li><span class="en">Register and verify Bing Webmaster Tools account</span><span class="zh hidden">注册并验证必应站长工具账户</span></li>
+                            <li><span class="en">Conduct keyword research to identify 30 target keywords (mix of brand, category, and long-tail)</span><span class="zh hidden">进行关键词研究，识别30个目标关键词（品牌、品类和长尾混合）</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-phase"><span class="en">PHASE 2</span><span class="zh hidden">第二阶段</span></span>
+                        <span class="timeline-duration"><span class="en">Month 3-4</span><span class="zh hidden">第3-4月</span></span>
+                    </div>
+                    <h4><span class="en">Content Expansion & On-Page Optimization</span><span class="zh hidden">内容扩展与页面优化</span></h4>
+                    <p>
+                        <span class="en">Launch comprehensive content hub and optimize existing pages for target keywords.</span>
+                        <span class="zh hidden">启动全面内容中心，针对目标关键词优化现有页面。</span>
+                    </p>
+                    <div class="timeline-actions">
+                        <ul>
+                            <li><span class="en">Create 15 pillar content pieces (Rockit apple guides, nutrition facts, recipe collections)</span><span class="zh hidden">创建15个支柱内容（Rockit苹果指南、营养成分、食谱合集）</span></li>
+                            <li><span class="en">Optimize all product pages with target keywords, meta descriptions, and alt tags</span><span class="zh hidden">用目标关键词、元描述和alt标签优化所有产品页面</span></li>
+                            <li><span class="en">Implement internal linking strategy connecting related content pieces</span><span class="zh hidden">实施连接相关内容的内部链接策略</span></li>
+                            <li><span class="en">Launch blog with bi-weekly publication schedule (health tips, seasonal recipes)</span><span class="zh hidden">启动博客，每两周发布一次（健康提示、季节性食谱）</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-phase"><span class="en">PHASE 3</span><span class="zh hidden">第三阶段</span></span>
+                        <span class="timeline-duration"><span class="en">Month 5</span><span class="zh hidden">第5月</span></span>
+                    </div>
+                    <h4><span class="en">Authority Building & Bing Optimization</span><span class="zh hidden">权威建设与必应优化</span></h4>
+                    <p>
+                        <span class="en">Establish domain authority through strategic partnerships and optimize for Bing's unique algorithm.</span>
+                        <span class="zh hidden">通过战略合作建立域名权威，针对必应独特算法优化。</span>
+                    </p>
+                    <div class="timeline-actions">
+                        <ul>
+                            <li><span class="en">Outreach to 20 health/nutrition blogs for guest posting and backlinks</span><span class="zh hidden">联系20个健康/营养博客进行客座发布和获取外链</span></li>
+                            <li><span class="en">Submit Bing-optimized XML sitemap and enable IndexNow protocol</span><span class="zh hidden">提交针对必应优化的XML站点地图并启用IndexNow协议</span></li>
+                            <li><span class="en">Create Bing Places for Business listing with complete profile</span><span class="zh hidden">创建完整的必应商家信息列表</span></li>
+                            <li><span class="en">Develop 5 long-form comparison guides (Rockit vs. other premium apple varieties)</span><span class="zh hidden">开发5个长篇对比指南（Rockit vs 其他高端苹果品种）</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-phase"><span class="en">PHASE 4</span><span class="zh hidden">第四阶段</span></span>
+                        <span class="timeline-duration"><span class="en">Month 6</span><span class="zh hidden">第6月</span></span>
+                    </div>
+                    <h4><span class="en">Performance Optimization & Scale</span><span class="zh hidden">性能优化与规模化</span></h4>
+                    <p>
+                        <span class="en">Analyze results, refine strategies, and scale successful initiatives for sustained growth.</span>
+                        <span class="zh hidden">分析结果，优化策略，扩大成功举措以实现持续增长。</span>
+                    </p>
+                    <div class="timeline-actions">
+                        <ul>
+                            <li><span class="en">Conduct comprehensive SEO performance review (traffic, rankings, conversions)</span><span class="zh hidden">进行全面SEO性能审查（流量、排名、转化）</span></li>
+                            <li><span class="en">Double down on top 10 performing keywords with additional content support</span><span class="zh hidden">加倍投入表现最佳的10个关键词，提供额外内容支持</span></li>
+                            <li><span class="en">Launch video content series (3-5 videos) optimized for search engines</span><span class="zh hidden">启动针对搜索引擎优化的视频内容系列（3-5个视频）</span></li>
+                            <li><span class="en">Implement conversion rate optimization tests on high-traffic pages</span><span class="zh hidden">在高流量页面实施转化率优化测试</span></li>
+                            <li><span class="en">Establish quarterly SEO review process and adjust strategy based on data</span><span class="zh hidden">建立季度SEO审查流程，根据数据调整策略</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en"><strong>Expected Outcomes (6-Month Horizon):</strong> By following this action plan, Rockit Apple can realistically achieve 300-400 daily visitors (30-40x current traffic), 25-30 active keywords in Baidu/Bing indexes, 3-5 keywords ranking in positions 11-20, and establish a foundation for continued exponential growth in Year 2. Success metrics should be tracked monthly through Baidu Webmaster Tools and Bing Webmaster Tools dashboards.</span>
+                <span class="zh hidden"><strong>预期成果（6个月期限）：</strong>通过遵循此行动计划，Rockit Apple可实际实现300-400日均访客（当前流量的30-40倍），百度/必应索引中25-30个活跃关键词，3-5个关键词排名11-20位，并为第二年持续指数增长奠定基础。成功指标应通过百度站长工具和必应站长工具仪表板每月跟踪。</span>
+            </p>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta">
+                    <span class="en">📄 Download PDF Report</span>
+                    <span class="zh hidden">📄 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule SEO Consultation</span>
+                    <span class="zh hidden">📞 预约SEO咨询</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
