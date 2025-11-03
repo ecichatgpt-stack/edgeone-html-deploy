@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuori - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Bar Chart Styles */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            min-width: 120px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+        .bar-wrapper {
+            flex: 1;
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), #60a5fa);
+            border-radius: 6px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+        }
+        .bar-value {
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            font-family: var(--font-data);
+        }
+
+        /* Stacked Bar Chart */
+        .stacked-bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .stacked-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .stacked-bar-label {
+            min-width: 120px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+        .stacked-bar-wrapper {
+            flex: 1;
+            height: 32px;
+            display: flex;
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--alt-bg);
+        }
+        .stacked-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .segment-baidu {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+        .segment-bing {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+
+        /* Gap Analysis */
+        .gap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gap-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+        }
+        .gap-card h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .gap-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--danger-color);
+            font-family: var(--font-data);
+            margin-bottom: 8px;
+        }
+        .gap-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+        .timeline-period {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-color);
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success-color);
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid, .gap-card {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2.section-title {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1><span class="en">Vuori SEO Competitive Analysis Report</span><span class="zh hidden">Vuori SEO竞争分析报告</span></h1>
+            <p class="subtitle"><span class="en">China Market SEO Performance Analysis & Strategic Recommendations</span><span class="zh hidden">中国市场SEO表现分析与战略建议</span></p>
+            
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">6<span style="font-size: 18px; color: var(--text-muted);">/6</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></div>
+                    <div class="value">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></div>
+                    <div class="value">0.0<span style="font-size: 18px; color: var(--text-muted);">/100</span></div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 16px;"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></h3>
+            <p class="summary-text">
+                <span class="en">
+                    Vuori currently has zero visibility in the China search market, with no indexed keywords or traffic from either Baidu or Bing. This represents a significant market entry challenge but also presents a substantial growth opportunity. The competitive landscape is dominated by Li-Ning (11,283 daily traffic), with Lululemon Athletica, ERKE, and other established Chinese athletic brands maintaining strong organic presence. The average competitor generates 2,912 daily visitors, indicating robust market demand for athletic apparel content. Vuori's complete absence suggests an urgent need for comprehensive China market SEO localization strategy, including Chinese domain establishment, ICP licensing, and keyword portfolio development to capture this untapped market potential.
+                </span>
+                <span class="zh hidden">
+                    Vuori目前在中国搜索市场的可见度为零，在百度和必应均无关键词索引或流量。这既代表了重大的市场进入挑战，也蕴含着巨大的增长机遇。竞争格局由李宁主导（日均流量11,283），Lululemon Athletica、鸿星尔克等成熟中国运动品牌保持强大的自然搜索表现。竞争对手平均日流量为2,912次，表明运动服饰内容市场需求旺盛。Vuori的完全缺席表明迫切需要制定全面的中国市场SEO本地化战略，包括中文域名建立、ICP备案和关键词组合开发，以捕捉这一未开发的市场潜力。
+                </span>
+            </p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn">
+                    <span class="en">📥 Download PDF Report</span>
+                    <span class="zh hidden">📥 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2 class="section-title"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro">
+                <span class="en">Comprehensive analysis of Vuori's competitive position against the top 5 athletic apparel brands in China's search landscape.</span>
+                <span class="zh hidden">全面分析Vuori在中国搜索领域与前5大运动服饰品牌的竞争地位。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Brand</span><span class="zh hidden">品牌</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu PC</span><span class="zh hidden">百度PC</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Pos 11-20</span><span class="zh hidden">11-20名</span></th>
+                            <th><span class="en">Pos 21-30</span><span class="zh hidden">21-30名</span></th>
+                            <th><span class="en">Pos 31-40</span><span class="zh hidden">31-40名</span></th>
+                            <th><span class="en">Pos 41-50</span><span class="zh hidden">41-50名</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user">YOU</span><span class="en">Vuori</span><span class="zh hidden">Vuori</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Li-Ning</span><span class="zh hidden">李宁</span></td>
+                            <td>11,283</td>
+                            <td>691 ~ 1,105</td>
+                            <td>0 ~ 0</td>
+                            <td>676</td>
+                            <td>74</td>
+                            <td>184</td>
+                            <td>130</td>
+                            <td>132</td>
+                            <td>82.4</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">ERKE</span><span class="zh hidden">鸿星尔克</span></td>
+                            <td>2,797</td>
+                            <td>229 ~ 365</td>
+                            <td>295 ~ 471</td>
+                            <td>175</td>
+                            <td>25</td>
+                            <td>43</td>
+                            <td>39</td>
+                            <td>37</td>
+                            <td>48.3</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Lululemon Athletica</span><span class="zh hidden">Lululemon</span></td>
+                            <td>2,754</td>
+                            <td>370 ~ 592</td>
+                            <td>160 ~ 256</td>
+                            <td>459</td>
+                            <td>82</td>
+                            <td>133</td>
+                            <td>76</td>
+                            <td>62</td>
+                            <td>55.6</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Qiaodan Sports</span><span class="zh hidden">乔丹体育</span></td>
+                            <td>2,229</td>
+                            <td>241 ~ 385</td>
+                            <td>193 ~ 309</td>
+                            <td>95</td>
+                            <td>16</td>
+                            <td>25</td>
+                            <td>8</td>
+                            <td>12</td>
+                            <td>42.7</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">TOREAD</span><span class="zh hidden">探路者</span></td>
+                            <td>1,854</td>
+                            <td>200 ~ 320</td>
+                            <td>0 ~ 0</td>
+                            <td>129</td>
+                            <td>22</td>
+                            <td>40</td>
+                            <td>29</td>
+                            <td>20</td>
+                            <td>36.2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    Li-Ning leads the competitive landscape with a Competitive Index of 82.4, driven by 676 indexed keywords and dominant Baidu presence. Lululemon demonstrates strong international brand adaptation with 459 keywords and dual search engine coverage. Vuori's zero index score highlights the critical need for immediate market entry execution, as competitors have established significant keyword portfolios ranging from 95 to 676 terms. The presence of both Chinese domestic brands and international competitors indicates a receptive market for foreign athletic wear brands with proper localization.
+                </span>
+                <span class="zh hidden">
+                    李宁以82.4的竞争指数领先竞争格局，拥有676个索引关键词和百度主导地位。Lululemon展示了强大的国际品牌适应能力，拥有459个关键词和双搜索引擎覆盖。Vuori零指数得分凸显了立即执行市场进入的迫切需求，因为竞争对手已建立了95至676个关键词的重要关键词组合。中国本土品牌和国际竞争者的存在表明，市场对适当本地化的外国运动服饰品牌具有接受度。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2 class="section-title"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic assessment of Vuori's internal capabilities and external market conditions in the China SEO landscape.</span>
+                <span class="zh hidden">Vuori在中国SEO领域内部能力和外部市场条件的战略评估。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">💪 Strengths</span><span class="zh hidden">💪 优势</span></h3>
+                    <ul>
+                        <li><span class="en">Premium brand positioning with untapped China market potential</span><span class="zh hidden">高端品牌定位，中国市场潜力未开发</span></li>
+                        <li><span class="en">No negative SEO legacy or reputation issues to remediate</span><span class="zh hidden">无需修复的负面SEO遗留或声誉问题</span></li>
+                        <li><span class="en">Clean slate for strategic keyword portfolio development</span><span class="zh hidden">战略关键词组合开发的全新起点</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">⚠️ Weaknesses</span><span class="zh hidden">⚠️劣势</span></h3>
+                    <ul>
+                        <li><span class="en">Zero search visibility: 0 keywords, 0 traffic, 0 market presence</span><span class="zh hidden">零搜索可见度：0关键词、0流量、0市场存在感</span></li>
+                        <li><span class="en">Likely lacks ICP license and China-compliant web infrastructure</span><span class="zh hidden">可能缺乏ICP备案和中国合规网络基础设施</span></li>
+                        <li><span class="en">No Chinese content assets or localized SEO foundation</span><span class="zh hidden">无中文内容资产或本地化SEO基础</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);"><span class="en">🚀 Opportunities</span><span class="zh hidden">🚀 机会</span></h3>
+                    <ul>
+                        <li><span class="en">Significant traffic gap vs. competitors (avg. 2,912 daily visitors)</span><span class="zh hidden">与竞争对手的显著流量差距（平均每日2,912访客）</span></li>
+                        <li><span class="en">Proven demand demonstrated by Lululemon's 2,754 daily traffic</span><span class="zh hidden">Lululemon每日2,754流量证明的市场需求</span></li>
+                        <li><span class="en">Underserved premium athleisure segment in China search results</span><span class="zh hidden">中国搜索结果中服务不足的高端运动休闲细分市场</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">⚡ Threats</span><span class="zh hidden">⚡ 威胁</span></h3>
+                    <ul>
+                        <li><span class="en">Established competitors with 95-676 keyword portfolios</span><span class="zh hidden">拥有95-676关键词组合的成熟竞争对手</span></li>
+                        <li><span class="en">Baidu algorithm preference for localized Chinese content</span><span class="zh hidden">百度算法偏好本地化中文内容</span></li>
+                        <li><span class="en">Extended timeline (12-18 months) to achieve competitive parity</span><span class="zh hidden">需要延长的时间表（12-18个月）才能实现竞争平衡</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2 class="section-title"><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Granular examination of traffic sources, keyword efficiency, and competitive performance gaps.</span>
+                <span class="zh hidden">流量来源、关键词效率和竞争表现差距的细化分析。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">📊 Traffic Channel Distribution</span><span class="zh hidden">📊 流量渠道分布</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Baidu vs. Bing traffic contribution across all competitors</span>
+                    <span class="zh hidden">百度与必应流量在所有竞争对手中的贡献</span>
+                </p>
+                <div class="stacked-bar-chart">
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Vuori</span><span class="zh hidden">Vuori</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-segment segment-baidu" style="width: 0%;">0%</div>
+                            <div class="stacked-segment segment-bing" style="width: 0%;">0%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Li-Ning</span><span class="zh hidden">李宁</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-segment segment-baidu" style="width: 100%;">100%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">ERKE</span><span class="zh hidden">鸿星尔克</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-segment segment-baidu" style="width: 49.8%;">49.8%</div>
+                            <div class="stacked-segment segment-bing" style="width: 50.2%;">50.2%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Lululemon</span><span class="zh hidden">Lululemon</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-segment segment-baidu" style="width: 74.3%;">74.3%</div>
+                            <div class="stacked-segment segment-bing" style="width: 25.7%;">25.7%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">Qiaodan</span><span class="zh hidden">乔丹体育</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-segment segment-baidu" style="width: 56.2%;">56.2%</div>
+                            <div class="stacked-segment segment-bing" style="width: 43.8%;">43.8%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label"><span class="en">TOREAD</span><span class="zh hidden">探路者</span></div>
+                        <div class="stacked-bar-wrapper">
+                            <div class="stacked-segment segment-baidu" style="width: 100%;">100%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">🎯 Keyword Efficiency Comparison</span><span class="zh hidden">🎯 关键词效率对比</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Average daily traffic per keyword (Traffic / Total Keywords)</span>
+                    <span class="zh hidden">每关键词平均日流量（流量 / 总关键词数）</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Qiaodan</span><span class="zh hidden">乔丹体育</span></div>
+                        <div class="bar-wrapper">
+                            <div class="bar-fill" style="width: 100%;">
+                                <span class="bar-value">23.46</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Li-Ning</span><span class="zh hidden">李宁</span></div>
+                        <div class="bar-wrapper">
+                            <div class="bar-fill" style="width: 71.0%;">
+                                <span class="bar-value">16.69</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">ERKE</span><span class="zh hidden">鸿星尔克</span></div>
+                        <div class="bar-wrapper">
+                            <div class="bar-fill" style="width: 68.0%;">
+                                <span class="bar-value">15.98</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">TOREAD</span><span class="zh hidden">探路者</span></div>
+                        <div class="bar-wrapper">
+                            <div class="bar-fill" style="width: 61.2%;">
+                                <span class="bar-value">14.37</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Lululemon</span><span class="zh hidden">Lululemon</span></div>
+                        <div class="bar-wrapper">
+                            <div class="bar-fill" style="width: 25.5%;">
+                                <span class="bar-value">6.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label"><span class="en">Vuori</span><span class="zh hidden">Vuori</span></div>
+                        <div class="bar-wrapper">
+                            <div class="bar-fill" style="width: 0%;">
+                                <span class="bar-value">0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">📉 Competitive Gap Analysis</span><span class="zh hidden">📉 竞争差距分析</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Performance deficit vs. market leader (Li-Ning)</span>
+                    <span class="zh hidden">与市场领导者（李宁）的表现差距</span>
+                </p>
+                <div class="gap-grid">
+                    <div class="gap-card">
+                        <h4><span class="en">Daily Traffic Gap</span><span class="zh hidden">日流量差距</span></h4>
+                        <div class="gap-value">-11,283</div>
+                        <p class="gap-description">
+                            <span class="en">Complete absence vs. leader's 11,283 daily visitors</span>
+                            <span class="zh hidden">相比领导者的11,283日访客完全缺失</span>
+                        </p>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">Keyword Portfolio Gap</span><span class="zh hidden">关键词组合差距</span></h4>
+                        <div class="gap-value">-676</div>
+                        <p class="gap-description">
+                            <span class="en">Zero keywords vs. leader's 676-term portfolio</span>
+                            <span class="zh hidden">零关键词相比领导者的676个关键词组合</span>
+                        </p>
+                    </div>
+                    <div class="gap-card">
+                        <h4><span class="en">Competitive Index Gap</span><span class="zh hidden">竞争指数差距</span></h4>
+                        <div class="gap-value">-82.4</div>
+                        <p class="gap-description">
+                            <span class="en">0.0 vs. leader's 82.4 competitive index score</span>
+                            <span class="zh hidden">0.0相比领导者的82.4竞争指数得分</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    The traffic channel analysis reveals Baidu dominance among Chinese brands (Li-Ning, TOREAD at 100%), while international brands demonstrate dual-engine strategies (Lululemon 74% Baidu, ERKE balanced 50/50 split). Keyword efficiency metrics show Qiaodan Sports leading at 23.46 traffic/keyword, significantly outperforming Lululemon's 6.00 ratio. Vuori's complete gap across all metrics necessitates a phased approach: Phase 1 establishing foundational infrastructure (ICP, hosting), Phase 2 developing a 150-200 keyword starter portfolio targeting mid-tail terms, and Phase 3 scaling to 400+ keywords for competitive parity within 18 months.
+                </span>
+                <span class="zh hidden">
+                    流量渠道分析显示中国品牌百度主导地位（李宁、探路者100%），而国际品牌展示双引擎策略（Lululemon 74%百度，鸿星尔克平衡50/50分配）。关键词效率指标显示乔丹体育以23.46流量/关键词领先，显著优于Lululemon的6.00比率。Vuori在所有指标上的完全差距需要分阶段方法：第一阶段建立基础设施（ICP、托管），第二阶段开发150-200个针对中尾词的起始关键词组合，第三阶段在18个月内扩展到400+关键词以实现竞争平衡。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2 class="section-title"><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic opportunities ranked by impact potential and implementation feasibility for Vuori's China market entry.</span>
+                <span class="zh hidden">按影响潜力和实施可行性排名的Vuori中国市场进入战略机会。</span>
+            </p>
+
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                    <h4><span class="en">🏗️ Foundational Infrastructure Setup</span><span class="zh hidden">🏗️ 基础设施建设</span></h4>
+                    <p>
+                        <span class="en">
+                            Establish China-compliant web presence with ICP license, .cn domain, and China-hosted servers. This foundational step is prerequisite for any Baidu indexing and organic visibility.
+                        </span>
+                        <span class="zh hidden">
+                            建立符合中国法规的网络存在，包括ICP备案、.cn域名和中国托管服务器。这一基础步骤是百度索引和自然可见度的前提。
+                        </span>
+                    </p>
+                    <div style="display: flex; gap: 12px; margin-top: 16px;">
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Est. Traffic Potential</span><span class="zh hidden">预估流量潜力</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--primary-color);">500-800/day</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Timeline</span><span class="zh hidden">时间线</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--text-secondary);">3-4 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                    <h4><span class="en">🎯 Premium Athleisure Keyword Strategy</span><span class="zh hidden">🎯 高端运动休闲关键词策略</span></h4>
+                    <p>
+                        <span class="en">
+                            Target underserved premium segment with localized content for "高端运动服" (premium sportswear), "瑜伽裤推荐" (yoga pants recommendations), and "运动休闲品牌" (athleisure brands).
+                        </span>
+                        <span class="zh hidden">
+                            针对服务不足的高端细分市场，创建本地化内容，覆盖"高端运动服"、"瑜伽裤推荐"和"运动休闲品牌"等关键词。
+                        </span>
+                    </p>
+                    <div style="display: flex; gap: 12px; margin-top: 16px;">
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Est. Traffic Potential</span><span class="zh hidden">预估流量潜力</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--primary-color);">1,200-1,800/day</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Timeline</span><span class="zh hidden">时间线</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--text-secondary);">6-9 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中等优先级</span></span>
+                    <h4><span class="en">🔄 Dual Search Engine Optimization</span><span class="zh hidden">🔄 双搜索引擎优化</span></h4>
+                    <p>
+                        <span class="en">
+                            Replicate Lululemon's successful dual-engine strategy: 75% Baidu focus for mainstream reach, 25% Bing optimization for international-minded Chinese consumers.
+                        </span>
+                        <span class="zh hidden">
+                            复制Lululemon成功的双引擎策略：75%百度重点覆盖主流市场，25%必应优化针对国际化思维的中国消费者。
+                        </span>
+                    </p>
+                    <div style="display: flex; gap: 12px; margin-top: 16px;">
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Est. Traffic Potential</span><span class="zh hidden">预估流量潜力</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--primary-color);">400-600/day</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Timeline</span><span class="zh hidden">时间线</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--text-secondary);">8-12 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中等优先级</span></span>
+                    <h4><span class="en">📱 Mobile-First Content Optimization</span><span class="zh hidden">📱 移动优先内容优化</span></h4>
+                    <p>
+                        <span class="en">
+                            Develop mobile-optimized product guides, styling content, and WeChat-shareable articles targeting China's mobile-first search behavior (85%+ mobile traffic).
+                        </span>
+                        <span class="zh hidden">
+                            开发移动优化的产品指南、搭配内容和微信可分享文章，针对中国的移动优先搜索行为（85%+移动流量）。
+                        </span>
+                    </p>
+                    <div style="display: flex; gap: 12px; margin-top: 16px;">
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Est. Traffic Potential</span><span class="zh hidden">预估流量潜力</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--primary-color);">700-1,000/day</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Timeline</span><span class="zh hidden">时间线</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--text-secondary);">5-8 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-low"><span class="en">LOW PRIORITY</span><span class="zh hidden">低优先级</span></span>
+                    <h4><span class="en">🤝 Strategic Link Building Campaign</span><span class="zh hidden">🤝 战略链接建设活动</span></h4>
+                    <p>
+                        <span class="en">
+                            Pursue partnerships with Chinese fitness influencers, lifestyle blogs, and e-commerce platforms for authoritative backlinks (implement after core infrastructure is stable).
+                        </span>
+                        <span class="zh hidden">
+                            与中国健身影响者、生活方式博客和电商平台建立合作伙伴关系，获取权威反向链接（在核心基础设施稳定后实施）。
+                        </span>
+                    </p>
+                    <div style="display: flex; gap: 12px; margin-top: 16px;">
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Est. Traffic Potential</span><span class="zh hidden">预估流量潜力</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--primary-color);">300-500/day</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Timeline</span><span class="zh hidden">时间线</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--text-secondary);">12-18 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority-badge priority-low"><span class="en">LOW PRIORITY</span><span class="zh hidden">低优先级</span></span>
+                    <h4><span class="en">🎬 Video Content for Baidu Video SEO</span><span class="zh hidden">🎬 百度视频SEO视频内容</span></h4>
+                    <p>
+                        <span class="en">
+                            Create product demonstration videos optimized for Baidu's video search algorithm, leveraging the platform's preference for multimedia content in fashion/lifestyle searches.
+                        </span>
+                        <span class="zh hidden">
+                            创建针对百度视频搜索算法优化的产品演示视频，利用该平台在时尚/生活方式搜索中对多媒体内容的偏好。
+                        </span>
+                    </p>
+                    <div style="display: flex; gap: 12px; margin-top: 16px;">
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Est. Traffic Potential</span><span class="zh hidden">预估流量潜力</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--primary-color);">200-400/day</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+                                <span class="en">Timeline</span><span class="zh hidden">时间线</span>
+                            </div>
+                            <div style="font-size: 18px; font-weight: 700; color: var(--text-secondary);">10-15 months</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    The cumulative potential of these opportunities could generate 3,300-5,100 daily visitors within 18 months, positioning Vuori competitively with current market players. The high-priority infrastructure and keyword strategy initiatives form the critical path, with estimated combined potential of 1,700-2,600 daily visitors achievable within 9 months of focused execution.
+                </span>
+                <span class="zh hidden">
+                    这些机会的累积潜力可在18个月内产生3,300-5,100日访客，使Vuori与当前市场参与者形成竞争力。高优先级的基础设施和关键词策略举措构成关键路径，预计在9个月的专注执行内可实现1,700-2,600日访客的综合潜力。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2 class="section-title"><span class="en">Strategic Action Plan</span><span class="zh hidden">战略行动计划</span></h2>
+            <p class="section-intro">
+                <span class="en">Phased implementation roadmap with specific milestones, resource requirements, and success metrics for Vuori's China SEO market entry.</span>
+                <span class="zh hidden">Vuori中国SEO市场进入的分阶段实施路线图，包含具体里程碑、资源需求和成功指标。</span>
+            </p>
+
+            <div class="timeline-item">
+                <span class="timeline-period"><span class="en">MONTH 1-3: Foundation Phase</span><span class="zh hidden">第1-3月：基础阶段</span></span>
+                <h4><span class="en">🏗️ Infrastructure & Compliance Setup</span><span class="zh hidden">🏗️ 基础设施与合规设置</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Key Actions:</strong> Secure ICP license application, register .cn domain (vuori.cn), establish China-hosted server infrastructure (Alibaba Cloud/Tencent Cloud), implement Baidu Webmaster Tools integration.<br>
+                        <strong>Deliverables:</strong> Fully compliant web presence, technical SEO audit completion, initial 50-keyword research report.<br>
+                        <strong>Investment:</strong> $15,000-$25,000 (legal, hosting, consultation fees)
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong> 申请ICP备案，注册.cn域名（vuori.cn），建立中国托管服务器基础设施（阿里云/腾讯云），整合百度站长工具。<br>
+                        <strong>交付成果：</strong> 完全合规的网络存在，技术SEO审计完成，初始50关键词研究报告。<br>
+                        <strong>投资：</strong> $15,000-$25,000（法律、托管、咨询费用）
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-period"><span class="en">MONTH 4-6: Content Development Phase</span><span class="zh hidden">第4-6月：内容开发阶段</span></span>
+                <h4><span class="en">✍️ Chinese Content & Keyword Portfolio Launch</span><span class="zh hidden">✍️ 中文内容与关键词组合启动</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Key Actions:</strong> Develop 150-200 keyword portfolio targeting mid-tail terms (3-5 word phrases), create 80-100 pages of localized Chinese content (product pages, category pages, blog articles), implement on-page SEO optimization.<br>
+                        <strong>Deliverables:</strong> 150+ indexed pages on Baidu, initial traffic generation (target: 200-300 daily visitors), mobile-optimized site experience.<br>
+                        <strong>Investment:</strong> $20,000-$35,000 (content creation, translation, SEO optimization)
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong> 开发150-200个针对中尾词（3-5词短语）的关键词组合，创建80-100页本地化中文内容（产品页面、类别页面、博客文章），实施页面SEO优化。<br>
+                        <strong>交付成果：</strong> 百度索引150+页面，初始流量生成（目标：200-300日访客），移动优化网站体验。<br>
+                        <strong>投资：</strong> $20,000-$35,000（内容创建、翻译、SEO优化）
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-period"><span class="en">MONTH 7-9: Optimization & Expansion Phase</span><span class="zh hidden">第7-9月：优化与扩展阶段</span></span>
+                <h4><span class="en">📈 Performance Optimization & Keyword Scaling</span><span class="zh hidden">📈 性能优化与关键词扩展</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Key Actions:</strong> Analyze initial performance data, optimize underperforming content, expand keyword portfolio to 300 terms, launch Bing SEO parallel track (25% resource allocation), implement structured data markup.<br>
+                        <strong>Deliverables:</strong> 500-800 daily visitors achieved, 15-20 keywords in Baidu Top 20 positions, mobile page speed under 3 seconds.<br>
+                        <strong>Investment:</strong> $15,000-$25,000 (optimization, expanded content, technical enhancements)
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong> 分析初始性能数据，优化表现不佳的内容，将关键词组合扩展至300个，启动必应SEO并行轨道（25%资源分配），实施结构化数据标记。<br>
+                        <strong>交付成果：</strong> 实现500-800日访客，15-20个关键词进入百度前20名位置，移动页面速度低于3秒。<br>
+                        <strong>投资：</strong> $15,000-$25,000（优化、扩展内容、技术增强）
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-period"><span class="en">MONTH 10-12: Competitive Positioning Phase</span><span class="zh hidden">第10-12月：竞争定位阶段</span></span>
+                <h4><span class="en">🎯 Market Share Growth & Authority Building</span><span class="zh hidden">🎯 市场份额增长与权威建立</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Key Actions:</strong> Expand to 400+ keyword portfolio, develop content hub strategy (10-15 pillar pages), initiate strategic link building (Chinese fitness blogs, lifestyle sites), implement video content strategy.<br>
+                        <strong>Deliverables:</strong> 1,200-1,800 daily visitors, 30-40 keywords in Top 20, domain authority establishment (external backlinks from 15-20 quality sources).<br>
+                        <strong>Investment:</strong> $25,000-$40,000 (content scaling, link building, video production)
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong> 扩展至400+关键词组合，开发内容中心策略（10-15支柱页面），启动战略链接建设（中国健身博客、生活方式网站），实施视频内容策略。<br>
+                        <strong>交付成果：</strong> 1,200-1,800日访客，30-40个关键词进入前20名，域权威建立（来自15-20个优质来源的外部反向链接）。<br>
+                        <strong>投资：</strong> $25,000-$40,000（内容扩展、链接建设、视频制作）
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-period"><span class="en">MONTH 13-18: Market Leadership Phase</span><span class="zh hidden">第13-18月：市场领导阶段</span></span>
+                <h4><span class="en">🏆 Competitive Parity & Category Dominance</span><span class="zh hidden">🏆 竞争平衡与品类主导</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Key Actions:</strong> Scale to 600+ keyword portfolio approaching Lululemon's scope, develop brand-focused content strategy, implement advanced technical SEO (Core Web Vitals optimization, schema markup expansion), launch influencer collaboration program.<br>
+                        <strong>Deliverables:</strong> 2,500-3,500 daily visitors (approaching Lululemon parity), 60+ keywords in Top 20 positions, established category authority in premium athleisure segment.<br>
+                        <strong>Investment:</strong> $35,000-$50,000 (aggressive content expansion, influencer partnerships, technical optimization)
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong> 扩展至600+关键词组合接近Lululemon规模，开发品牌聚焦内容策略，实施高级技术SEO（Core Web Vitals优化、结构化标记扩展），启动影响者合作计划。<br>
+                        <strong>交付成果：</strong> 2,500-3,500日访客（接近Lululemon平衡），60+关键词进入前20名位置，在高端运动休闲细分市场建立品类权威。<br>
+                        <strong>投资：</strong> $35,000-$50,000（激进内容扩展、影响者合作、技术优化）
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-period"><span class="en">ONGOING: Maintenance & Growth Phase</span><span class="zh hidden">持续：维护与增长阶段</span></span>
+                <h4><span class="en">🔄 Continuous Optimization & Market Adaptation</span><span class="zh hidden">🔄 持续优化与市场适应</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Key Actions:</strong> Monthly performance reviews, quarterly keyword portfolio audits, content refresh cycles (quarterly), algorithm update monitoring, competitive intelligence tracking.<br>
+                        <strong>Deliverables:</strong> Sustained traffic growth trajectory (10-15% quarterly increase), market share defense against new entrants, brand authority maintenance.<br>
+                        <strong>Investment:</strong> $10,000-$15,000/month (ongoing optimization, content updates, monitoring)
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong> 月度性能审查，季度关键词组合审计，内容刷新周期（季度），算法更新监控，竞争情报跟踪。<br>
+                        <strong>交付成果：</strong> 持续流量增长轨迹（季度增长10-15%），针对新进入者的市场份额防御，品牌权威维护。<br>
+                        <strong>投资：</strong> $10,000-$15,000/月（持续优化、内容更新、监控）
+                    </span>
+                </p>
+            </div>
+
+            <div style="background: var(--card-bg); border-radius: 12px; padding: 24px; margin-top: 40px; border: 1px solid var(--alt-bg);">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;">
+                    <span class="en">💡 Critical Success Factors</span>
+                    <span class="zh hidden">💡 关键成功因素</span>
+                </h3>
+                <ul style="color: var(--text-secondary); font-size: 14px; line-height: 1.8; padding-left: 20px;">
+                    <li>
+                        <span class="en"><strong>Executive Commitment:</strong> China SEO requires 18-month sustained investment before competitive parity. Secure C-level budget approval for $110,000-$175,000 total investment.</span>
+                        <span class="zh hidden"><strong>执行承诺：</strong> 中国SEO需要18个月的持续投资才能实现竞争平衡。确保C级预算批准$110,000-$175,000的总投资。</span>
+                    </li>
+                    <li>
+                        <span class="en"><strong>Local Expertise:</strong> Partner with China-native SEO agency or hire in-market specialists. Baidu algorithm differs fundamentally from Google (content freshness, domain age, China hosting weighted heavily).</span>
+                        <span class="zh hidden"><strong>本地专业知识：</strong> 与中国本土SEO机构合作或雇佣市场内专家。百度算法与谷歌根本不同（内容新鲜度、域名年龄、中国托管权重很高）。</span>
+                    </li>
+                    <li>
+                        <span class="en"><strong>Content Quality Bar:</strong> Avoid machine translation. Invest in professional Chinese copywriting that resonates culturally (reference local fitness trends, social media terminology, regional preferences).</span>
+                        <span class="zh hidden"><strong>内容质量标准：</strong> 避免机器翻译。投资于文化共鸣的专业中文文案撰写（参考本地健身趋势、社交媒体术语、地区偏好）。</span>
+                    </li>
+                    <li>
+                        <span class="en"><strong>Patience & Persistence:</strong> Expect minimal traffic in Months 1-4 due to Baidu's sandbox period for new domains. Trust the process and maintain content velocity (20-30 pages/month minimum).</span>
+                        <span class="zh hidden"><strong>耐心与坚持：</strong> 由于百度对新域名的沙盒期，预期第1-4月流量最少。相信流程并保持内容速度（最低20-30页/月）。</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cta-container" style="margin-top: 40px;">
+                <button class="primary-cta" id="download-pdf-btn">
+                    <span class="en">📥 Download Full Report</span>
+                    <span class="zh hidden">📥 下载完整报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Let's Discuss Your Strategy</span>
+                    <span class="zh hidden">📞 讨论您的战略</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
