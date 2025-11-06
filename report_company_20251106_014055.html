@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Canin - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+        }
+        .user-company-row td:first-child {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        .trend-indicator {
+            font-size: 16px;
+            margin-left: 8px;
+        }
+        .trend-up { color: var(--success-color); }
+        .trend-down { color: var(--danger-color); }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item.strength h3 { color: var(--success-color); }
+        .swot-item.weakness h3 { color: var(--danger-color); }
+        .swot-item.opportunity h3 { color: var(--primary-color); }
+        .swot-item.threat h3 { color: var(--warning-color); }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 2;
+            widows: 2;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+        .chart-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .chart-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chart-bar-label {
+            min-width: 150px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .chart-bar-container {
+            flex: 1;
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            transition: width 1s ease;
+        }
+        .chart-bar-stacked {
+            display: flex;
+            height: 100%;
+        }
+        .chart-bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .segment-baidu {
+            background: #3b82f6;
+        }
+        .segment-bing {
+            background: #8b5cf6;
+        }
+        .chart-legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+
+        /* Gap Analysis */
+        .gap-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .gap-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+        }
+        .gap-card h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .gap-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+        }
+        .gap-comparison {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            font-size: 16px;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+        }
+        .opportunity-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .opportunity-metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-top: 1px solid var(--alt-bg);
+        }
+        .opportunity-metric span:first-child {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        .opportunity-metric span:last-child {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Timeline */
+        .timeline-container {
+            margin: 30px 0;
+        }
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .timeline-item .timeline-phase {
+            color: var(--primary-color);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .timeline-item ul {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+        .timeline-item li {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2 {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1><span class="en">Royal Canin SEO Competitive Analysis Report</span><span class="zh hidden">皇家宠物食品 SEO 竞争分析报告</span></h1>
+            <p class="subtitle"><span class="en">Comprehensive SEO Performance Analysis for Pet Food Industry - December 2024</span><span class="zh hidden">宠物食品行业全面SEO表现分析 - 2024年12月</span></p>
+            
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">
+                        #2 <span style="font-size: 18px; color: var(--text-muted);"><span class="en">of 6</span><span class="zh hidden">/ 6</span></span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">
+                        622
+                        <span class="trend-indicator trend-down">▼</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></div>
+                    <div class="value">20</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">
+                        0%
+                        <span style="font-size: 14px; color: var(--text-muted); font-weight: normal;">
+                            <span class="en">(Top 10 / Total)</span>
+                            <span class="zh hidden">(前10/总数)</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 40px; margin-bottom: 16px; font-size: 20px;">
+                <span class="en">Key Findings</span>
+                <span class="zh hidden">关键发现</span>
+            </h3>
+            <p class="summary-text">
+                <span class="en">
+                    Royal Canin currently ranks #2 in the competitive pet food SEO landscape with 622 daily visits. While the brand demonstrates solid traffic performance, it faces significant competition from NetEase Yanxuan, which dominates with 6.7x more traffic (4,155 visits). The company's keyword portfolio of 20 keywords lacks top 10 rankings, indicating substantial room for improvement in search visibility. The market shows high concentration with only 3 of 11 analyzed competitors generating meaningful traffic, suggesting strong opportunities for brands that can optimize their SEO strategies effectively.
+                </span>
+                <span class="zh hidden">
+                    皇家宠物食品目前在宠物食品SEO竞争格局中排名第2，日均访问量622次。虽然品牌表现出稳定的流量表现，但面临来自网易严选的巨大竞争，后者以6.7倍的流量（4,155次访问）占据主导地位。公司的20个关键词组合中缺乏前10排名，表明搜索可见度有很大提升空间。市场显示出高度集中，11个分析的竞争对手中只有3个产生有意义的流量，这为能够有效优化SEO策略的品牌提供了巨大机会。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro">
+                <span class="en">Comprehensive analysis of SEO performance across top 6 competitors in the pet food industry. The competitive index is calculated based on total traffic, keyword count, and ranking distribution.</span>
+                <span class="zh hidden">宠物食品行业前6名竞争对手的SEO表现综合分析。竞争指数基于总流量、关键词数量和排名分布计算。</span>
+            </p>
+            
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu PC Traffic</span><span class="zh hidden">百度PC流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Top 20 KWs</span><span class="zh hidden">前20关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="en">NetEase Yanxuan</span>
+                                <span class="zh hidden">网易严选</span>
+                            </td>
+                            <td>4,155</td>
+                            <td>298 ~ 476</td>
+                            <td>68 ~ 108</td>
+                            <td>378</td>
+                            <td>77</td>
+                            <td><strong style="color: var(--danger-color);">100.0</strong></td>
+                        </tr>
+                        <tr class="user-company-row">
+                            <td>
+                                <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span>
+                                <span class="en">Royal Canin</span>
+                                <span class="zh hidden">皇家宠物食品</span>
+                            </td>
+                            <td>622</td>
+                            <td>44 ~ 70</td>
+                            <td>260 ~ 416</td>
+                            <td>20</td>
+                            <td>1</td>
+                            <td><strong style="color: var(--primary-color);">15.0</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Navarch</span>
+                                <span class="zh hidden">耐威克</span>
+                            </td>
+                            <td>202</td>
+                            <td>11 ~ 17</td>
+                            <td>0 ~ 0</td>
+                            <td>4</td>
+                            <td>1</td>
+                            <td><strong style="color: var(--text-muted);">4.9</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">GOOD MASTER</span>
+                                <span class="zh hidden">好主人</span>
+                            </td>
+                            <td>9</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong style="color: var(--text-muted);">0.2</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Bridge</span>
+                                <span class="zh hidden">比瑞吉</span>
+                            </td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong style="color: var(--text-muted);">0.0</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">PRO PLAN</span>
+                                <span class="zh hidden">冠能</span>
+                            </td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong style="color: var(--text-muted);">0.0</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p style="margin-top: 24px; color: var(--text-secondary); font-size: 14px;">
+                <span class="en">
+                    <strong>Analysis:</strong> The competitive index reveals a highly concentrated market where NetEase Yanxuan holds a commanding 100.0 score, representing absolute dominance with 4,155 daily visits and 378 keywords. Royal Canin's score of 15.0 positions it as a mid-tier player, while most competitors (Bridge, PRO PLAN, Myfoodie, Pure&Natural, ACANA, ORIJEN, Crazy Little Dog) show zero traffic, indicating either minimal SEO investment or poor optimization strategies.
+                </span>
+                <span class="zh hidden">
+                    <strong>分析：</strong>竞争指数揭示了一个高度集中的市场，网易严选以100.0的得分占据绝对主导地位，日访问量4,155次，关键词378个。皇家宠物食品得分15.0，定位为中等水平参与者，而大多数竞争对手（比瑞吉、冠能、麦富迪、伯纳天纯、爱肯拿、渴望、疯狂的小狗）显示零流量，表明SEO投资极少或优化策略不佳。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic assessment of Royal Canin's current SEO position, identifying internal strengths and weaknesses alongside external opportunities and threats in the competitive landscape.</span>
+                <span class="zh hidden">皇家宠物食品当前SEO地位的战略评估，识别内部优势和劣势，以及竞争格局中的外部机会和威胁。</span>
+            </p>
+            
+            <div class="swot-grid">
+                <div class="swot-item strength">
+                    <h3><span class="en">💪 Strengths</span><span class="zh hidden">💪 优势</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en">Solid #2 market position with 622 daily visits, significantly ahead of smaller competitors</span>
+                            <span class="zh hidden">稳固的市场第2位置，日访问量622次，显著领先小型竞争对手</span>
+                        </li>
+                        <li>
+                            <span class="en">Strong Bing traffic (260-416 range) demonstrates multi-platform visibility</span>
+                            <span class="zh hidden">强大的必应流量（260-416范围）展示多平台可见度</span>
+                        </li>
+                        <li>
+                            <span class="en">Established brand presence with 20 indexed keywords across positions 11-50</span>
+                            <span class="zh hidden">已建立的品牌存在，在11-50位拥有20个索引关键词</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item weakness">
+                    <h3><span class="en">⚠️ Weaknesses</span><span class="zh hidden">⚠️ 劣势</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en">Zero keywords ranking in top 10 positions, limiting high-intent traffic capture</span>
+                            <span class="zh hidden">前10位排名关键词为零，限制高意图流量捕获</span>
+                        </li>
+                        <li>
+                            <span class="en">85% traffic gap vs. market leader NetEase Yanxuan (622 vs. 4,155 visits)</span>
+                            <span class="zh hidden">与市场领导者网易严选相比85%的流量差距（622对4,155次访问）</span>
+                        </li>
+                        <li>
+                            <span class="en">Limited keyword portfolio (20 total) compared to leader's 378 keywords</span>
+                            <span class="zh hidden">有限的关键词组合（总共20个），相比领导者的378个关键词</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item opportunity">
+                    <h3><span class="en">🎯 Opportunities</span><span class="zh hidden">🎯 机会</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en">8 major competitors showing zero traffic represent untapped market share potential</span>
+                            <span class="zh hidden">8个主要竞争对手显示零流量，代表未开发的市场份额潜力</span>
+                        </li>
+                        <li>
+                            <span class="en">Low Baidu PC traffic (44-70) suggests room for significant Baidu SEO improvement</span>
+                            <span class="zh hidden">较低的百度PC流量（44-70）表明百度SEO有显著改进空间</span>
+                        </li>
+                        <li>
+                            <span class="en">12 keywords in positions 11-30 are prime candidates for top 10 promotion</span>
+                            <span class="zh hidden">12个排名11-30位的关键词是晋升前10的主要候选</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item threat">
+                    <h3><span class="en">⚡ Threats</span><span class="zh hidden">⚡威胁</span></h3>
+                    <ul>
+                        <li>
+                            <span class="en">NetEase Yanxuan's dominant position (6.7x more traffic) creates significant competitive pressure</span>
+                            <span class="zh hidden">网易严选的主导地位（6.7倍流量）造成重大竞争压力</span>
+                        </li>
+                        <li>
+                            <span class="en">Market concentration risk: Only 3 of 11 competitors capturing meaningful traffic</span>
+                            <span class="zh hidden">市场集中风险：11个竞争对手中只有3个捕获有意义的流量</span>
+                        </li>
+                        <li>
+                            <span class="en">Dormant competitors (Bridge, PRO PLAN, etc.) could activate aggressive SEO strategies</span>
+                            <span class="zh hidden">休眠竞争对手（比瑞吉、冠能等）可能启动激进的SEO策略</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">📊 Traffic Channel Distribution (Baidu vs. Bing)</span><span class="zh hidden">📊 流量渠道分布（百度 vs. 必应）</span></h3>
+                <div class="chart-bars">
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label">
+                            <span class="en">NetEase Yanxuan</span>
+                            <span class="zh hidden">网易严选</span>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment segment-baidu" style="width: 81%;">
+                                    <span class="en">Baidu: 387 (81%)</span>
+                                    <span class="zh hidden">百度: 387 (81%)</span>
+                                </div>
+                                <div class="chart-bar-segment segment-bing" style="width: 19%;">
+                                    <span class="en">Bing: 88 (19%)</span>
+                                    <span class="zh hidden">必应: 88 (19%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label">
+                            <span class="en">Royal Canin</span>
+                            <span class="zh hidden">皇家宠物食品</span>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment segment-baidu" style="width: 14.4%;">
+                                    <span class="en">Baidu: 57 (14%)</span>
+                                    <span class="zh hidden">百度: 57 (14%)</span>
+                                </div>
+                                <div class="chart-bar-segment segment-bing" style="width: 85.6%;">
+                                    <span class="en">Bing: 338 (86%)</span>
+                                    <span class="zh hidden">必应: 338 (86%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label">
+                            <span class="en">Navarch</span>
+                            <span class="zh hidden">耐威克</span>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment segment-baidu" style="width: 100%;">
+                                    <span class="en">Baidu: 14 (100%)</span>
+                                    <span class="zh hidden">百度: 14 (100%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label">
+                            <span class="en">GOOD MASTER</span>
+                            <span class="zh hidden">好主人</span>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-stacked">
+                                <div class="chart-bar-segment segment-baidu" style="width: 0%;">
+                                    <span class="en">No Traffic</span>
+                                    <span class="zh hidden">无流量</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color segment-baidu"></div>
+                        <span><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color segment-bing"></div>
+                        <span><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></span>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 20px; color: var(--text-secondary); font-size: 14px;">
+                    <span class="en">
+                        <strong>Insight:</strong> Royal Canin shows an unusual traffic distribution with 86% from Bing vs. 14% from Baidu, completely inverse to NetEase Yanxuan's 81% Baidu dominance. This suggests significant untapped potential in Baidu optimization, where Chinese users predominantly search. Prioritizing Baidu SEO could potentially triple Royal Canin's total traffic.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>洞察：</strong>皇家宠物食品显示出不寻常的流量分布，必应占86%，百度仅占14%，与网易严选81%的百度主导地位完全相反。这表明在百度优化方面有巨大的未开发潜力，而中国用户主要在百度搜索。优先考虑百度SEO可能会使皇家宠物食品的总流量增加两倍。
+                    </span>
+                </p>
+            </div>
+            
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">🎯 Keyword Efficiency Comparison</span><span class="zh hidden">🎯 关键词效率对比</span></h3>
+                <div class="chart-bars">
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label">
+                            <span class="en">NetEase Yanxuan</span>
+                            <span class="zh hidden">网易严选</span>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 100%;">20.4%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label">
+                            <span class="en">Navarch</span>
+                            <span class="zh hidden">耐威克</span>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 25%;">25.0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label">
+                            <span class="en">Royal Canin</span>
+                            <span class="zh hidden">皇家宠物食品</span>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 5%;">5.0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-bar-item">
+                        <div class="chart-bar-label">
+                            <span class="en">Others (No KWs)</span>
+                            <span class="zh hidden">其他（无关键词）</span>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 0%;">0%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 20px; color: var(--text-secondary); font-size: 14px;">
+                    <span class="en">
+                        <strong>Insight:</strong> Keyword efficiency (Top 20 Keywords / Total Keywords) reveals Royal Canin's challenge: only 5% of keywords rank in positions 11-20, compared to Navarch's 25% and NetEase Yanxuan's 20.4%. This indicates Royal Canin's keywords are spread across lower positions (21-50), requiring strategic optimization to elevate high-potential terms into more visible ranking positions.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>洞察：</strong>关键词效率（前20关键词/总关键词）揭示了皇家宠物食品的挑战：只有5%的关键词排名在11-20位，相比耐威克的25%和网易严选的20.4%。这表明皇家宠物食品的关键词分布在较低位置（21-50位），需要战略优化以将高潜力词提升到更可见的排名位置。
+                    </span>
+                </p>
+            </div>
+            
+            <!-- Competitive Gap Analysis -->
+            <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 20px;">
+                <span class="en">📉 Competitive Gap Analysis vs. Market Leader</span>
+                <span class="zh hidden">📉 与市场领导者的竞争差距分析</span>
+            </h3>
+            <div class="gap-analysis">
+                <div class="gap-card">
+                    <h4><span class="en">Traffic Gap</span><span class="zh hidden">流量差距</span></h4>
+                    <div class="gap-value" style="color: var(--danger-color);">-3,533</div>
+                    <div class="gap-comparison">
+                        <span class="en">85.0% below NetEase Yanxuan</span>
+                        <span class="zh hidden">比网易严选低85.0%</span>
+                    </div>
+                </div>
+                
+                <div class="gap-card">
+                    <h4><span class="en">Keyword Gap</span><span class="zh hidden">关键词差距</span></h4>
+                    <div class="gap-value" style="color: var(--danger-color);">-358</div>
+                    <div class="gap-comparison">
+                        <span class="en">94.7% fewer keywords than leader</span>
+                        <span class="zh hidden">比领导者少94.7%关键词</span>
+                    </div>
+                </div>
+                
+                <div class="gap-card">
+                    <h4><span class="en">Top 20 Keywords Gap</span><span class="zh hidden">前20关键词差距</span></h4>
+                    <div class="gap-value" style="color: var(--danger-color);">-76</div>
+                    <div class="gap-comparison">
+                        <span class="en">Only 1 vs. leader's 77 top rankings</span>
+                        <span class="zh hidden">仅1个，领导者有77个顶级排名</span>
+                    </div>
+                </div>
+                
+                <div class="gap-card">
+                    <h4><span class="en">Baidu Traffic Gap</span><span class="zh hidden">百度流量差距</span></h4>
+                    <div class="gap-value" style="color: var(--danger-color);">-330</div>
+                    <div class="gap-comparison">
+                        <span class="en">85.3% below leader's Baidu traffic</span>
+                        <span class="zh hidden">比领导者的百度流量低85.3%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic opportunities identified through competitive analysis, keyword gap analysis, and market positioning assessment. These opportunities are prioritized by potential impact and implementation feasibility.</span>
+                <span class="zh hidden">通过竞争分析、关键词差距分析和市场定位评估识别的战略机会。这些机会按潜在影响和实施可行性进行优先级排序。</span>
+            </p>
+            
+            <h3 style="margin-top: 30px; margin-bottom: 20px; font-size: 20px;">
+                <span class="en">🎯 Priority Opportunities</span>
+                <span class="zh hidden">🎯 优先机会</span>
+            </h3>
+            
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">1. Baidu SEO Acceleration</span>
+                        <span class="zh hidden">1. 百度SEO加速</span>
+                    </h4>
+                    <p>
+                        <span class="en">Royal Canin's Baidu traffic (57) is only 14% of total traffic, compared to 81% for NetEase Yanxuan. Optimizing for Baidu's algorithm and user behavior could unlock 300-500 additional daily visits.</span>
+                        <span class="zh hidden">皇家宠物食品的百度流量（57）仅占总流量的14%，而网易严选占81%。针对百度算法和用户行为进行优化可能会解锁300-500的额外日访问量。</span>
+                    </p>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Potential Impact</span><span class="zh hidden">潜在影响</span></span>
+                        <span><span class="en">+300-500 visits/day</span><span class="zh hidden">+300-500 访问/天</span></span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Implementation</span><span class="zh hidden">实施难度</span></span>
+                        <span><span class="en">Medium (3-6 months)</span><span class="zh hidden">中等（3-6个月）</span></span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Priority</span><span class="zh hidden">优先级</span></span>
+                        <span style="color: var(--danger-color); font-weight: 700;"><span class="en">Critical</span><span class="zh hidden">关键</span></span>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">2. Top 20 Keyword Elevation</span>
+                        <span class="zh hidden">2. 前20关键词提升</span>
+                    </h4>
+                    <p>
+                        <span class="en">12 keywords ranking in positions 11-30 are prime candidates for top 10 promotion. Moving even 5 keywords into top 10 could increase CTR by 15-25%, driving an additional 100-150 daily visits.</span>
+                        <span class="zh hidden">12个排名在11-30位的关键词是晋升前10的主要候选。即使将5个关键词移至前10位，也可能使点击率提高15-25%，带来额外100-150次日访问。</span>
+                    </p>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Potential Impact</span><span class="zh hidden">潜在影响</span></span>
+                        <span><span class="en">+100-150 visits/day</span><span class="zh hidden">+100-150 访问/天</span></span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Implementation</span><span class="zh hidden">实施难度</span></span>
+                        <span><span class="en">Low (1-3 months)</span><span class="zh hidden">低（1-3个月）</span></span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Priority</span><span class="zh hidden">优先级</span></span>
+                        <span style="color: var(--warning-color); font-weight: 700;"><span class="en">High</span><span class="zh hidden">高</span></span>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">3. Keyword Portfolio Expansion</span>
+                        <span class="zh hidden">3. 关键词组合扩展</span>
+                    </h4>
+                    <p>
+                        <span class="en">With only 20 keywords vs. NetEase Yanxuan's 378, there's massive room for expansion. Targeting 50-100 new long-tail keywords related to specific pet food categories, breeds, and health concerns could diversify traffic sources.</span>
+                        <span class="zh hidden">仅有20个关键词，而网易严选有378个，扩展空间巨大。针对50-100个与特定宠物食品类别、品种和健康问题相关的新长尾关键词，可以多样化流量来源。</span>
+                    </p>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Potential Impact</span><span class="zh hidden">潜在影响</span></span>
+                        <span><span class="en">+200-400 visits/day</span><span class="zh hidden">+200-400 访问/天</span></span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Implementation</span><span class="zh hidden">实施难度</span></span>
+                        <span><span class="en">High (6-12 months)</span><span class="zh hidden">高（6-12个月）</span></span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Priority</span><span class="zh hidden">优先级</span></span>
+                        <span style="color: var(--warning-color); font-weight: 700;"><span class="en">High</span><span class="zh hidden">高</span></span>
+                    </div>
+                </div>
+                
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">4. Competitive Vacuum Exploitation</span>
+                        <span class="zh hidden">4. 竞争真空利用</span>
+                    </h4>
+                    <p>
+                        <span class="en">8 major competitors (Bridge, PRO PLAN, Myfoodie, Pure&Natural, ACANA, ORIJEN, Crazy Little Dog) show zero SEO traffic. This market vacuum presents opportunities to capture brand-comparison and alternative-search queries.</span>
+                        <span class="zh hidden">8个主要竞争对手（比瑞吉、冠能、麦富迪、伯纳天纯、爱肯拿、渴望、疯狂的小狗）显示零SEO流量。这一市场真空为捕获品牌比较和替代搜索查询提供了机会。</span>
+                    </p>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Potential Impact</span><span class="zh hidden">潜在影响</span></span>
+                        <span><span class="en">+80-120 visits/day</span><span class="zh hidden">+80-120 访问/天</span></span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Implementation</span><span class="zh hidden">实施难度</span></span>
+                        <span><span class="en">Medium (3-6 months)</span><span class="zh hidden">中等（3-6个月）</span></span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span><span class="en">Priority</span><span class="zh hidden">优先级</span></span>
+                        <span style="color: var(--primary-color); font-weight: 700;"><span class="en">Medium</span><span class="zh hidden">中</span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 20px;">
+                <span class="en">💡 Total Potential Calculation</span>
+                <span class="zh hidden">💡 总潜力计算</span>
+            </h3>
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Current Daily Traffic</span><span class="zh hidden">当前日流量</span></div>
+                    <div class="value">622</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Potential Additional Traffic</span><span class="zh hidden">潜在额外流量</span></div>
+                    <div class="value" style="color: var(--success-color);">
+                        +680-1,170
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Projected Total Traffic</span><span class="zh hidden">预计总流量</span></div>
+                    <div class="value" style="color: var(--primary-color);">
+                        1,302-1,792
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Traffic Growth Potential</span><span class="zh hidden">流量增长潜力</span></div>
+                    <div class="value" style="color: var(--success-color);">
+                        +109-188%
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2><span class="en">Strategic Action Plan</span><span class="zh hidden">战略行动计划</span></h2>
+            <p class="section-intro">
+                <span class="en">Comprehensive 12-month roadmap to close the competitive gap and achieve 1,300-1,800 daily visits. This plan is structured in three phases with specific actions, timelines, and success metrics.</span>
+                <span class="zh hidden">全面的12个月路线图，以缩小竞争差距并实现1,300-1,800日访问量。该计划分为三个阶段，包含具体行动、时间表和成功指标。</span>
+            </p>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-phase"><span class="en">Phase 1 (Month 1-3)</span><span class="zh hidden">第一阶段（第1-3个月）</span></div>
+                    <h4><span class="en">🚀 Quick Wins & Foundation</span><span class="zh hidden">🚀 快速赢得与基础建设</span></h4>
+                    <p>
+                        <span class="en">Focus on low-hanging fruit to generate immediate traffic improvements while establishing SEO infrastructure.</span>
+                        <span class="zh hidden">专注于低垂的果实以产生即时流量改善，同时建立SEO基础设施。</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Elevate Top 20 Keywords:</strong> Optimize on-page SEO for 12 keywords ranking positions 11-30. Target: Move 5 keywords to top 10 (+100-150 visits/day)</span>
+                            <span class="zh hidden"><strong>提升前20关键词：</strong>优化排名11-30位的12个关键词的页面SEO。目标：将5个关键词移至前10位（+100-150访问/天）</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Technical SEO Audit:</strong> Fix crawlability issues, improve site speed, implement structured data for pet products</span>
+                            <span class="zh hidden"><strong>技术SEO审计：</strong>修复可爬行性问题，提高网站速度，为宠物产品实施结构化数据</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Baidu Webmaster Tools Setup:</strong> Verify site, submit sitemap, analyze Baidu-specific ranking factors</span>
+                            <span class="zh hidden"><strong>百度站长工具设置：</strong>验证网站，提交站点地图，分析百度特定排名因素</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-phase"><span class="en">Phase 2 (Month 4-6)</span><span class="zh hidden">第二阶段（第4-6个月）</span></div>
+                    <h4><span class="en">🎯 Baidu Optimization & Content Expansion</span><span class="zh hidden">🎯 百度优化与内容扩展</span></h4>
+                    <p>
+                        <span class="en">Aggressive Baidu-focused optimization and strategic content creation to capture Chinese search market.</span>
+                        <span class="zh hidden">激进的百度聚焦优化和战略性内容创作，以捕获中国搜索市场。</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Baidu SEO Acceleration:</strong> Optimize 20 existing pages for Baidu's preferences (ICP licensing display, Chinese hosting, mobile-first). Target: +200-300 Baidu visits/day</span>
+                            <span class="zh hidden"><strong>百度SEO加速：</strong>针对百度偏好优化20个现有页面（ICP许可证显示、中国托管、移动优先）。目标：+200-300百度访问/天</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Content Cluster Development:</strong> Create 30-50 new pages targeting long-tail keywords in pet food nutrition, breed-specific diets, health conditions</span>
+                            <span class="zh hidden"><strong>内容集群开发：</strong>创建30-50个新页面，针对宠物食品营养、品种特定饮食、健康状况中的长尾关键词</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Competitive Content Analysis:</strong> Identify and replicate successful content patterns from NetEase Yanxuan and dormant competitors</span>
+                            <span class="zh hidden"><strong>竞争内容分析：</strong>识别并复制来自网易严选和休眠竞争对手的成功内容模式</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-phase"><span class="en">Phase 3 (Month 7-9)</span><span class="zh hidden">第三阶段（第7-9个月）</span></div>
+                    <h4><span class="en">📈 Portfolio Expansion & Authority Building</span><span class="zh hidden">📈 组合扩展与权威建设</span></h4>
+                    <p>
+                        <span class="en">Scale keyword portfolio to 100+ keywords and build domain authority through strategic link building.</span>
+                        <span class="zh hidden">将关键词组合扩展到100+关键词，并通过战略性链接建设提升域名权威。</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Keyword Portfolio Expansion:</strong> Research and target 50-80 new keywords. Create supporting content and optimize for positions 11-30. Target: +150-250 visits/day</span>
+                            <span class="zh hidden"><strong>关键词组合扩展：</strong>研究并针对50-80个新关键词。创建支持内容并优化至11-30位。目标：+150-250访问/天</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Competitor Comparison Content:</strong> Create detailed comparison pages for dormant competitors (Bridge, PRO PLAN, ACANA, etc.). Target: +80-120 visits/day from alternative searches</span>
+                            <span class="zh hidden"><strong>竞争对手比较内容：</strong>为休眠竞争对手（比瑞吉、冠能、爱肯拿等）创建详细的比较页面。目标：从替代搜索中获得+80-120访问/天</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Link Building Campaign:</strong> Secure 15-20 high-quality backlinks from pet industry publications, veterinary blogs, and pet forums</span>
+                            <span class="zh hidden"><strong>链接建设活动：</strong>从宠物行业出版物、兽医博客和宠物论坛获得15-20个高质量反向链接</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-phase"><span class="en">Phase 4 (Month 10-12)</span><span class="zh hidden">第四阶段（第10-12个月）</span></div>
+                    <h4><span class="en">🏆 Optimization & Scaling</span><span class="zh hidden">🏆 优化与扩展</span></h4>
+                    <p>
+                        <span class="en">Refine strategies based on performance data, scale successful tactics, and establish sustainable growth systems.</span>
+                        <span class="zh hidden">根据表现数据优化策略，扩大成功战术，并建立可持续增长系统。</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="en"><strong>Performance Review & Optimization:</strong> Analyze keyword performance, prune underperforming content, double down on high-ROI keywords</span>
+                            <span class="zh hidden"><strong>表现审查与优化：</strong>分析关键词表现，修剪表现不佳的内容，加大对高投资回报率关键词的投入</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Advanced Technical SEO:</strong> Implement advanced schema markup, improve internal linking structure, optimize for featured snippets</span>
+                            <span class="zh hidden"><strong>高级技术SEO：</strong>实施高级结构化标记，改进内部链接结构，为精选摘要优化</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Competitive Monitoring System:</strong> Set up automated tracking for competitor movements and market opportunities</span>
+                            <span class="zh hidden"><strong>竞争监控系统：</strong>建立竞争对手动向和市场机会的自动跟踪系统</span>
+                        </li>
+                        <li>
+                            <span class="en"><strong>Target Achievement:</strong> Reach 1,300-1,800 daily visits (109-188% growth)</span>
+                            <span class="zh hidden"><strong>目标实现：</strong>达到1,300-1,800日访问量（109-188%增长）</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 20px;">
+                <span class="en">📊 Success Metrics & KPIs</span>
+                <span class="zh hidden">📊 成功指标与KPI</span>
+            </h3>
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">3-Month Target</span><span class="zh hidden">3个月目标</span></div>
+                    <div class="value" style="color: var(--primary-color);">
+                        750-800
+                        <span style="font-size: 14px; color: var(--text-muted); font-weight: normal;">
+                            <span class="en">visits/day</span>
+                            <span class="zh hidden">访问/天</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">6-Month Target</span><span class="zh hidden">6个月目标</span></div>
+                    <div class="value" style="color: var(--primary-color);">
+                        1,000-1,200
+                        <span style="font-size: 14px; color: var(--text-muted); font-weight: normal;">
+                            <span class="en">visits/day</span>
+                            <span class="zh hidden">访问/天</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">12-Month Target</span><span class="zh hidden">12个月目标</span></div>
+                    <div class="value" style="color: var(--success-color);">
+                        1,300-1,800
+                        <span style="font-size: 14px; color: var(--text-muted); font-weight: normal;">
+                            <span class="en">visits/day</span>
+                            <span class="zh hidden">访问/天</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Growth Target</span><span class="zh hidden">关键词增长目标</span></div>
+                    <div class="value" style="color: var(--success-color);">
+                        100+
+                        <span style="font-size: 14px; color: var(--text-muted); font-weight: normal;">
+                            <span class="en">total keywords</span>
+                            <span class="zh hidden">总关键词</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta">
+                    <span class="en">📄 Download Full Report (PDF)</span>
+                    <span class="zh hidden">📄 下载完整报告（PDF）</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule SEO Consultation</span>
+                    <span class="zh hidden">📞 预约SEO咨询</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
