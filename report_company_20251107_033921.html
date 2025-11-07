@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSV Group - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Bar Chart Styles */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            width: 180px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+        .bar-visual {
+            flex: 1;
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            border-radius: 6px;
+            transition: width 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+        }
+        .bar-value {
+            font-size: 12px;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Stacked Bar Chart */
+        .stacked-bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .stacked-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .stacked-bar-label {
+            width: 180px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+        .stacked-bar-visual {
+            flex: 1;
+            height: 32px;
+            display: flex;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .stacked-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .segment-baidu {
+            background: #3b82f6;
+        }
+        .segment-bing {
+            background: #8b5cf6;
+        }
+
+        /* Gap Analysis */
+        .gap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gap-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+        }
+        .gap-card h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .gap-comparison {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .gap-value {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: var(--font-data);
+        }
+        .gap-value.user {
+            color: var(--primary-color);
+        }
+        .gap-value.competitor {
+            color: var(--danger-color);
+        }
+        .gap-bar {
+            height: 8px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .gap-bar-fill {
+            height: 100%;
+            background: var(--danger-color);
+            border-radius: 4px;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+        .timeline-phase {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .opportunity-metric {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        .opportunity-metric .label {
+            color: var(--text-muted);
+        }
+        .opportunity-metric .value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-color);
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2.section-title {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1>
+                <span class="en">SEO Competitive Analysis Report</span>
+                <span class="zh hidden">SEO竞争分析报告</span>
+            </h1>
+            <p class="subtitle">
+                <span class="en">DSV Group | Generated on December 2024</span>
+                <span class="zh hidden">帝斯威（DSV）| 生成于 2024年12月</span>
+            </p>
+            
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Market Ranking</span>
+                        <span class="zh hidden">市场排名</span>
+                    </div>
+                    <div class="value">
+                        #6<span style="font-size: 16px; color: var(--text-muted); margin-left: 8px;">
+                            <span class="en">/ 6 competitors</span>
+                            <span class="zh hidden">/ 6家竞争对手</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Daily Traffic vs. Avg</span>
+                        <span class="zh hidden">日均流量对比</span>
+                    </div>
+                    <div class="value">
+                        -99.4% <span style="font-size: 16px; color: var(--danger-color);">↓</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Keyword Efficiency</span>
+                        <span class="zh hidden">关键词效率</span>
+                    </div>
+                    <div class="value">
+                        0.00%
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Growth Potential</span>
+                        <span class="zh hidden">增长潜力</span>
+                    </div>
+                    <div class="value">
+                        <span style="color: var(--success-color);">
+                            <span class="en">High</span>
+                            <span class="zh hidden">高</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    DSV Group currently ranks 6th among analyzed competitors with 608 daily visits. The company faces significant challenges with SF Express leading the market at 529,387 daily visits (870x larger). However, DSV's Bing traffic dominance (64% vs. 8% Baidu) presents a unique positioning opportunity. With zero Top 10 keywords and 85% of keywords ranking beyond position 30, there is substantial room for strategic SEO improvements to capture market share.
+                </span>
+                <span class="zh hidden">
+                    帝斯威（DSV）目前在分析的竞争对手中排名第6位，日均访问量为608次。公司面临重大挑战，市场领导者顺丰速运日均流量达529,387次（是DSV的870倍）。然而，DSV在必应流量方面的主导地位（64% vs. 百度8%）呈现出独特的定位机会。由于缺乏前10关键词且85%的关键词排名在第30位之后，通过战略性SEO改进获取市场份额具有巨大空间。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Competition Overview</span>
+                <span class="zh hidden">竞争概览</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">Comparative analysis of DSV Group against the top 5 competitors in the logistics industry based on SEO performance metrics.</span>
+                <span class="zh hidden">基于SEO性能指标，将帝斯威（DSV）与物流行业前5大竞争对手进行对比分析。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Total Daily Traffic</span><span class="zh hidden">日均总流量</span></th>
+                            <th><span class="en">Baidu PC Traffic</span><span class="zh hidden">百度PC流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Pos 11-20</span><span class="zh hidden">排名11-20</span></th>
+                            <th><span class="en">Pos 21-30</span><span class="zh hidden">排名21-30</span></th>
+                            <th><span class="en">Pos 31-40</span><span class="zh hidden">排名31-40</span></th>
+                            <th><span class="en">Pos 41-50</span><span class="zh hidden">排名41-50</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争力指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td>
+                                <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本司</span></span>
+                                <span class="en">DSV Group</span>
+                                <span class="zh hidden">帝斯威（DSV）</span>
+                            </td>
+                            <td>608</td>
+                            <td>32 ~ 52</td>
+                            <td>387 ~ 617</td>
+                            <td>129</td>
+                            <td>31</td>
+                            <td>30</td>
+                            <td>34</td>
+                            <td>14</td>
+                            <td style="color: var(--danger-color); font-weight: 600;">3.2</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">SF Express</span>
+                                <span class="zh hidden">顺丰速运有限公司</span>
+                            </td>
+                            <td>529,387</td>
+                            <td>28,686 ~ 45,824</td>
+                            <td>53,860 ~ 86,036</td>
+                            <td>8,838</td>
+                            <td>1,393</td>
+                            <td>2,337</td>
+                            <td>875</td>
+                            <td>1,160</td>
+                            <td style="color: var(--success-color); font-weight: 600;">92.5</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">China Post EMS</span>
+                                <span class="zh hidden">中国邮政速递物流股份有限公司</span>
+                            </td>
+                            <td>129,349</td>
+                            <td>6,885 ~ 10,997</td>
+                            <td>11,030 ~ 17,620</td>
+                            <td>2,005</td>
+                            <td>449</td>
+                            <td>233</td>
+                            <td>113</td>
+                            <td>133</td>
+                            <td style="color: var(--success-color); font-weight: 600;">71.8</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Deppon Express</span>
+                                <span class="zh hidden">德邦快递股份有限公司</span>
+                            </td>
+                            <td>98,032</td>
+                            <td>5,380 ~ 8,594</td>
+                            <td>5,917 ~ 9,453</td>
+                            <td>2,666</td>
+                            <td>612</td>
+                            <td>590</td>
+                            <td>288</td>
+                            <td>302</td>
+                            <td style="color: var(--success-color); font-weight: 600;">68.4</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">DHL Global Forwarding</span>
+                                <span class="zh hidden">敦豪全球货运（中国）有限公司</span>
+                            </td>
+                            <td>37,385</td>
+                            <td>4,247 ~ 6,783</td>
+                            <td>1,000 ~ 1,598</td>
+                            <td>2,287</td>
+                            <td>431</td>
+                            <td>555</td>
+                            <td>408</td>
+                            <td>428</td>
+                            <td style="color: var(--warning-color); font-weight: 600;">54.2</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Sinotrans Limited</span>
+                                <span class="zh hidden">中国外运股份有限公司</span>
+                            </td>
+                            <td>1,747</td>
+                            <td>206 ~ 328</td>
+                            <td>21 ~ 33</td>
+                            <td>352</td>
+                            <td>40</td>
+                            <td>89</td>
+                            <td>62</td>
+                            <td>55</td>
+                            <td style="color: var(--warning-color); font-weight: 600;">12.8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p style="margin-top: 20px; color: var(--text-muted); font-size: 14px;">
+                <span class="en">
+                    <strong>Competitive Index Methodology:</strong> Calculated using a weighted formula: (Daily Traffic × 0.4) + (Total Keywords × 0.3) + (Top 20 Position Keywords × 0.3), normalized to a 0-100 scale. Higher scores indicate stronger SEO competitive positioning.
+                </span>
+                <span class="zh hidden">
+                    <strong>竞争力指数方法论：</strong> 使用加权公式计算：（日均流量 × 0.4）+（关键词总数 × 0.3）+（前20排名关键词 × 0.3），标准化为0-100分制。分数越高表示SEO竞争定位越强。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2 class="section-title">
+                <span class="en">SWOT Analysis</span>
+                <span class="zh hidden">SWOT分析</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">Strategic assessment of DSV Group's current SEO position, identifying internal strengths and weaknesses alongside external opportunities and threats.</span>
+                <span class="zh hidden">对帝斯威（DSV）当前SEO定位的战略评估，识别内部优势和劣势以及外部机会和威胁。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);">
+                        <span class="en">Strengths</span>
+                        <span class="zh hidden">优势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Dominant Bing traffic share (64% vs. 8% Baidu) indicates strong international SEO positioning</span>
+                            <span class="zh hidden">必应流量占比主导（64% vs. 百度8%）表明国际SEO定位强劲</span>
+                        </li>
+                        <li>
+                            <span class="en">Balanced keyword distribution across positions 11-40 (73% of portfolio) shows broad visibility potential</span>
+                            <span class="zh hidden">关键词在11-40位的均衡分布（占73%）显示出广泛的可见性潜力</span>
+                        </li>
+                        <li>
+                            <span class="en">Established presence with 129 indexed keywords provides foundation for optimization</span>
+                            <span class="zh hidden">已建立129个索引关键词的存在为优化提供基础</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);">
+                        <span class="en">Weaknesses</span>
+                        <span class="zh hidden">劣势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Zero keywords in Top 10 positions severely limits organic traffic acquisition</span>
+                            <span class="zh hidden">前10位关键词为零严重限制自然流量获取</span>
+                        </li>
+                        <li>
+                            <span class="en">Daily traffic 870x lower than market leader SF Express (608 vs. 529,387)</span>
+                            <span class="zh hidden">日均流量比市场领导者顺丰速运低870倍（608 vs. 529,387）</span>
+                        </li>
+                        <li>
+                            <span class="en">Poor Baidu visibility (5% share) in China's dominant search engine ecosystem</span>
+                            <span class="zh hidden">在中国主导搜索引擎生态系统中百度可见性差（5%份额）</span>
+                        </li>
+                        <li>
+                            <span class="en">Low competitive index (3.2) indicates weak overall SEO market positioning</span>
+                            <span class="zh hidden">竞争力指数低（3.2）表明整体SEO市场定位薄弱</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);">
+                        <span class="en">Opportunities</span>
+                        <span class="zh hidden">机会</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Target 31 keywords in positions 11-20 for quick Top 10 breakthrough potential</span>
+                            <span class="zh hidden">针对11-20位的31个关键词实现快速前10突破潜力</span>
+                        </li>
+                        <li>
+                            <span class="en">Leverage Bing strength to capture international B2B logistics queries</span>
+                            <span class="zh hidden">利用必应优势捕获国际B2B物流查询</span>
+                        </li>
+                        <li>
+                            <span class="en">Implement Baidu-specific optimization to tap into China's 1.7B+ traffic market</span>
+                            <span class="zh hidden">实施百度专项优化以开发中国17亿+流量市场</span>
+                        </li>
+                        <li>
+                            <span class="en">Capitalize on competitors' weak mobile presence with mobile-first strategy</span>
+                            <span class="zh hidden">通过移动优先策略利用竞争对手薄弱的移动端表现</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);">
+                        <span class="en">Threats</span>
+                        <span class="zh hidden">威胁</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">SF Express and China Post EMS dominate with 213x and 32x more keywords respectively</span>
+                            <span class="zh hidden">顺丰速运和中国邮政EMS分别以213倍和32倍的关键词占据主导地位</span>
+                        </li>
+                        <li>
+                            <span class="en">DHL Global Forwarding holds 18x more keywords in same international freight segment</span>
+                            <span class="zh hidden">敦豪全球货运在相同国际货运细分市场持有18倍的关键词</span>
+                        </li>
+                        <li>
+                            <span class="en">85% of keywords ranking beyond position 30 face high bounce risk</span>
+                            <span class="zh hidden">85%的关键词排名超过第30位面临高跳出风险</span>
+                        </li>
+                        <li>
+                            <span class="en">Increasing algorithm complexity on both Baidu and Bing requires sustained investment</span>
+                            <span class="zh hidden">百度和必应算法复杂性增加需要持续投资</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Deep Metrics Analysis</span>
+                <span class="zh hidden">深度指标分析</span>
+            </h2>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">Traffic Channel Distribution: Baidu vs. Bing</span>
+                    <span class="zh hidden">流量渠道分布：百度 vs. 必应</span>
+                </h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">DSV's unique traffic profile shows heavy Bing reliance (64%), contrasting sharply with competitors' Baidu dominance. This presents both a differentiation opportunity and a China market risk.</span>
+                    <span class="zh hidden">DSV独特的流量特征显示对必应的严重依赖（64%），与竞争对手的百度主导形成鲜明对比。这既是差异化机会也是中国市场风险。</span>
+                </p>
+                <div class="stacked-bar-chart">
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label">
+                            <span class="en">DSV Group</span>
+                            <span class="zh hidden">帝斯威（DSV）</span>
+                        </div>
+                        <div class="stacked-bar-visual">
+                            <div class="stacked-segment segment-baidu" style="width: 8%;">8%</div>
+                            <div class="stacked-segment segment-bing" style="width: 92%;">92%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label">
+                            <span class="en">SF Express</span>
+                            <span class="zh hidden">顺丰速运</span>
+                        </div>
+                        <div class="stacked-bar-visual">
+                            <div class="stacked-segment segment-baidu" style="width: 41%;">41%</div>
+                            <div class="stacked-segment segment-bing" style="width: 59%;">59%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label">
+                            <span class="en">China Post EMS</span>
+                            <span class="zh hidden">中国邮政EMS</span>
+                        </div>
+                        <div class="stacked-bar-visual">
+                            <div class="stacked-segment segment-baidu" style="width: 38%;">38%</div>
+                            <div class="stacked-segment segment-bing" style="width: 62%;">62%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label">
+                            <span class="en">Deppon Express</span>
+                            <span class="zh hidden">德邦快递</span>
+                        </div>
+                        <div class="stacked-bar-visual">
+                            <div class="stacked-segment segment-baidu" style="width: 47%;">47%</div>
+                            <div class="stacked-segment segment-bing" style="width: 53%;">53%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label">
+                            <span class="en">DHL Global Forwarding</span>
+                            <span class="zh hidden">敦豪全球货运</span>
+                        </div>
+                        <div class="stacked-bar-visual">
+                            <div class="stacked-segment segment-baidu" style="width: 84%;">84%</div>
+                            <div class="stacked-segment segment-bing" style="width: 16%;">16%</div>
+                        </div>
+                    </div>
+                    <div class="stacked-bar-item">
+                        <div class="stacked-bar-label">
+                            <span class="en">Sinotrans Limited</span>
+                            <span class="zh hidden">中国外运</span>
+                        </div>
+                        <div class="stacked-bar-visual">
+                            <div class="stacked-segment segment-baidu" style="width: 91%;">91%</div>
+                            <div class="stacked-segment segment-bing" style="width: 9%;">9%</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 20px; margin-top: 16px; font-size: 13px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 16px; height: 16px; background: #3b82f6; border-radius: 3px;"></div>
+                        <span class="en">Baidu PC</span>
+                        <span class="zh hidden">百度PC</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 16px; height: 16px; background: #8b5cf6; border-radius: 3px;"></div>
+                        <span class="en">Bing</span>
+                        <span class="zh hidden">必应</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">Keyword Efficiency Comparison</span>
+                    <span class="zh hidden">关键词效率对比</span>
+                </h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Efficiency calculated as: (Keywords in Positions 11-20) / (Total Keywords) × 100. Higher percentages indicate better optimization and near-term ranking improvement potential.</span>
+                    <span class="zh hidden">效率计算方式：（11-20位关键词）/（关键词总数）× 100。百分比越高表示优化越好，短期排名提升潜力越大。</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">DSV Group</span>
+                            <span class="zh hidden">帝斯威（DSV）</span>
+                        </div>
+                        <div class="bar-visual">
+                            <div class="bar-fill" style="width: 24%;">
+                                <span class="bar-value">24.0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">Deppon Express</span>
+                            <span class="zh hidden">德邦快递</span>
+                        </div>
+                        <div class="bar-visual">
+                            <div class="bar-fill" style="width: 23%;">
+                                <span class="bar-value">23.0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">China Post EMS</span>
+                            <span class="zh hidden">中国邮政EMS</span>
+                        </div>
+                        <div class="bar-visual">
+                            <div class="bar-fill" style="width: 22.4%;">
+                                <span class="bar-value">22.4%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">DHL Global Forwarding</span>
+                            <span class="zh hidden">敦豪全球货运</span>
+                        </div>
+                        <div class="bar-visual">
+                            <div class="bar-fill" style="width: 18.8%;">
+                                <span class="bar-value">18.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">SF Express</span>
+                            <span class="zh hidden">顺丰速运</span>
+                        </div>
+                        <div class="bar-visual">
+                            <div class="bar-fill" style="width: 15.8%;">
+                                <span class="bar-value">15.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="en">Sinotrans Limited</span>
+                            <span class="zh hidden">中国外运</span>
+                        </div>
+                        <div class="bar-visual">
+                            <div class="bar-fill" style="width: 11.4%;">
+                                <span class="bar-value">11.4%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">Competitive Gap Analysis vs. Market Leader (SF Express)</span>
+                    <span class="zh hidden">与市场领导者（顺丰速运）的竞争差距分析</span>
+                </h3>
+                <div class="gap-grid">
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Daily Traffic Gap</span>
+                            <span class="zh hidden">日均流量差距</span>
+                        </h4>
+                        <div class="gap-comparison">
+                            <div>
+                                <div class="gap-value user">608</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">
+                                    <span class="en">DSV</span>
+                                    <span class="zh hidden">DSV</span>
+                                </div>
+                            </div>
+                            <div style="font-size: 24px; color: var(--text-muted);">→</div>
+                            <div style="text-align: right;">
+                                <div class="gap-value competitor">529,387</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">
+                                    <span class="en">SF Express</span>
+                                    <span class="zh hidden">顺丰</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gap-bar">
+                            <div class="gap-bar-fill" style="width: 99.9%;"></div>
+                        </div>
+                        <p style="margin-top: 8px; font-size: 13px; color: var(--text-muted);">
+                            <span class="en">870x gap to close</span>
+                            <span class="zh hidden">需缩小870倍差距</span>
+                        </p>
+                    </div>
+
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Keyword Portfolio Gap</span>
+                            <span class="zh hidden">关键词组合差距</span>
+                        </h4>
+                        <div class="gap-comparison">
+                            <div>
+                                <div class="gap-value user">129</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">
+                                    <span class="en">DSV</span>
+                                    <span class="zh hidden">DSV</span>
+                                </div>
+                            </div>
+                            <div style="font-size: 24px; color: var(--text-muted);">→</div>
+                            <div style="text-align: right;">
+                                <div class="gap-value competitor">8,838</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">
+                                    <span class="en">SF Express</span>
+                                    <span class="zh hidden">顺丰</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gap-bar">
+                            <div class="gap-bar-fill" style="width: 98.5%;"></div>
+                        </div>
+                        <p style="margin-top: 8px; font-size: 13px; color: var(--text-muted);">
+                            <span class="en">68x more keywords needed</span>
+                            <span class="zh hidden">需增加68倍关键词</span>
+                        </p>
+                    </div>
+
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Top 20 Position Gap</span>
+                            <span class="zh hidden">前20位关键词差距</span>
+                        </h4>
+                        <div class="gap-comparison">
+                            <div>
+                                <div class="gap-value user">31</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">
+                                    <span class="en">DSV</span>
+                                    <span class="zh hidden">DSV</span>
+                                </div>
+                            </div>
+                            <div style="font-size: 24px; color: var(--text-muted);">→</div>
+                            <div style="text-align: right;">
+                                <div class="gap-value competitor">3,730</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">
+                                    <span class="en">SF Express</span>
+                                    <span class="zh hidden">顺丰</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gap-bar">
+                            <div class="gap-bar-fill" style="width: 99.2%;"></div>
+                        </div>
+                        <p style="margin-top: 8px; font-size: 13px; color: var(--text-muted);">
+                            <span class="en">120x visibility gap</span>
+                            <span class="zh hidden">120倍可见性差距</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Opportunity Identification</span>
+                <span class="zh hidden">机会识别</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">Data-driven opportunities ranked by impact potential and implementation feasibility for DSV Group's SEO growth strategy.</span>
+                <span class="zh hidden">基于数据驱动的机会，按影响潜力和实施可行性排序，为帝斯威（DSV）的SEO增长战略提供支持。</span>
+            </p>
+
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">Quick Win: Position 11-20 Keywords</span>
+                        <span class="zh hidden">速赢机会：11-20位关键词</span>
+                    </h4>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Target Keywords:</span>
+                            <span class="zh hidden">目标关键词：</span>
+                        </span>
+                        <span class="value">31</span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Est. Traffic Gain:</span>
+                            <span class="zh hidden">预计流量增长：</span>
+                        </span>
+                        <span class="value">+350-500/day</span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Implementation Time:</span>
+                            <span class="zh hidden">实施周期：</span>
+                        </span>
+                        <span class="value">
+                            <span class="en">2-3 months</span>
+                            <span class="zh hidden">2-3个月</span>
+                        </span>
+                    </div>
+                    <span class="priority-badge priority-high">
+                        <span class="en">HIGH PRIORITY</span>
+                        <span class="zh hidden">高优先级</span>
+                    </span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-secondary);">
+                        <span class="en">Focus on on-page optimization, content enrichment, and internal linking for these near-ranking keywords.</span>
+                        <span class="zh hidden">专注于页面优化、内容丰富和内部链接以提升这些接近排名的关键词。</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">Baidu Market Penetration</span>
+                        <span class="zh hidden">百度市场渗透</span>
+                    </h4>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Current Baidu Share:</span>
+                            <span class="zh hidden">当前百度份额：</span>
+                        </span>
+                        <span class="value">8%</span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Target Share:</span>
+                            <span class="zh hidden">目标份额：</span>
+                        </span>
+                        <span class="value">35-40%</span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Market Size:</span>
+                            <span class="zh hidden">市场规模：</span>
+                        </span>
+                        <span class="value">1.7B+ users</span>
+                    </div>
+                    <span class="priority-badge priority-high">
+                        <span class="en">HIGH PRIORITY</span>
+                        <span class="zh hidden">高优先级</span>
+                    </span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-secondary);">
+                        <span class="en">Implement Baidu Webmaster Tools, create Simplified Chinese content, and optimize for Baidu's algorithm preferences.</span>
+                        <span class="zh hidden">实施百度站长工具，创建简体中文内容，并针对百度算法偏好进行优化。</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">Long-Tail Keyword Expansion</span>
+                        <span class="zh hidden">长尾关键词拓展</span>
+                    </h4>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Current Portfolio:</span>
+                            <span class="zh hidden">当前组合：</span>
+                        </span>
+                        <span class="value">129 KWs</span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Target Portfolio:</span>
+                            <span class="zh hidden">目标组合：</span>
+                        </span>
+                        <span class="value">500+ KWs</span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Est. ROI:</span>
+                            <span class="zh hidden">预计投资回报：</span>
+                        </span>
+                        <span class="value">280%</span>
+                    </div>
+                    <span class="priority-badge priority-medium">
+                        <span class="en">MEDIUM PRIORITY</span>
+                        <span class="zh hidden">中优先级</span>
+                    </span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-secondary);">
+                        <span class="en">Target specific logistics service queries: "international freight forwarding rates", "customs clearance services China", etc.</span>
+                        <span class="zh hidden">针对特定物流服务查询："国际货运代理价格"、"中国清关服务"等。</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>
+                        <span class="en">Technical SEO Foundation</span>
+                        <span class="zh hidden">技术SEO基础</span>
+                    </h4>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Core Web Vitals:</span>
+                            <span class="zh hidden">核心网络指标：</span>
+                        </span>
+                        <span class="value">
+                            <span class="en">To Optimize</span>
+                            <span class="zh hidden">待优化</span>
+                        </span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Mobile Performance:</span>
+                            <span class="zh hidden">移动端性能：</span>
+                        </span>
+                        <span class="value">
+                            <span class="en">Critical</span>
+                            <span class="zh hidden">关键</span>
+                        </span>
+                    </div>
+                    <div class="opportunity-metric">
+                        <span class="label">
+                            <span class="en">Schema Markup:</span>
+                            <span class="zh hidden">结构化数据：</span>
+                        </span>
+                        <span class="value">0%</span>
+                    </div>
+                    <span class="priority-badge priority-medium">
+                        <span class="en">MEDIUM PRIORITY</span>
+                        <span class="zh hidden">中优先级</span>
+                    </span>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-secondary);">
+                        <span class="en">Fix site speed, implement structured data for services, and ensure mobile-responsive design across all pages.</span>
+                        <span class="zh hidden">修复网站速度，为服务实施结构化数据，并确保所有页面的移动响应式设计。</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Strategic Action Plan</span>
+                <span class="zh hidden">战略行动计划</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">Phased implementation roadmap to systematically improve DSV Group's SEO competitive position over the next 12 months.</span>
+                <span class="zh hidden">分阶段实施路线图，在未来12个月内系统性提升帝斯威（DSV）的SEO竞争地位。</span>
+            </p>
+
+            <div class="timeline-item">
+                <span class="timeline-phase">
+                    <span class="en">Phase 1: Months 1-2</span>
+                    <span class="zh hidden">第1阶段：第1-2个月</span>
+                </span>
+                <h4>
+                    <span class="en">Foundation & Quick Wins</span>
+                    <span class="zh hidden">基础建设与速赢</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Actions:</strong> Complete technical SEO audit, fix critical site issues (speed, mobile, crawlability). Optimize 31 keywords in positions 11-20 with enhanced content, meta tags, and internal linking. Set up Baidu Webmaster Tools and Google Search Console tracking.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>行动：</strong> 完成技术SEO审计，修复关键站点问题（速度、移动端、可抓取性）。通过增强内容、元标签和内部链接优化11-20位的31个关键词。设置百度站长工具和Google Search Console追踪。
+                    </span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Expected Results:</strong> 5-8 keywords move to Top 10, +200-350 daily traffic increase</span>
+                    <span class="zh hidden"><strong>预期结果：</strong> 5-8个关键词进入前10位，日均流量增长200-350</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase">
+                    <span class="en">Phase 2: Months 3-5</span>
+                    <span class="zh hidden">第2阶段：第3-5个月</span>
+                </span>
+                <h4>
+                    <span class="en">Content Expansion & Baidu Penetration</span>
+                    <span class="zh hidden">内容拓展与百度渗透</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Actions:</strong> Launch Baidu-optimized content campaign with 50+ new Simplified Chinese articles targeting logistics industry queries. Implement schema markup for services and locations. Build 100+ long-tail keyword pages focused on specific freight services.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>行动：</strong> 启动百度优化内容活动，发布50+篇针对物流行业查询的简体中文文章。为服务和位置实施结构化数据标记。构建100+个针对特定货运服务的长尾关键词页面。
+                    </span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Expected Results:</strong> Baidu traffic share increases to 25-30%, total keywords grow to 350+</span>
+                    <span class="zh hidden"><strong>预期结果：</strong> 百度流量份额增至25-30%，关键词总数增长至350+</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase">
+                    <span class="en">Phase 3: Months 6-8</span>
+                    <span class="zh hidden">第3阶段：第6-8个月</span>
+                </span>
+                <h4>
+                    <span class="en">Authority Building & Link Acquisition</span>
+                    <span class="zh hidden">权威建设与链接获取</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Actions:</strong> Execute strategic link building campaign targeting 50+ high-authority logistics and business domains. Publish thought leadership content on industry platforms. Optimize existing content based on performance data. Launch international blog outreach for Bing visibility.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>行动：</strong> 执行战略性链接建设活动，针对50+个高权威物流和商业域名。在行业平台发布思想领导力内容。基于性能数据优化现有内容。启动国际博客推广以提升必应可见性。
+                    </span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Expected Results:</strong> Domain authority improves by 15-20 points, 15+ keywords reach Top 5</span>
+                    <span class="zh hidden"><strong>预期结果：</strong> 域名权威提升15-20分，15+个关键词进入前5位</span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase">
+                    <span class="en">Phase 4: Months 9-12</span>
+                    <span class="zh hidden">第4阶段：第9-12个月</span>
+                </span>
+                <h4>
+                    <span class="en">Scale & Competitive Overtake</span>
+                    <span class="zh hidden">规模化与竞争超越</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Actions:</strong> Scale content production to 20+ articles/month in both English and Chinese. Target competitor keyword gaps with superior content. Implement advanced conversion optimization. Launch multi-channel integration (video SEO, local SEO for China branches).
+                    </span>
+                    <span class="zh hidden">
+                        <strong>行动：</strong> 将内容生产规模扩大至每月20+篇英文和中文文章。通过优质内容针对竞争对手关键词空白。实施高级转化优化。启动多渠道整合（视频SEO、中国分支机构本地SEO）。
+                    </span>
+                </p>
+                <p style="margin-top: 8px;">
+                    <span class="en"><strong>Expected Results:</strong> Total daily traffic reaches 3,500-5,000, competitive index improves to 25-30</span>
+                    <span class="zh hidden"><strong>预期结果：</strong> 日均总流量达到3,500-5,000，竞争力指数提升至25-30</span>
+                </p>
+            </div>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta">
+                    <span class="en">📥 Download PDF Report</span>
+                    <span class="zh hidden">📥 下载PDF报告</span>
+                </button>
+                <button onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')" class="secondary-cta">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
