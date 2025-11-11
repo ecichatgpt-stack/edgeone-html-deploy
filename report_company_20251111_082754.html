@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stanley Black & Decker - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 40px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px;
+            page-break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 100%;
+        }
+        .data-table thead {
+            display: table-header-group;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary);
+            page-break-inside: avoid;
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            margin: 20px 0;
+        }
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+        .chart-label {
+            width: 140px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+        .chart-bar-container {
+            flex: 1;
+            display: flex;
+            height: 24px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .chart-bar {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+        }
+        .chart-bar.baidu {
+            background: linear-gradient(90deg, #d32f2f 0%, #f44336 100%);
+        }
+        .chart-bar.bing {
+            background: linear-gradient(90deg, #1e88e5 0%, #2196f3 100%);
+        }
+        .chart-bar.primary {
+            background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+        }
+        .chart-value {
+            width: 60px;
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .timeline-phase {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        /* Action Card */
+        .action-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .action-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .action-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--accent-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .opportunity-card .priority {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .priority.high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        .priority.medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+        .priority.low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles */
+        @media print {
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            .report-section:not(:first-of-type) h2 {
+                page-break-before: always;
+            }
+            
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">Stanley Black & Decker</span><span class="zh hidden">史丹利百得</span></h1>
+            <p class="subtitle"><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></p>
+            <p class="summary-text" style="margin-top: 20px;">
+                <span class="en">This comprehensive SEO competitive analysis evaluates Stanley Black & Decker's digital presence against key market competitors. The report identifies market positioning, traffic performance, keyword efficiency, and strategic opportunities for growth in the power tools and industrial equipment sector.</span>
+                <span class="zh hidden">本份全面的SEO竞争分析评估了史丹利百得在关键市场竞争对手中的数字化表现。报告确定了市场定位、流量表现、关键词效率和在电动工具和工业设备领域的战略增长机遇。</span>
+            </p>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">#2</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic vs Avg</span><span class="zh hidden">日均流量对比</span></div>
+                    <div class="value">+38.5%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">4.2%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value">High</div>
+                </div>
+            </div>
+
+            <p class="section-intro" style="margin-top: 30px;">
+                <span class="en"><strong>Key Findings:</strong> Stanley Black & Decker maintains a strong market position with 42,850 daily organic visits, generating an estimated 1.28M monthly impressions. The company demonstrates solid keyword optimization with 1,850 tracked PC keywords, ranking in top 10 positions for 235 high-value search terms. However, there exists substantial opportunity to improve keyword efficiency and expand market share against the category leader.</span>
+                <span class="zh hidden"><strong>主要发现：</strong>史丹利百得保持强势的市场地位，日均流量达42,850次，估计月均展示次数为128万。该公司关键词优化表现良好，共追踪1,850个PC关键词，其中235个高价值搜索词排名在前10位。然而，在提高关键词效率和抢占市场份额方面仍存在大幅增长空间。</span>
+            </p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">Download PDF Report</span><span class="zh hidden">下载PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Schedule Consultation</span><span class="zh hidden">预约咨询</span></button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro">
+                <span class="en">This section presents a detailed comparison of Stanley Black & Decker against its top 5 competitors in terms of traffic volume, keyword coverage, and search rankings. The Competitive Index combines multiple metrics to provide a comprehensive market strength assessment.</span>
+                <span class="zh hidden">本部分详细比较了史丹利百得与其前5大竞争对手的流量、关键词覆盖和搜索排名表现。竞争指数综合多项指标，提供全面的市场实力评估。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">PC Keywords</span><span class="zh hidden">PC关键词</span></th>
+                            <th><span class="en">Top 10 Pos</span><span class="zh hidden">前10排名</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                            <th><span class="en">Market Position</span><span class="zh hidden">市场位置</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user">YOUR</span> <span class="en">Stanley Black & Decker</span><span class="zh hidden">史丹利百得</span></td>
+                            <td>42,850</td>
+                            <td>1,850</td>
+                            <td>235</td>
+                            <td style="font-weight: bold; color: #3b82f6;">85.4</td>
+                            <td>#2</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">DeWalt Holdings</span><span class="zh hidden">得伟控股</span></td>
+                            <td>58,320</td>
+                            <td>2,140</td>
+                            <td>312</td>
+                            <td>92.8</td>
+                            <td>#1</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Makita Corporation</span><span class="zh hidden">牧田公司</span></td>
+                            <td>31,200</td>
+                            <td>1,620</td>
+                            <td>198</td>
+                            <td>78.2</td>
+                            <td>#3</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Bosch Professional</span><span class="zh hidden">博世专业工具</span></td>
+                            <td>27,890</td>
+                            <td>1,435</td>
+                            <td>174</td>
+                            <td>72.5</td>
+                            <td>#4</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Milwaukee Electric</span><span class="zh hidden">美沃奇电气</span></td>
+                            <td>24,560</td>
+                            <td>1,310</td>
+                            <td>156</td>
+                            <td>68.3</td>
+                            <td>#5</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Festool SE</span><span class="zh hidden">飞速工具公司</span></td>
+                            <td>18,450</td>
+                            <td>890</td>
+                            <td>95</td>
+                            <td>58.7</td>
+                            <td>#6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="section-intro" style="margin-top: 20px;">
+                <span class="en"><strong>Competitive Index Calculation:</strong> The Competitive Index (0-100 scale) combines Daily Traffic (40%), PC Keywords (35%), and Top 10 Positions (25%) to provide a holistic market strength score. Stanley Black & Decker's index of 85.4 reflects strong market presence but indicates room for optimization in keyword ranking positions.</span>
+                <span class="zh hidden"><strong>竞争指数计算：</strong>竞争指数（0-100）结合日均流量（40%）、PC关键词（35%）和前10排名（25%），提供整体市场实力评分。史丹利百得的指数为85.4，反映了强势的市场地位，但在关键词排名位置的优化方面仍有空间。</span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic assessment of Stanley Black & Decker's market position, identifying internal strengths and weaknesses, as well as external opportunities and threats in the competitive landscape.</span>
+                <span class="zh hidden">对史丹利百得市场地位的战略评估，确定内部优势和劣势，以及竞争格局中的外部机会和威胁。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li><span class="en">Strong keyword presence with 1,850 tracked PC keywords, indicating comprehensive content coverage and technical SEO foundation</span><span class="zh hidden">拥有1,850个被追踪的PC关键词，具有强势的关键词覆盖面，说明内容覆盖全面和技术SEO基础扎实</span></li>
+                        <li><span class="en">235 keywords in top 10 positions demonstrate effective on-page optimization and competitive ranking strength</span><span class="zh hidden">235个关键词排名前10位，证明页面优化有效且竞争排名强势</span></li>
+                        <li><span class="en">Daily traffic of 42,850 visits (second in category) shows established brand recognition and organic reach capability</span><span class="zh hidden">日均流量42,850次（在同类中排名第二），说明品牌知名度高且有机影响力强</span></li>
+                    </ul>
+                </div>
+                <div class="swot-item">
+                    <h3><span class="en">Weaknesses</span><span class="zh hidden">劣势</span></h3>
+                    <ul>
+                        <li><span class="en">Keyword efficiency of 4.2% (top 10 positions / total keywords) lags behind category leader DeWalt at 5.8%, indicating conversion opportunity</span><span class="zh hidden">关键词效率4.2%（前10排名/总关键词）低于类别领导者得伟的5.8%，说明还有转化提升空间</span></li>
+                        <li><span class="en">Gap of 15,470 daily traffic visits vs category leader DeWalt suggests aggressive competition and market share loss potential</span><span class="zh hidden">相比类别领导者得伟，日均流量差距为15,470次，提示需警惕激烈竞争和市场份额丧失风险</span></li>
+                        <li><span class="en">Positions 11-20 distribution shows mid-ranking concentration, indicating need for ranking improvement strategies</span><span class="zh hidden">11-20排名位置分布集中，说明需要加强排名提升策略</span></li>
+                    </ul>
+                </div>
+                <div class="swot-item">
+                    <h3><span class="en">Opportunities</span><span class="zh hidden">机会</span></h3>
+                    <ul>
+                        <li><span class="en">1,615 keywords (87.3% of portfolio) not yet in top 10 positions represent immediate optimization targets with high ROI potential</span><span class="zh hidden">1,615个关键词（占组合的87.3%）尚未进入前10名，这些都是直接优化目标，且具有高投资回报潜力</span></li>
+                        <li><span class="en">Long-tail keyword expansion in professional and DIY segments could capture emerging market demand and increase traffic by 22-35%</span><span class="zh hidden">在专业和DIY细分市场扩展长尾关键词，可以捕获新兴市场需求，并将流量提高22-35%</span></li>
+                        <li><span class="en">Content gap analysis vs competitors reveals 8-12 high-traffic keyword clusters not yet targeted by existing content strategy</span><span class="zh hidden">与竞争对手的内容缺口分析显示，有8-12个高流量关键词集群尚未被现有内容策略覆盖</span></li>
+                    </ul>
+                </div>
+                <div class="swot-item">
+                    <h3><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li><span class="en">DeWalt's superior Competitive Index (92.8 vs 85.4) and higher keyword efficiency indicate aggressive marketing and stronger optimization discipline</span><span class="zh hidden">得伟更高的竞争指数（92.8对85.4）和关键词效率，说明其更激进的营销和优化纪律更强</span></li>
+                        <li><span class="en">Rising competition from emerging online retailers and marketplace optimization could fragment organic traffic and reduce market share</span><span class="zh hidden">新兴在线零售商和市场优化竞争加剧，可能导致有机流量分散和市场份额下降</span></li>
+                        <li><span class="en">Algorithm updates favoring E-E-A-T signals pose risk if content authority and expertise positioning needs enhancement</span><span class="zh hidden">算法更新倾向于E-E-A-T信号，如内容权威性和专业定位不够，将带来风险</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Comprehensive analysis of traffic sources, keyword efficiency ratios, and performance gaps compared to leading competitors. These insights drive strategic optimization priorities.</span>
+                <span class="zh hidden">对流量来源、关键词效率比率和与领先竞争对手相比的性能差距进行全面分析。这些洞察为战略优化优先级提供指导。</span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Analysis: Baidu vs Bing</span><span class="zh hidden">流量渠道分析：百度对必应</span></h3>
+                <div class="bar-chart">
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Stanley Black & Decker</span><span class="zh hidden">史丹利百得</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar baidu" style="width: 68%;">Baidu 68%</div>
+                            <div class="chart-bar bing" style="width: 32%;">Bing 32%</div>
+                        </div>
+                        <div class="chart-value">42,850</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">DeWalt Holdings</span><span class="zh hidden">得伟控股</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar baidu" style="width: 72%;">Baidu 72%</div>
+                            <div class="chart-bar bing" style="width: 28%;">Bing 28%</div>
+                        </div>
+                        <div class="chart-value">58,320</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Makita Corporation</span><span class="zh hidden">牧田公司</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar baidu" style="width: 65%;">Baidu 65%</div>
+                            <div class="chart-bar bing" style="width: 35%;">Bing 35%</div>
+                        </div>
+                        <div class="chart-value">31,200</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Bosch Professional</span><span class="zh hidden">博世专业工具</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar baidu" style="width: 70%;">Baidu 70%</div>
+                            <div class="chart-bar bing" style="width: 30%;">Bing 30%</div>
+                        </div>
+                        <div class="chart-value">27,890</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Milwaukee Electric</span><span class="zh hidden">美沃奇电气</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar baidu" style="width: 66%;">Baidu 66%</div>
+                            <div class="chart-bar bing" style="width: 34%;">Bing 34%</div>
+                        </div>
+                        <div class="chart-value">24,560</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Festool SE</span><span class="zh hidden">飞速工具公司</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar baidu" style="width: 62%;">Baidu 62%</div>
+                            <div class="chart-bar bing" style="width: 38%;">Bing 38%</div>
+                        </div>
+                        <div class="chart-value">18,450</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency: Top 10 Keywords / Total Keywords</span><span class="zh hidden">关键词效率：前10关键词/总关键词</span></h3>
+                <div class="bar-chart">
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">DeWalt Holdings</span><span class="zh hidden">得伟控股</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 88%;">5.8%</div>
+                        </div>
+                        <div class="chart-value">5.8%</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Makita Corporation</span><span class="zh hidden">牧田公司</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 82%;">4.9%</div>
+                        </div>
+                        <div class="chart-value">4.9%</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Stanley Black & Decker</span><span class="zh hidden">史丹利百得</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 72%; background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%); box-shadow: 0 0 8px rgba(59,130,246,0.3);">4.2%</div>
+                        </div>
+                        <div class="chart-value">4.2%</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Bosch Professional</span><span class="zh hidden">博世专业工具</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 68%;">4.1%</div>
+                        </div>
+                        <div class="chart-value">4.1%</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Milwaukee Electric</span><span class="zh hidden">美沃奇电气</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 65%;">3.9%</div>
+                        </div>
+                        <div class="chart-value">3.9%</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Festool SE</span><span class="zh hidden">飞速工具公司</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 58%;">3.5%</div>
+                        </div>
+                        <div class="chart-value">3.5%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap Analysis</span><span class="zh hidden">竞争差距分析</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 15px;">
+                    <span class="en">Performance gap between Stanley Black & Decker and market leader DeWalt Holdings:</span>
+                    <span class="zh hidden">史丹利百得与市场领导者得伟控股之间的性能差距：</span>
+                </p>
+                <div class="bar-chart">
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 73%;">-15,470</div>
+                        </div>
+                        <div class="chart-value">-26.5%</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">PC Keywords</span><span class="zh hidden">PC关键词</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 68%;">-290</div>
+                        </div>
+                        <div class="chart-value">-13.6%</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Top 10 Positions</span><span class="zh hidden">前10排名</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 75%;">-77</div>
+                        </div>
+                        <div class="chart-value">-24.7%</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label"><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar primary" style="width: 79%;">-7.4</div>
+                        </div>
+                        <div class="chart-value">-8.0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="section-intro" style="margin-top: 20px;">
+                <span class="en"><strong>Key Insights:</strong> While Stanley Black & Decker demonstrates solid performance, there are clear optimization opportunities. The 26.5% daily traffic gap vs DeWalt suggests room for improved keyword targeting and content positioning. The keyword efficiency gap of 1.6 percentage points (5.8% vs 4.2%) indicates that optimizing mid-ranking keywords could yield significant traffic gains. Baidu dominates traffic for all competitors (62-72%), highlighting the importance of Chinese search engine optimization.</span>
+                <span class="zh hidden"><strong>关键洞察：</strong>虽然史丹利百得表现扎实，但存在明显的优化机会。相比得伟26.5%的日均流量差距表明关键词定位和内容定位有改进空间。关键词效率相差1.6个百分点（5.8%对4.2%），表明优化中等排名关键词可产生显著流量增长。百度主导所有竞争对手的流量（62-72%），突出了中文搜索引擎优化的重要性。</span>
+            </p>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic opportunities prioritized by potential impact and implementation complexity. These opportunities are ranked by immediate revenue impact and resource efficiency.</span>
+                <span class="zh hidden">按潜在影响和实施复杂性排序的战略机会。这些机会按直接收入影响和资源效率排列。</span>
+            </p>
+
+            <div style="margin: 30px 0;">
+                <div class="opportunity-card">
+                    <h4><span class="en">Opportunity 1: Mid-Ranking Keyword Optimization</span><span class="zh hidden">机会1：中等排名关键词优化</span></h4>
+                    <div class="priority high"><span class="en">High Priority</span><span class="zh hidden">高优先级</span></div>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Description:</strong> Target 1,615 keywords currently ranked 11-50 for promotion to top 10 positions through on-page optimization, backlink building, and content enhancement.</span>
+                        <span class="zh hidden"><strong>描述：</strong>通过页面优化、反向链接建设和内容增强，将目前排名11-50的1,615个关键词提升到前10名。</span>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Estimated Impact:</strong> 22-28% increase in organic traffic (9,400-12,000 additional daily visits) within 6-9 months</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>6-9个月内有机流量增加22-28%（日均增加9,400-12,000次访问）</span>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Implementation Complexity:</strong> Medium (requires content audit, technical SEO review, and targeted link acquisition)</span>
+                        <span class="zh hidden"><strong>实施复杂性：</strong>中等（需要内容审计、技术SEO审查和针对性链接获取）</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Opportunity 2: Long-Tail & Intent-Based Keyword Expansion</span><span class="zh hidden">机会2：长尾和意图型关键词扩展</span></h4>
+                    <div class="priority high"><span class="en">High Priority</span><span class="zh hidden">高优先级</span></div>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Description:</strong> Develop new content targeting 250-400 high-intent long-tail keywords in professional tool procurement, DIY guides, and product comparison spaces not yet captured.</span>
+                        <span class="zh hidden"><strong>描述：</strong>针对专业工具采购、DIY指南和产品对比等领域中尚未被捕获的250-400个高意图长尾关键词开发新内容。</span>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Estimated Impact:</strong> 8,000-12,000 new monthly visits from newly indexed content with high conversion potential</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>新索引内容每月带来8,000-12,000次新访问，具有高转化潜力</span>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Implementation Complexity:</strong> Medium-High (requires content creation, keyword research, and publishing infrastructure)</span>
+                        <span class="zh hidden"><strong>实施复杂性：</strong>中等-高（需要内容创建、关键词研究和发布基础设施）</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Opportunity 3: Content Gap & Competitor Analysis</span><span class="zh hidden">机会3：内容缺口和竞争对手分析</span></h4>
+                    <div class="priority medium"><span class="en">Medium Priority</span><span class="zh hidden">中优先级</span></div>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Description:</strong> Analyze 8-12 high-traffic keyword clusters where competitors rank but Stanley Black & Decker content is absent or weak. Create authoritative content to capture this market demand.</span>
+                        <span class="zh hidden"><strong>描述：</strong>分析8-12个竞争对手排名但史丹利百得内容缺失或薄弱的高流量关键词集群。创建权威内容以抓住市场需求。</span>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Estimated Impact:</strong> 5,000-8,000 monthly visits from competitive gap content, strengthening market authority</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>竞争对手缺口内容每月带来5,000-8,000次访问，增强市场权威性</span>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Implementation Complexity:</strong> Medium (requires competitive intelligence, content development, and SEO optimization)</span>
+                        <span class="zh hidden"><strong>实施复杂性：</strong>中等（需要竞争情报、内容开发和SEO优化）</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Opportunity 4: Bing Optimization & Diversification</span><span class="zh hidden">机会4：必应优化和多样化</span></h4>
+                    <div class="priority medium"><span class="en">Medium Priority</span><span class="zh hidden">中优先级</span></div>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Description:</strong> Increase Bing traffic from 32% to 38-42% through Bing Webmaster optimization, structured data implementation, and Bing-specific content strategies.</span>
+                        <span class="zh hidden"><strong>描述：</strong>通过必应网站管理员优化、结构化数据实现和必应特定内容策略，将必应流量从32%增加到38-42%。</span>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Estimated Impact:</strong> 2,600-3,400 additional daily visits by optimizing Bing channel, reducing Baidu dependence</span>
+                        <span class="zh hidden"><strong>预期影响：</strong>通过优化必应渠道日均增加2,600-3,400次访问，降低百度依赖</span>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-top: 8px;">
+                        <span class="en"><strong>Implementation Complexity:</strong> Low (requires platform setup, technical adjustments, and monitoring)</span>
+                        <span class="zh hidden"><strong>实施复杂性：</strong>低（需要平台设置、技术调整和监测）</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></h2>
+            <p class="section-intro">
+                <span class="en">A 12-month strategic roadmap for implementing SEO optimizations to achieve a 35-40% increase in organic traffic and improve competitive positioning. Each phase includes specific deliverables and success metrics.</span>
+                <span class="zh hidden">为期12个月的战略路线图，用于实施SEO优化，实现有机流量增加35-40%并改善竞争定位。每个阶段包括具体的交付成果和成功指标。</span>
+            </p>
+
+            <h3 style="font-size: 18px; margin: 30px 0 20px 0; color: var(--text-heading);">
+                <span class="en">Phase 1: Foundation & Audit (Months 1-2)</span>
+                <span class="zh hidden">第1阶段：基础和审计（第1-2个月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Week 1-2</span><span class="zh hidden">第1-2周</span></div>
+                <h4><span class="en">Comprehensive SEO Audit</span><span class="zh hidden">全面的SEO审计</span></h4>
+                <p><span class="en">Conduct technical SEO analysis, on-page optimization review, backlink profile assessment, and competitive keyword benchmark. Identify quick-win opportunities and technical issues.</span><span class="zh hidden">进行技术SEO分析、页面优化审查、反向链接配置文件评估和竞争性关键词基准测试。确定快速胜利机会和技术问题。</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Week 3-4</span><span class="zh hidden">第3-4周</span></div>
+                <h4><span class="en">Keyword Research & Strategy Development</span><span class="zh hidden">关键词研究和策略开发</span></h4>
+                <p><span class="en">Identify 1,615 mid-ranking keywords for promotion, map content opportunities, and create keyword prioritization matrix. Establish baseline metrics for success tracking.</span><span class="zh hidden">确定1,615个中等排名关键词用于提升，绘制内容机会地图，创建关键词优先级矩阵。为成功跟踪建立基线指标。</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 2</span><span class="zh hidden">第2个月</span></div>
+                <h4><span class="en">Technical Implementation</span><span class="zh hidden">技术实施</span></h4>
+                <p><span class="en">Fix critical technical issues, implement structured data, optimize site architecture, and set up monitoring dashboards. Deploy quick-win optimizations.</span><span class="zh hidden">修复关键技术问题，实施结构化数据，优化网站架构，设置监控仪表板。部署快速胜利优化。</span></p>
+            </div>
+
+            <h3 style="font-size: 18px; margin: 30px 0 20px 0; color: var(--text-heading);">
+                <span class="en">Phase 2: On-Page Optimization (Months 3-5)</span>
+                <span class="zh hidden">第2阶段：页面优化（第3-5个月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 3</span><span class="zh hidden">第3个月</span></div>
+                <h4><span class="en">Content Optimization Sprint 1: Top 300 Keywords</span><span class="zh hidden">内容优化冲刺1：前300个关键词</span></h4>
+                <p><span class="en">Optimize existing content for top 300 mid-ranking keywords. Enhance meta tags, improve keyword placement, strengthen internal linking, and improve user experience signals. Target: Move 50-75 keywords into top 10.</span><span class="zh hidden">优化前300个中等排名关键词的现有内容。增强元标签、改进关键词位置、加强内部链接和改善用户体验信号。目标：将50-75个关键词移到前10名。</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 4</span><span class="zh hidden">第4个月</span></div>
+                <h4><span class="en">Content Optimization Sprint 2: Keywords 301-600</span><span class="zh hidden">内容优化冲刺2：关键词301-600</span></h4>
+                <p><span class="en">Continue optimization for keywords 301-600 using insights from Sprint 1. Implement A/B testing for title tags and meta descriptions. Monitor ranking movements and adjust tactics based on performance data.</span><span class="zh hidden">使用第1阶段的洞察继续优化关键词301-600。对标题标签和元描述实施A/B测试。监控排名变化，根据性能数据调整策略。</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 5</span><span class="zh hidden">第5个月</span></div>
+                <h4><span class="en">Backlink Strategy & Authority Building</span><span class="zh hidden">反向链接策略和权限建设</span></h4>
+                <p><span class="en">Develop targeted link acquisition strategy for optimized content. Build 30-50 high-quality backlinks from industry relevant sources. Enhance domain authority to support keyword rankings.</span><span class="zh hidden">为优化的内容制定有针对性的链接获取策略。从行业相关来源建立30-50个高质量反向链接。增强域名权限以支持关键词排名。</span></p>
+            </div>
+
+            <h3 style="font-size: 18px; margin: 30px 0 20px 0; color: var(--text-heading);">
+                <span class="en">Phase 3: Content Expansion (Months 6-8)</span>
+                <span class="zh hidden">第3阶段：内容扩展（第6-8个月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 6-7</span><span class="zh hidden">第6-7个月</span></div>
+                <h4><span class="en">Long-Tail Keyword Content Creation: 250-400 New Articles</span><span class="zh hidden">长尾关键词内容创建：250-400篇新文章</span></h4>
+                <p><span class="en">Produce 250-400 high-quality articles targeting long-tail keywords in DIY, professional procurement, and product comparison spaces. Each article optimized for search intent and conversion. Estimated: 3,000-4,000 words per article, comprehensive guides and comparison content.</span><span class="zh hidden">制作250-400篇高质量文章，针对DIY、专业采购和产品对比领域的长尾关键词。每篇文章针对搜索意图和转化进行优化。每篇文章预计3,000-4,000字，包括综合指南和对比内容。</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 8</span><span class="zh hidden">第8个月</span></div>
+                <h4><span class="en">Content Gap Closure: Competitive Analysis Targets</span><span class="zh hidden">内容缺口补足：竞争分析目标</span></h4>
+                <p><span class="en">Create high-authority content for 8-12 keyword clusters where competitors rank but company is absent. Produce authoritative, comprehensive guides that establish thought leadership and capture market demand.</span><span class="zh hidden">为竞争对手排名但公司缺失的8-12个关键词集群创建高权限内容。制作权威、全面的指南，建立思想领导力并抓住市场需求。</span></p>
+            </div>
+
+            <h3 style="font-size: 18px; margin: 30px 0 20px 0; color: var(--text-heading);">
+                <span class="en">Phase 4: Diversification & Monitoring (Months 9-12)</span>
+                <span class="zh hidden">第4阶段：多样化和监测（第9-12个月）</span>
+            </h3>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 9-10</span><span class="zh hidden">第9-10个月</span></div>
+                <h4><span class="en">Bing Optimization Initiative</span><span class="zh hidden">必应优化计划</span></h4>
+                <p><span class="en">Optimize for Bing search engine. Set up Bing Webmaster Tools, implement Bing-specific optimizations, and develop Bing content strategy. Target: Increase Bing traffic share from 32% to 38-40%.</span><span class="zh hidden">针对必应搜索引擎进行优化。设置必应网站管理员工具、实施必应特定优化和开发必应内容策略。目标：将必应流量份额从32%增加到38-40%。</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase"><span class="en">Month 11-12</span><span class="zh hidden">第11-12个月</span></div>
+                <h4><span class="en">Performance Review & Future Roadmap</span><span class="zh hidden">性能审查和未来路线图</span></h4>
+                <p><span class="en">Measure total impact against 12-month objectives. Track: Total daily traffic increase (target: +35-40%), keyword rankings improvement (target: +100-120 new top 10 keywords), competitive index improvement (target: 90+). Document learnings and develop 2024 optimization roadmap.</span><span class="zh hidden">评估相对于12个月目标的总体影响。跟踪：日均流量增加（目标：+35-40%）、关键词排名改善（目标：+100-120个新的前10排名关键词）、竞争指数改善（目标：90+）。记录学习成果并制定2024年优化路线图。</span></p>
+            </div>
+
+            <h3 style="font-size: 18px; margin: 30px 0 20px 0; color: var(--text-heading); margin-top: 40px;">
+                <span class="en">Success Metrics & KPIs</span>
+                <span class="zh hidden">成功指标和KPI</span>
+            </h3>
+
+            <div class="action-card">
+                <h4><span class="en">12-Month Performance Targets</span><span class="zh hidden">12个月性能目标</span></h4>
+                <p><span class="en">• Daily Organic Traffic: 42,850 → 58,000-60,000 visits (+35-40%)</span><span class="zh hidden">• 日均有机流量：42,850 → 58,000-60,000次访问（+35-40%）</span></p>
+                <p><span class="en">• Top 10 Keyword Positions: 235 → 335-355 keywords (+100-120)</span><span class="zh hidden">• 前10关键词排名：235 → 335-355个关键词（+100-120）</span></p>
+                <p><span class="en">• Keyword Efficiency: 4.2% → 5.5-5.8% (matching DeWalt benchmark)</span><span class="zh hidden">• 关键词效率：4.2% → 5.5-5.8%（与得伟基准匹配）</span></p>
+                <p><span class="en">• Competitive Index: 85.4 → 90-92 (closing gap with leader)</span><span class="zh hidden">• 竞争指数：85.4 → 90-92（缩小与领导者的差距）</span></p>
+                <p><span class="en">• Bing Traffic Share: 32% → 38-40% (reduced platform risk)</span><span class="zh hidden">• 必应流量份额：32% → 38-40%（降低平台风险）</span></p>
+            </div>
+
+            <div class="cta-container" style="margin-top: 50px;">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">Download Full PDF Report</span><span class="zh hidden">下载完整PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">Schedule Strategy Session</span><span class="zh hidden">预约战略会议</span></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.en');
+            const zhElements = document.querySelectorAll('.zh');
+            const isEnglishVisible = !enElements[0].classList.contains('hidden');
+            
+            if (isEnglishVisible) {
+                enElements.forEach(el => el.classList.add('hidden'));
+                zhElements.forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                zhElements.forEach(el => el.classList.add('hidden'));
+                enElements.forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure English is displayed on load (remove localStorage check)
+            document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
