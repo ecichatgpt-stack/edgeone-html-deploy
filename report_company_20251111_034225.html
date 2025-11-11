@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concentrix Corporation - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        .metric-card .trend { 
+            font-size: 14px; 
+            margin-top: 4px; 
+        }
+        .metric-card .trend.positive { 
+            color: var(--success-color); 
+        }
+        .metric-card .trend.negative { 
+            color: var(--danger-color); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+        .chart-bar-container {
+            margin: 16px 0;
+        }
+        .chart-bar-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .chart-bar-wrapper {
+            display: flex;
+            height: 32px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--alt-bg);
+        }
+        .chart-bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .chart-bar-segment:hover {
+            filter: brightness(1.2);
+        }
+        .chart-bar-segment.baidu {
+            background: #3b82f6;
+        }
+        .chart-bar-segment.bing {
+            background: #8b5cf6;
+        }
+        .chart-bar-horizontal {
+            height: 24px;
+            background: var(--primary-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding-left: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .chart-bar-horizontal:hover {
+            filter: brightness(1.2);
+        }
+        .gap-analysis-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--alt-bg);
+        }
+        .gap-analysis-item:last-child {
+            border-bottom: none;
+        }
+        .gap-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .gap-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--danger-color);
+            font-family: var(--font-data);
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .timeline-phase {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .opportunity-priority {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-color);
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success-color);
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2.section-title {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1>
+                <span class="en">SEO Competitive Analysis Report</span>
+                <span class="zh hidden">SEO竞争分析报告</span>
+            </h1>
+            <p class="subtitle">
+                <span class="en">Concentrix Corporation | Generated on December 2024</span>
+                <span class="zh hidden">Concentrix公司 | 生成于2024年12月</span>
+            </p>
+
+            <div class="key-metrics-grid" style="margin-top: 40px;">
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Market Ranking</span>
+                        <span class="zh hidden">市场排名</span>
+                    </div>
+                    <div class="value">
+                        6<span style="font-size: 18px; color: var(--text-muted);">/6</span>
+                    </div>
+                    <div class="trend negative">
+                        <span class="en">▼ Significant improvement needed</span>
+                        <span class="zh hidden">▼ 需要大幅改进</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Daily Traffic vs. Avg</span>
+                        <span class="zh hidden">日流量对比平均值</span>
+                    </div>
+                    <div class="value">
+                        -98.4%
+                    </div>
+                    <div class="trend negative">
+                        <span class="en">▼ 22 vs 1,410 (competitor avg)</span>
+                        <span class="zh hidden">▼ 22 对比 1,410（竞品平均）</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Keyword Efficiency</span>
+                        <span class="zh hidden">关键词效率</span>
+                    </div>
+                    <div class="value">
+                        0.0%
+                    </div>
+                    <div class="trend negative">
+                        <span class="en">▼ 0 Top-10 KWs / 7 Total KWs</span>
+                        <span class="zh hidden">▼ 0个前10关键词 / 7个总关键词</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Growth Potential</span>
+                        <span class="zh hidden">增长潜力</span>
+                    </div>
+                    <div class="value">
+                        <span style="color: var(--success-color);">High</span>
+                    </div>
+                    <div class="trend positive">
+                        <span class="en">▲ 161x multiplier vs. leader</span>
+                        <span class="zh hidden">▲ 相比领先者有161倍增长空间</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    <strong>Key Insight:</strong> Concentrix Corporation currently ranks last among its top competitors with only 22 daily visits, representing a 98.4% gap below the competitive average of 1,410 visits. With zero keywords in top-10 positions and minimal keyword coverage (7 keywords vs. competitor average of 287), the company faces substantial SEO challenges. However, this presents a significant opportunity: the market leader (Neusoft) generates 161 times more traffic, indicating substantial room for growth through strategic SEO optimization.
+                </span>
+                <span class="zh hidden">
+                    <strong>核心洞察：</strong>Concentrix公司目前在主要竞争对手中排名垫底，日均访问量仅为22次，比竞品平均流量1,410次低98.4%。公司没有任何关键词进入前10位，关键词覆盖极其有限（7个关键词 vs 竞品平均287个），面临严峻的SEO挑战。然而，这也意味着巨大的机遇：市场领先者（东软集团）的流量是公司的161倍，通过战略性SEO优化有巨大的增长空间。
+                </span>
+            </p>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta">
+                    <span class="en">📄 Download PDF Report</span>
+                    <span class="zh hidden">📄 下载PDF报告</span>
+                </button>
+                <button onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')" class="secondary-cta">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Competition Overview</span>
+                <span class="zh hidden">竞争概览</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Comprehensive analysis of Concentrix Corporation and its top 5 competitors based on daily traffic, keyword coverage, and competitive positioning.
+                </span>
+                <span class="zh hidden">
+                    基于日流量、关键词覆盖和竞争定位，对Concentrix公司及其前5名竞争对手的综合分析。
+                </span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Rank</span><span class="zh hidden">排名</span></th>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu PC</span><span class="zh hidden">百度PC</span></th>
+                            <th><span class="en">Bing</span><span class="zh hidden">必应</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">总关键词</span></th>
+                            <th><span class="en">Pos 11-20</span><span class="zh hidden">11-20位</span></th>
+                            <th><span class="en">Pos 21-30</span><span class="zh hidden">21-30位</span></th>
+                            <th><span class="en">Pos 31-40</span><span class="zh hidden">31-40位</span></th>
+                            <th><span class="en">Pos 41-50</span><span class="zh hidden">41-50位</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争力指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><span class="en">Neusoft Corporation</span><span class="zh hidden">东软集团</span></td>
+                            <td>3,543</td>
+                            <td>340 ~ 542</td>
+                            <td>403 ~ 645</td>
+                            <td>351</td>
+                            <td>79</td>
+                            <td>77</td>
+                            <td>78</td>
+                            <td>69</td>
+                            <td style="color: var(--success-color); font-weight: 700;">94.2</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><span class="en">iSoftStone</span><span class="zh hidden">软通动力</span></td>
+                            <td>2,192</td>
+                            <td>351 ~ 561</td>
+                            <td>109 ~ 173</td>
+                            <td>878</td>
+                            <td>99</td>
+                            <td>240</td>
+                            <td>232</td>
+                            <td>222</td>
+                            <td style="color: var(--success-color); font-weight: 700;">86.3</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><span class="en">Pactera EDGE</span><span class="zh hidden">文思海辉</span></td>
+                            <td>974</td>
+                            <td>197 ~ 315</td>
+                            <td>156 ~ 250</td>
+                            <td>92</td>
+                            <td>17</td>
+                            <td>27</td>
+                            <td>17</td>
+                            <td>21</td>
+                            <td style="color: var(--warning-color); font-weight: 700;">65.8</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><span class="en">BeyondSoft</span><span class="zh hidden">博彦科技</span></td>
+                            <td>728</td>
+                            <td>114 ~ 182</td>
+                            <td>0 ~ 0</td>
+                            <td>99</td>
+                            <td>8</td>
+                            <td>23</td>
+                            <td>25</td>
+                            <td>21</td>
+                            <td style="color: var(--warning-color); font-weight: 700;">52.1</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><span class="en">Epaylinks</span><span class="zh hidden">易宝软件</span></td>
+                            <td>28</td>
+                            <td>5 ~ 9</td>
+                            <td>0 ~ 0</td>
+                            <td>28</td>
+                            <td>5</td>
+                            <td>13</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td style="color: var(--danger-color); font-weight: 700;">18.9</td>
+                        </tr>
+                        <tr class="user-company-row">
+                            <td>6</td>
+                            <td>
+                                <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span>
+                                <span class="en">Concentrix Corporation</span>
+                                <span class="zh hidden">Concentrix公司</span>
+                            </td>
+                            <td>22</td>
+                            <td>2 ~ 4</td>
+                            <td>0 ~ 0</td>
+                            <td>7</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td style="color: var(--danger-color); font-weight: 700;">12.4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="summary-text" style="margin-top: 20px;">
+                <span class="en">
+                    <strong>Analysis:</strong> The competitive landscape is dominated by Neusoft Corporation (CI: 94.2) and iSoftStone (CI: 86.3), which together control 81% of the total market traffic. Concentrix's Competitive Index of 12.4 reflects critical weaknesses in keyword coverage (7 vs. avg 287) and traffic acquisition. The company's exclusive reliance on Baidu PC traffic (with zero Bing presence) limits channel diversification compared to leaders like Neusoft, which effectively leverage both search engines.
+                </span>
+                <span class="zh hidden">
+                    <strong>分析：</strong>竞争格局由东软集团（竞争力指数：94.2）和软通动力（竞争力指数：86.3）主导，两者共占据市场总流量的81%。Concentrix的竞争力指数仅为12.4，反映出在关键词覆盖（7个 vs 平均287个）和流量获取方面的严重劣势。公司完全依赖百度PC流量（必应流量为零），与东软等有效利用双搜索引擎的领先者相比，渠道多样化严重不足。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2 class="section-title">
+                <span class="en">SWOT Analysis</span>
+                <span class="zh hidden">SWOT分析</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Strategic assessment of Concentrix Corporation's internal capabilities and external market opportunities in the Chinese SEO landscape.
+                </span>
+                <span class="zh hidden">
+                    对Concentrix公司在中国SEO市场的内部能力和外部机遇的战略评估。
+                </span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);">
+                        <span class="en">💪 Strengths</span>
+                        <span class="zh hidden">💪 优势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Established global brand recognition with Fortune 500 reputation</span>
+                            <span class="zh hidden">全球知名品牌，拥有财富500强声誉</span>
+                        </li>
+                        <li>
+                            <span class="en">Low competitive pressure - minimal direct competition at current ranking</span>
+                            <span class="zh hidden">竞争压力小 - 当前排名下的直接竞争较少</span>
+                        </li>
+                        <li>
+                            <span class="en">Clean slate for strategic keyword targeting and content development</span>
+                            <span class="zh hidden">可从零开始制定战略性关键词定位和内容开发</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);">
+                        <span class="en">⚠️ Weaknesses</span>
+                        <span class="zh hidden">⚠️ 劣势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Critically low keyword portfolio (7 KWs vs industry avg 287 KWs)</span>
+                            <span class="zh hidden">关键词组合严重不足（7个 vs 行业平均287个）</span>
+                        </li>
+                        <li>
+                            <span class="en">Zero top-10 keyword rankings - no high-value visibility</span>
+                            <span class="zh hidden">没有任何前10关键词排名 - 缺乏高价值可见度</span>
+                        </li>
+                        <li>
+                            <span class="en">Single-channel dependency on Baidu PC (no Bing optimization)</span>
+                            <span class="zh hidden">单一渠道依赖百度PC（必应未优化）</span>
+                        </li>
+                        <li>
+                            <span class="en">98.4% traffic deficit compared to competitive benchmark</span>
+                            <span class="zh hidden">相比竞品基准有98.4%的流量差距</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);">
+                        <span class="en">🎯 Opportunities</span>
+                        <span class="zh hidden">🎯 机会</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">161x traffic growth potential vs. market leader (Neusoft)</span>
+                            <span class="zh hidden">相比市场领先者（东软）有161倍流量增长潜力</span>
+                        </li>
+                        <li>
+                            <span class="en">Untapped Bing search engine channel (competitors avg 17% of traffic)</span>
+                            <span class="zh hidden">未开发的必应搜索引擎渠道（竞品平均17%流量）</span>
+                        </li>
+                        <li>
+                            <span class="en">Keyword gap of 280+ terms compared to competitive average</span>
+                            <span class="zh hidden">与竞品平均相比有280+关键词缺口</span>
+                        </li>
+                        <li>
+                            <span class="en">Mid-tier competitors (Pactera, BeyondSoft) are catchable within 6-12 months</span>
+                            <span class="zh hidden">中等竞品（文思海辉、博彦科技）可在6-12个月内赶超</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);">
+                        <span class="en">⚡ Threats</span>
+                        <span class="zh hidden">⚡ 威胁</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Dominant market leaders (Neusoft, iSoftStone) control 81% of traffic</span>
+                            <span class="zh hidden">主导市场的领先者（东软、软通）控制81%流量</span>
+                        </li>
+                        <li>
+                            <span class="en">High barrier to entry - competitors have 40-125x more keyword coverage</span>
+                            <span class="zh hidden">进入门槛高 - 竞品的关键词覆盖是公司的40-125倍</span>
+                        </li>
+                        <li>
+                            <span class="en">Rapid algorithm changes in Chinese search engines require constant adaptation</span>
+                            <span class="zh hidden">中国搜索引擎算法快速变化需要持续适应</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 20px;">
+                <span class="en">
+                    <strong>Strategic Recommendation:</strong> Concentrix should adopt a phased growth strategy focusing on: (1) Rapid keyword expansion targeting 100+ relevant terms in Q1 2025, (2) Multi-channel optimization including Bing activation, and (3) Content authority building through technical SEO and localized content. The extreme growth potential (161x) indicates that even modest improvements could yield substantial returns.
+                </span>
+                <span class="zh hidden">
+                    <strong>战略建议：</strong>Concentrix应采用分阶段增长策略，重点关注：（1）2025年第一季度快速扩展关键词至100+个相关词，（2）多渠道优化包括激活必应，（3）通过技术SEO和本地化内容建立内容权威性。极高的增长潜力（161倍）表明即使是适度的改进也能带来显著回报。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Deep Metrics Analysis</span>
+                <span class="zh hidden">深度指标分析</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Detailed examination of traffic distribution, keyword efficiency, and competitive gaps across all major competitors.
+                </span>
+                <span class="zh hidden">
+                    详细分析所有主要竞争对手的流量分布、关键词效率和竞争差距。
+                </span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">📊 Traffic Channel Analysis: Baidu vs. Bing Distribution</span>
+                    <span class="zh hidden">📊 流量渠道分析：百度 vs 必应分布</span>
+                </h3>
+                <div style="margin-top: 20px;">
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Neusoft Corporation</span><span class="zh hidden">东软集团</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">3,543 <span class="en">visits/day</span><span class="zh hidden">访问/天</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-segment baidu" style="width: 47.3%;" title="Baidu: 1,676 visits">
+                                <span class="en">Baidu 47.3%</span><span class="zh hidden">百度 47.3%</span>
+                            </div>
+                            <div class="chart-bar-segment bing" style="width: 52.7%;" title="Bing: 1,867 visits">
+                                <span class="en">Bing 52.7%</span><span class="zh hidden">必应 52.7%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">iSoftStone</span><span class="zh hidden">软通动力</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">2,192 <span class="en">visits/day</span><span class="zh hidden">访问/天</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-segment baidu" style="width: 87.1%;" title="Baidu: 1,910 visits">
+                                <span class="en">Baidu 87.1%</span><span class="zh hidden">百度 87.1%</span>
+                            </div>
+                            <div class="chart-bar-segment bing" style="width: 12.9%;" title="Bing: 282 visits">
+                                <span class="en">Bing 12.9%</span><span class="zh hidden">必应 12.9%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Pactera EDGE</span><span class="zh hidden">文思海辉</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">974 <span class="en">visits/day</span><span class="zh hidden">访问/天</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-segment baidu" style="width: 55.7%;" title="Baidu: 542 visits">
+                                <span class="en">Baidu 55.7%</span><span class="zh hidden">百度 55.7%</span>
+                            </div>
+                            <div class="chart-bar-segment bing" style="width: 44.3%;" title="Bing: 432 visits">
+                                <span class="en">Bing 44.3%</span><span class="zh hidden">必应 44.3%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">BeyondSoft</span><span class="zh hidden">博彦科技</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">728 <span class="en">visits/day</span><span class="zh hidden">访问/天</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-segment baidu" style="width: 100%;" title="Baidu: 728 visits">
+                                <span class="en">Baidu 100%</span><span class="zh hidden">百度 100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Epaylinks</span><span class="zh hidden">易宝软件</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">28 <span class="en">visits/day</span><span class="zh hidden">访问/天</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-segment baidu" style="width: 100%;" title="Baidu: 28 visits">
+                                <span class="en">Baidu 100%</span><span class="zh hidden">百度 100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container" style="border: 2px solid var(--primary-color); border-radius: 8px; padding: 8px; background: rgba(59, 130, 246, 0.05);">
+                        <div class="chart-bar-label">
+                            <span style="color: var(--primary-color); font-weight: 700;">
+                                <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span>
+                                <span class="en">Concentrix Corporation</span>
+                                <span class="zh hidden">Concentrix公司</span>
+                            </span>
+                            <span style="color: var(--primary-color); font-weight: 700;">22 <span class="en">visits/day</span><span class="zh hidden">访问/天</span></span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-segment baidu" style="width: 100%;" title="Baidu: 22 visits">
+                                <span class="en">Baidu 100%</span><span class="zh hidden">百度 100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
+                    <span class="en">
+                        <strong>Insight:</strong> Neusoft and Pactera demonstrate effective multi-channel strategies with 45-53% Bing traffic contribution. Concentrix's 0% Bing presence represents a critical missed opportunity, as Bing accounts for an average of 17% of competitor traffic.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>洞察：</strong>东软和文思海辉展示了有效的多渠道策略，必应流量贡献达45-53%。Concentrix的必应占比为0%，这是一个严重的错失机会，因为必应平均占竞品流量的17%。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">🎯 Keyword Efficiency Analysis: Traffic per Keyword</span>
+                    <span class="zh hidden">🎯 关键词效率分析：单词流量</span>
+                </h3>
+                <div style="margin-top: 20px;">
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Neusoft Corporation</span><span class="zh hidden">东软集团</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">10.1 <span class="en">visits/KW</span><span class="zh hidden">访问/关键词</span></span>
+                        </div>
+                        <div class="chart-bar-horizontal" style="width: 100%;">
+                            10.1
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Pactera EDGE</span><span class="zh hidden">文思海辉</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">10.6 <span class="en">visits/KW</span><span class="zh hidden">访问/关键词</span></span>
+                        </div>
+                        <div class="chart-bar-horizontal" style="width: 100%;">
+                            10.6
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">BeyondSoft</span><span class="zh hidden">博彦科技</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">7.4 <span class="en">visits/KW</span><span class="zh hidden">访问/关键词</span></span>
+                        </div>
+                        <div class="chart-bar-horizontal" style="width: 73.3%;">
+                            7.4
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container" style="border: 2px solid var(--primary-color); border-radius: 8px; padding: 8px; background: rgba(59, 130, 246, 0.05);">
+                        <div class="chart-bar-label">
+                            <span style="color: var(--primary-color); font-weight: 700;">
+                                <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span>
+                                <span class="en">Concentrix Corporation</span>
+                                <span class="zh hidden">Concentrix公司</span>
+                            </span>
+                            <span style="color: var(--primary-color); font-weight: 700;">3.1 <span class="en">visits/KW</span><span class="zh hidden">访问/关键词</span></span>
+                        </div>
+                        <div class="chart-bar-horizontal" style="width: 30.7%; background: var(--danger-color);">
+                            3.1
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">iSoftStone</span><span class="zh hidden">软通动力</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">2.5 <span class="en">visits/KW</span><span class="zh hidden">访问/关键词</span></span>
+                        </div>
+                        <div class="chart-bar-horizontal" style="width: 24.8%;">
+                            2.5
+                        </div>
+                    </div>
+
+                    <div class="chart-bar-container">
+                        <div class="chart-bar-label">
+                            <span><span class="en">Epaylinks</span><span class="zh hidden">易宝软件</span></span>
+                            <span style="color: var(--text-primary); font-weight: 600;">1.0 <span class="en">visits/KW</span><span class="zh hidden">访问/关键词</span></span>
+                        </div>
+                        <div class="chart-bar-horizontal" style="width: 9.9%;">
+                            1.0
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
+                    <span class="en">
+                        <strong>Insight:</strong> Concentrix's keyword efficiency (3.1 visits/KW) is 69% below leaders like Neusoft (10.1) and Pactera (10.6). This indicates both keyword quality issues and low-ranking positions. Focus should shift to high-intent, commercial keywords rather than volume alone.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>洞察：</strong>Concentrix的关键词效率（3.1访问/关键词）比东软（10.1）和文思海辉（10.6）等领先者低69%。这表明关键词质量问题和排名位置较低。应将重点转向高意图、商业关键词，而非单纯追求数量。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">📉 Competitive Gap Analysis vs. Market Leader</span>
+                    <span class="zh hidden">📉 与市场领先者的竞争差距分析</span>
+                </h3>
+                <div style="margin-top: 20px;">
+                    <div class="gap-analysis-item">
+                        <span class="gap-label">
+                            <span class="en">Daily Traffic Gap</span>
+                            <span class="zh hidden">日流量差距</span>
+                        </span>
+                        <span class="gap-value">-3,521 <span style="font-size: 14px; color: var(--text-muted);"><span class="en">(161x behind)</span><span class="zh hidden">（落后161倍）</span></span></span>
+                    </div>
+                    <div class="gap-analysis-item">
+                        <span class="gap-label">
+                            <span class="en">Keyword Coverage Gap</span>
+                            <span class="zh hidden">关键词覆盖差距</span>
+                        </span>
+                        <span class="gap-value">-344 <span style="font-size: 14px; color: var(--text-muted);"><span class="en">(50x behind)</span><span class="zh hidden">（落后50倍）</span></span></span>
+                    </div>
+                    <div class="gap-analysis-item">
+                        <span class="gap-label">
+                            <span class="en">Top-10 Keyword Gap</span>
+                            <span class="zh hidden">前10关键词差距</span>
+                        </span>
+                        <span class="gap-value">-79 <span style="font-size: 14px; color: var(--text-muted);"><span class="en">(0 vs 79)</span><span class="zh hidden">（0 vs 79）</span></span></span>
+                    </div>
+                    <div class="gap-analysis-item">
+                        <span class="gap-label">
+                            <span class="en">Bing Traffic Gap</span>
+                            <span class="zh hidden">必应流量差距</span>
+                        </span>
+                        <span class="gap-value">-1,867 <span style="font-size: 14px; color: var(--text-muted);"><span class="en">(0% vs 53%)</span><span class="zh hidden">（0% vs 53%）</span></span></span>
+                    </div>
+                    <div class="gap-analysis-item">
+                        <span class="gap-label">
+                            <span class="en">Competitive Index Gap</span>
+                            <span class="zh hidden">竞争力指数差距</span>
+                        </span>
+                        <span class="gap-value">-81.8 <span style="font-size: 14px; color: var(--text-muted);"><span class="en">(12.4 vs 94.2)</span><span class="zh hidden">（12.4 vs 94.2）</span></span></span>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
+                    <span class="en">
+                        <strong>Insight:</strong> The most critical gaps are in keyword coverage (50x behind) and Bing channel absence (0% vs 53%). These represent the most immediate optimization opportunities, as expanding to 100+ keywords and activating Bing could triple current traffic within 6 months.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>洞察：</strong>最严重的差距在于关键词覆盖（落后50倍）和必应渠道缺失（0% vs 53%）。这些代表最直接的优化机会，扩展至100+关键词并激活必应可在6个月内将当前流量提升三倍。
+                    </span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Opportunity Identification</span>
+                <span class="zh hidden">机会识别</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Strategic opportunities prioritized by impact potential and implementation feasibility for Concentrix Corporation.
+                </span>
+                <span class="zh hidden">
+                    根据影响潜力和实施可行性为Concentrix公司优先排序的战略机会。
+                </span>
+            </p>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">🎯 Opportunity Priority Matrix</span>
+                <span class="zh hidden">🎯 机会优先级矩阵</span>
+            </h3>
+
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-high">
+                        <span class="en">🔴 HIGH PRIORITY</span>
+                        <span class="zh hidden">🔴 高优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Keyword Portfolio Expansion</span>
+                        <span class="zh hidden">关键词组合扩展</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Expand from 7 to 100+ targeted keywords within 3 months. Focus on commercial-intent terms in customer service, BPO, and digital transformation sectors. Expected impact: +300% traffic.
+                        </span>
+                        <span class="zh hidden">
+                            3个月内从7个关键词扩展至100+目标关键词。重点关注客户服务、BPO和数字化转型领域的商业意图词。预期影响：流量+300%。
+                        </span>
+                    </p>
+                    <p style="margin-top: 8px; font-weight: 600; color: var(--text-primary);">
+                        <span class="en">Estimated Traffic Gain: +66 visits/day</span>
+                        <span class="zh hidden">预估流量增长：+66 访问/天</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-high">
+                        <span class="en">🔴 HIGH PRIORITY</span>
+                        <span class="zh hidden">🔴 高优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Bing Search Engine Activation</span>
+                        <span class="zh hidden">必应搜索引擎激活</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Launch Bing-optimized content and technical SEO strategy. Competitors average 17% of traffic from Bing. Low competition opportunity for quick wins.
+                        </span>
+                        <span class="zh hidden">
+                            启动必应优化内容和技术SEO策略。竞品平均从必应获得17%流量。低竞争环境下快速获胜的机会。
+                        </span>
+                    </p>
+                    <p style="margin-top: 8px; font-weight: 600; color: var(--text-primary);">
+                        <span class="en">Estimated Traffic Gain: +240 visits/day</span>
+                        <span class="zh hidden">预估流量增长：+240 访问/天</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-medium">
+                        <span class="en">🟡 MEDIUM PRIORITY</span>
+                        <span class="zh hidden">🟡 中优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Content Authority Building</span>
+                        <span class="zh hidden">内容权威性建设</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Develop 20-30 deep-dive content pieces on industry topics. Target positions 21-30 keywords for promotion to positions 11-20, then top 10.
+                        </span>
+                        <span class="zh hidden">
+                            开发20-30篇行业深度内容。针对21-30位关键词进行推广至11-20位，然后进入前10。
+                        </span>
+                    </p>
+                    <p style="margin-top: 8px; font-weight: 600; color: var(--text-primary);">
+                        <span class="en">Estimated Traffic Gain: +150 visits/day</span>
+                        <span class="zh hidden">预估流量增长：+150 访问/天</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-medium">
+                        <span class="en">🟡 MEDIUM PRIORITY</span>
+                        <span class="zh hidden">🟡 中优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Competitor Keyword Gap Analysis</span>
+                        <span class="zh hidden">竞品关键词差距分析</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Analyze the 871 keywords where iSoftStone ranks but Concentrix doesn't. Identify 50-100 attainable terms for content targeting.
+                        </span>
+                        <span class="zh hidden">
+                            分析软通动力有排名但Concentrix没有的871个关键词。识别50-100个可实现的词进行内容定位。
+                        </span>
+                    </p>
+                    <p style="margin-top: 8px; font-weight: 600; color: var(--text-primary);">
+                        <span class="en">Estimated Traffic Gain: +180 visits/day</span>
+                        <span class="zh hidden">预估流量增长：+180 访问/天</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-low">
+                        <span class="en">🟢 LOW PRIORITY</span>
+                        <span class="zh hidden">🟢 低优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Technical SEO Optimization</span>
+                        <span class="zh hidden">技术SEO优化</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Implement structured data, improve page speed, and optimize for mobile. Foundation for long-term ranking improvements.
+                        </span>
+                        <span class="zh hidden">
+                            实施结构化数据，提升页面速度，优化移动端。为长期排名提升打下基础。
+                        </span>
+                    </p>
+                    <p style="margin-top: 8px; font-weight: 600; color: var(--text-primary);">
+                        <span class="en">Estimated Traffic Gain: +44 visits/day</span>
+                        <span class="zh hidden">预估流量增长：+44 访问/天</span>
+                    </p>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="opportunity-priority priority-low">
+                        <span class="en">🟢 LOW PRIORITY</span>
+                        <span class="zh hidden">🟢 低优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Local SEO & Regional Targeting</span>
+                        <span class="zh hidden">本地SEO与区域定位</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Target specific Chinese cities/regions where Concentrix has physical presence. Lower competition in local searches.
+                        </span>
+                        <span class="zh hidden">
+                            针对Concentrix有实体存在的特定中国城市/地区。本地搜索竞争较低。
+                        </span>
+                    </p>
+                    <p style="margin-top: 8px; font-weight: 600; color: var(--text-primary);">
+                        <span class="en">Estimated Traffic Gain: +88 visits/day</span>
+                        <span class="zh hidden">预估流量增长：+88 访问/天</span>
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">💰 Total Opportunity Potential</span>
+                <span class="zh hidden">💰 总机会潜力</span>
+            </h3>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Combined Traffic Potential</span>
+                        <span class="zh hidden">综合流量潜力</span>
+                    </div>
+                    <div class="value" style="color: var(--success-color);">
+                        +768
+                    </div>
+                    <div class="trend positive">
+                        <span class="en">visits/day (35x current traffic)</span>
+                        <span class="zh hidden">访问/天（当前流量的35倍）</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">6-Month Realistic Target</span>
+                        <span class="zh hidden">6个月实际目标</span>
+                    </div>
+                    <div class="value" style="color: var(--success-color);">
+                        +384
+                    </div>
+                    <div class="trend positive">
+                        <span class="en">visits/day (50% of potential)</span>
+                        <span class="zh hidden">访问/天（50%潜力）</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">12-Month Stretch Goal</span>
+                        <span class="zh hidden">12个月挑战目标</span>
+                    </div>
+                    <div class="value" style="color: var(--success-color);">
+                        +614
+                    </div>
+                    <div class="trend positive">
+                        <span class="en">visits/day (80% of potential)</span>
+                        <span class="zh hidden">访问/天（80%潜力）</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">New Market Ranking</span>
+                        <span class="zh hidden">新市场排名</span>
+                    </div>
+                    <div class="value" style="color: var(--success-color);">
+                        #3
+                    </div>
+                    <div class="trend positive">
+                        <span class="en">↑ from #6 (surpass Pactera, BeyondSoft)</span>
+                        <span class="zh hidden">↑ 从第6位（超越文思海辉、博彦科技）</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 20px;">
+                <span class="en">
+                    <strong>Implementation Note:</strong> The 6-month realistic target of +384 visits/day represents a 17.5x increase from current levels and would move Concentrix from last place to 3rd place, ahead of Pactera EDGE (974) and BeyondSoft (728). This is achievable through focused execution on the two high-priority opportunities: Keyword Expansion and Bing Activation.
+                </span>
+                <span class="zh hidden">
+                    <strong>实施说明：</strong>6个月实际目标+384访问/天代表从当前水平增长17.5倍，将使Concentrix从最后一名跃升至第3名，超越文思海辉（974）和博彦科技（728）。通过重点执行两个高优先级机会（关键词扩展和必应激活）即可实现这一目标。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2 class="section-title">
+                <span class="en">Action Plan & Roadmap</span>
+                <span class="zh hidden">行动计划与路线图</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Phased implementation strategy with clear milestones, deliverables, and success metrics for Concentrix Corporation's SEO transformation.
+                </span>
+                <span class="zh hidden">
+                    分阶段实施策略，为Concentrix公司的SEO转型提供明确的里程碑、交付成果和成功指标。
+                </span>
+            </p>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">📅 18-Month Transformation Timeline</span>
+                <span class="zh hidden">📅 18个月转型时间表</span>
+            </h3>
+
+            <div class="timeline-item">
+                <span class="timeline-phase">
+                    <span class="en">PHASE 1: Q1 2025</span>
+                    <span class="zh hidden">第一阶段：2025年第一季度</span>
+                </span>
+                <h4>
+                    <span class="en">Foundation Building & Quick Wins</span>
+                    <span class="zh hidden">基础建设与快速获胜</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Goals:</strong> Expand to 100+ keywords, activate Bing channel, achieve +150 visits/day<br>
+                        <strong>Key Activities:</strong> Comprehensive keyword research, competitor gap analysis, Bing Webmaster Tools setup, 20 optimized content pieces, technical SEO audit<br>
+                        <strong>Success Metrics:</strong> 100+ indexed keywords, 50+ Bing visits/day, 5 keywords in positions 11-20
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>扩展至100+关键词，激活必应渠道，实现+150访问/天<br>
+                        <strong>关键活动：</strong>全面关键词研究，竞品差距分析，必应网站管理员工具设置，20篇优化内容，技术SEO审计<br>
+                        <strong>成功指标：</strong>100+个已索引关键词，50+必应访问/天，5个关键词进入11-20位
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase">
+                    <span class="en">PHASE 2: Q2 2025</span>
+                    <span class="zh hidden">第二阶段：2025年第二季度</span>
+                </span>
+                <h4>
+                    <span class="en">Authority Building & Ranking Acceleration</span>
+                    <span class="zh hidden">权威性建设与排名加速</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Goals:</strong> Reach 200+ keywords, achieve +300 visits/day total, rank #4 in market<br>
+                        <strong>Key Activities:</strong> 30 authority content pieces, internal linking optimization, backlink campaign, promote 10 keywords to top-10, Bing traffic scaling<br>
+                        <strong>Success Metrics:</strong> 200+ indexed keywords, 10 keywords in top-10, 150+ Bing visits/day, surpass Epaylinks
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>达到200+关键词，实现+300访问/天总量，市场排名第4<br>
+                        <strong>关键活动：</strong>30篇权威内容，内部链接优化，外链活动，推广10个关键词至前10，必应流量扩展<br>
+                        <strong>成功指标：</strong>200+个已索引关键词，10个关键词进入前10，150+必应访问/天，超越易宝软件
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase">
+                    <span class="en">PHASE 3: Q3 2025</span>
+                    <span class="zh hidden">第三阶段：2025年第三季度</span>
+                </span>
+                <h4>
+                    <span class="en">Market Position Consolidation</span>
+                    <span class="zh hidden">市场地位巩固</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Goals:</strong> Achieve 400+ visits/day, rank #3 in market, surpass BeyondSoft<br>
+                        <strong>Key Activities:</strong> 25 advanced content pieces, conversion rate optimization, local SEO expansion, 20 keywords to top-10, competitive keyword targeting<br>
+                        <strong>Success Metrics:</strong> 300+ indexed keywords, 20 keywords in top-10, 250+ Bing visits/day, 400+ total visits/day
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>实现400+访问/天，市场排名第3，超越博彦科技<br>
+                        <strong>关键活动：</strong>25篇高级内容，转化率优化，本地SEO扩展，20个关键词至前10，竞品关键词定位<br>
+                        <strong>成功指标：</strong>300+个已索引关键词，20个关键词进入前10，250+必应访问/天，400+总访问/天
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase">
+                    <span class="en">PHASE 4: Q4 2025</span>
+                    <span class="zh hidden">第四阶段：2025年第四季度</span>
+                </span>
+                <h4>
+                    <span class="en">Competitive Dominance Push</span>
+                    <span class="zh hidden">竞争主导地位推进</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Goals:</strong> Achieve 600+ visits/day, challenge Pactera EDGE for #3 position<br>
+                        <strong>Key Activities:</strong> 30 thought-leadership pieces, video/multimedia content, industry partnerships, 30 keywords to top-10, advanced technical SEO<br>
+                        <strong>Success Metrics:</strong> 400+ indexed keywords, 30 keywords in top-10, 350+ Bing visits/day, 600+ total visits/day
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>实现600+访问/天，挑战文思海辉的第3名位置<br>
+                        <strong>关键活动：</strong>30篇思想领导力内容，视频/多媒体内容，行业合作，30个关键词至前10，高级技术SEO<br>
+                        <strong>成功指标：</strong>400+个已索引关键词，30个关键词进入前10，350+必应访问/天，600+总访问/天
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-phase">
+                    <span class="en">PHASE 5: Q1-Q2 2026</span>
+                    <span class="zh hidden">第五阶段：2026年第一至第二季度</span>
+                </span>
+                <h4>
+                    <span class="en">Market Leadership Establishment</span>
+                    <span class="zh hidden">市场领导地位建立</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Goals:</strong> Achieve 1,000+ visits/day, surpass Pactera EDGE, become #2 after iSoftStone<br>
+                        <strong>Key Activities:</strong> 40 authoritative content assets, PR/media coverage, executive thought leadership, 50 keywords to top-10, omnichannel optimization<br>
+                        <strong>Success Metrics:</strong> 500+ indexed keywords, 50 keywords in top-10, 500+ Bing visits/day, 1,000+ total visits/day, #2 market ranking
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>实现1,000+访问/天，超越文思海辉，成为仅次于软通动力的第2名<br>
+                        <strong>关键活动：</strong>40篇权威内容资产，公关/媒体报道，高管思想领导力，50个关键词至前10，全渠道优化<br>
+                        <strong>成功指标：</strong>500+个已索引关键词，50个关键词进入前10，500+必应访问/天，1,000+总访问/天，市场排名第2
+                    </span>
+                </p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">🎯 Key Success Factors</span>
+                <span class="zh hidden">🎯 关键成功因素</span>
+            </h3>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Budget Recommendation</span>
+                        <span class="zh hidden">预算建议</span>
+                    </div>
+                    <div class="value" style="font-size: 24px;">
+                        <span class="en">$8K-12K/mo</span>
+                        <span class="zh hidden">$8K-12K/月</span>
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">
+                        <span class="en">Covers content, technical SEO, and link building</span>
+                        <span class="zh hidden">涵盖内容、技术SEO和链接建设</span>
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Team Resources</span>
+                        <span class="zh hidden">团队资源</span>
+                    </div>
+                    <div class="value" style="font-size: 24px;">
+                        <span class="en">2-3 FTE</span>
+                        <span class="zh hidden">2-3名全职</span>
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">
+                        <span class="en">SEO manager, content writer, technical specialist</span>
+                        <span class="zh hidden">SEO经理、内容撰写者、技术专家</span>
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Content Production</span>
+                        <span class="zh hidden">内容生产</span>
+                    </div>
+                    <div class="value" style="font-size: 24px;">
+                        <span class="en">20-30/mo</span>
+                        <span class="zh hidden">20-30篇/月</span>
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">
+                        <span class="en">Mix of blog posts, guides, and landing pages</span>
+                        <span class="zh hidden">博客文章、指南和落地页混合</span>
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Expected ROI</span>
+                        <span class="zh hidden">预期ROI</span>
+                    </div>
+                    <div class="value" style="font-size: 24px; color: var(--success-color);">
+                        <span class="en">450%</span>
+                        <span class="zh hidden">450%</span>
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">
+                        <span class="en">By month 18 based on lead value estimates</span>
+                        <span class="zh hidden">基于潜在客户价值估算的18个月ROI</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <button onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')" class="primary-cta">
+                    <span class="en">🚀 Get Started Today</span>
+                    <span class="zh hidden">🚀 今天就开始</span>
+                </button>
+                <button id="download-pdf-btn-2" class="secondary-cta">
+                    <span class="en">📄 Save This Report</span>
+                    <span class="zh hidden">📄 保存此报告</span>
+                </button>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px; text-align: center;">
+                <span class="en">
+                    <strong>Ready to transform your SEO performance?</strong><br>
+                    Contact EC Innovations for a personalized consultation and detailed implementation plan tailored to Concentrix Corporation's unique needs.
+                </span>
+                <span class="zh hidden">
+                    <strong>准备好转变您的SEO表现了吗？</strong><br>
+                    联系EC Innovations获取个性化咨询和针对Concentrix公司独特需求定制的详细实施计划。
+                </span>
+            </p>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handlers
+            const downloadBtn1 = document.getElementById('download-pdf-btn');
+            const downloadBtn2 = document.getElementById('download-pdf-btn-2');
+            
+            if (downloadBtn1) {
+                downloadBtn1.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+            
+            if (downloadBtn2) {
+                downloadBtn2.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
