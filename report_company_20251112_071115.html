@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lindström - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+        }
+        .user-company-row td:first-child {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        .trend-up { color: var(--success-color); }
+        .trend-down { color: var(--danger-color); }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+            text-decoration: none;
+            display: inline-block;
+            line-height: 20px;
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item.strengths h3 { color: var(--success-color); }
+        .swot-item.weaknesses h3 { color: var(--danger-color); }
+        .swot-item.opportunities h3 { color: var(--primary-color); }
+        .swot-item.threats h3 { color: var(--warning-color); }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 2;
+            widows: 2;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+        .chart-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .chart-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chart-label {
+            min-width: 120px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .chart-bar-wrapper {
+            flex: 1;
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            border-radius: 6px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+        }
+        .chart-value {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: var(--font-data);
+        }
+        .stacked-bar {
+            display: flex;
+            height: 100%;
+        }
+        .stacked-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .stacked-segment.baidu { background: #3b82f6; }
+        .stacked-segment.bing { background: #8b5cf6; }
+
+        /* Gap Analysis */
+        .gap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .gap-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .gap-card h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .gap-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: var(--font-data);
+            margin-bottom: 8px;
+        }
+        .gap-comparison {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .opportunity-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+        .priority-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .priority-high { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .priority-medium { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .priority-low { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .opportunity-content {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .opportunity-metrics {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--alt-bg);
+        }
+        .opportunity-metric {
+            flex: 1;
+        }
+        .opportunity-metric-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .opportunity-metric-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: var(--font-data);
+        }
+
+        /* Timeline */
+        .timeline-container {
+            margin: 30px 0;
+        }
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .timeline-phase {
+            font-size: 12px;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .timeline-duration {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: var(--font-data);
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .timeline-tasks {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--alt-bg);
+        }
+        .timeline-tasks ul {
+            list-style: none;
+            padding: 0;
+        }
+        .timeline-tasks li {
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        .timeline-tasks li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .gap-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2 {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+
+            /* Opportunity and gap grids */
+            .opportunity-grid, .gap-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8mm;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></h1>
+            <p class="subtitle">
+                <span class="en">Lindström | Generated on December 2024</span>
+                <span class="zh hidden">林斯特龙 | 生成于2024年12月</span>
+            </p>
+            
+            <div style="margin-top: 40px;">
+                <h2><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></h2>
+                <p class="summary-text">
+                    <span class="en">
+                        This report analyzes Lindström's SEO competitive position against 5 major competitors in the Chinese market. 
+                        Our analysis reveals that while Lindström maintains a keyword presence with 16 ranking keywords, 
+                        there is significant opportunity to improve traffic generation and keyword positioning. 
+                        The competitive landscape shows Taijie leading with 18 daily visits, primarily from Bing traffic, 
+                        while most competitors show zero organic visibility, presenting a unique market opportunity.
+                    </span>
+                    <span class="zh hidden">
+                        本报告分析了林斯特龙在中国市场相对于5家主要竞争对手的SEO竞争地位。
+                        我们的分析显示，虽然林斯特龙拥有16个排名关键词，但在流量生成和关键词排名方面有显著的提升空间。
+                        竞争格局显示泰洁以每日18次访问领先，主要来自必应流量，而大多数竞争对手的自然搜索可见度为零，这为市场提供了独特的机会。
+                    </span>
+                </p>
+            </div>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">
+                        #2
+                        <span style="font-size: 14px; color: var(--text-muted);">
+                            <span class="en">/ 6 competitors</span>
+                            <span class="zh hidden">/ 6家竞争对手</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">
+                        7
+                        <span class="trend-down">▼ 61%</span>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                        <span class="en">vs. Competitor Avg: 4.2</span>
+                        <span class="zh hidden">对比竞争对手平均: 4.2</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">
+                        0%
+                        <span style="font-size: 14px; color: var(--text-muted);">
+                            <span class="en">Top 10 / Total</span>
+                            <span class="zh hidden">前10 / 总数</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value">
+                        <span class="en">High</span>
+                        <span class="zh hidden">高</span>
+                        <span style="font-size: 16px;">🚀</span>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                        <span class="en">13 keywords in positions 11-50</span>
+                        <span class="zh hidden">13个关键词在11-50名</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta">
+                    <span class="en">📥 Download PDF Report</span>
+                    <span class="zh hidden">📥 下载PDF报告</span>
+                </button>
+                <a href="https://www.ecinnovations.com/services/china-seo-services/" target="_blank" class="secondary-cta">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro">
+                <span class="en">
+                    Comprehensive comparison of key SEO metrics across all major competitors in the textile services and laundry industry.
+                </span>
+                <span class="zh hidden">
+                    纺织服务和洗衣行业所有主要竞争对手的关键SEO指标综合对比。
+                </span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Total Daily Traffic</span><span class="zh hidden">日均总流量</span></th>
+                            <th><span class="en">Baidu PC Traffic</span><span class="zh hidden">百度PC流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">总关键词数</span></th>
+                            <th><span class="en">Top 20 Keywords</span><span class="zh hidden">前20关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td>
+                                <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span>
+                                <span class="en">Lindström</span>
+                                <span class="zh hidden">林斯特龙</span>
+                            </td>
+                            <td>7</td>
+                            <td>5 ~ 7</td>
+                            <td>0 ~ 0</td>
+                            <td>16</td>
+                            <td>3</td>
+                            <td>28.5</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Taijie</span><span class="zh hidden">泰洁</span></td>
+                            <td>18</td>
+                            <td>0 ~ 0</td>
+                            <td>9 ~ 15</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>18.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Hantex</span><span class="zh hidden">瀚生</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Jiefeng</span><span class="zh hidden">洁丰</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Shanghai Gildo</span><span class="zh hidden">上海吉尔多</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Elis</span><span class="zh hidden">鹰诺达</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h4 style="color: var(--text-heading); margin-bottom: 12px;">
+                    <span class="en">📊 Key Insights</span>
+                    <span class="zh hidden">📊 关键洞察</span>
+                </h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
+                        <span class="en">Lindström ranks #2 with 7 daily visits, demonstrating stronger organic presence than most competitors</span>
+                        <span class="zh hidden">林斯特龙以每日7次访问排名第2，展现出比大多数竞争对手更强的自然搜索存在感</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
+                        <span class="en">Only 2 out of 6 companies show measurable organic traffic, indicating a nascent competitive landscape</span>
+                        <span class="zh hidden">6家公司中只有2家显示可衡量的自然流量，表明竞争格局尚处于初期</span>
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--text-secondary);">
+                        <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
+                        <span class="en">Lindström is the only company with Baidu ranking keywords (16 total), providing a unique competitive advantage</span>
+                        <span class="zh hidden">林斯特龙是唯一拥有百度排名关键词（总计16个）的公司，提供了独特的竞争优势</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">
+                    Strategic assessment of Lindström's competitive position, identifying internal capabilities and external market dynamics.
+                </span>
+                <span class="zh hidden">
+                    林斯特龙竞争地位的战略评估，识别内部能力和外部市场动态。
+                </span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item strengths">
+                    <h3>
+                        <span class="en">💪 Strengths</span>
+                        <span class="zh hidden">💪 优势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Exclusive Baidu keyword portfolio with 16 ranking terms, providing sole organic visibility among competitors</span>
+                            <span class="zh hidden">独家百度关键词组合，拥有16个排名词，在竞争对手中提供唯一的自然搜索可见度</span>
+                        </li>
+                        <li>
+                            <span class="en">Consistent daily traffic generation (7 visits) demonstrating sustainable organic channel performance</span>
+                            <span class="zh hidden">持续的日均流量生成（7次访问）展示了可持续的自然渠道表现</span>
+                        </li>
+                        <li>
+                            <span class="en">Strong foundation with 3 keywords in positions 11-20, close to first-page breakthrough potential</span>
+                            <span class="zh hidden">在11-20位拥有3个关键词的坚实基础，接近首页突破潜力</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item weaknesses">
+                    <h3>
+                        <span class="en">⚠️ Weaknesses</span>
+                        <span class="zh hidden">⚠️ 劣势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Zero keywords in top 10 positions, limiting high-intent traffic capture and conversion opportunities</span>
+                            <span class="zh hidden">前10位关键词为零，限制了高意向流量捕获和转化机会</span>
+                        </li>
+                        <li>
+                            <span class="en">No Bing search presence while Taijie captures 12 daily visits from this channel</span>
+                            <span class="zh hidden">必应搜索没有存在感，而泰洁从该渠道每日获得12次访问</span>
+                        </li>
+                        <li>
+                            <span class="en">81% of keywords (13/16) ranked beyond position 20, indicating optimization opportunities</span>
+                            <span class="zh hidden">81%的关键词（13/16）排名在20位之后，表明存在优化机会</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item opportunities">
+                    <h3>
+                        <span class="en">🎯 Opportunities</span>
+                        <span class="zh hidden">🎯 机会</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Market leader vulnerability: Taijie relies solely on Bing, leaving Baidu market wide open for dominance</span>
+                            <span class="zh hidden">市场领导者的脆弱性：泰洁仅依赖必应，让百度市场敞开供主导</span>
+                        </li>
+                        <li>
+                            <span class="en">4 competitors with zero SEO footprint create massive opportunity for market share capture</span>
+                            <span class="zh hidden">4家竞争对手SEO足迹为零，为市场份额获取创造巨大机会</span>
+                        </li>
+                        <li>
+                            <span class="en">Dual-engine strategy potential: Expand to Bing while strengthening Baidu to capture all search channels</span>
+                            <span class="zh hidden">双引擎战略潜力：扩展到必应同时加强百度，以捕获所有搜索渠道</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item threats">
+                    <h3>
+                        <span class="en">⚡ Threats</span>
+                        <span class="zh hidden">⚡ 威胁</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Currently behind Taijie by 11 daily visits, with potential for this gap to widen if optimization stalls</span>
+                            <span class="zh hidden">目前落后泰洁11次日均访问，如果优化停滞，这一差距有可能扩大</span>
+                        </li>
+                        <li>
+                            <span class="en">Dormant competitors may activate SEO programs, especially those with established brand recognition</span>
+                            <span class="zh hidden">休眠竞争对手可能激活SEO项目，尤其是那些拥有既定品牌认知度的公司</span>
+                        </li>
+                        <li>
+                            <span class="en">Low conversion potential with no top 10 rankings, risking investment ROI if traffic doesn't convert</span>
+                            <span class="zh hidden">前10位排名为零导致转化潜力低，如果流量不转化则存在投资ROI风险</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            
+            <div class="chart-container">
+                <h3>
+                    <span class="en">🔍 Traffic Channel Distribution</span>
+                    <span class="zh hidden">🔍 流量渠道分布</span>
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Comparison of Baidu vs. Bing traffic sources across all competitors</span>
+                    <span class="zh hidden">所有竞争对手的百度与必应流量来源对比</span>
+                </p>
+                <div class="chart-bars">
+                    <div class="chart-bar-item">
+                        <div class="chart-label"><span class="en">Lindström</span><span class="zh hidden">林斯特龙</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="stacked-bar">
+                                <div class="stacked-segment baidu" style="width: 100%;">
+                                    <span class="en">Baidu: 7</span><span class="zh hidden">百度: 7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-label"><span class="en">Taijie</span><span class="zh hidden">泰洁</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="stacked-bar">
+                                <div class="stacked-segment bing" style="width: 100%;">
+                                    <span class="en">Bing: 18</span><span class="zh hidden">必应: 18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-label"><span class="en">Hantex</span><span class="zh hidden">瀚生</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px;">
+                                <span class="en">No Traffic</span><span class="zh hidden">无流量</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-label"><span class="en">Jiefeng</span><span class="zh hidden">洁丰</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px;">
+                                <span class="en">No Traffic</span><span class="zh hidden">无流量</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-label"><span class="en">Shanghai Gildo</span><span class="zh hidden">上海吉尔多</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px;">
+                                <span class="en">No Traffic</span><span class="zh hidden">无流量</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-label"><span class="en">Elis</span><span class="zh hidden">鹰诺达</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px;">
+                                <span class="en">No Traffic</span><span class="zh hidden">无流量</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>
+                    <span class="en">⚡ Keyword Efficiency Index</span>
+                    <span class="zh hidden">⚡ 关键词效率指数</span>
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Traffic generation efficiency per keyword (Traffic / Keywords ratio)</span>
+                    <span class="zh hidden">每个关键词的流量生成效率（流量/关键词比率）</span>
+                </p>
+                <div class="chart-bars">
+                    <div class="chart-bar-item">
+                        <div class="chart-label"><span class="en">Lindström</span><span class="zh hidden">林斯特龙</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 27.5%;">
+                                <span class="chart-value">0.44</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-label"><span class="en">Taijie</span><span class="zh hidden">泰洁</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar-fill" style="width: 100%;">
+                                <span class="chart-value">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-item">
+                        <div class="chart-label"><span class="en">Others</span><span class="zh hidden">其他</span></div>
+                        <div class="chart-bar-wrapper">
+                            <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px;">
+                                <span class="en">No Data</span><span class="zh hidden">无数据</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">📉 Competitive Gap Analysis</span>
+                <span class="zh hidden">📉 竞争差距分析</span>
+            </h3>
+            <div class="gap-grid">
+                <div class="gap-card">
+                    <h4><span class="en">Traffic Gap</span><span class="zh hidden">流量差距</span></h4>
+                    <div class="gap-value">-11</div>
+                    <p class="gap-comparison">
+                        <span class="en">Daily visits behind market leader Taijie (7 vs. 18)</span>
+                        <span class="zh hidden">落后市场领导者泰洁的日均访问量（7对18）</span>
+                    </p>
+                </div>
+                <div class="gap-card">
+                    <h4><span class="en">Keyword Advantage</span><span class="zh hidden">关键词优势</span></h4>
+                    <div class="gap-value" style="color: var(--success-color);">+16</div>
+                    <p class="gap-comparison">
+                        <span class="en">Ranking keywords ahead of all competitors on Baidu</span>
+                        <span class="zh hidden">在百度上领先所有竞争对手的排名关键词</span>
+                    </p>
+                </div>
+                <div class="gap-card">
+                    <h4><span class="en">Top 10 Deficit</span><span class="zh hidden">前10缺口</span></h4>
+                    <div class="gap-value">0</div>
+                    <p class="gap-comparison">
+                        <span class="en">Keywords in top 10 positions (Critical improvement area)</span>
+                        <span class="zh hidden">前10位的关键词（关键改进领域）</span>
+                    </p>
+                </div>
+                <div class="gap-card">
+                    <h4><span class="en">Channel Diversification</span><span class="zh hidden">渠道多元化</span></h4>
+                    <div class="gap-value">1/2</div>
+                    <p class="gap-comparison">
+                        <span class="en">Active on Baidu only; Opportunity to expand to Bing</span>
+                        <span class="zh hidden">仅在百度活跃；有机会扩展到必应</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">
+                    Data-driven opportunities ranked by potential impact and implementation feasibility.
+                </span>
+                <span class="zh hidden">
+                    基于数据的机会，按潜在影响和实施可行性排序。
+                </span>
+            </p>
+
+            <h3 style="margin-top: 30px; margin-bottom: 20px; color: var(--text-heading);">
+                <span class="en">🎯 Priority Opportunities</span>
+                <span class="zh hidden">🎯 优先机会</span>
+            </h3>
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <div class="opportunity-header">
+                        <div class="opportunity-title">
+                            <span class="en">Position 11-20 Keyword Optimization</span>
+                            <span class="zh hidden">11-20位关键词优化</span>
+                        </div>
+                        <span class="priority-badge priority-high">
+                            <span class="en">HIGH</span>
+                            <span class="zh hidden">高</span>
+                        </span>
+                    </div>
+                    <div class="opportunity-content">
+                        <span class="en">
+                            Target the 3 keywords currently ranked 11-20 for first-page breakthrough. 
+                            These keywords are closest to high-visibility positions and require minimal effort for maximum impact.
+                        </span>
+                        <span class="zh hidden">
+                            针对目前排名11-20位的3个关键词进行首页突破。
+                            这些关键词最接近高可见度位置，只需最小努力即可获得最大影响。
+                        </span>
+                    </div>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label">
+                                <span class="en">Target Keywords</span>
+                                <span class="zh hidden">目标关键词</span>
+                            </div>
+                            <div class="opportunity-metric-value">3</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label">
+                                <span class="en">Est. Traffic Gain</span>
+                                <span class="zh hidden">预估流量增长</span>
+                            </div>
+                            <div class="opportunity-metric-value">+250%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-header">
+                        <div class="opportunity-title">
+                            <span class="en">Bing Search Channel Expansion</span>
+                            <span class="zh hidden">必应搜索渠道扩展</span>
+                        </div>
+                        <span class="priority-badge priority-high">
+                            <span class="en">HIGH</span>
+                            <span class="zh hidden">高</span>
+                        </span>
+                    </div>
+                    <div class="opportunity-content">
+                        <span class="en">
+                            Capitalize on Taijie's Bing dominance by establishing presence on this underutilized channel. 
+                            Bing delivers 18 daily visits with zero Baidu competition overlap.
+                        </span>
+                        <span class="zh hidden">
+                            利用泰洁的必应主导地位，在这个未充分利用的渠道建立存在感。
+                            必应每日提供18次访问，与百度竞争没有重叠。
+                        </span>
+                    </div>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label">
+                                <span class="en">Market Gap</span>
+                                <span class="zh hidden">市场缺口</span>
+                            </div>
+                            <div class="opportunity-metric-value">100%</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label">
+                                <span class="en">Potential Daily Traffic</span>
+                                <span class="zh hidden">潜在日流量</span>
+                            </div>
+                            <div class="opportunity-metric-value">18+</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-header">
+                        <div class="opportunity-title">
+                            <span class="en">Long-tail Keyword Expansion</span>
+                            <span class="zh hidden">长尾关键词扩展</span>
+                        </div>
+                        <span class="priority-badge priority-medium">
+                            <span class="en">MEDIUM</span>
+                            <span class="zh hidden">中</span>
+                        </span>
+                    </div>
+                    <div class="opportunity-content">
+                        <span class="en">
+                            Expand keyword portfolio beyond current 16 terms to capture broader search intent. 
+                            Focus on service-specific and location-based long-tail variations.
+                        </span>
+                        <span class="zh hidden">
+                            将关键词组合扩展到当前16个词之外，以捕获更广泛的搜索意图。
+                            专注于服务特定和基于位置的长尾变体。
+                        </span>
+                    </div>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label">
+                                <span class="en">Target Expansion</span>
+                                <span class="zh hidden">目标扩展</span>
+                            </div>
+                            <div class="opportunity-metric-value">+50</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label">
+                                <span class="en">Conversion Rate</span>
+                                <span class="zh hidden">转化率</span>
+                            </div>
+                            <div class="opportunity-metric-value">↑ 40%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="opportunity-header">
+                        <div class="opportunity-title">
+                            <span class="en">Technical SEO Foundation</span>
+                            <span class="zh hidden">技术SEO基础</span>
+                        </div>
+                        <span class="priority-badge priority-medium">
+                            <span class="en">MEDIUM</span>
+                            <span class="zh hidden">中</span>
+                        </span>
+                    </div>
+                    <div class="opportunity-content">
+                        <span class="en">
+                            Strengthen technical infrastructure to support keyword ranking improvements. 
+                            Focus on site speed, mobile optimization, and structured data implementation.
+                        </span>
+                        <span class="zh hidden">
+                            加强技术基础设施以支持关键词排名改进。
+                            专注于网站速度、移动优化和结构化数据实现。
+                        </span>
+                    </div>
+                    <div class="opportunity-metrics">
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label">
+                                <span class="en">Impact Areas</span>
+                                <span class="zh hidden">影响领域</span>
+                            </div>
+                            <div class="opportunity-metric-value">5+</div>
+                        </div>
+                        <div class="opportunity-metric">
+                            <div class="opportunity-metric-label">
+                                <span class="en">Ranking Boost</span>
+                                <span class="zh hidden">排名提升</span>
+                            </div>
+                            <div class="opportunity-metric-value">+15%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2><span class="en">Strategic Action Plan</span><span class="zh hidden">战略行动计划</span></h2>
+            <p class="section-intro">
+                <span class="en">
+                    Phased implementation roadmap designed to systematically improve Lindström's SEO competitive position over 12 months.
+                </span>
+                <span class="zh hidden">
+                    分阶段实施路线图，旨在系统性地提升林斯特龙的SEO竞争地位，为期12个月。
+                </span>
+            </p>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-phase">
+                            <span class="en">PHASE 1</span>
+                            <span class="zh hidden">第一阶段</span>
+                        </span>
+                        <span class="timeline-duration">
+                            <span class="en">Month 1-2</span>
+                            <span class="zh hidden">第1-2月</span>
+                        </span>
+                    </div>
+                    <h4>
+                        <span class="en">Foundation & Quick Wins</span>
+                        <span class="zh hidden">基础建设与快速胜利</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Establish technical foundation and capture immediate opportunities from near-first-page keywords.
+                        </span>
+                        <span class="zh hidden">
+                            建立技术基础并从接近首页的关键词中获取即时机会。
+                        </span>
+                    </p>
+                    <div class="timeline-tasks">
+                        <ul>
+                            <li>
+                                <span class="en">Conduct comprehensive technical SEO audit and fix critical issues</span>
+                                <span class="zh hidden">进行全面的技术SEO审计并修复关键问题</span>
+                            </li>
+                            <li>
+                                <span class="en">Optimize 3 keywords in positions 11-20 with enhanced content and internal linking</span>
+                                <span class="zh hidden">通过增强内容和内部链接优化3个11-20位关键词</span>
+                            </li>
+                            <li>
+                                <span class="en">Implement structured data markup for service pages</span>
+                                <span class="zh hidden">为服务页面实现结构化数据标记</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-phase">
+                            <span class="en">PHASE 2</span>
+                            <span class="zh hidden">第二阶段</span>
+                        </span>
+                        <span class="timeline-duration">
+                            <span class="en">Month 3-5</span>
+                            <span class="zh hidden">第3-5月</span>
+                        </span>
+                    </div>
+                    <h4>
+                        <span class="en">Channel Expansion & Content Scaling</span>
+                        <span class="zh hidden">渠道扩展与内容规模化</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Launch Bing optimization strategy and scale content production for broader keyword coverage.
+                        </span>
+                        <span class="zh hidden">
+                            启动必应优化策略并扩大内容生产以获得更广泛的关键词覆盖。
+                        </span>
+                    </p>
+                    <div class="timeline-tasks">
+                        <ul>
+                            <li>
+                                <span class="en">Deploy Bing Webmaster Tools and optimize for Bing-specific ranking factors</span>
+                                <span class="zh hidden">部署必应网站管理员工具并针对必应特定排名因素进行优化</span>
+                            </li>
+                            <li>
+                                <span class="en">Create 30+ new long-tail keyword-focused content pieces</span>
+                                <span class="zh hidden">创建30+新的长尾关键词聚焦内容</span>
+                            </li>
+                            <li>
+                                <span class="en">Build authoritative backlink profile through industry partnerships</span>
+                                <span class="zh hidden">通过行业合作建立权威反向链接配置</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-phase">
+                            <span class="en">PHASE 3</span>
+                            <span class="zh hidden">第三阶段</span>
+                        </span>
+                        <span class="timeline-duration">
+                            <span class="en">Month 6-8</span>
+                            <span class="zh hidden">第6-8月</span>
+                        </span>
+                    </div>
+                    <h4>
+                        <span class="en">Position Consolidation & Authority Building</span>
+                        <span class="zh hidden">地位巩固与权威建设</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Strengthen top-performing content and establish thought leadership in the textile services sector.
+                        </span>
+                        <span class="zh hidden">
+                            加强表现最佳的内容并在纺织服务领域建立思想领导地位。
+                        </span>
+                    </p>
+                    <div class="timeline-tasks">
+                        <ul>
+                            <li>
+                                <span class="en">Update and expand top-performing content with comprehensive guides</span>
+                                <span class="zh hidden">用综合指南更新和扩展表现最佳的内容</span>
+                            </li>
+                            <li>
+                                <span class="en">Launch video content strategy for enhanced SERP presence</span>
+                                <span class="zh hidden">启动视频内容策略以增强SERP存在感</span>
+                            </li>
+                            <li>
+                                <span class="en">Implement advanced local SEO for multi-location targeting</span>
+                                <span class="zh hidden">实现高级本地SEO以进行多地点定位</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="timeline-phase">
+                            <span class="en">PHASE 4</span>
+                            <span class="zh hidden">第四阶段</span>
+                        </span>
+                        <span class="timeline-duration">
+                            <span class="en">Month 9-12</span>
+                            <span class="zh hidden">第9-12月</span>
+                        </span>
+                    </div>
+                    <h4>
+                        <span class="en">Market Leadership & Continuous Optimization</span>
+                        <span class="zh hidden">市场领导地位与持续优化</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Achieve market-leading position and establish sustainable competitive advantages through advanced strategies.
+                        </span>
+                        <span class="zh hidden">
+                            通过高级策略实现市场领先地位并建立可持续的竞争优势。
+                        </span>
+                    </p>
+                    <div class="timeline-tasks">
+                        <ul>
+                            <li>
+                                <span class="en">Deploy AI-powered content optimization for real-time search intent matching</span>
+                                <span class="zh hidden">部署AI驱动的内容优化以实现实时搜索意图匹配</span>
+                            </li>
+                            <li>
+                                <span class="en">Scale to 100+ total ranking keywords across both search engines</span>
+                                <span class="zh hidden">在两个搜索引擎上扩展到100+总排名关键词</span>
+                            </li>
+                            <li>
+                                <span class="en">Implement advanced conversion rate optimization on high-traffic pages</span>
+                                <span class="zh hidden">在高流量页面实施高级转化率优化</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--primary-color);">
+                <h3 style="color: var(--text-heading); margin-bottom: 16px;">
+                    <span class="en">🎯 Expected Outcomes (12-Month Horizon)</span>
+                    <span class="zh hidden">🎯 预期成果（12个月期限）</span>
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div>
+                        <div style="font-size: 32px; font-weight: 700; color: var(--primary-color); font-family: var(--font-data);">+400%</div>
+                        <div style="color: var(--text-secondary); font-size: 14px;">
+                            <span class="en">Daily Traffic Growth</span>
+                            <span class="zh hidden">日均流量增长</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="font-size: 32px; font-weight: 700; color: var(--primary-color); font-family: var(--font-data);">15+</div>
+                        <div style="color: var(--text-secondary); font-size: 14px;">
+                            <span class="en">Top 10 Keywords</span>
+                            <span class="zh hidden">前10关键词</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="font-size: 32px; font-weight: 700; color: var(--primary-color); font-family: var(--font-data);">100+</div>
+                        <div style="color: var(--text-secondary); font-size: 14px;">
+                            <span class="en">Total Ranking Keywords</span>
+                            <span class="zh hidden">总排名关键词</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="font-size: 32px; font-weight: 700; color: var(--primary-color); font-family: var(--font-data);">#1</div>
+                        <div style="color: var(--text-secondary); font-size: 14px;">
+                            <span class="en">Market Position</span>
+                            <span class="zh hidden">市场地位</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-container" style="margin-top: 40px;">
+                <button id="download-pdf-btn-2" class="primary-cta">
+                    <span class="en">📥 Download Full Report</span>
+                    <span class="zh hidden">📥 下载完整报告</span>
+                </button>
+                <a href="https://www.ecinnovations.com/services/china-seo-services/" target="_blank" class="secondary-cta">
+                    <span class="en">🚀 Start Your SEO Transformation</span>
+                    <span class="zh hidden">🚀 开始您的SEO转型</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handlers
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            const downloadBtn2 = document.getElementById('download-pdf-btn-2');
+            
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+            
+            if (downloadBtn2) {
+                downloadBtn2.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+
+            // Animate chart bars on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.chart-bar-item, .metric-card, .opportunity-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
