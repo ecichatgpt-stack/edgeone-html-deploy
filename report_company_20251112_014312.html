@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elanco - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        .metric-card .trend { 
+            font-size: 14px; 
+            margin-top: 8px; 
+        }
+        .trend.positive { 
+            color: var(--success-color); 
+        }
+        .trend.negative { 
+            color: var(--danger-color); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+        .chart-bar-container {
+            margin: 16px 0;
+        }
+        .chart-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .chart-bar {
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            transition: width 1s ease;
+        }
+        .chart-bar-stacked {
+            display: flex;
+            height: 100%;
+        }
+        .chart-bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .segment-baidu {
+            background: #3b82f6;
+        }
+        .segment-bing {
+            background: #8b5cf6;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+        .timeline-tag {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 12px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2 {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></h1>
+            <p class="subtitle">
+                <span class="en">Elanco - Animal Health Industry | Q4 2024</span>
+                <span class="zh hidden">礼蓝动保 - 动物保健行业 | 2024年第四季度</span>
+            </p>
+            
+            <div class="key-metrics-grid" style="margin-top: 40px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">6<span style="font-size: 16px; color: var(--text-muted);">/6</span></div>
+                    <div class="trend negative">
+                        <span class="en">⚠️ No organic presence</span>
+                        <span class="zh hidden">⚠️ 无自然搜索排名</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">0</div>
+                    <div class="trend negative">
+                        <span class="en">📉 vs. Avg: 1,295</span>
+                        <span class="zh hidden">📉 对比平均: 1,295</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">0%</div>
+                    <div class="trend negative">
+                        <span class="en">⚠️ No keywords ranking</span>
+                        <span class="zh hidden">⚠️ 无关键词排名</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value"><span class="en">Critical</span><span class="zh hidden">关键期</span></div>
+                    <div class="trend negative">
+                        <span class="en">🎯 Immediate action required</span>
+                        <span class="zh hidden">🎯 需要立即行动</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 32px;">
+                <span class="en">
+                    <strong>Critical Status Alert:</strong> Elanco currently has zero organic search presence in the Chinese market, with no keywords ranking and no traffic generation. The competitive landscape is dominated by Bayer Animal Health (4,334 daily visitors), followed by strong performers including Ringpu (954), Boehringer Ingelheim (880), and Pulike (875). This represents a significant missed opportunity in a market where competitors are actively capturing search traffic and customer attention. Immediate SEO intervention is essential to establish market presence and competitive positioning.
+                </span>
+                <span class="zh hidden">
+                    <strong>严峻现状警示：</strong>礼蓝动保目前在中国市场完全缺乏自然搜索存在，没有任何关键词排名，也没有产生任何流量。竞争格局由拜耳动物保健主导（日均4,334访客），其次是回盛生物（954）、勃林格殷格翰（880）和普莱柯（875）等强劲表现者。这代表了一个重大的市场机会损失，竞争对手正在积极捕获搜索流量和客户关注。迫切需要SEO干预以建立市场存在和竞争定位。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro">
+                <span class="en">Comprehensive analysis of Elanco and top 5 competitors ranked by total daily traffic. The competitive index is calculated based on traffic volume, keyword diversity, and ranking distribution.</span>
+                <span class="zh hidden">礼蓝动保及按日均流量排名的前5名竞争对手的综合分析。竞争指数根据流量规模、关键词多样性和排名分布计算。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Total Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu PC</span><span class="zh hidden">百度PC</span></th>
+                            <th><span class="en">Bing</span><span class="zh hidden">必应</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">总关键词</span></th>
+                            <th><span class="en">Top 20 KWs</span><span class="zh hidden">前20关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td>
+                                <span class="badge-user">YOU</span>
+                                <span class="en">Elanco</span>
+                                <span class="zh hidden">礼蓝动保</span>
+                            </td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>0.0</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Bayer Animal Health</span>
+                                <span class="zh hidden">拜耳动物保健</span>
+                            </td>
+                            <td>4,334</td>
+                            <td>393 ~ 629</td>
+                            <td>1,196 ~ 1,910</td>
+                            <td>365</td>
+                            <td>31</td>
+                            <td><strong>92.5</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Ringpu</span>
+                                <span class="zh hidden">回盛生物</span>
+                            </td>
+                            <td>954</td>
+                            <td>61 ~ 97</td>
+                            <td>456 ~ 728</td>
+                            <td>209</td>
+                            <td>20</td>
+                            <td><strong>64.8</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Boehringer Ingelheim</span>
+                                <span class="zh hidden">勃林格殷格翰</span>
+                            </td>
+                            <td>880</td>
+                            <td>28 ~ 46</td>
+                            <td>439 ~ 701</td>
+                            <td>38</td>
+                            <td>9</td>
+                            <td><strong>48.2</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Pulike</span>
+                                <span class="zh hidden">普莱柯</span>
+                            </td>
+                            <td>875</td>
+                            <td>43 ~ 69</td>
+                            <td>448 ~ 716</td>
+                            <td>44</td>
+                            <td>3</td>
+                            <td><strong>41.7</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Zoetis</span>
+                                <span class="zh hidden">硕腾</span>
+                            </td>
+                            <td>124</td>
+                            <td>9 ~ 15</td>
+                            <td>0 ~ 0</td>
+                            <td>14</td>
+                            <td>5</td>
+                            <td><strong>18.5</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="en">Virbac</span>
+                                <span class="zh hidden">维克</span>
+                            </td>
+                            <td>120</td>
+                            <td>33 ~ 53</td>
+                            <td>0 ~ 0</td>
+                            <td>16</td>
+                            <td>4</td>
+                            <td><strong>16.3</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p style="margin-top: 24px; color: var(--text-secondary); font-size: 14px;">
+                <span class="en">
+                    <strong>Key Insight:</strong> Bayer Animal Health dominates with a competitive index of 92.5, driven by extensive keyword coverage (365 keywords) and strong traffic generation across both Baidu and Bing. Chinese domestic competitors (Ringpu, Pulike) show strong performance, particularly on Bing. Elanco's absence from this competitive landscape represents a critical gap in market presence.
+                </span>
+                <span class="zh hidden">
+                    <strong>关键洞察：</strong>拜耳动物保健以92.5的竞争指数占据主导地位，得益于广泛的关键词覆盖（365个关键词）和在百度和必应上的强劲流量生成。中国本土竞争对手（回盛生物、普莱柯）表现强劲，尤其在必应上。礼蓝动保在这一竞争格局中的缺席代表了市场存在的关键缺口。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic assessment of Elanco's competitive position in the Chinese animal health market from an SEO perspective.</span>
+                <span class="zh hidden">从SEO角度对礼蓝动保在中国动物保健市场竞争地位的战略评估。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);">
+                        <span class="en">💪 Strengths</span>
+                        <span class="zh hidden">💪 优势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Global brand recognition and established market presence</span>
+                            <span class="zh hidden">全球品牌认知度和已建立的市场存在</span>
+                        </li>
+                        <li>
+                            <span class="en">Extensive product portfolio and industry expertise</span>
+                            <span class="zh hidden">广泛的产品组合和行业专业知识</span>
+                        </li>
+                        <li>
+                            <span class="en">Clean slate opportunity for strategic SEO implementation</span>
+                            <span class="zh hidden">战略性SEO实施的全新机会</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);">
+                        <span class="en">⚠️ Weaknesses</span>
+                        <span class="zh hidden">⚠️劣势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Zero organic search visibility in Chinese market</span>
+                            <span class="zh hidden">在中国市场零自然搜索可见性</span>
+                        </li>
+                        <li>
+                            <span class="en">No keyword rankings across Baidu or Bing platforms</span>
+                            <span class="zh hidden">在百度或必应平台上无关键词排名</span>
+                        </li>
+                        <li>
+                            <span class="en">Missing localized content strategy for Chinese search engines</span>
+                            <span class="zh hidden">缺乏针对中国搜索引擎的本地化内容策略</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);">
+                        <span class="en">🎯 Opportunities</span>
+                        <span class="zh hidden">🎯 机会</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Capture share from competitors' unoptimized long-tail keywords</span>
+                            <span class="zh hidden">从竞争对手未优化的长尾关键词中获取份额</span>
+                        </li>
+                        <li>
+                            <span class="en">Leverage Bing's growing market presence (competitors show strong Bing traffic)</span>
+                            <span class="zh hidden">利用必应日益增长的市场存在（竞争对手显示强劲的必应流量）</span>
+                        </li>
+                        <li>
+                            <span class="en">Fill content gaps in specialized animal health topics</span>
+                            <span class="zh hidden">填补专业动物保健主题的内容空白</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);">
+                        <span class="en">⚡ Threats</span>
+                        <span class="zh hidden">⚡ 威胁</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Competitors (Bayer, Ringpu) continuously strengthening SEO positions</span>
+                            <span class="zh hidden">竞争对手（拜耳、回盛生物）不断加强SEO地位</span>
+                        </li>
+                        <li>
+                            <span class="en">Rising customer acquisition costs due to lack of organic traffic</span>
+                            <span class="zh hidden">由于缺乏自然流量导致客户获取成本上升</span>
+                        </li>
+                        <li>
+                            <span class="en">Lost brand awareness opportunities to competitors dominating search results</span>
+                            <span class="zh hidden">被主导搜索结果的竞争对手夺走品牌认知机会</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Distribution</span><span class="zh hidden">流量渠道分布</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 24px;">
+                    <span class="en">Baidu vs. Bing traffic split across all competitors (Elanco excluded due to zero traffic)</span>
+                    <span class="zh hidden">所有竞争对手的百度与必应流量分布（礼蓝动保因零流量被排除）</span>
+                </p>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Bayer Animal Health</span><span class="zh hidden">拜耳动物保健</span></span>
+                        <span>4,334</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment segment-baidu" style="width: 23.5%;">
+                                <span>Baidu: 511</span>
+                            </div>
+                            <div class="chart-bar-segment segment-bing" style="width: 76.5%;">
+                                <span>Bing: 1,553</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Ringpu</span><span class="zh hidden">回盛生物</span></span>
+                        <span>954</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment segment-baidu" style="width: 13.2%;">
+                                <span>Baidu: 79</span>
+                            </div>
+                            <div class="chart-bar-segment segment-bing" style="width: 86.8%;">
+                                <span>Bing: 592</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Boehringer Ingelheim</span><span class="zh hidden">勃林格殷格翰</span></span>
+                        <span>880</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment segment-baidu" style="width: 6.7%;">
+                                <span>Baidu: 37</span>
+                            </div>
+                            <div class="chart-bar-segment segment-bing" style="width: 93.3%;">
+                                <span>Bing: 570</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Pulike</span><span class="zh hidden">普莱柯</span></span>
+                        <span>875</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment segment-baidu" style="width: 9.6%;">
+                                <span>Baidu: 56</span>
+                            </div>
+                            <div class="chart-bar-segment segment-bing" style="width: 90.4%;">
+                                <span>Bing: 582</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Zoetis</span><span class="zh hidden">硕腾</span></span>
+                        <span>124</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment segment-baidu" style="width: 100%;">
+                                <span>Baidu: 12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Virbac</span><span class="zh hidden">维克</span></span>
+                        <span>120</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment segment-baidu" style="width: 100%;">
+                                <span>Baidu: 43</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-secondary); font-size: 13px; margin-top: 16px;">
+                    <span class="en">
+                        <strong>Insight:</strong> Bing dominates traffic generation for top performers, contributing 76-93% of total traffic for leading competitors. This presents a strategic opportunity for Elanco to prioritize Bing optimization alongside Baidu presence.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>洞察：</strong>必应主导了顶级表现者的流量生成，为领先竞争对手贡献了76-93%的总流量。这为礼蓝动保提供了一个战略机会，在百度存在的同时优先优化必应。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency Comparison</span><span class="zh hidden">关键词效率对比</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 24px;">
+                    <span class="en">Top 20 keywords as a percentage of total keyword portfolio</span>
+                    <span class="zh hidden">前20关键词占总关键词组合的百分比</span>
+                </p>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Zoetis</span><span class="zh hidden">硕腾</span></span>
+                        <span>35.7%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 35.7%;">35.7%</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Boehringer Ingelheim</span><span class="zh hidden">勃林格殷格翰</span></span>
+                        <span>23.7%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 23.7%;">23.7%</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Virbac</span><span class="zh hidden">维克</span></span>
+                        <span>25.0%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 25.0%;">25.0%</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Ringpu</span><span class="zh hidden">回盛生物</span></span>
+                        <span>9.6%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 9.6%;">9.6%</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Bayer Animal Health</span><span class="zh hidden">拜耳动物保健</span></span>
+                        <span>8.5%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 8.5%;">8.5%</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Pulike</span><span class="zh hidden">普莱柯</span></span>
+                        <span>6.8%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 6.8%;">6.8%</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span style="color: var(--primary-color);">
+                            <strong><span class="en">Elanco</span><span class="zh hidden">礼蓝动保</span></strong>
+                        </span>
+                        <span style="color: var(--danger-color);">0%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 0%; background: var(--danger-color);">0%</div>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-secondary); font-size: 13px; margin-top: 16px;">
+                    <span class="en">
+                        <strong>Insight:</strong> Zoetis demonstrates the highest keyword efficiency (35.7%), indicating focused optimization on high-value terms. Bayer's lower efficiency (8.5%) is offset by massive keyword volume. Elanco must build a strategic keyword foundation from zero.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>洞察：</strong>硕腾展示了最高的关键词效率（35.7%），表明专注于高价值术语的优化。拜耳较低的效率（8.5%）被巨大的关键词数量所抵消。礼蓝动保必须从零开始建立战略性关键词基础。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap Analysis: Elanco vs. Market Leader</span><span class="zh hidden">竞争差距分析：礼蓝动保 vs. 市场领导者</span></h3>
+                
+                <div class="key-metrics-grid" style="margin-top: 24px;">
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Traffic Gap</span><span class="zh hidden">流量差距</span></div>
+                        <div class="value" style="color: var(--danger-color);">-4,334</div>
+                        <div class="trend negative">
+                            <span class="en">vs. Bayer Animal Health</span>
+                            <span class="zh hidden">对比拜耳动物保健</span>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Keyword Gap</span><span class="zh hidden">关键词差距</span></div>
+                        <div class="value" style="color: var(--danger-color);">-365</div>
+                        <div class="trend negative">
+                            <span class="en">vs. Bayer Animal Health</span>
+                            <span class="zh hidden">对比拜耳动物保健</span>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Competitive Index Gap</span><span class="zh hidden">竞争指数差距</span></div>
+                        <div class="value" style="color: var(--danger-color);">-92.5</div>
+                        <div class="trend negative">
+                            <span class="en">vs. Bayer Animal Health</span>
+                            <span class="zh hidden">对比拜耳动物保健</span>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Estimated Monthly Loss</span><span class="zh hidden">估计月度损失</span></div>
+                        <div class="value" style="color: var(--warning-color);">¥130K</div>
+                        <div class="trend negative">
+                            <span class="en">in potential organic value</span>
+                            <span class="zh hidden">潜在自然搜索价值</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic opportunities for Elanco to establish and capture market share in Chinese search engines.</span>
+                <span class="zh hidden">礼蓝动保在中国搜索引擎中建立和获取市场份额的战略机会。</span>
+            </p>
+
+            <div class="opportunity-card">
+                <h4>
+                    <span class="en">🎯 Priority 1: Establish Bing Foundation</span>
+                    <span class="zh hidden">🎯 优先级1：建立必应基础</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Rationale:</strong> Bing accounts for 76-93% of top competitors' traffic with lower competition barriers than Baidu. Quick wins are achievable through optimized English-Chinese bilingual content.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>理由：</strong>必应占顶级竞争对手流量的76-93%，竞争壁垒低于百度。通过优化的英中双语内容可以快速获胜。
+                    </span>
+                </p>
+                <p>
+                    <span class="en">
+                        <strong>Estimated Impact:</strong> 200-400 daily visitors within 3-6 months
+                    </span>
+                    <span class="zh hidden">
+                        <strong>预估影响：</strong>3-6个月内日均200-400访客
+                    </span>
+                </p>
+                <span class="priority-badge priority-high">
+                    <span class="en">HIGH PRIORITY</span>
+                    <span class="zh hidden">高优先级</span>
+                </span>
+            </div>
+
+            <div class="opportunity-card">
+                <h4>
+                    <span class="en">🔍 Priority 2: Target Long-Tail Keywords</span>
+                    <span class="zh hidden">🔍 优先级2：瞄准长尾关键词</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Rationale:</strong> Competitors have low keyword efficiency (6-10%), indicating opportunities in underserved long-tail searches. Focus on specific product categories and disease management terms.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>理由：</strong>竞争对手关键词效率低（6-10%），表明在服务不足的长尾搜索中存在机会。专注于特定产品类别和疾病管理术语。
+                    </span>
+                </p>
+                <p>
+                    <span class="en">
+                        <strong>Estimated Impact:</strong> 50-100 targeted keyword rankings within 6 months
+                    </span>
+                    <span class="zh hidden">
+                        <strong>预估影响：</strong>6个月内50-100个目标关键词排名
+                    </span>
+                </p>
+                <span class="priority-badge priority-high">
+                    <span class="en">HIGH PRIORITY</span>
+                    <span class="zh hidden">高优先级</span>
+                </span>
+            </div>
+
+            <div class="opportunity-card">
+                <h4>
+                    <span class="en">📱 Priority 3: Develop Baidu Ecosystem Presence</span>
+                    <span class="zh hidden">📱 优先级3：发展百度生态存在</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Rationale:</strong> While Baidu traffic is lower for competitors, it remains essential for brand credibility. Baidu Baike, Zhihu integration, and localized content are critical for Chinese market trust.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>理由：</strong>虽然竞争对手的百度流量较低，但它对品牌信誉仍然至关重要。百度百科、知乎整合和本地化内容对于中国市场信任至关重要。
+                    </span>
+                </p>
+                <p>
+                    <span class="en">
+                        <strong>Estimated Impact:</strong> Brand visibility + 100-200 daily Baidu visitors within 6-12 months
+                    </span>
+                    <span class="zh hidden">
+                        <strong>预估影响：</strong>6-12个月内品牌可见性 + 日均100-200百度访客
+                    </span>
+                </p>
+                <span class="priority-badge priority-medium">
+                    <span class="en">MEDIUM PRIORITY</span>
+                    <span class="zh hidden">中优先级</span>
+                </span>
+            </div>
+
+            <div class="opportunity-card">
+                <h4>
+                    <span class="en">📊 Priority 4: Competitive Intelligence & Keyword Monitoring</span>
+                    <span class="zh hidden">📊 优先级4：竞争情报与关键词监控</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        <strong>Rationale:</strong> Continuous monitoring of Bayer's keyword expansion and Chinese competitors' strategies will identify emerging opportunities and defensive gaps.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>理由：</strong>持续监控拜耳的关键词扩展和中国竞争对手的策略将识别新兴机会和防御性缺口。
+                    </span>
+                </p>
+                <p>
+                    <span class="en">
+                        <strong>Estimated Impact:</strong> Strategic advantage through data-driven decision making
+                    </span>
+                    <span class="zh hidden">
+                        <strong>预估影响：</strong>通过数据驱动决策获得战略优势
+                    </span>
+                </p>
+                <span class="priority-badge priority-medium">
+                    <span class="en">MEDIUM PRIORITY</span>
+                    <span class="zh hidden">中优先级</span>
+                </span>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2><span class="en">Strategic Action Plan</span><span class="zh hidden">战略行动计划</span></h2>
+            <p class="section-intro">
+                <span class="en">90-day sprint plan to establish Elanco's organic search presence in the Chinese market.</span>
+                <span class="zh hidden">90天冲刺计划以建立礼蓝动保在中国市场的自然搜索存在。</span>
+            </p>
+
+            <div class="timeline-item">
+                <span class="timeline-tag"><span class="en">Week 1-2</span><span class="zh hidden">第1-2周</span></span>
+                <h4><span class="en">Foundation & Technical Setup</span><span class="zh hidden">基础与技术设置</span></h4>
+                <p>
+                    <span class="en">
+                        • Conduct comprehensive technical SEO audit of Chinese website<br>
+                        • Implement Baidu Analytics and Bing Webmaster Tools<br>
+                        • Complete keyword research targeting 100-150 priority terms<br>
+                        • Analyze top 3 competitors' keyword strategies and content gaps
+                    </span>
+                    <span class="zh hidden">
+                        • 对中文网站进行全面的技术SEO审计<br>
+                        • 实施百度统计和必应站长工具<br>
+                        • 完成针对100-150个优先术语的关键词研究<br>
+                        • 分析前3名竞争对手的关键词策略和内容缺口
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-tag"><span class="en">Week 3-4</span><span class="zh hidden">第3-4周</span></span>
+                <h4><span class="en">Quick Win Content Deployment</span><span class="zh hidden">快速胜利内容部署</span></h4>
+                <p>
+                    <span class="en">
+                        • Create 10-15 optimized product pages targeting high-volume keywords<br>
+                        • Publish 5 educational articles on key animal health topics<br>
+                        • Optimize existing pages for Bing search (English-Chinese bilingual approach)<br>
+                        • Submit sitemap to Baidu and Bing
+                    </span>
+                    <span class="zh hidden">
+                        • 创建10-15个针对高流量关键词的优化产品页面<br>
+                        • 发布5篇关于关键动物保健主题的教育文章<br>
+                        • 优化现有页面以适应必应搜索（英中双语方法）<br>
+                        • 向百度和必应提交网站地图
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-tag"><span class="en">Week 5-8</span><span class="zh hidden">第5-8周</span></span>
+                <h4><span class="en">Content Expansion & Authority Building</span><span class="zh hidden">内容扩展与权威建立</span></h4>
+                <p>
+                    <span class="en">
+                        • Scale to 30+ optimized content pieces covering core product lines<br>
+                        • Create Baidu Baike entry for Elanco (brand awareness)<br>
+                        • Initiate link building campaign with industry partners and distributors<br>
+                        • Publish bi-weekly expert articles to establish thought leadership
+                    </span>
+                    <span class="zh hidden">
+                        • 扩展到30+优化内容片段，覆盖核心产品线<br>
+                        • 为礼蓝动保创建百度百科条目（品牌认知度）<br>
+                        • 与行业合作伙伴和经销商启动链接建设活动<br>
+                        • 每两周发布专家文章以建立思想领导力
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-tag"><span class="en">Week 9-12</span><span class="zh hidden">第9-12周</span></span>
+                <h4><span class="en">Acceleration & Optimization</span><span class="zh hidden">加速与优化</span></h4>
+                <p>
+                    <span class="en">
+                        • Target 50+ long-tail keywords based on early performance data<br>
+                        • Launch customer success stories and case studies (localized)<br>
+                        • Integrate with Chinese social platforms (WeChat, Zhihu) for content distribution<br>
+                        • Conduct mid-sprint performance review and strategy adjustment
+                    </span>
+                    <span class="zh hidden">
+                        • 根据早期绩效数据瞄准50+长尾关键词<br>
+                        • 推出客户成功故事和案例研究（本地化）<br>
+                        • 与中国社交平台（微信、知乎）整合以进行内容分发<br>
+                        • 进行中期绩效审查和策略调整
+                    </span>
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-tag"><span class="en">Week 13+</span><span class="zh hidden">第13周+</span></span>
+                <h4><span class="en">Sustained Growth & Monitoring</span><span class="zh hidden">持续增长与监控</span></h4>
+                <p>
+                    <span class="en">
+                        • Maintain content publishing cadence (8-10 pieces/month)<br>
+                        • Monitor and respond to keyword ranking changes<br>
+                        • Expand to additional product categories based on market demand<br>
+                        • Quarterly competitive analysis and strategy refinement
+                    </span>
+                    <span class="zh hidden">
+                        • 维持内容发布节奏（每月8-10篇）<br>
+                        • 监控并响应关键词排名变化<br>
+                        • 根据市场需求扩展到其他产品类别<br>
+                        • 季度竞争分析和策略细化
+                    </span>
+                </p>
+            </div>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta">
+                    <span class="en">📥 Download PDF Report</span>
+                    <span class="zh hidden">📥 下载PDF报告</span>
+                </button>
+                <button onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')" class="secondary-cta">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
