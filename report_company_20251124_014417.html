@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DERMAFIRM - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        .metric-card .trend { 
+            font-size: 14px; 
+            margin-top: 8px; 
+        }
+        .metric-card .trend.positive { 
+            color: var(--success-color); 
+        }
+        .metric-card .trend.negative { 
+            color: var(--danger-color); 
+        }
+        .metric-card .trend.neutral { 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 2;
+            widows: 2;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+        
+        /* Bar Chart Styles */
+        .chart-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .chart-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chart-bar-label {
+            min-width: 150px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+        .chart-bar-container {
+            flex: 1;
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            border-radius: 4px;
+            transition: width 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+        }
+        .chart-bar-value {
+            font-size: 12px;
+            color: white;
+            font-weight: 600;
+            font-family: var(--font-data);
+        }
+        
+        /* Stacked Bar Chart */
+        .stacked-bar-container {
+            flex: 1;
+            height: 32px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+        .stacked-bar-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+            transition: width 0.8s ease;
+        }
+        .stacked-bar-segment.baidu {
+            background: #3b82f6;
+        }
+        .stacked-bar-segment.bing {
+            background: #8b5cf6;
+        }
+
+        /* Gap Analysis */
+        .gap-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gap-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+        }
+        .gap-card h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .gap-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--danger-color);
+            font-family: var(--font-data);
+        }
+        .gap-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            font-size: 16px;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+        }
+        .opportunity-card .priority {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .opportunity-card .priority.high {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-color);
+        }
+        .opportunity-card .priority.medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+        }
+        .opportunity-card .priority.low {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success-color);
+        }
+        .opportunity-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .opportunity-card .potential {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--alt-bg);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .opportunity-card .potential strong {
+            color: var(--success-color);
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .timeline-item .timeline-phase {
+            font-size: 12px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .timeline-item ul {
+            margin-top: 12px;
+            padding-left: 20px;
+            list-style: none;
+        }
+        .timeline-item ul li {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 6px;
+            padding-left: 16px;
+            position: relative;
+        }
+        .timeline-item ul li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2 {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1>
+                <span class="en">DERMAFIRM SEO Competitive Analysis Report</span>
+                <span class="zh hidden">德玛菲 SEO 竞争分析报告</span>
+            </h1>
+            <p class="subtitle">
+                <span class="en">China Search Engine Market Analysis | Generated on December 2024</span>
+                <span class="zh hidden">中国搜索引擎市场分析 | 生成于 2024年12月</span>
+            </p>
+            
+            <p class="summary-text" style="margin-top: 24px;">
+                <span class="en">
+                    This report provides a comprehensive analysis of DERMAFIRM's current SEO performance in the Chinese skincare market, benchmarked against 5 key competitors. The analysis reveals significant opportunities for growth through strategic search engine optimization initiatives.
+                </span>
+                <span class="zh hidden">
+                    本报告全面分析了德玛菲在中国护肤品市场的SEO表现，并与5个主要竞争对手进行了对比。分析揭示了通过战略性搜索引擎优化举措实现增长的重要机会。
+                </span>
+            </p>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Market Ranking</span>
+                        <span class="zh hidden">市场排名</span>
+                    </div>
+                    <div class="value">
+                        <span class="en">#6</span>
+                        <span class="zh hidden">#6</span>
+                        <span style="font-size: 16px; color: var(--text-muted);">
+                            <span class="en">of 6</span>
+                            <span class="zh hidden">共6名</span>
+                        </span>
+                    </div>
+                    <div class="trend neutral">
+                        <span class="en">⚠ Needs immediate attention</span>
+                        <span class="zh hidden">⚠ 需要立即关注</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Daily Traffic vs. Average</span>
+                        <span class="zh hidden">日流量 vs. 平均值</span>
+                    </div>
+                    <div class="value">
+                        0
+                        <span style="font-size: 16px; color: var(--danger-color);">
+                            <span class="en">vs. 424</span>
+                            <span class="zh hidden">vs. 424</span>
+                        </span>
+                    </div>
+                    <div class="trend negative">
+                        <span class="en">↓ 100% below market average</span>
+                        <span class="zh hidden">↓ 低于市场平均100%</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Keyword Coverage</span>
+                        <span class="zh hidden">关键词覆盖率</span>
+                    </div>
+                    <div class="value">
+                        0
+                        <span style="font-size: 16px; color: var(--text-muted);">
+                            <span class="en">keywords</span>
+                            <span class="zh hidden">关键词</span>
+                        </span>
+                    </div>
+                    <div class="trend negative">
+                        <span class="en">↓ No search visibility</span>
+                        <span class="zh hidden">↓ 无搜索可见性</span>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="label">
+                        <span class="en">Growth Potential</span>
+                        <span class="zh hidden">增长潜力</span>
+                    </div>
+                    <div class="value" style="color: var(--success-color);">
+                        <span class="en">High</span>
+                        <span class="zh hidden">高</span>
+                    </div>
+                    <div class="trend positive">
+                        <span class="en">↑ Untapped market opportunity</span>
+                        <span class="zh hidden">↑ 未开发的市场机会</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta">
+                    <span class="en">📄 Download PDF Report</span>
+                    <span class="zh hidden">📄 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2>
+                <span class="en">Competition Overview</span>
+                <span class="zh hidden">竞争概览</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Analysis of DERMAFIRM's position relative to 5 major competitors in the Chinese skincare market based on search engine performance metrics.
+                </span>
+                <span class="zh hidden">
+                    基于搜索引擎性能指标，分析德玛菲在中国护肤品市场相对于5个主要竞争对手的位置。
+                </span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Brand</span><span class="zh hidden">品牌</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu PC Traffic</span><span class="zh hidden">百度PC流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Keywords</span><span class="zh hidden">关键词数</span></th>
+                            <th><span class="en">Top 20 KWs</span><span class="zh hidden">前20关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td>
+                                <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span>
+                                <span class="en">DERMAFIRM</span>
+                                <span class="zh hidden">德玛菲</span>
+                            </td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">SkinCeuticals</span><span class="zh hidden">修丽可</span></td>
+                            <td>916</td>
+                            <td>59 ~ 95</td>
+                            <td>0 ~ 0</td>
+                            <td>27</td>
+                            <td>11</td>
+                            <td>87.3</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">WINONA</span><span class="zh hidden">薇诺娜</span></td>
+                            <td>809</td>
+                            <td>90 ~ 144</td>
+                            <td>1 ~ 1</td>
+                            <td>19</td>
+                            <td>4</td>
+                            <td>76.5</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">POLA</span><span class="zh hidden">宝丽</span></td>
+                            <td>398</td>
+                            <td>20 ~ 32</td>
+                            <td>0 ~ 0</td>
+                            <td>24</td>
+                            <td>8</td>
+                            <td>41.8</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Home Facial Pro</span><span class="zh hidden">HFP</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">BLOOMAGE</span><span class="zh hidden">润百颜</span></td>
+                            <td>0</td>
+                            <td>0 ~ 0</td>
+                            <td>0 ~ 0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p style="margin-top: 24px; color: var(--text-secondary); font-size: 14px;">
+                <span class="en">
+                    <strong>Competitive Index Calculation:</strong> A weighted score combining daily traffic (40%), keyword count (30%), top 20 keyword positions (20%), and traffic source diversity (10%). Maximum score: 100.
+                </span>
+                <span class="zh hidden">
+                    <strong>竞争指数计算：</strong> 综合日均流量（40%）、关键词数量（30%）、前20关键词位置（20%）和流量来源多样性（10%）的加权评分。最高分：100。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2>
+                <span class="en">SWOT Analysis</span>
+                <span class="zh hidden">SWOT 分析</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Strategic analysis of DERMAFIRM's internal strengths and weaknesses, alongside external opportunities and threats in the Chinese search engine landscape.
+                </span>
+                <span class="zh hidden">
+                    德玛菲内部优势和劣势的战略分析，以及中国搜索引擎市场的外部机会和威胁。
+                </span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);">
+                        <span class="en">💪 Strengths</span>
+                        <span class="zh hidden">💪 优势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Clean slate for SEO strategy - no legacy technical debt</span>
+                            <span class="zh hidden">SEO策略的白纸状态 - 无历史技术债务</span>
+                        </li>
+                        <li>
+                            <span class="en">Potential for rapid market entry with focused optimization</span>
+                            <span class="zh hidden">通过集中优化可快速进入市场</span>
+                        </li>
+                        <li>
+                            <span class="en">Opportunity to learn from competitor SEO strategies</span>
+                            <span class="zh hidden">可从竞争对手的SEO策略中学习</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);">
+                        <span class="en">⚠ Weaknesses</span>
+                        <span class="zh hidden">⚠ 劣势</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">Zero search engine visibility across Baidu and Bing</span>
+                            <span class="zh hidden">在百度和必应上搜索引擎可见性为零</span>
+                        </li>
+                        <li>
+                            <span class="en">No established keyword portfolio or ranking history</span>
+                            <span class="zh hidden">无已建立的关键词组合或排名历史</span>
+                        </li>
+                        <li>
+                            <span class="en">Missing foundational SEO infrastructure</span>
+                            <span class="zh hidden">缺少基础SEO基础设施</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);">
+                        <span class="en">🎯 Opportunities</span>
+                        <span class="zh hidden">🎯 机会</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">916+ daily traffic gap represents immediate capture potential</span>
+                            <span class="zh hidden">916+日流量差距代表即时获取潜力</span>
+                        </li>
+                        <li>
+                            <span class="en">Low-competition long-tail keywords available in skincare niche</span>
+                            <span class="zh hidden">护肤细分市场存在低竞争长尾关键词</span>
+                        </li>
+                        <li>
+                            <span class="en">Two competitors (HFP, BLOOMAGE) also at zero - level playing field</span>
+                            <span class="zh hidden">两个竞争对手（HFP、润百颜）也为零 - 公平竞争</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);">
+                        <span class="en">⚡ Threats</span>
+                        <span class="zh hidden">⚡ 威胁</span>
+                    </h3>
+                    <ul>
+                        <li>
+                            <span class="en">SkinCeuticals dominates with 87.3 competitive index</span>
+                            <span class="zh hidden">修丽可以87.3竞争指数占据主导地位</span>
+                        </li>
+                        <li>
+                            <span class="en">Established competitors control primary search terms</span>
+                            <span class="zh hidden">成熟竞争对手控制主要搜索词</span>
+                        </li>
+                        <li>
+                            <span class="en">6-12 month SEO timeline before measurable results</span>
+                            <span class="zh hidden">6-12个月SEO周期才能见到可衡量结果</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2>
+                <span class="en">Deep Metrics Analysis</span>
+                <span class="zh hidden">深度指标分析</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Detailed examination of traffic sources, keyword efficiency, and competitive gaps to identify strategic optimization priorities.
+                </span>
+                <span class="zh hidden">
+                    详细检查流量来源、关键词效率和竞争差距，以确定战略优化优先级。
+                </span>
+            </p>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">📊 Traffic Channel Distribution (Baidu vs. Bing)</span>
+                    <span class="zh hidden">📊 流量渠道分布（百度 vs. 必应）</span>
+                </h3>
+                <div class="chart-bars">
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label"><span class="en">SkinCeuticals</span><span class="zh hidden">修丽可</span></div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-bar-segment baidu" style="width: 100%;">
+                                <span class="en">Baidu: 77 (100%)</span>
+                                <span class="zh hidden">百度: 77 (100%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label"><span class="en">WINONA</span><span class="zh hidden">薇诺娜</span></div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-bar-segment baidu" style="width: 99.1%;">
+                                <span class="en">Baidu: 117</span>
+                                <span class="zh hidden">百度: 117</span>
+                            </div>
+                            <div class="stacked-bar-segment bing" style="width: 0.9%;">
+                                <span class="en">1</span>
+                                <span class="zh hidden">1</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label"><span class="en">POLA</span><span class="zh hidden">宝丽</span></div>
+                        <div class="stacked-bar-container">
+                            <div class="stacked-bar-segment baidu" style="width: 100%;">
+                                <span class="en">Baidu: 26 (100%)</span>
+                                <span class="zh hidden">百度: 26 (100%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label">
+                            <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span>
+                            <span class="en">DERMAFIRM</span>
+                            <span class="zh hidden">德玛菲</span>
+                        </div>
+                        <div class="stacked-bar-container" style="background: rgba(239, 68, 68, 0.1);">
+                            <span style="font-size: 12px; color: var(--danger-color); padding-left: 8px;">
+                                <span class="en">No Traffic</span>
+                                <span class="zh hidden">无流量</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label"><span class="en">Home Facial Pro</span><span class="zh hidden">HFP</span></div>
+                        <div class="stacked-bar-container" style="background: rgba(107, 114, 128, 0.1);">
+                            <span style="font-size: 12px; color: var(--text-muted); padding-left: 8px;">
+                                <span class="en">No Traffic</span>
+                                <span class="zh hidden">无流量</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label"><span class="en">BLOOMAGE</span><span class="zh hidden">润百颜</span></div>
+                        <div class="stacked-bar-container" style="background: rgba(107, 114, 128, 0.1);">
+                            <span style="font-size: 12px; color: var(--text-muted); padding-left: 8px;">
+                                <span class="en">No Traffic</span>
+                                <span class="zh hidden">无流量</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 13px; color: var(--text-secondary);">
+                    <span class="en">
+                        <strong>Key Insight:</strong> Baidu dominates as the primary traffic source (99.5% market share). Bing traffic is negligible, suggesting Baidu optimization should be the primary focus.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键洞察：</strong> 百度作为主要流量来源占主导地位（99.5%市场份额）。必应流量可忽略不计，建议百度优化应是主要焦点。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">🎯 Keyword Efficiency Comparison</span>
+                    <span class="zh hidden">🎯 关键词效率对比</span>
+                </h3>
+                <div class="chart-bars">
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label"><span class="en">SkinCeuticals</span><span class="zh hidden">修丽可</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 40.7%;">
+                                <span class="chart-bar-value">40.7%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label"><span class="en">POLA</span><span class="zh hidden">宝丽</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 33.3%;">
+                                <span class="chart-bar-value">33.3%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label"><span class="en">WINONA</span><span class="zh hidden">薇诺娜</span></div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 21.1%;">
+                                <span class="chart-bar-value">21.1%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-bar-row">
+                        <div class="chart-bar-label">
+                            <span class="badge-user"><span class="en">YOU</span><span class="zh hidden">本公司</span></span>
+                            <span class="en">DERMAFIRM</span>
+                            <span class="zh hidden">德玛菲</span>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width: 0%; background: var(--danger-color);">
+                                <span class="chart-bar-value" style="padding-left: 8px; color: var(--danger-color);">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 13px; color: var(--text-secondary);">
+                    <span class="en">
+                        <strong>Keyword Efficiency:</strong> Percentage of keywords ranking in top 20 positions (high-value positions). SkinCeuticals leads with 40.7% efficiency (11 of 27 keywords), while DERMAFIRM has zero keyword coverage.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键词效率：</strong> 排名前20位置（高价值位置）的关键词百分比。修丽可以40.7%的效率领先（27个关键词中有11个），而德玛菲的关键词覆盖率为零。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3>
+                    <span class="en">📉 Competitive Gap vs. Market Leader (SkinCeuticals)</span>
+                    <span class="zh hidden">📉 与市场领导者的竞争差距（修丽可）</span>
+                </h3>
+                <div class="gap-analysis">
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Daily Traffic Gap</span>
+                            <span class="zh hidden">日流量差距</span>
+                        </h4>
+                        <div class="gap-value">-916</div>
+                        <p class="gap-description">
+                            <span class="en">DERMAFIRM needs to capture 916 daily visitors to match leader</span>
+                            <span class="zh hidden">德玛菲需要获取916日访客以匹配领导者</span>
+                        </p>
+                    </div>
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Keyword Coverage Gap</span>
+                            <span class="zh hidden">关键词覆盖差距</span>
+                        </h4>
+                        <div class="gap-value">-27</div>
+                        <p class="gap-description">
+                            <span class="en">27 fewer ranking keywords compared to SkinCeuticals</span>
+                            <span class="zh hidden">比修丽可少27个排名关键词</span>
+                        </p>
+                    </div>
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Top 20 Keyword Gap</span>
+                            <span class="zh hidden">前20关键词差距</span>
+                        </h4>
+                        <div class="gap-value">-11</div>
+                        <p class="gap-description">
+                            <span class="en">Missing 11 high-value keyword positions in top 20</span>
+                            <span class="zh hidden">缺少11个前20高价值关键词位置</span>
+                        </p>
+                    </div>
+                    <div class="gap-card">
+                        <h4>
+                            <span class="en">Competitive Index Gap</span>
+                            <span class="zh hidden">竞争指数差距</span>
+                        </h4>
+                        <div class="gap-value">-87.3</div>
+                        <p class="gap-description">
+                            <span class="en">87.3 point deficit in overall competitive strength</span>
+                            <span class="zh hidden">整体竞争实力落后87.3点</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2>
+                <span class="en">Opportunity Identification</span>
+                <span class="zh hidden">机会识别</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Strategic opportunities ranked by priority, impact potential, and implementation feasibility for DERMAFIRM's SEO growth strategy.
+                </span>
+                <span class="zh hidden">
+                    按优先级、影响潜力和实施可行性排名的战略机会，用于德玛菲的SEO增长策略。
+                </span>
+            </p>
+
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <span class="priority high">
+                        <span class="en">HIGH PRIORITY</span>
+                        <span class="zh hidden">高优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Foundation SEO Infrastructure</span>
+                        <span class="zh hidden">基础SEO基础设施</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Build core technical SEO foundation: Baidu verification, XML sitemap, robots.txt optimization, and mobile responsiveness. This is the prerequisite for all ranking improvements.
+                        </span>
+                        <span class="zh hidden">
+                            建立核心技术SEO基础：百度验证、XML网站地图、robots.txt优化和移动响应性。这是所有排名改进的先决条件。
+                        </span>
+                    </p>
+                    <div class="potential">
+                        <span class="en"><strong>Potential:</strong> Enable indexing of 50+ pages within 30 days</span>
+                        <span class="zh hidden"><strong>潜力：</strong> 30天内启用50+页面索引</span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority high">
+                        <span class="en">HIGH PRIORITY</span>
+                        <span class="zh hidden">高优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Brand Keyword Dominance</span>
+                        <span class="zh hidden">品牌关键词主导地位</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Target brand-specific keywords: "DERMAFIRM", "德玛菲", "DERMAFIRM护肤品". Currently zero competition for these terms—quick wins for traffic capture.
+                        </span>
+                        <span class="zh hidden">
+                            针对品牌特定关键词："DERMAFIRM"、"德玛菲"、"DERMAFIRM护肤品"。目前这些词零竞争——快速获胜的流量捕获。
+                        </span>
+                    </p>
+                    <div class="potential">
+                        <span class="en"><strong>Potential:</strong> Capture 100-200 monthly brand searches</span>
+                        <span class="zh hidden"><strong>潜力：</strong> 捕获100-200月品牌搜索</span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority high">
+                        <span class="en">HIGH PRIORITY</span>
+                        <span class="zh hidden">高优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Long-Tail Skincare Keywords</span>
+                        <span class="zh hidden">长尾护肤关键词</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Target low-competition long-tail keywords in skincare categories: "sensitive skin products China", "Korean skincare routine", "dermatologist-approved moisturizers". Lower search volume but higher conversion rates.
+                        </span>
+                        <span class="zh hidden">
+                            针对护肤类别中的低竞争长尾关键词："敏感肌护肤品"、"韩国护肤流程"、"皮肤科医生推荐保湿霜"。搜索量较低但转化率较高。
+                        </span>
+                    </p>
+                    <div class="potential">
+                        <span class="en"><strong>Potential:</strong> Rank for 15-20 niche keywords in 90 days</span>
+                        <span class="zh hidden"><strong>潜力：</strong> 90天内对15-20个细分关键词排名</span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority medium">
+                        <span class="en">MEDIUM PRIORITY</span>
+                        <span class="zh hidden">中优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Content Gap Exploitation</span>
+                        <span class="zh hidden">内容差距利用</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Create educational content in areas where competitors have weak coverage: ingredient education, skincare routine guides, product comparison articles. Position as thought leader.
+                        </span>
+                        <span class="zh hidden">
+                            在竞争对手覆盖较弱的领域创建教育内容：成分教育、护肤流程指南、产品比较文章。定位为思想领袖。
+                        </span>
+                    </p>
+                    <div class="potential">
+                        <span class="en"><strong>Potential:</strong> Attract 300-500 monthly organic visitors</span>
+                        <span class="zh hidden"><strong>潜力：</strong> 吸引300-500月自然访客</span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority medium">
+                        <span class="en">MEDIUM PRIORITY</span>
+                        <span class="zh hidden">中优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Local SEO for China Market</span>
+                        <span class="zh hidden">中国市场本地SEO</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            Optimize for local search terms and regional variations: "Shanghai skincare", "Beijing dermatology products". Register with Baidu Maps and local business directories.
+                        </span>
+                        <span class="zh hidden">
+                            优化本地搜索词和地区变化："上海护肤品"、"北京皮肤科产品"。注册百度地图和本地商业目录。
+                        </span>
+                    </p>
+                    <div class="potential">
+                        <span class="en"><strong>Potential:</strong> Capture 150-250 local search visits/month</span>
+                        <span class="zh hidden"><strong>潜力：</strong> 捕获150-250本地搜索访问/月</span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <span class="priority low">
+                        <span class="en">LOW PRIORITY</span>
+                        <span class="zh hidden">低优先级</span>
+                    </span>
+                    <h4>
+                        <span class="en">Bing Market Diversification</span>
+                        <span class="zh hidden">必应市场多元化</span>
+                    </h4>
+                    <p>
+                        <span class="en">
+                            While Baidu dominates, Bing represents an untapped channel. Only WINONA has minimal Bing presence (1 visitor). Low effort optimization could yield early wins.
+                        </span>
+                        <span class="zh hidden">
+                            虽然百度占主导地位，但必应代表一个未开发的渠道。只有薇诺娜有最小的必应存在（1访客）。低努力优化可以产生早期胜利。
+                        </span>
+                    </p>
+                    <div class="potential">
+                        <span class="en"><strong>Potential:</strong> First-mover advantage in Bing channel</span>
+                        <span class="zh hidden"><strong>潜力：</strong> 在必应渠道中的先发优势</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2>
+                <span class="en">90-Day Action Plan</span>
+                <span class="zh hidden">90天行动计划</span>
+            </h2>
+            <p class="section-intro">
+                <span class="en">
+                    Phased implementation roadmap to establish DERMAFIRM's search engine presence and achieve measurable ranking improvements within 90 days.
+                </span>
+                <span class="zh hidden">
+                    分阶段实施路线图，以建立德玛菲的搜索引擎存在，并在90天内实现可衡量的排名改进。
+                </span>
+            </p>
+
+            <div class="timeline-item">
+                <div class="timeline-phase">
+                    <span class="en">PHASE 1: DAYS 1-30 | FOUNDATION</span>
+                    <span class="zh hidden">第一阶段：第1-30天 | 基础建设</span>
+                </div>
+                <h4>
+                    <span class="en">Technical Infrastructure & Site Audit</span>
+                    <span class="zh hidden">技术基础设施与站点审计</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        Establish core technical SEO requirements and complete comprehensive site audit. This phase creates the foundation for all future optimization efforts.
+                    </span>
+                    <span class="zh hidden">
+                        建立核心技术SEO要求并完成全面的站点审计。此阶段为所有未来优化工作奠定基础。
+                    </span>
+                </p>
+                <ul>
+                    <li><span class="en">Register and verify Baidu Webmaster Tools account</span><span class="zh hidden">注册并验证百度站长工具账户</span></li>
+                    <li><span class="en">Generate and submit XML sitemap to Baidu</span><span class="zh hidden">生成并提交XML网站地图到百度</span></li>
+                    <li><span class="en">Optimize robots.txt for search engine crawling</span><span class="zh hidden">优化robots.txt以便搜索引擎抓取</span></li>
+                    <li><span class="en">Implement mobile-responsive design (critical for Baidu)</span><span class="zh hidden">实施移动响应设计（对百度至关重要）</span></li>
+                    <li><span class="en">Conduct technical SEO audit: page speed, HTTPS, structured data</span><span class="zh hidden">进行技术SEO审计：页面速度、HTTPS、结构化数据</span></li>
+                    <li><span class="en">Set up Baidu Analytics for traffic monitoring</span><span class="zh hidden">设置百度分析以监控流量</span></li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase">
+                    <span class="en">PHASE 2: DAYS 31-60 | KEYWORD STRATEGY</span>
+                    <span class="zh hidden">第二阶段：第31-60天 | 关键词策略</span>
+                </div>
+                <h4>
+                    <span class="en">Keyword Research & On-Page Optimization</span>
+                    <span class="zh hidden">关键词研究与页面优化</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        Execute comprehensive keyword research and optimize existing pages for target keywords. Focus on brand terms and low-competition opportunities.
+                    </span>
+                    <span class="zh hidden">
+                        执行全面的关键词研究并优化现有页面以针对目标关键词。专注于品牌词和低竞争机会。
+                    </span>
+                </p>
+                <ul>
+                    <li><span class="en">Identify 50+ target keywords (brand + product + informational)</span><span class="zh hidden">识别50+目标关键词（品牌+产品+信息性）</span></li>
+                    <li><span class="en">Optimize 10-15 core pages: title tags, meta descriptions, H1/H2 tags</span><span class="zh hidden">优化10-15个核心页面：标题标签、元描述、H1/H2标签</span></li>
+                    <li><span class="en">Create Chinese language content for primary product pages</span><span class="zh hidden">为主要产品页面创建中文内容</span></li>
+                    <li><span class="en">Implement internal linking structure to distribute page authority</span><span class="zh hidden">实施内部链接结构以分配页面权限</span></li>
+                    <li><span class="en">Add structured data markup (Product, Organization, BreadcrumbList)</span><span class="zh hidden">添加结构化数据标记（产品、组织、面包屑列表）</span></li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase">
+                    <span class="en">PHASE 3: DAYS 61-90 | CONTENT & AUTHORITY</span>
+                    <span class="zh hidden">第三阶段：第61-90天 | 内容与权威</span>
+                </div>
+                <h4>
+                    <span class="en">Content Creation & Link Building</span>
+                    <span class="zh hidden">内容创建与链接建设</span>
+                </h4>
+                <p>
+                    <span class="en">
+                        Launch content marketing initiatives and begin building domain authority through strategic link acquisition and content distribution.
+                    </span>
+                    <span class="zh hidden">
+                        启动内容营销计划，并通过战略链接获取和内容分发开始建立域权限。
+                    </span>
+                </p>
+                <ul>
+                    <li><span class="en">Publish 8-10 educational blog posts targeting long-tail keywords</span><span class="zh hidden">发布8-10篇针对长尾关键词的教育博客文章</span></li>
+                    <li><span class="en">Create skincare guides and ingredient education content</span><span class="zh hidden">创建护肤指南和成分教育内容</span></li>
+                    <li><span class="en">Register with Chinese business directories (Baike, Zhihu, etc.)</span><span class="zh hidden">注册中国商业目录（百科、知乎等）</span></li>
+                    <li><span class="en">Acquire 5-10 quality backlinks from relevant skincare websites</span><span class="zh hidden">从相关护肤网站获取5-10个优质反向链接</span></li>
+                    <li><span class="en">Set up and optimize Baidu Baike (encyclopedia) brand page</span><span class="zh hidden">设置并优化百度百科品牌页面</span></li>
+                    <li><span class="en">Monitor rankings and adjust strategy based on performance data</span><span class="zh hidden">监控排名并根据性能数据调整策略</span></li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: var(--card-bg); border-radius: 12px; border-left: 4px solid var(--success-color);">
+                <h4 style="color: var(--success-color); margin-bottom: 12px;">
+                    <span class="en">📈 Expected 90-Day Outcomes</span>
+                    <span class="zh hidden">📈 预期90天成果</span>
+                </h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; color: var(--text-secondary);">
+                        <span style="color: var(--success-color); font-weight: bold;">✓</span>
+                        <span class="en"> 50+ pages indexed by Baidu</span>
+                        <span class="zh hidden"> 百度索引50+页面</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary);">
+                        <span style="color: var(--success-color); font-weight: bold;">✓</span>
+                        <span class="en"> 15-20 keywords ranking on Baidu (positions 21-50)</span>
+                        <span class="zh hidden"> 15-20个关键词在百度排名（位置21-50）</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary);">
+                        <span style="color: var(--success-color); font-weight: bold;">✓</span>
+                        <span class="en"> 100-200 monthly organic visitors</span>
+                        <span class="zh hidden"> 100-200月自然访客</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary);">
+                        <span style="color: var(--success-color); font-weight: bold;">✓</span>
+                        <span class="en"> Brand keyword dominance (#1-3 positions for DERMAFIRM terms)</span>
+                        <span class="zh hidden"> 品牌关键词主导地位（DERMAFIRM词的#1-3位置）</span>
+                    </li>
+                    <li style="padding: 8px 0; color: var(--text-secondary);">
+                        <span style="color: var(--success-color); font-weight: bold;">✓</span>
+                        <span class="en"> Foundation for continued SEO growth (competitive index target: 25-30)</span>
+                        <span class="zh hidden"> 持续SEO增长的基础（竞争指数目标：25-30）</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn-2" class="primary-cta">
+                    <span class="en">📄 Download PDF Report</span>
+                    <span class="zh hidden">📄 下载PDF报告</span>
+                </button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')">
+                    <span class="en">📞 Schedule SEO Consultation</span>
+                    <span class="zh hidden">📞 预约SEO咨询</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handlers
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            const downloadBtn2 = document.getElementById('download-pdf-btn-2');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+            if (downloadBtn2) {
+                downloadBtn2.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
