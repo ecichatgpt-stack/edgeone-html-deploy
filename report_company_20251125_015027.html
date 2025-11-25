@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMI Technologies Inc. - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px;
+            page-break-after: avoid;
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary);
+            page-break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        .swot-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .swot-item h3{
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul{
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li{
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .swot-item li:before{
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .chart-container h3{
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Chart Bar Styles */
+        .bar-chart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+        .bar-chart-label {
+            width: 150px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+        .bar-chart-bar {
+            flex-grow: 1;
+            height: 24px;
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bar-chart-value {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: var(--font-data);
+        }
+
+        /* Stacked Bar Chart */
+        .stacked-bar {
+            display: flex;
+            height: 32px;
+            border-radius: 4px;
+            overflow: hidden;
+            gap: 0;
+        }
+        .stacked-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            min-width: 40px;
+        }
+        .baidu-segment {
+            background: #3b82f6;
+        }
+        .bing-segment {
+            background: #8b5cf6;
+        }
+
+        /* Timeline */
+        .timeline-item{
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .timeline-item h4{
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p{
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .opportunity-priority {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .priority-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+        .priority-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fcd34d;
+        }
+        .priority-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover{
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Gap Analysis */
+        .gap-metric {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid var(--alt-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .gap-metric-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .gap-metric-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: var(--font-data);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .opportunity-card,
+            .key-metrics-grid, .table-container, .data-table {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* Table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <!-- SECTION 1: EXECUTIVE SUMMARY -->
+        <section class="report-section" id="executive-summary">
+            <h1><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span></h1>
+            <p class="subtitle"><span class="en">LMI Technologies Inc.</span><span class="zh hidden">领谱科技有限公司</span></p>
+            <p class="section-intro" style="margin-top: 24px;"><span class="en">This comprehensive report analyzes LMI Technologies Inc.'s SEO performance against key competitors in the machine vision and robotics sector. Our analysis reveals significant growth opportunities and strategic positioning insights.</span><span class="zh hidden">本报告全面分析了领谱科技在机器视觉和机器人行业中与主要竞争对手的SEO表现。我们的分析揭示了显著的增长机会和战略定位洞察。</span></p>
+
+            <div class="key-metrics-grid">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">6<span class="en">/6</span><span class="zh hidden">/6</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">10</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></div>
+                    <div class="value">36</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">27.8%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Top 50 Rankings</span><span class="zh hidden">前50排名</span></div>
+                    <div class="value">24</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value"><span style="color: var(--danger-color);">Critical</span></div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 32px;"><span class="en"><strong>Key Findings:</strong> LMI Technologies currently captures minimal market visibility with only 10 daily visits and 36 indexed keywords. The company ranks significantly below competitors like KEYENCE (12,278 daily traffic) and Hikrobot (5,740 daily traffic). However, with only 10 total keywords ranking in the top 50, the company has substantial room for optimization. The keyword efficiency of 27.8% is competitive, but absolute traffic volume requires immediate strategic intervention. This presents both a challenge and a critical opportunity to establish strong market presence through targeted SEO initiatives.</span><span class="zh hidden"><strong>主要发现：</strong>领谱科技目前的市场知名度极低，仅有10次日均访问量和36个索引关键词。公司排名远低于基恩士（日均12,278次流量）和海康机器人（日均5,740次流量）等竞争对手。但是，仅有10个关键词排名前50位，公司有大量的优化空间。27.8%的关键词效率具有竞争力，但绝对流量量级需要立即采取战略干预。这既是一个挑战，也是一个通过有针对性的SEO举措建立强大市场存在的关键机会。</span></p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn"><span class="en">📥 Download PDF Report</span><span class="zh hidden">📥 下载PDF报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Schedule Consultation</span><span class="zh hidden">📞 预约咨询</span></button>
+            </div>
+        </section>
+
+        <!-- SECTION 2: COMPETITION OVERVIEW -->
+        <section class="report-section" id="competition-overview">
+            <h2><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></h2>
+            <p class="section-intro"><span class="en">Detailed comparison of LMI Technologies Inc. against the top 5 competitors by daily traffic volume.</span><span class="zh hidden">领谱科技与前5大竞争对手按日均流量的详细对比。</span></p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu Traffic</span><span class="zh hidden">百度流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Top 50 Rankings</span><span class="zh hidden">前50排名</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user">YOU</span><span class="en">LMI Technologies Inc.</span><span class="zh hidden">领谱科技有限公司</span></td>
+                            <td>10</td>
+                            <td>6-10</td>
+                            <td>0</td>
+                            <td>36</td>
+                            <td>24</td>
+                            <td><strong>1.1</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">KEYENCE Corporation</span><span class="zh hidden">基恩士中国</span></td>
+                            <td>12,278</td>
+                            <td>1,301-2,077</td>
+                            <td>3,505-5,599</td>
+                            <td>1,427</td>
+                            <td>1,149</td>
+                            <td><strong>100.0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Hikrobot</span><span class="zh hidden">海康机器人</span></td>
+                            <td>5,740</td>
+                            <td>953-1,523</td>
+                            <td>1,635-2,613</td>
+                            <td>415</td>
+                            <td>309</td>
+                            <td><strong>46.8</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Cognex Corporation</span><span class="zh hidden">康耐视中国</span></td>
+                            <td>1,078</td>
+                            <td>76-122</td>
+                            <td>155-247</td>
+                            <td>170</td>
+                            <td>141</td>
+                            <td><strong>8.8</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Orbbec</span><span class="zh hidden">奥比中光</span></td>
+                            <td>486</td>
+                            <td>105-169</td>
+                            <td>0</td>
+                            <td>113</td>
+                            <td>91</td>
+                            <td><strong>4.0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Mech-Mind Robotics</span><span class="zh hidden">微链智能</span></td>
+                            <td>60</td>
+                            <td>26-42</td>
+                            <td>0</td>
+                            <td>89</td>
+                            <td>78</td>
+                            <td><strong>0.5</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="summary-text" style="margin-top: 24px;"><span class="en"><strong>Competitive Index Explained:</strong> This metric measures overall SEO dominance, combining daily traffic, keyword volume, and ranking distribution. KEYENCE leads with a score of 100.0, representing the benchmark. LMI Technologies scores 1.1, indicating early-stage SEO development. The significant gap between LMI (10 daily traffic) and even smaller competitors like Mech-Mind Robotics (60 daily traffic) suggests untapped potential in content strategy and keyword targeting. LMI's keyword efficiency (24 out of 36 keywords rank in top 50) is actually stronger than Mech-Mind's (78 out of 89), but limited keyword portfolio restricts overall visibility.</span><span class="zh hidden"><strong>竞争指数说明：</strong>该指标通过结合日均流量、关键词数量和排名分布来衡量SEO整体主导力。基恩士以100.0分领先，代表基准。领谱科技得分为1.1，表明SEO发展处于早期阶段。领谱科技与甚至更小的竞争对手如微链智能（日均60次流量）之间的显著差距表明内容策略和关键词定位存在未开发的潜力。领谱科技的关键词效率（36个关键词中24个排名前50）实际上强于微链智能（89个关键词中78个），但有限的关键词组合限制了整体可见性。</span></p>
+        </section>
+
+        <!-- SECTION 3: SWOT ANALYSIS -->
+        <section class="report-section" id="swot-analysis">
+            <h2><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro"><span class="en">Strategic assessment of LMI Technologies Inc.'s competitive position and market dynamics.</span><span class="zh hidden">领谱科技竞争地位和市场动态的战略评估。</span></p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li><span class="en">High keyword efficiency ratio (66.7%) demonstrates strong on-page SEO implementation when targeting the right terms</span><span class="zh hidden">高关键词效率比率（66.7%）表明在针对正确条款时进行强有力的页面内SEO实施</span></li>
+                        <li><span class="en">Growing keyword portfolio (36 keywords) provides foundation for systematic expansion of market reach</span><span class="zh hidden">不断增长的关键词组合（36个关键词）为系统扩展市场覆盖范围奠定了基础</span></li>
+                        <li><span class="en">Unique positioning in 3D vision and robotics offers differentiation opportunity versus broad competitors</span><span class="zh hidden">在3D视觉和机器人领域的独特定位相对于广泛的竞争对手提供了差异化机会</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">Weaknesses</span><span class="zh hidden">弱势</span></h3>
+                    <ul>
+                        <li><span class="en">Critically low daily traffic (10) indicates severe lack of market visibility and SEO momentum</span><span class="zh hidden">日均流量严重不足（10次）表明市场知名度和SEO动力严重缺乏</span></li>
+                        <li><span class="en">Limited Bing presence (0 traffic) means missing opportunity to capture international market segment</span><span class="zh hidden">必应存在有限（0流量）意味着错失捕获国际市场细分的机会</span></li>
+                        <li><span class="en">Significantly lower keyword portfolio (36 vs competitors' 89-1,427) restricts potential organic reach and long-tail opportunities</span><span class="zh hidden">关键词组合明显较低（36对竞争对手的89-1,427）限制了潜在的有机覆盖范围和长尾机会</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--accent-color);"><span class="en">Opportunities</span><span class="zh hidden">机会</span></h3>
+                    <ul>
+                        <li><span class="en">Massive growth potential: 1,200%+ traffic increase achievable by reaching competitor average (2,712 daily traffic)</span><span class="zh hidden">巨大增长潜力：通过达到竞争对手平均水平（日均2,712次流量），可实现1,200%+的流量增长</span></li>
+                        <li><span class="en">Underexploited Bing channel offers expansion avenue; Bing typically captures 30-40% of international searches in specific verticals</span><span class="zh hidden">未充分利用的必应渠道提供扩展途径；必应在特定垂直行业中通常占据国际搜索的30-40%</span></li>
+                        <li><span class="en">Rising global demand for 3D imaging solutions creates tailwind for targeted content marketing and thought leadership positioning</span><span class="zh hidden">全球对3D成像解决方案需求上升为定向内容营销和思想领导力定位创造了助力</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li><span class="en">Dominant market leaders (KEYENCE with 100x traffic) have massive content and backlink advantages making keyword competition increasingly difficult</span><span class="zh hidden">市场领导者（基恩士流量高100倍）拥有庞大的内容和反向链接优势，使关键词竞争日益困难</span></li>
+                        <li><span class="en">Rapid tech company consolidation and M&amp;A activity may result in larger competitors acquiring or partnering with adjacent players</span><span class="zh hidden">快速的科技公司并购活动可能导致大型竞争对手收购或与相邻参与者合作</span></li>
+                        <li><span class="en">AI-driven search algorithm evolution may favor established brands with comprehensive information architecture and user behavior signals</span><span class="zh hidden">AI驱动的搜索算法演变可能偏向于拥有全面信息架构和用户行为信号的老牌品牌</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: DEEP METRICS ANALYSIS -->
+        <section class="report-section" id="deep-metrics">
+            <h2><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+            <p class="section-intro"><span class="en">In-depth examination of traffic channels, keyword efficiency, and competitive gaps.</span><span class="zh hidden">流量渠道、关键词效率和竞争差距的深入检查。</span></p>
+
+            <h3 style="margin-top: 32px; margin-bottom: 20px; font-size: 18px; color: var(--text-heading);"><span class="en">📊 Traffic Channel Distribution (Baidu vs Bing)</span><span class="zh hidden">📊 流量渠道分布（百度vs必应）</span></h3>
+            <div class="chart-container">
+                <div style="margin-bottom: 24px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 12px; gap: 8px;">
+                        <span style="font-size: 13px; color: var(--text-secondary); width: 150px; flex-shrink: 0;"><span class="en">KEYENCE Corporation</span><span class="zh hidden">基恩士中国</span></span>
+                        <div class="stacked-bar" style="flex: 1;">
+                            <div class="stacked-segment baidu-segment" style="flex: 0.25;">15%</div>
+                            <div class="stacked-segment bing-segment" style="flex: 0.75;">85%</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 12px; gap: 8px;">
+                        <span style="font-size: 13px; color: var(--text-secondary); width: 150px; flex-shrink: 0;"><span class="en">Hikrobot</span><span class="zh hidden">海康机器人</span></span>
+                        <div class="stacked-bar" style="flex: 1;">
+                            <div class="stacked-segment baidu-segment" style="flex: 0.37;">37%</div>
+                            <div class="stacked-segment bing-segment" style="flex: 0.63;">63%</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 12px; gap: 8px;">
+                        <span style="font-size: 13px; color: var(--text-secondary); width: 150px; flex-shrink: 0;"><span class="en">Cognex Corporation</span><span class="zh hidden">康耐视中国</span></span>
+                        <div class="stacked-bar" style="flex: 1;">
+                            <div class="stacked-segment baidu-segment" style="flex: 0.10;">10%</div>
+                            <div class="stacked-segment bing-segment" style="flex: 0.90;">90%</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 12px; gap: 8px;">
+                        <span style="font-size: 13px; color: var(--text-secondary); width: 150px; flex-shrink: 0;"><span class="en">Orbbec</span><span class="zh hidden">奥比中光</span></span>
+                        <div class="stacked-bar" style="flex: 1;">
+                            <div class="stacked-segment baidu-segment" style="flex: 1;">100%</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 12px; gap: 8px;">
+                        <span style="font-size: 13px; color: var(--text-secondary); width: 150px; flex-shrink: 0;"><span class="en">Mech-Mind Robotics</span><span class="zh hidden">微链智能</span></span>
+                        <div class="stacked-bar" style="flex: 1;">
+                            <div class="stacked-segment baidu-segment" style="flex: 1;">100%</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 13px; color: var(--text-secondary); width: 150px; flex-shrink: 0;"><span class="en">LMI Technologies Inc.</span><span class="zh hidden">领谱科技有限公司</span></span>
+                        <div class="stacked-bar" style="flex: 1;">
+                            <div class="stacked-segment baidu-segment" style="flex: 1;">100%</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;"><span class="en"><strong>Insight:</strong> LMI Technologies and smaller competitors rely entirely on Baidu traffic, while KEYENCE and Cognex have successfully penetrated Bing (international search market). The dominance of Bing traffic at major competitors (63-90%) indicates significant opportunity to capture English-speaking and international audiences.</span><span class="zh hidden"><strong>洞察：</strong>领谱科技和较小的竞争对手完全依赖百度流量，而基恩士和康耐视已成功进入必应（国际搜索市场）。Bing流量在主要竞争对手中的主导地位（63-90%）表明有机会捕获英文和国际受众。</span></p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 18px; color: var(--text-heading);"><span class="en">📈 Keyword Efficiency Comparison</span><span class="zh hidden">📈 关键词效率对比</span></h3>
+            <div class="chart-container">
+                <div>
+                    <div class="bar-chart-item">
+                        <div class="bar-chart-label"><span class="en">KEYENCE Corporation</span><span class="zh hidden">基恩士中国</span></div>
+                        <div class="bar-chart-bar" style="width: 100%;">
+                            <div class="bar-chart-value">80.6%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart-item">
+                        <div class="bar-chart-label"><span class="en">Hikrobot</span><span class="zh hidden">海康机器人</span></div>
+                        <div class="bar-chart-bar" style="width: 74.5%;">
+                            <div class="bar-chart-value">74.5%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart-item">
+                        <div class="bar-chart-label"><span class="en">Cognex Corporation</span><span class="zh hidden">康耐视中国</span></div>
+                        <div class="bar-chart-bar" style="width: 82.9%;">
+                            <div class="bar-chart-value">82.9%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart-item">
+                        <div class="bar-chart-label"><span class="en">Orbbec</span><span class="zh hidden">奥比中光</span></div>
+                        <div class="bar-chart-bar" style="width: 80.5%;">
+                            <div class="bar-chart-value">80.5%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart-item">
+                        <div class="bar-chart-label"><span class="en">Mech-Mind Robotics</span><span class="zh hidden">微链智能</span></div>
+                        <div class="bar-chart-bar" style="width: 87.6%;">
+                            <div class="bar-chart-value">87.6%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart-item">
+                        <div class="bar-chart-label"><span class="en">LMI Technologies Inc.</span><span class="zh hidden">领谱科技有限公司</span></div>
+                        <div class="bar-chart-bar" style="width: 66.7%; background: linear-gradient(90deg, #3b82f6 0%, #ef4444 100%);">
+                            <div class="bar-chart-value">66.7%</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;"><span class="en"><strong>Insight:</strong> LMI Technologies shows 66.7% keyword efficiency (24 of 36 keywords rank in top 50), which is slightly below the competitor average of 78.4%. This suggests LMI's keyword selection strategy is reasonable, but the significantly lower traffic volume indicates weak domain authority and content relevance. To improve: (1) expand keyword portfolio to 100-150 keywords, (2) optimize title/meta tags for top-performing keywords, (3) build internal linking structure.</span><span class="zh hidden"><strong>洞察：</strong>领谱科技显示66.7%的关键词效率（36个关键词中24个排名前50），略低于竞争对手78.4%的平均水平。这表明领谱科技的关键词选择策略合理，但流量体积明显较低表明域名权威和内容相关性较弱。改进方向：（1）将关键词组合扩展到100-150个关键词，（2）为表现最佳的关键词优化标题/元标签，（3）构建内部链接结构。</span></p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 18px; color: var(--text-heading);"><span class="en">🎯 Competitive Gap Analysis</span><span class="zh hidden">🎯 竞争差距分析</span></h3>
+            <div class="chart-container">
+                <div>
+                    <div class="gap-metric">
+                        <div class="gap-metric-label"><span class="en">Daily Traffic Gap vs KEYENCE</span><span class="zh hidden">与基恩士的日流量差距</span></div>
+                        <div class="gap-metric-value" style="color: var(--danger-color);">-99.9%</div>
+                    </div>
+                    <div class="gap-metric">
+                        <div class="gap-metric-label"><span class="en">Daily Traffic Gap vs Hikrobot</span><span class="zh hidden">与海康机器人的日流量差距</span></div>
+                        <div class="gap-metric-value" style="color: var(--danger-color);">-99.8%</div>
+                    </div>
+                    <div class="gap-metric">
+                        <div class="gap-metric-label"><span class="en">Daily Traffic Gap vs Cognex</span><span class="zh hidden">与康耐视的日流量差距</span></div>
+                        <div class="gap-metric-value" style="color: var(--danger-color);">-99.1%</div>
+                    </div>
+                    <div class="gap-metric">
+                        <div class="gap-metric-label"><span class="en">Keyword Portfolio Gap vs Leaders</span><span class="zh hidden">与领导者的关键词组合差距</span></div>
+                        <div class="gap-metric-value" style="color: var(--danger-color);">-97.5%</div>
+                    </div>
+                    <div class="gap-metric">
+                        <div class="gap-metric-label"><span class="en">Top 50 Ranking Gap vs Average</span><span class="zh hidden">前50排名与平均值的差距</span></div>
+                        <div class="gap-metric-value" style="color: var(--danger-color);">-93.0%</div>
+                    </div>
+                    <div class="gap-metric">
+                        <div class="gap-metric-label"><span class="en">Market Share vs Competitor Average</span><span class="zh hidden">市场份额与竞争对手平均水平</span></div>
+                        <div class="gap-metric-value" style="color: var(--danger-color);">-99.6%</div>
+                    </div>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;"><span class="en"><strong>Critical Analysis:</strong> The gaps reveal LMI's early-stage SEO maturity. However, this represents untapped upside potential. The competitor average daily traffic is 2,712 visits—a 27,020% increase target. More realistically, capturing 5-10% of top competitor traffic would yield 500-1,000 daily visits, representing a 50-100x return on focused SEO investment. Priority should be on content expansion and technical SEO foundation-building.</span><span class="zh hidden"><strong>关键分析：</strong>差距揭示了领谱科技SEO成熟度处于早期阶段。但这代表未开发的上升潜力。竞争对手平均日流量为2,712次访问——增长目标为27,020%。更现实地说，捕获顶级竞争对手流量的5-10%将产生500-1,000次日访问，代表有针对性的SEO投资的50-100倍回报。优先事项应该是内容扩展和技术SEO基础建设。</span></p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: OPPORTUNITY IDENTIFICATION -->
+        <section class="report-section" id="opportunities">
+            <h2><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro"><span class="en">Strategic opportunities for LMI Technologies Inc. to accelerate SEO growth and market presence.</span><span class="zh hidden">领谱科技加速SEO增长和市场存在的战略机会。</span></p>
+
+            <div style="margin-top: 24px;">
+                <h3 style="margin-bottom: 16px; font-size: 16px;"><span class="en">🎯 Opportunity Priority Matrix</span><span class="zh hidden">🎯 机会优先级矩阵</span></h3>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">1. Bing Market Expansion</span><span class="zh hidden">1. 必应市场扩张</span></h4>
+                    <p><span class="en"><strong>Potential Impact:</strong> 200-400% traffic increase | <strong>Implementation Effort:</strong> Medium</span><span class="zh hidden"><strong>潜在影响：</strong>200-400%流量增加 | <strong>实施难度：</strong>中等</span></p>
+                    <p><span class="en">LMI currently captures 0% of Bing traffic. Competitors like KEYENCE derive 85% of traffic from Bing. Action: Implement Bing Webmaster Tools tracking, optimize for Bing-specific ranking factors (freshness, semantic search), and create English-language content variants for international audience.</span><span class="zh hidden">领谱科技目前必应流量占比为0%。基恩士等竞争对手从必应获得85%的流量。行动：实施必应网站管理员工具跟踪，优化必应特定排名因素（新鲜度、语义搜索），并为国际受众创建英文内容变体。</span></p>
+                    <span class="opportunity-priority priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">2. Long-Tail Keyword Domination</span><span class="zh hidden">2. 长尾关键词主导</span></h4>
+                    <p><span class="en"><strong>Potential Impact:</strong> 150-250% traffic increase | <strong>Implementation Effort:</strong> Low</span><span class="zh hidden"><strong>潜在影响：</strong>150-250%流量增加 | <strong>实施难度：</strong>低</span></p>
+                    <p><span class="en">Current portfolio of 36 keywords is severely limited. Competitors target 89-1,427 keywords. Action: Conduct comprehensive keyword research for 200-300 long-tail keywords (3-5 word combinations) with lower competition. Focus on "3D imaging + [specific use case]" and "machine vision solution + [industry vertical]" combinations. Create dedicated landing pages for each segment.</span><span class="zh hidden">目前36个关键词的组合极其有限。竞争对手定向89-1,427个关键词。行动：进行全面的关键词研究，寻找200-300个长尾关键词（3-5字组合），竞争较少。重点关注"3D成像+[具体用例]"和"机器视觉解决方案+[行业垂直]"组合。为每个细分创建专用登陆页面。</span></p>
+                    <span class="opportunity-priority priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">3. Technical SEO & Site Architecture</span><span class="zh hidden">3. 技术SEO和网站架构</span></h4>
+                    <p><span class="en"><strong>Potential Impact:</strong> 30-50% traffic increase | <strong>Implementation Effort:</strong> Medium</span><span class="zh hidden"><strong>潜在影响：</strong>30-50%流量增加 | <strong>实施难度：</strong>中等</span></p>
+                    <p><span class="en">Despite 66.7% keyword efficiency, absolute traffic is low—suggesting domain authority issues. Action: Audit and fix crawl errors, improve site speed (target &lt;2 seconds), implement schema markup for products/solutions, create XML sitemaps, optimize robots.txt and internal linking. This foundation enables higher keyword rankings once authority builds.</span><span class="zh hidden">尽管关键词效率为66.7%，但绝对流量较低——表明域名权限问题。行动：审计并修复爬虫错误，改善网站速度（目标&lt;2秒），实施产品/解决方案的模式标记，创建XML站点地图，优化robots.txt和内部链接。该基础在权限增加后支持更高的关键词排名。</span></p>
+                    <span class="opportunity-priority priority-high"><span class="en">HIGH PRIORITY</span><span class="zh hidden">高优先级</span></span>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">4. Content Marketing & Thought Leadership</span><span class="zh hidden">4. 内容营销和思想领导力</span></h4>
+                    <p><span class="en"><strong>Potential Impact:</strong> 100-200% traffic increase | <strong>Implementation Effort:</strong> High</span><span class="zh hidden"><strong>潜在影响：</strong>100-200%流量增加 | <strong>实施难度：</strong>高</span></p>
+                    <p><span class="en">Backlink profile critical for domain authority. Competitors generate backlinks through industry reports, whitepapers, and case studies. Action: Publish monthly technical blog posts (3D vision applications), create downloadable industry reports (positioning LMI as expert), develop case studies showcasing customer success. Target industry publications and tech blogs for guest posting and backlink building.</span><span class="zh hidden">反向链接对域名权限至关重要。竞争对手通过行业报告、白皮书和案例研究生成反向链接。行动：每月发布技术博客文章（3D视觉应用），创建可下载的行业报告（定位领谱科技为专家），开发展示客户成功的案例研究。针对行业出版物和科技博客进行访客发布和反向链接建设。</span></p>
+                    <span class="opportunity-priority priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span></span>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">5. International Localization</span><span class="zh hidden">5. 国际本地化</span></h4>
+                    <p><span class="en"><strong>Potential Impact:</strong> 50-150% traffic increase | <strong>Implementation Effort:</strong> Medium-High</span><span class="zh hidden"><strong>潜在影响：</strong>50-150%流量增加 | <strong>实施难度：</strong>中高</span></p>
+                    <p><span class="en">KEYENCE and Cognex capture significant international traffic via Bing. LMI has untapped global market. Action: Create country-specific hreflang tags, develop English/Japanese/Korean language versions of key product pages, optimize for international search intent (add country modifiers to URLs and content), build backlinks from international tech publications and distributors in target markets.</span><span class="zh hidden">基恩士和康耐视通过必应获得大量国际流量。领谱科技拥有未开发的全球市场。行动：创建国家特定的hreflang标签，开发关键产品页面的英文/日文/韩文版本，优化国际搜索意图（在URL和内容中添加国家修饰符），从目标市场的国际科技出版物和经销商建立反向链接。</span></p>
+                    <span class="opportunity-priority priority-medium"><span class="en">MEDIUM PRIORITY</span><span class="zh hidden">中优先级</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: ACTION PLAN -->
+        <section class="report-section" id="action-plan">
+            <h2><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></h2>
+            <p class="section-intro"><span class="en">Detailed timeline-based strategy for LMI Technologies Inc. to achieve SEO growth and market leadership.</span><span class="zh hidden">领谱科技实现SEO增长和市场领导地位的详细时间表策略。</span></p>
+
+            <h3 style="margin-top: 32px; margin-bottom: 20px; font-size: 16px;"><span class="en">📅 90-Day Quick Win Phase</span><span class="zh hidden">📅 90天快速赢利阶段</span></h3>
+            <div class="timeline-item">
+                <h4><span class="en">Week 1-2: SEO Audit & Technical Foundation</span><span class="zh hidden">第1-2周：SEO审计和技术基础</span></h4>
+                <p><span class="en">• Conduct comprehensive SEO audit (Screaming Frog, Ahrefs crawl)</span><span class="zh hidden">• 进行全面SEO审计（Screaming Frog、Ahrefs爬虫）</span></p>
+                <p><span class="en">• Fix all critical issues: broken links, redirect chains, crawl errors</span><span class="zh hidden">• 修复所有关键问题：破损链接、重定向链接、爬虫错误</span></p>
+                <p><span class="en">• Implement Google Search Console & Baidu Search Console tracking</span><span class="zh hidden">• 实施谷歌搜索控制台和百度搜索控制台跟踪</span></p>
+                <p><span class="en">• Register & optimize Bing Webmaster Tools</span><span class="zh hidden">• 注册并优化必应网站管理员工具</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Week 3-4: Keyword Research & Content Planning</span><span class="zh hidden">第3-4周：关键词研究和内容规划</span></h4>
+                <p><span class="en">• Expand keyword portfolio from 36 to 150+ (target: 50 long-tail keywords first)</span><span class="zh hidden">• 将关键词组合从36个扩展到150+（目标：首先50个长尾关键词）</span></p>
+                <p><span class="en">• Analyze top 10 SERP competitors for each target keyword</span><span class="zh hidden">• 分析每个目标关键词的前10名搜索结果竞争对手</span></p>
+                <p><span class="en">• Create content calendar: 8 blog posts + 5 product landing pages for high-priority keywords</span><span class="zh hidden">• 创建内容日历：8篇博客文章+5个针对高优先级关键词的产品登陆页面</span></p>
+                <p><span class="en">• Identify low-hanging fruit keywords with &lt;5,000 monthly searches and high commercial intent</span><span class="zh hidden">• 识别月搜索量&lt;5,000且高商业意图的低果关键词</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Week 5-6: On-Page Optimization</span><span class="zh hidden">第5-6周：页面优化</span></h4>
+                <p><span class="en">• Optimize title tags & meta descriptions for all 36 existing keywords</span><span class="zh hidden">• 为所有36个现有关键词优化标题标签和元描述</span></p>
+                <p><span class="en">• Implement schema markup (Product, Organization, BreadcrumbList)</span><span class="zh hidden">• 实施模式标记（产品、组织、面包屑列表）</span></p>
+                <p><span class="en">• Optimize header structure (H1, H2, H3) for semantic relevance</span><span class="zh hidden">• 优化标题结构（H1、H2、H3）的语义相关性</span></p>
+                <p><span class="en">• Improve internal linking: create 5-7 contextual links to target pages from authority pages</span><span class="zh hidden">• 改善内部链接：从权威页面创建5-7个指向目标页面的上下文链接</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Week 7-8: Content Publishing</span><span class="zh hidden">第7-8周：内容发布</span></h4>
+                <p><span class="en">• Publish 4 high-quality blog posts (2,000+ words each) targeting priority keywords</span><span class="zh hidden">• 发布4篇高质量博客文章（每篇2,000+字），针对优先级关键词</span></p>
+                <p><span class="en">• Create 2 product comparison pages (LMI vs Competitor A/B)</span><span class="zh hidden">• 创建2个产品对比页面（领谱科技vs竞争对手A/B）</span></p>
+                <p><span class="en">• Develop 1 industry guide/whitepaper targeting mid-funnel keywords</span><span class="zh hidden">• 开发1份针对中段漏斗关键词的行业指南/白皮书</span></p>
+                <p><span class="en">• Optimize all new content for voice search and featured snippets (bullet points, lists)</span><span class="zh hidden">• 为语音搜索和特色片段优化所有新内容（项目符号、列表）</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Week 9-10: Technical SEO Enhancements</span><span class="zh hidden">第9-10周：技术SEO增强</span></h4>
+                <p><span class="en">• Optimize Core Web Vitals (LCP, FID, CLS) - target: all green in PageSpeed Insights</span><span class="zh hidden">• 优化核心网络生命体征（LCP、FID、CLS）-目标：PageSpeed Insights中全部绿色</span></p>
+                <p><span class="en">• Create XML sitemap & submit to Baidu, Google, Bing</span><span class="zh hidden">• 创建XML站点地图并提交给百度、谷歌、必应</span></p>
+                <p><span class="en">• Implement hreflang tags for English/Chinese language variants</span><span class="zh hidden">• 为英文/中文语言变体实施hreflang标签</span></p>
+                <p><span class="en">• Set up mobile app deep linking (if applicable) and app indexing</span><span class="zh hidden">• 设置移动应用深层链接（如适用）和应用索引</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Week 11-12: Backlink Strategy Initiation</span><span class="zh hidden">第11-12周：反向链接策略启动</span></h4>
+                <p><span class="en">• Identify 20-30 authoritative backlink targets (industry blogs, tech publications, directories)</span><span class="zh hidden">• 识别20-30个权威反向链接目标（行业博客、科技出版物、目录）</span></p>
+                <p><span class="en">• Pitch 5 guest post opportunities with anchor text linking to high-priority target pages</span><span class="zh hidden">• 推销5个访客发布机会，使用指向高优先级目标页面的锚文本链接</span></p>
+                <p><span class="en">• Register on 10 relevant industry directories and resource pages</span><span class="zh hidden">• 在10个相关行业目录和资源页面上注册</span></p>
+                <p><span class="en">• Monitor competitor backlinks using Ahrefs/SE Ranking; identify link gaps</span><span class="zh hidden">• 使用Ahrefs/SE排名监控竞争对手反向链接；识别链接差距</span></p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 16px;"><span class="en">📊 6-Month Scaling Phase</span><span class="zh hidden">📊 6个月扩展阶段</span></h3>
+            <div class="timeline-item">
+                <h4><span class="en">Month 4-5: Content Expansion & Outreach</span><span class="zh hidden">第4-5个月：内容扩展和外展</span></h4>
+                <p><span class="en">• Expand blog to 16-20 posts covering mid-tail keywords</span><span class="zh hidden">• 将博客扩展到16-20篇文章，涵盖中等尾关键词</span></p>
+                <p><span class="en">• Develop 3-5 video content pieces (product demos, customer testimonials) for YouTube/Bilibili SEO</span><span class="zh hidden">• 为YouTube/B站SEO开发3-5个视频内容（产品演示、客户见证）</span></p>
+                <p><span class="en">• Launch PR campaign targeting 5-10 tech industry publications</span><span class="zh hidden">• 启动针对5-10家科技行业出版物的公关活动</span></p>
+                <p><span class="en">• Build strategic partnerships with 5-10 complementary B2B platforms for co-marketing</span><span class="zh hidden">• 与5-10个互补B2B平台建立战略伙伴关系进行共同营销</span></p>
+            </div>
+
+            <div class="timeline-item">
+                <h4><span class="en">Month 6: Performance Analysis & Optimization</span><span class="zh hidden">第6个月：性能分析和优化</span></h4>
+                <p><span class="en">• Analyze performance data: identify top-performing keywords and content pieces</span><span class="zh hidden">• 分析性能数据：识别表现最佳的关键词和内容</span></p>
+                <p><span class="en">• Perform second-round optimization on underperforming content (bottom 20%)</span><span class="zh hidden">• 对表现不佳的内容（底部20%）进行第二轮优化</span></p>
+                <p><span class="en">• Set up conversion tracking and implement Goal-based SEO metrics beyond traffic</span><span class="zh hidden">• 设置转换跟踪并实施基于目标的SEO指标超越流量</span></p>
+                <p><span class="en">• Plan Year-2 roadmap: expand to adjacent keyword clusters and vertical markets</span><span class="zh hidden">• 规划第2年路线图：扩展到相邻关键词集群和垂直市场</span></p>
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 16px;"><span class="en">🎯 Expected Outcomes & KPIs</span><span class="zh hidden">🎯 预期成果和KPI</span></h3>
+            <div style="background: var(--card-bg); border-radius: 12px; padding: 20px; border: 1px solid var(--alt-bg); margin-bottom: 20px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div>
+                        <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 8px;"><span class="en"><strong>90-Day Targets:</strong></span><span class="zh hidden"><strong>90天目标：</strong></span></p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 6px 0; color: var(--text-primary); font-size: 13px;">✓ <span class="en">Daily traffic: 10 → 50-75 (5-7x increase)</span><span class="zh hidden">✓ 日流量：10 → 50-75（5-7倍增长）</span></li>
+                            <li style="padding: 6px 0; color: var(--text-primary); font-size: 13px;">✓ <span class="en">Keywords ranking top 50: 24 → 80-100</span><span class="zh hidden">✓ 关键词前50排名：24 → 80-100</span></li>
+                            <li style="padding: 6px 0; color: var(--text-primary); font-size: 13px;">✓ <span class="en">Total keywords: 36 → 150</span><span class="zh hidden">✓ 关键词总数：36 → 150</span></li>
+                            <li style="padding: 6px 0; color: var(--text-primary); font-size: 13px;">✓ <span class="en">Bing traffic: 0 → 5-10</span><span class="zh hidden">✓ 必应流量：0 → 5-10</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 8px;"><span class="en"><strong>6-Month Targets:</strong></span><span class="zh hidden"><strong>6个月目标：</strong></span></p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 6px 0; color: var(--text-primary); font-size: 13px;">✓ <span class="en">Daily traffic: 10 → 300-500 (30-50x increase)</span><span class="zh hidden">✓ 日流量：10 → 300-500（30-50倍增长）</span></li>
+                            <li style="padding: 6px 0; color: var(--text-primary); font-size: 13px;">✓ <span class="en">Keywords ranking top 50: 24 → 350-450</span><span class="zh hidden">✓ 关键词前50排名：24 → 350-450</span></li>
+                            <li style="padding: 6px 0; color: var(--text-primary); font-size: 13px;">✓ <span class="en">Total keywords: 36 → 400+</span><span class="zh hidden">✓ 关键词总数：36 → 400+</span></li>
+                            <li style="padding: 6px 0; color: var(--text-primary); font-size: 13px;">✓ <span class="en">Bing traffic: 0 → 50-100</span><span class="zh hidden">✓ 必应流量：0 → 50-100</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-bottom: 32px;"><span class="en"><strong>ROI Projection:</strong> Conservative estimates suggest a 500-1,000% return on SEO investment within 6-12 months. If each visitor converts at industry average (2-3%), and average deal value is $10,000, the projected revenue impact is $150,000-500,000 annually. This makes SEO a high-ROI channel compared to paid advertising and other customer acquisition costs.</span><span class="zh hidden"><strong>ROI预测：</strong>保守估计表明在6-12个月内SEO投资的回报率为500-1,000%。如果每位访问者以行业平均转换率（2-3%）转化，平均交易价值为10,000美元，预计年收入影响为150,000-500,000美元。与付费广告和其他客户获取成本相比，这使SEO成为高投资回报率渠道。</span></p>
+
+            <div class="cta-container">
+                <button class="primary-cta" id="download-pdf-btn-2"><span class="en">📥 Download Full Report</span><span class="zh hidden">📥 下载完整报告</span></button>
+                <button class="secondary-cta" onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')"><span class="en">📞 Let's Get Started</span><span class="zh hidden">📞 立即开始</span></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = document.querySelector('.en:not(.hidden)') !== null;
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handlers
+            const downloadBtns = document.querySelectorAll('[id^="download-pdf-btn"]');
+            downloadBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
