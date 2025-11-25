@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMI Technologies - SEO Competitive Analysis Report</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Dark Theme: Midnight Blue */
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+            /* Dark Theme Background System */
+            --page-bg: #111827;
+            --section-bg: #1f2937;
+            --card-bg: #1f2937;
+            --alt-bg: #374151;
+            --hover-bg: #374151;
+
+            /* Dark Theme Text Colors */
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --text-heading: #ffffff;
+            
+            /* Font System */
+            --font-heading: 'Inter', 'Segoe UI', sans-serif;
+            --font-body: 'Roboto', 'Arial', sans-serif;
+            --font-data: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing */
+            --spacing-unit: 8px;
+            --section-padding: 80px;
+            --card-padding: 24px;
+            --section-gap: 32px;
+        }
+
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--page-bg) !important;
+            min-height: 100vh;
+        }
+        .hidden { display: none !important; }
+
+        /* Progress Bar */
+        .progress-bar { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            height: 4px; 
+            width: 0%; 
+            background: var(--bg-gradient); 
+            z-index: 1000; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Left Navigation */
+        .section-nav { 
+            position: fixed; 
+            left: 20px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 200px; 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+            z-index: 100; 
+            border: 1px solid var(--alt-bg); 
+        }
+        .section-nav a { 
+            display: block; 
+            padding: 10px 12px; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 14px; 
+            transition: all 0.3s ease; 
+            border-radius: 6px; 
+            margin-bottom: 4px; 
+        }
+        .section-nav a:hover { 
+            color: var(--text-primary); 
+            background: var(--hover-bg); 
+        }
+        .section-nav a.active { 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            background: var(--hover-bg); 
+        }
+
+        /* Main Container */
+        .report-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            margin-left: 240px; 
+            padding: 40px 24px; 
+        }
+
+        /* Section Styles */
+        .report-section { 
+            background: var(--section-bg); 
+            border-radius: 12px; 
+            padding: var(--section-padding); 
+            margin-bottom: var(--section-gap); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .report-section h1, .report-section h2, .report-section h3, .report-section h4 { 
+            font-family: var(--font-heading); 
+            color: var(--text-heading); 
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        .report-section h1 { 
+            font-size: 36px; 
+            color: var(--text-heading); 
+            margin-bottom: 8px; 
+        }
+        .report-section h2 { 
+            font-size: 28px; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 12px; 
+            margin-bottom: 24px; 
+        }
+        p.subtitle, p.section-intro, p.summary-text { 
+            color: var(--text-secondary); 
+            font-size: 16px; 
+            max-width: 800px; 
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Table Styles */
+        .table-container { 
+            overflow-x: auto; 
+            margin: 20px 0; 
+            border: 1px solid var(--alt-bg); 
+            border-radius: 8px; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            min-width: 1100px; 
+            page-break-inside: avoid;
+        }
+        .data-table th { 
+            background: #111827; 
+            padding: 16px; 
+            text-align: left; 
+            font-weight: 600; 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            border-bottom: 1px solid var(--alt-bg); 
+        }
+        .data-table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--alt-bg); 
+            font-size: 14px; 
+            font-family: var(--font-data); 
+            color: var(--text-primary); 
+        }
+        .data-table tbody tr { 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .data-table tbody tr:hover { 
+            background-color: var(--hover-bg); 
+        }
+        .data-table tbody tr:last-child td { 
+            border-bottom: none; 
+        }
+        .user-company-row { 
+            background: linear-gradient(90deg, rgba(59,130,246,0.1) 0%, transparent 100%) !important; 
+            color: var(--primary-color); 
+        }
+        .badge-user { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            margin-right: 8px; 
+            vertical-align: middle; 
+        }
+
+        /* Metric Cards */
+        .key-metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 24px; 
+            margin: 30px 0; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: var(--card-padding); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+            border: 1px solid var(--alt-bg); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            overflow: hidden; 
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .metric-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
+        }
+        .metric-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--bg-gradient); 
+        }
+        .metric-card .value { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: var(--text-primary); 
+            font-family: var(--font-data); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 8px; 
+        }
+        .metric-card .label { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+        }
+        
+        /* CTA Buttons */
+        .cta-container { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: 40px; 
+            justify-content: center; 
+        }
+        .primary-cta, .secondary-cta { 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border: none; 
+            height: 44px; 
+        }
+        .primary-cta { 
+            background: var(--primary-color); 
+            color: white; 
+        }
+        .primary-cta:hover { 
+            background: #60a5fa; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); 
+        }
+        .secondary-cta { 
+            background: transparent; 
+            color: var(--primary-color); 
+            border: 2px solid var(--primary-color); 
+        }
+        .secondary-cta:hover { 
+            background: var(--primary-color); 
+            color: white; 
+            transform: translateY(-2px); 
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .swot-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-heading);
+        }
+        .swot-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-item li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+        .swot-item li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .chart-container h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-heading);
+        }
+
+        /* Chart Bars */
+        .chart-bar-container {
+            margin: 16px 0;
+        }
+        .chart-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .chart-bar {
+            height: 32px;
+            background: var(--alt-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: var(--bg-gradient);
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .chart-bar-stacked {
+            display: flex;
+            height: 100%;
+        }
+        .chart-bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            transition: width 1s ease;
+        }
+        .chart-bar-segment.baidu {
+            background: #3b82f6;
+        }
+        .chart-bar-segment.bing {
+            background: #8b5cf6;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .timeline-item h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 30px 0;
+        }
+        .opportunity-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .opportunity-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 16px;
+            orphans: 3;
+            widows: 3;
+        }
+        .opportunity-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+        .tag-high {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success-color);
+        }
+        .tag-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+        }
+
+        /* Action Cards */
+        .action-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--alt-bg);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .action-card h4 {
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+        .action-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Floating Toolbar */
+        .floating-toolbar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .floating-toolbar button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .floating-toolbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Print Styles - Enhanced PDF Layout Control */
+        @media print {
+            /* Light theme for printing */
+            :root {
+                --page-bg: #ffffff; 
+                --section-bg: #ffffff; 
+                --card-bg: #f9fafb;
+                --alt-bg: #e5e7eb;
+                --text-primary: #1f2937; 
+                --text-secondary: #4b5563; 
+                --text-muted: #6b7280; 
+                --text-heading: #111827;
+                --primary-color: #2563eb;
+            }
+            
+            /* Hide non-printable elements */
+            .section-nav, .floating-toolbar, .cta-container, 
+            .progress-bar, button, .lang-switch { 
+                display: none !important; 
+            }
+            
+            /* Page setup */
+            @page {
+                size: A4 portrait;
+                margin: 15mm 12mm;
+            }
+            
+            /* Body optimization */
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .report-container {
+                max-width: 190mm !important;
+                margin: 0 auto !important;
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            /* Prevent page breaks inside critical elements */
+            .report-section, .metric-card, .swot-item, 
+            .chart-container, .timeline-item, .action-card,
+            .opportunity-card, .key-metrics-grid {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            /* Section handling */
+            .report-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                padding: 20mm 15mm;
+                margin-bottom: 8mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Force new page for major sections (except first) */
+            .report-section:not(:first-of-type) h2.section-title {
+                page-break-before: always;
+            }
+            
+            /* Headings stay with content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Table protection */
+            .table-container {
+                page-break-inside: avoid;
+                overflow: visible;
+                margin: 8mm 0;
+            }
+            
+            .data-table {
+                page-break-inside: auto;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .data-table thead {
+                display: table-header-group;
+            }
+            
+            .data-table tr {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+            
+            /* Grid layout for print */
+            .key-metrics-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10mm;
+                page-break-inside: avoid;
+            }
+            
+            /* Text flow control */
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            /* Chart containers */
+            .chart-container {
+                page-break-inside: avoid;
+                max-height: 180mm;
+            }
+            
+            /* SWOT Grid */
+            .swot-grid {
+                page-break-inside: avoid;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8mm;
+            }
+            
+            /* Avoid blank pages */
+            .report-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            /* If content still doesn't fit, scale down slightly */
+            .report-section.large-content {
+                transform: scale(0.95);
+                transform-origin: top center;
+            }
+
+            /* Additional table optimization */
+            tbody, thead, tfoot {
+                page-break-inside: avoid;
+            }
+
+            /* Ensure images don't break */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+            .report-container {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Left Navigation -->
+    <nav class="section-nav">
+        <a href="#executive-summary" class="active"><span class="en">Executive Summary</span><span class="zh hidden">执行摘要</span></a>
+        <a href="#competition-overview"><span class="en">Competition Overview</span><span class="zh hidden">竞争概览</span></a>
+        <a href="#swot-analysis"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></a>
+        <a href="#deep-metrics"><span class="en">Deep Metrics</span><span class="zh hidden">深度指标</span></a>
+        <a href="#opportunities"><span class="en">Opportunities</span><span class="zh hidden">机会识别</span></a>
+        <a href="#action-plan"><span class="en">Action Plan</span><span class="zh hidden">行动计划</span></a>
+    </nav>
+
+    <!-- Floating Toolbar -->
+    <div class="floating-toolbar">
+        <button onclick="toggleLanguage()" class="lang-switch" title="Switch Language">
+            <span class="en">中</span><span class="zh hidden">EN</span>
+        </button>
+        <button onclick="scrollToTop()" title="Back to Top">↑</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="executive-summary" class="report-section">
+            <h1><span class="en">LMI Technologies</span><span class="zh hidden">LMI Technologies</span></h1>
+            <p class="subtitle"><span class="en">SEO Competitive Analysis Report</span><span class="zh hidden">SEO竞争分析报告</span> | <span class="en">Q1 2024</span><span class="zh hidden">2024年第一季度</span></p>
+            
+            <div class="key-metrics-grid" style="margin-top: 40px;">
+                <div class="metric-card">
+                    <div class="label"><span class="en">Market Ranking</span><span class="zh hidden">市场排名</span></div>
+                    <div class="value">6<span style="font-size: 18px; color: var(--text-muted);">/6</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Daily Traffic</span><span class="zh hidden">日均流量</span></div>
+                    <div class="value">10 <span style="font-size: 16px; color: var(--danger-color);">-99.1%</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Keyword Efficiency</span><span class="zh hidden">关键词效率</span></div>
+                    <div class="value">5.6%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label"><span class="en">Growth Potential</span><span class="zh hidden">增长潜力</span></div>
+                    <div class="value" style="color: var(--warning-color);"><span class="en">High</span><span class="zh hidden">高</span></div>
+                </div>
+            </div>
+
+            <p class="summary-text" style="margin-top: 30px;">
+                <span class="en">
+                    LMI Technologies currently faces significant challenges in the Chinese search market, ranking last among competitors with only 10 daily visitors. The company is significantly underperforming compared to market leader Hikrobot (5,746 daily visitors), representing a 574x traffic gap. However, with a keyword efficiency of 5.6% (2 keywords in top 10 out of 36 total), there is substantial room for optimization and growth through strategic SEO initiatives.
+                </span>
+                <span class="zh hidden">
+                    LMI Technologies在中国搜索市场目前面临重大挑战，在竞争对手中排名垫底，日均访问量仅为10次。与市场领导者海康机器人（日均5,746访问量）相比，公司表现严重不足，流量差距达574倍。然而，关键词效率为5.6%（36个关键词中有2个进入前10），通过战略性SEO举措，仍有巨大的优化和增长空间。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 2: Competition Overview -->
+        <section id="competition-overview" class="report-section">
+            <h2 class="section-title"><span class="en">Competition Overview</span><span class="zh hidden">竞争格局概览</span></h2>
+            <p class="section-intro">
+                <span class="en">Comprehensive analysis of LMI Technologies against the top 5 competitors in the machine vision and 3D inspection technology market.</span>
+                <span class="zh hidden">针对机器视觉和3D检测技术市场中前5名竞争对手，对LMI Technologies进行全面分析。</span>
+            </p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><span class="en">Company</span><span class="zh hidden">公司</span></th>
+                            <th><span class="en">Total Daily Traffic</span><span class="zh hidden">日均流量</span></th>
+                            <th><span class="en">Baidu PC Traffic</span><span class="zh hidden">百度PC流量</span></th>
+                            <th><span class="en">Bing Traffic</span><span class="zh hidden">必应流量</span></th>
+                            <th><span class="en">Total Keywords</span><span class="zh hidden">关键词总数</span></th>
+                            <th><span class="en">Top 10 Keywords</span><span class="zh hidden">前10关键词</span></th>
+                            <th><span class="en">Competitive Index</span><span class="zh hidden">竞争指数</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="en">Hikrobot</span><span class="zh hidden">海康机器人</span></td>
+                            <td>5,746</td>
+                            <td>953 - 1,523</td>
+                            <td>1,635 - 2,613</td>
+                            <td>415</td>
+                            <td>58</td>
+                            <td>95.2</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Tztek Technology</span><span class="zh hidden">天准科技</span></td>
+                            <td>667</td>
+                            <td>46 - 74</td>
+                            <td>243 - 387</td>
+                            <td>79</td>
+                            <td>9</td>
+                            <td>78.4</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Opt Machine Vision</span><span class="zh hidden">奥普特</span></td>
+                            <td>641</td>
+                            <td>24 - 38</td>
+                            <td>0 - 0</td>
+                            <td>295</td>
+                            <td>34</td>
+                            <td>68.9</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Mech-Mind Robotics</span><span class="zh hidden">梅卡曼德</span></td>
+                            <td>60</td>
+                            <td>26 - 42</td>
+                            <td>0 - 0</td>
+                            <td>89</td>
+                            <td>11</td>
+                            <td>42.7</td>
+                        </tr>
+                        <tr>
+                            <td><span class="en">Micro-Epsilon China</span><span class="zh hidden">华睿科技</span></td>
+                            <td>13</td>
+                            <td>0 - 0</td>
+                            <td>0 - 0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>8.3</td>
+                        </tr>
+                        <tr class="user-company-row">
+                            <td><span class="badge-user">YOU</span><span class="en">LMI Technologies</span><span class="zh hidden">LMI Technologies</span></td>
+                            <td>10</td>
+                            <td>6 - 10</td>
+                            <td>0 - 0</td>
+                            <td>36</td>
+                            <td>2</td>
+                            <td>12.5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="section-intro" style="margin-top: 30px;">
+                <span class="en">
+                    <strong>Competitive Index Calculation:</strong> A comprehensive score based on traffic volume (40%), keyword portfolio (30%), top 10 keyword penetration (20%), and traffic source diversity (10%). Hikrobot leads with 95.2, while LMI Technologies scores 12.5, indicating significant room for improvement across all metrics.
+                </span>
+                <span class="zh hidden">
+                    <strong>竞争指数计算：</strong>综合评分基于流量规模（40%）、关键词组合（30%）、前10关键词渗透率（20%）和流量来源多样性（10%）。海康机器人以95.2领先，而LMI Technologies得分12.5，表明在所有指标上都有显著的改进空间。
+                </span>
+            </p>
+        </section>
+
+        <!-- Section 3: SWOT Analysis -->
+        <section id="swot-analysis" class="report-section">
+            <h2 class="section-title"><span class="en">SWOT Analysis</span><span class="zh hidden">SWOT分析</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic positioning analysis of LMI Technologies in the Chinese market based on current SEO performance and competitive landscape.</span>
+                <span class="zh hidden">基于当前SEO表现和竞争格局，对LMI Technologies在中国市场的战略定位分析。</span>
+            </p>
+
+            <div class="swot-grid">
+                <div class="swot-item">
+                    <h3 style="color: var(--success-color);"><span class="en">Strengths</span><span class="zh hidden">优势</span></h3>
+                    <ul>
+                        <li><span class="en">Established presence with 36 ranking keywords</span><span class="zh hidden">拥有36个排名关键词的既有基础</span></li>
+                        <li><span class="en">2 keywords already in top 10 positions</span><span class="zh hidden">已有2个关键词进入前10位置</span></li>
+                        <li><span class="en">Baidu traffic generation capability (6-10 daily)</span><span class="zh hidden">具备百度流量生成能力（日均6-10）</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--danger-color);"><span class="en">Weaknesses</span><span class="zh hidden">劣势</span></h3>
+                    <ul>
+                        <li><span class="en">Severely limited traffic volume (574x behind leader)</span><span class="zh hidden">流量规模严重不足（落后领导者574倍）</span></li>
+                        <li><span class="en">Zero Bing traffic indicates missed opportunities</span><span class="zh hidden">必应流量为零，错失机会</span></li>
+                        <li><span class="en">66.7% of keywords rank in positions 21-50 (low visibility)</span><span class="zh hidden">66.7%的关键词排名在21-50位（低可见度）</span></li>
+                        <li><span class="en">Smallest keyword portfolio among competitors</span><span class="zh hidden">竞争对手中关键词组合最小</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--primary-color);"><span class="en">Opportunities</span><span class="zh hidden">机遇</span></h3>
+                    <ul>
+                        <li><span class="en">High potential to move 24 keywords from positions 21-40 to top 20</span><span class="zh hidden">有巨大潜力将24个关键词从21-40位提升至前20</span></li>
+                        <li><span class="en">Untapped Bing market with zero competition</span><span class="zh hidden">未开发的必应市场，零竞争</span></li>
+                        <li><span class="en">Competitor analysis reveals gaps in technical keyword coverage</span><span class="zh hidden">竞争对手分析揭示技术关键词覆盖的空白</span></li>
+                    </ul>
+                </div>
+
+                <div class="swot-item">
+                    <h3 style="color: var(--warning-color);"><span class="en">Threats</span><span class="zh hidden">威胁</span></h3>
+                    <ul>
+                        <li><span class="en">Hikrobot dominates with 415 keywords and massive traffic</span><span class="zh hidden">海康机器人凭借415个关键词和巨大流量占据主导地位</span></li>
+                        <li><span class="en">Competitors have 10-45x more keywords in top positions</span><span class="zh hidden">竞争对手在顶部位置拥有10-45倍的关键词</span></li>
+                        <li><span class="en">Risk of losing current top 10 keywords without optimization</span><span class="zh hidden">如不优化，可能失去当前前10位关键词</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Metrics Analysis -->
+        <section id="deep-metrics" class="report-section">
+            <h2 class="section-title"><span class="en">Deep Metrics Analysis</span><span class="zh hidden">深度指标分析</span></h2>
+
+            <!-- Traffic Channel Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Traffic Channel Distribution</span><span class="zh hidden">流量渠道分布</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Comparison of Baidu vs. Bing traffic sources across competitors</span>
+                    <span class="zh hidden">竞争对手间百度与必应流量来源对比</span>
+                </p>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Hikrobot</span><span class="zh hidden">海康机器人</span></span>
+                        <span>5,746</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment baidu" style="width: 43%;">Baidu: 1,238</div>
+                            <div class="chart-bar-segment bing" style="width: 57%;">Bing: 2,124</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Tztek Technology</span><span class="zh hidden">天准科技</span></span>
+                        <span>667</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment baidu" style="width: 36%;">Baidu: 60</div>
+                            <div class="chart-bar-segment bing" style="width: 64%;">Bing: 315</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Opt Machine Vision</span><span class="zh hidden">奥普特</span></span>
+                        <span>641</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment baidu" style="width: 100%;">Baidu: 641</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Mech-Mind Robotics</span><span class="zh hidden">梅卡曼德</span></span>
+                        <span>60</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment baidu" style="width: 100%;">Baidu: 60</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Micro-Epsilon</span><span class="zh hidden">华睿科技</span></span>
+                        <span>13</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment baidu" style="width: 100%; background: var(--alt-bg); color: var(--text-muted);">No Traffic</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="badge-user">YOU</span><span class="en">LMI Technologies</span><span class="zh hidden">LMI Technologies</span></span>
+                        <span>10</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-stacked">
+                            <div class="chart-bar-segment baidu" style="width: 100%;">Baidu: 10</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-secondary); font-size: 13px; margin-top: 20px; font-style: italic;">
+                    <span class="en">
+                        <strong>Key Insight:</strong> Hikrobot and Tztek have diversified traffic sources with strong Bing presence. LMI Technologies, Opt, and Mech-Mind rely solely on Baidu, missing 35-57% of potential traffic from Bing optimization.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键洞察：</strong>海康机器人和天准科技拥有多样化的流量来源，必应表现强劲。LMI Technologies、奥普特和梅卡曼德仅依赖百度，错失了35-57%的必应优化潜在流量。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Keyword Efficiency Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Keyword Efficiency Comparison</span><span class="zh hidden">关键词效率对比</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">Percentage of keywords ranking in top 10 positions (higher is better)</span>
+                    <span class="zh hidden">前10位置关键词占比（越高越好）</span>
+                </p>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Hikrobot</span><span class="zh hidden">海康机器人</span></span>
+                        <span>14.0%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 100%;">58 / 415</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Mech-Mind Robotics</span><span class="zh hidden">梅卡曼德</span></span>
+                        <span>12.4%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 88%;">11 / 89</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Opt Machine Vision</span><span class="zh hidden">奥普特</span></span>
+                        <span>11.5%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 82%;">34 / 295</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Tztek Technology</span><span class="zh hidden">天准科技</span></span>
+                        <span>11.4%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 81%;">9 / 79</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="badge-user">YOU</span><span class="en">LMI Technologies</span><span class="zh hidden">LMI Technologies</span></span>
+                        <span>5.6%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 40%; background: var(--warning-color);">2 / 36</div>
+                    </div>
+                </div>
+
+                <div class="chart-bar-container">
+                    <div class="chart-label">
+                        <span><span class="en">Micro-Epsilon</span><span class="zh hidden">华睿科技</span></span>
+                        <span>0.0%</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="chart-bar-fill" style="width: 5%; background: var(--danger-color);">0 / 1</div>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-secondary); font-size: 13px; margin-top: 20px; font-style: italic;">
+                    <span class="en">
+                        <strong>Analysis:</strong> LMI Technologies' keyword efficiency (5.6%) is significantly below the competitor average of 11.8%. This indicates that while the company has keyword presence, optimization focus on high-value terms is needed to improve rankings.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>分析：</strong>LMI Technologies的关键词效率（5.6%）显著低于竞争对手平均水平11.8%。这表明，虽然公司拥有关键词存在感，但需要专注于高价值词汇的优化以改善排名。
+                    </span>
+                </p>
+            </div>
+
+            <!-- Competitive Gap Analysis -->
+            <div class="chart-container">
+                <h3><span class="en">Competitive Gap vs. Market Leader</span><span class="zh hidden">与市场领导者的竞争差距</span></h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                    <span class="en">LMI Technologies compared to Hikrobot (Market Leader)</span>
+                    <span class="zh hidden">LMI Technologies与海康机器人（市场领导者）对比</span>
+                </p>
+
+                <div class="key-metrics-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Traffic Gap</span><span class="zh hidden">流量差距</span></div>
+                        <div class="value" style="font-size: 28px; color: var(--danger-color);">-574x</div>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                            <span class="en">5,736 daily visitors behind</span>
+                            <span class="zh hidden">落后5,736日均访客</span>
+                        </p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Keyword Gap</span><span class="zh hidden">关键词差距</span></div>
+                        <div class="value" style="font-size: 28px; color: var(--danger-color);">-379</div>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                            <span class="en">Need 11.5x current portfolio</span>
+                            <span class="zh hidden">需要增加11.5倍当前组合</span>
+                        </p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label"><span class="en">Top 10 Gap</span><span class="zh hidden">前10差距</span></div>
+                        <div class="value" style="font-size: 28px; color: var(--warning-color);">-56</div>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
+                            <span class="en">29x fewer high-ranking terms</span>
+                            <span class="zh hidden">高排名词汇少29倍</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Opportunity Identification -->
+        <section id="opportunities" class="report-section">
+            <h2 class="section-title"><span class="en">Opportunity Identification</span><span class="zh hidden">机会识别</span></h2>
+            <p class="section-intro">
+                <span class="en">Strategic opportunities ranked by impact potential and implementation feasibility for LMI Technologies.</span>
+                <span class="zh hidden">根据影响潜力和实施可行性为LMI Technologies排名的战略机会。</span>
+            </p>
+
+            <div class="opportunity-grid">
+                <div class="opportunity-card">
+                    <h4><span class="en">Quick Win: Position 11-20 Optimization</span><span class="zh hidden">快速赢得：11-20位优化</span></h4>
+                    <p>
+                        <span class="en">
+                            Push 2 keywords currently in positions 11-20 into top 10. Low competition, high impact on visibility and traffic generation.
+                        </span>
+                        <span class="zh hidden">
+                            将当前排名11-20位的2个关键词推入前10。低竞争，对可见度和流量生成影响高。
+                        </span>
+                    </p>
+                    <span class="opportunity-tag tag-high"><span class="en">High Priority</span><span class="zh hidden">高优先级</span></span>
+                    <span class="opportunity-tag tag-high"><span class="en">Est. Traffic: +150/day</span><span class="zh hidden">预估流量：+150/天</span></span>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Bing Market Entry</span><span class="zh hidden">必应市场进入</span></h4>
+                    <p>
+                        <span class="en">
+                            Competitors generate 35-57% of traffic from Bing. Zero current presence represents untapped market with lower competition than Baidu.
+                        </span>
+                        <span class="zh hidden">
+                            竞争对手从必应获得35-57%的流量。当前零存在代表未开发市场，竞争低于百度。
+                        </span>
+                    </p>
+                    <span class="opportunity-tag tag-high"><span class="en">High Priority</span><span class="zh hidden">高优先级</span></span>
+                    <span class="opportunity-tag tag-high"><span class="en">Est. Traffic: +200/day</span><span class="zh hidden">预估流量：+200/天</span></span>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Keyword Portfolio Expansion</span><span class="zh hidden">关键词组合扩展</span></h4>
+                    <p>
+                        <span class="en">
+                            Target 50-100 new technical keywords in 3D inspection, machine vision, and industrial automation sectors where competitors rank but LMI is absent.
+                        </span>
+                        <span class="zh hidden">
+                            在3D检测、机器视觉和工业自动化领域，针对竞争对手排名但LMI缺失的50-100个新技术关键词。
+                        </span>
+                    </p>
+                    <span class="opportunity-tag tag-medium"><span class="en">Medium Priority</span><span class="zh hidden">中优先级</span></span>
+                    <span class="opportunity-tag tag-medium"><span class="en">Est. Traffic: +300/day</span><span class="zh hidden">预估流量：+300/天</span></span>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4><span class="en">Position 21-40 Improvement</span><span class="zh hidden">21-40位提升</span></h4>
+                    <p>
+                        <span class="en">
+                            Optimize 20 keywords in positions 21-40 (55.6% of portfolio). Even moving to positions 11-20 yields 3-5x traffic increase per keyword.
+                        </span>
+                        <span class="zh hidden">
+                            优化排名21-40位的20个关键词（占组合55.6%）。即使移至11-20位，每个关键词也能实现3-5倍的流量增长。
+                        </span>
+                    </p>
+                    <span class="opportunity-tag tag-medium"><span class="en">Medium Priority</span><span class="zh hidden">中优先级</span></span>
+                    <span class="opportunity-tag tag-medium"><span class="en">Est. Traffic: +180/day</span><span class="zh hidden">预估流量：+180/天</span></span>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg);">
+                <h3 style="margin-bottom: 16px; color: var(--text-heading);"><span class="en">Projected Impact Summary</span><span class="zh hidden">预期影响摘要</span></h3>
+                <div class="key-metrics-grid" style="grid-template-columns: repeat(4, 1fr);">
+                    <div>
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Total Potential Traffic</span><span class="zh hidden">总潜在流量</span></div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--success-color);">+830/day</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Growth Multiplier</span><span class="zh hidden">增长倍数</span></div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--success-color);">84x</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Timeline</span><span class="zh hidden">时间线</span></div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--primary-color);">6-9 <span style="font-size: 16px;"><span class="en">months</span><span class="zh hidden">个月</span></span></div>
+                    </div>
+                    <div>
+                        <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"><span class="en">Investment Level</span><span class="zh hidden">投资水平</span></div>
+                        <div style="font-size: 28px; font-weight: 700; color: var(--warning-color);"><span class="en">Medium</span><span class="zh hidden">中等</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Action Plan -->
+        <section id="action-plan" class="report-section">
+            <h2 class="section-title"><span class="en">Strategic Action Plan</span><span class="zh hidden">战略行动计划</span></h2>
+            <p class="section-intro">
+                <span class="en">Phased implementation roadmap to close the competitive gap and achieve sustainable SEO growth for LMI Technologies in the Chinese market.</span>
+                <span class="zh hidden">分阶段实施路线图，以缩小竞争差距并实现LMI Technologies在中国市场的可持续SEO增长。</span>
+            </p>
+
+            <div class="action-card">
+                <h4><span class="en">Phase 1: Foundation & Quick Wins (Months 1-2)</span><span class="zh hidden">第一阶段：基础与快速赢得（第1-2个月）</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Objectives:</strong> Optimize existing top-performing keywords, establish Bing presence, conduct comprehensive technical SEO audit.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>优化现有顶级关键词，建立必应存在感，进行全面的技术SEO审计。
+                    </span>
+                </p>
+                <p style="margin-top: 12px;">
+                    <span class="en">
+                        <strong>Key Actions:</strong><br>
+                        • Push 2 keywords from positions 11-20 to top 10 through on-page optimization and content enhancement<br>
+                        • Set up Bing Webmaster Tools and submit Chinese sitemap<br>
+                        • Fix technical issues: page speed, mobile optimization, structured data implementation<br>
+                        • Create 5-10 high-quality Chinese content pieces targeting positions 21-30 keywords
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong><br>
+                        • 通过页面优化和内容增强，将2个关键词从11-20位推至前10<br>
+                        • 设置必应网站管理员工具并提交中文站点地图<br>
+                        • 修复技术问题：页面速度、移动优化、结构化数据实施<br>
+                        • 创建5-10篇针对21-30位关键词的高质量中文内容
+                    </span>
+                </p>
+            </div>
+
+            <div class="action-card">
+                <h4><span class="en">Phase 2: Keyword Portfolio Expansion (Months 3-4)</span><span class="zh hidden">第二阶段：关键词组合扩展（第3-4个月）</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Objectives:</strong> Double keyword portfolio to 70-80 terms, establish authority in 3D inspection and machine vision categories.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>将关键词组合扩大至70-80个词汇，在3D检测和机器视觉类别建立权威。
+                    </span>
+                </p>
+                <p style="margin-top: 12px;">
+                    <span class="en">
+                        <strong>Key Actions:</strong><br>
+                        • Conduct competitor gap analysis to identify 40-50 high-value keywords<br>
+                        • Develop localized content strategy for Chinese market (case studies, technical guides, application notes)<br>
+                        • Launch Bing Ads campaign to accelerate visibility in untapped channel<br>
+                        • Build 10-15 high-authority backlinks from industry directories and technical forums
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong><br>
+                        • 进行竞争对手差距分析，识别40-50个高价值关键词<br>
+                        • 为中国市场开发本地化内容策略（案例研究、技术指南、应用说明）<br>
+                        • 启动必应广告活动，加速未开发渠道的可见度<br>
+                        • 从行业目录和技术论坛建立10-15个高权威反向链接
+                    </span>
+                </p>
+            </div>
+
+            <div class="action-card">
+                <h4><span class="en">Phase 3: Position Optimization (Months 5-6)</span><span class="zh hidden">第三阶段：位置优化（第5-6个月）</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Objectives:</strong> Move 15-20 keywords from positions 21-40 to positions 11-20, achieve 10-15 total top 10 keywords.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>将15-20个关键词从21-40位移至11-20位，实现总计10-15个前10关键词。
+                    </span>
+                </p>
+                <p style="margin-top: 12px;">
+                    <span class="en">
+                        <strong>Key Actions:</strong><br>
+                        • Implement advanced on-page SEO: semantic keyword clustering, internal linking optimization<br>
+                        • Create multimedia content (videos, infographics, interactive tools) for high-priority keywords<br>
+                        • Launch guest posting campaign on authoritative Chinese tech websites<br>
+                        • Monitor and refine Bing strategy based on initial performance data
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong><br>
+                        • 实施高级页面SEO：语义关键词聚类、内部链接优化<br>
+                        • 为高优先级关键词创建多媒体内容（视频、信息图、互动工具）<br>
+                        • 在权威中文科技网站上启动客座发帖活动<br>
+                        • 根据初始性能数据监控和优化必应策略
+                    </span>
+                </p>
+            </div>
+
+            <div class="action-card">
+                <h4><span class="en">Phase 4: Scale & Consolidation (Months 7-9)</span><span class="zh hidden">第四阶段：规模化与巩固（第7-9个月）</span></h4>
+                <p>
+                    <span class="en">
+                        <strong>Objectives:</strong> Reach 100+ keyword portfolio, achieve 500+ daily traffic, establish top 3 position in niche categories.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>目标：</strong>达到100+关键词组合，实现500+日均流量，在细分类别中获得前3位置。
+                    </span>
+                </p>
+                <p style="margin-top: 12px;">
+                    <span class="en">
+                        <strong>Key Actions:</strong><br>
+                        • Expand content production to 20-30 pieces per month (blog posts, whitepapers, product guides)<br>
+                        • Implement aggressive link building: 20-30 new backlinks monthly from tier-1 sources<br>
+                        • Launch social media integration (WeChat, Weibo) to amplify content reach<br>
+                        • Conduct mid-term performance review and adjust strategy based on ROI analysis
+                    </span>
+                    <span class="zh hidden">
+                        <strong>关键行动：</strong><br>
+                        • 将内容生产扩大至每月20-30篇（博客文章、白皮书、产品指南）<br>
+                        • 实施积极的链接建设：每月从一级来源获得20-30个新反向链接<br>
+                        • 启动社交媒体整合（微信、微博）以扩大内容覆盖<br>
+                        • 进行中期绩效审查并根据投资回报率分析调整策略
+                    </span>
+                </p>
+            </div>
+
+            <div class="cta-container">
+                <button id="download-pdf-btn" class="primary-cta">
+                    <span class="en">📄 Download PDF Report</span>
+                    <span class="zh hidden">📄 下载PDF报告</span>
+                </button>
+                <button onclick="window.open('https://www.ecinnovations.com/services/china-seo-services/', '_blank')" class="secondary-cta">
+                    <span class="en">📞 Schedule Consultation</span>
+                    <span class="zh hidden">📞 预约咨询</span>
+                </button>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--alt-bg); text-align: center;">
+                <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+                    <span class="en">
+                        <strong>Report Generated:</strong> January 2024 | <strong>Data Source:</strong> Chinese Webmaster Tools (Baidu & Bing)<br>
+                        This analysis is based on publicly available search engine data and competitor benchmarking. Results may vary based on market conditions and implementation quality.
+                    </span>
+                    <span class="zh hidden">
+                        <strong>报告生成：</strong>2024年1月 | <strong>数据来源：</strong>中国站长工具（百度和必应）<br>
+                        本分析基于公开可用的搜索引擎数据和竞争对手基准测试。结果可能因市场条件和实施质量而异。
+                    </span>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Language Toggle - Always start in English
+        function toggleLanguage() {
+            const isEnglishVisible = !document.querySelector('.en').classList.contains('hidden');
+            if (isEnglishVisible) {
+                document.querySelectorAll('.en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.zh').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'zh');
+            } else {
+                document.querySelectorAll('.zh').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.en').forEach(el => el.classList.remove('hidden'));
+                localStorage.setItem('preferredLanguage', 'en');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+            });
+
+            // Navigation active state
+            const sections = document.querySelectorAll('.report-section');
+            const navLinks = document.querySelectorAll('.section-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Download PDF button handler
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    setTimeout(() => window.print(), 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
